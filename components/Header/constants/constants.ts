@@ -2,7 +2,7 @@ import type { IconNames } from '@/types'
 
 export const NAV_ELEMENTS = [
 	{ text: 'főoldal', href: '/' },
-	{ text: 'adatlap', href: '/' },
+	{ text: 'adatlap', href: '/adatlap' },
 	{
 		text: 'gitároktatás',
 		href: './gitaroktatas'
