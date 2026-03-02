@@ -1,6 +1,9 @@
+'use client'
+
 import Image from 'next/image'
 
 import { RotatableImage } from '@/components/RotatableImage/RotatableImage'
+import { useBreakpointChecker } from '@/hooks/useBreakpointChecker'
 import { INTRO_SECTION_CONTENT } from './constants/constants'
 
 import { MobileAdvert } from './MobileAdvert'
@@ -8,11 +11,13 @@ import { MobileAdvert } from './MobileAdvert'
 export const IntroSection = () => {
 	const { header, image, textContent } = INTRO_SECTION_CONTENT
 
+	const isMobile = useBreakpointChecker()
+
 	return (
 		<section
 			className={`bg-white text-black w-full flex flex-col-reverse items-center justify-center p-8 lg:flex lg:flex-row lg:gap-10 lg:items-start lg:p-35 lg:pt-28 lg:pb-28`}
 		>
-			<MobileAdvert />
+			{isMobile && <MobileAdvert />}
 			<div className="basis-28/30 relative group">
 				<RotatableImage
 					alt={image.alt}

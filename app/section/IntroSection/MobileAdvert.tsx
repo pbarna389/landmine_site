@@ -2,7 +2,6 @@
 
 import { useEffect } from 'react'
 
-import { useBreakpointChecker } from '@/hooks/useBreakpointChecker'
 import { useCarousel } from '@/hooks/useCarousel'
 import { INTRO_SECTION_CONTENT } from './constants/constants'
 import { BASE_BASE_ANIM_TIMEOUT, BASE_TIMEOUT } from '@/constants/constants'
@@ -16,15 +15,11 @@ export const MobileAdvert = () => {
 		BASE_TIMEOUT
 	)
 
-	const isBelow = useBreakpointChecker()
-
 	useEffect(() => {
 		const timeout = setTimeout(() => setLoaded(true), 150)
 
 		return () => clearTimeout(timeout)
 	}, [setLoaded, idx])
-
-	if (!isBelow) return
 
 	const currentElement = mobileCarouselContent[idx]
 
