@@ -1,12 +1,15 @@
 import type { IconNames } from '@/types'
 
 export const NAV_ELEMENTS = [
-	{ text: 'főoldal', href: '' },
-	{ text: 'adatlap', href: '' },
-	{ text: 'gitároktatás', href: '' },
-	{ text: 'videók', href: '' },
-	{ text: 'zenék', href: '' },
-	{ text: 'cikkek', href: '' }
+	{ text: 'főoldal', href: '/' },
+	{ text: 'adatlap', href: '/' },
+	{
+		text: 'gitároktatás',
+		href: './gitaroktatas'
+	},
+	{ text: 'videók', href: '/' },
+	{ text: 'zenék', href: '/' },
+	{ text: 'cikkek', href: '/' }
 ]
 
 export const NAV_ICONS_DESKTOP: { href: string; site: IconNames }[] = [

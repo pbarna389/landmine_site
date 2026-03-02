@@ -1,8 +1,7 @@
-import { Card, Section } from '@/app/components'
-
 import { PRICES_CONTENT } from './constants/constants'
 
 import { PricesCardBody } from './PricesCardBody'
+import { Card, Section } from '../../components'
 
 export const PricesSection = () => {
 	const { header, content } = PRICES_CONTENT

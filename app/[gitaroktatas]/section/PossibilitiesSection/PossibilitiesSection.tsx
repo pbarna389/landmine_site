@@ -1,9 +1,8 @@
-import { Pentagon, Quote, Section, Triangle } from '@/app/components'
-
 import { POSSIBILITIES_CONTENT } from './constants/constants'
 
 import { PossibilitiesDetail } from './PossibilitiesDetail'
 import { PossibilityParagraph } from './PossibilityParagraph'
+import { Pentagon, Quote, Section, Triangle } from '../../components'
 
 export const PossibilitiesSection = () => {
 	const {
