@@ -44,7 +44,7 @@ export const MobileNavbar = () => {
 					/>
 				</div>
 				<nav
-					className={`fixed flex flex-col overflow-y-auto overflow-x-hidden items-center border-l-2 border-r-2 border-t-0 border-b-0 border-white/98 z-2 top-8 bottom-0 right-0 bg-white/98 origin-right transition opacity-97 *:brightness-115 ${isOpen ? 'scale-x-100' : 'scale-x-0'}`}
+					className={`fixed flex flex-col overflow-y-auto overflow-x-hidden items-center border-l-2 border-r-2 border-t-0 border-b-0 border-white/98 z-2 top-8 bottom-0 right-0 bg-white/98 origin-right transition duration-300 opacity-97 *:brightness-115 ${isOpen ? 'scale-x-100' : 'scale-x-0'}`}
 				>
 					<div className="flex flex-col w-full justify-center items-center">
 						{NAV_ELEMENTS.map((link) => (
@@ -52,6 +52,7 @@ export const MobileNavbar = () => {
 								href={link.href}
 								className="top-0 font-raleway p-1 pl-0 pr-0 bg-header-mobile-bg text-black capitalize border border-header-mobile-border w-full cursor-pointer text-center transition-all duration-50 active:scale-105"
 								key={`nav-mobile-main-links-${link.text}`}
+								onClick={handleClick}
 							>
 								{link.text}
 							</Link>
