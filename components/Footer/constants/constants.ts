@@ -1,3 +1,5 @@
+import { NAV_ICONS_BASE } from '@/constants/constants'
+
 import Image1 from '../Assets/03sz.jpg'
 
 export const FOOTER_CONTENT = {
@@ -9,21 +11,10 @@ export const FOOTER_CONTENT = {
 				'Gitáros videók, gyakorlási tippek, zenei játékok - és még sok más...'
 			],
 			links: [
-				{
-					site: 'youtube',
-					href: 'https://www.youtube.com/c/landmine-gitaroktatas/featured'
-				},
-				{
-					site: 'facebook',
-					href: 'https://www.facebook.com/landminegitar/'
-				},
+				...NAV_ICONS_BASE,
 				{
 					site: 'telephone',
 					href: 'tel:06307207878'
-				},
-				{
-					site: 'tiktok',
-					href: 'https://www.tiktok.com/@landminegitar'
 				}
 			]
 		}

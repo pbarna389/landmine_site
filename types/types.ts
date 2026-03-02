@@ -13,3 +13,8 @@ export type HeightValuesType =
 	| `h-[${number extends number ? number : never}px]`
 	| `h-[${number extends number ? number : never}%]`
 	| `h-[calc(${number extends number ? number : never}${'vh'}*${number extends number ? number : never}.${number extends number ? number : never})]`
+
+export type LinkWithIconsType = {
+	href: string
+	site: IconNames
+}[]

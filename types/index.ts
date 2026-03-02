@@ -1,2 +1,7 @@
-export type { HeightValuesType, IconNames, WidthValuesType } from './types'
+export type {
+	HeightValuesType,
+	IconNames,
+	LinkWithIconsType,
+	WidthValuesType
+} from './types'
 export type { ArrayElementType } from './utilities'

@@ -1,9 +1,9 @@
-import type { IconNames } from '@/types'
+import type { LinkWithIconsType } from '@/types'
 
 export const BASE_TIMEOUT = 7500
 export const BASE_BASE_ANIM_TIMEOUT = 500
 
-export const NAV_ICONS_DESKTOP: { href: string; site: IconNames }[] = [
+export const NAV_ICONS_BASE: LinkWithIconsType = [
 	{
 		site: 'tiktok',
 		href: 'https://www.tiktok.com/@landminegitar'

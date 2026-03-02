@@ -3,15 +3,15 @@ import Image from 'next/image'
 
 type RotatableImage = {
 	alt: string
-	className: string
 	src: string | StaticImageData
+	className?: string
 	rotateLeft?: boolean
 }
 
 export const RotatableImage = ({
 	src,
-	className,
 	alt,
+	className = '',
 	rotateLeft = true
 }: RotatableImage) => {
 	return (

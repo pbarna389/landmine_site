@@ -1,10 +1,9 @@
 import Link from 'next/link'
 
-import { IconContext } from 'react-icons'
+import { NAV_ELEMENTS } from './constants'
+import { NAV_ICONS_BASE } from '@/constants/constants'
 
-import { NAV_ELEMENTS, NAV_ICONS_DESKTOP } from './constants'
-
-import { Icons } from '../Icons/Icons'
+import { LinksWithIconsWrapper } from '../LinksWithIconsWrapper'
 
 export const DesktopNavbar = () => {
 	return (
@@ -23,13 +22,7 @@ export const DesktopNavbar = () => {
 					))}
 				</div>
 				<div className="flex gap-1.5 items-center justify-center *:transition-all *:hover:scale-110 *:hover:brightness-125 *:cursor-pointer">
-					<IconContext value={{ size: '28' }}>
-						{NAV_ICONS_DESKTOP.map((icon) => (
-							<Link key={`navbar-desktop-icon-${icon.site}`} href={icon.href} target="_blank">
-								<Icons iconVars={icon.site} />
-							</Link>
-						))}
-					</IconContext>
+					<LinksWithIconsWrapper links={NAV_ICONS_BASE} />
 				</div>
 			</nav>
 		</>
