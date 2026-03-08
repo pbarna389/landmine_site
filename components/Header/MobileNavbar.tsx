@@ -15,8 +15,6 @@ import { NAV_ELEMENTS, NAV_ICONS_MOBILE } from './constants'
 
 import { Icons } from '../Icons/Icons'
 
-//TODO: FIX THE OVERFLOW ISSUE WITH SOME MOBILES
-
 export const MobileNavbar = () => {
 	const [isOpen, setIsOpen] = useState(false)
 

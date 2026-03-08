@@ -8,6 +8,7 @@
 }
 
 @theme {
+	--color-video-advert: #171717;
 	--color-cube-secondary: #cbb37f;
 	--color-base: rgba(25, 18, 2, 0.9);
 	--color-carousel: #c4a255;

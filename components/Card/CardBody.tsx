@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import type { PremiseContentType } from '@/app/section/PremiseSection/constants/constants'
+import type { PremiseContentType } from '@/app/classes/section/PremiseSection/constants/constants'
 
 type CardBodyProps = React.PropsWithChildren & {
 	content: Omit<PremiseContentType, 'textContent' | 'title'>

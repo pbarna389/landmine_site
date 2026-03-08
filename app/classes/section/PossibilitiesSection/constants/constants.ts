@@ -85,7 +85,7 @@ export const POSSIBILITIES_CONTENT = {
 				'... amolyan műhelymunka-szerűen különböző karakterű darabokkal foglalkozhatunk. A komolyabb témákon keresztül fejlődhet a technikád, mindset-ed, játékod zeneisége és kreativitásod, egyéniséged is; könnyebben ráláthatsz összefüggésekre, vagy épp az együtt-zenélés bizonyos elemeire (kinek mire van szüksége)...\n A fenti gyakorlások mellett a megértés is fontos elem - gyakorlatban alkalmazni az elméletet, belelátni különféle stílusokba, megközelítésekbe, ill. az improvizálás és zeneírás eszközeinek elméleti és gyakorlati lehetőségeibe - ízlés szerint. Nem "csak" gitározni tanulunk, hanem zenélni is; megismerhetünk gondolkodásmódokat, tágíthatjuk a látókört... \n A folyamatos, személyes kontakt szintén nagyon hasznos: bármilyen kérdést, ill. felmerülő problémás részt megoldhatunk, átbeszélhetünk közösen.',
 			link: {
 				text: 'gitároktatás-videók',
-				href: null
+				href: './videos'
 			}
 		},
 		{
@@ -103,7 +103,7 @@ export const POSSIBILITIES_CONTENT = {
 				'... a klasszikus slágerektől- a jazz-en, blues-on, funky-n át -a modern pop/rock/metálzenéig sok minden teret kaphat - mindez rugalmasan az ízlésedhez, igényeidhez igazítva: legyen akár teljes dal, egy téma, egy szóló, vagy épp egy-egy hasznos, fejlesztő stílusgyakorlat a könnyűzene különféle stíluságaiból.. Így egy igen színes és élvezetes, de ezzel együtt komoly repertoárból csemegézhetünk -elképzeléseidet szem előtt tartva. \n Kedvenc, hozott dalokat ugyanúgy tanulunk, nincs zeneiskolai kötöttség. Nem szokásom erőltetni az unalmas, öncélú, dallamtalan technikai gyakorlatokat sem, az igazi zenéléshez amúgy sem ez a megfelelő út. \n Akusztikus- és elektromosgitáron egyaránt zenélhetünk, szívesen és nagy türelemmel foglalkozom teljesen kezdőkkel és haladókkal is. Az órák egyéniek, nem csoportosak, és teljesen személyre szabottak (az aktuális szinthez, szorgalomhoz, saját céljaidhoz igazodnak).',
 			link: {
 				text: 'studio-képek',
-				href: null
+				href: './about/classroom'
 			}
 		}
 	]

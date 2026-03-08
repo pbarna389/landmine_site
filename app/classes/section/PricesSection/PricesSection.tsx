@@ -1,7 +1,8 @@
+import { Card } from '@/components'
 import { PRICES_CONTENT } from './constants/constants'
 
 import { PricesCardBody } from './PricesCardBody'
-import { Card, Section } from '../../components'
+import { Section } from '../../components'
 
 export const PricesSection = () => {
 	const { header, content } = PRICES_CONTENT
@@ -21,7 +22,7 @@ export const PricesSection = () => {
 						key={card.title.text}
 						className="gap-5 rounded-none pt-0 pb-0 pr-0 pl-0 w-full lg:min-h-120 group"
 					>
-						<Card.Header title={card.title.text} idx={idx} />
+						<Card.Header idx={idx}>{card.title.text}</Card.Header>
 						<Card.Body content={card}>
 							<PricesCardBody {...card} />
 						</Card.Body>

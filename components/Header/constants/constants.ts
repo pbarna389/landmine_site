@@ -13,15 +13,4 @@ export const NAV_ELEMENTS = [
 	{ text: 'cikkek', href: '/articles' }
 ]
 
-export const NAV_ICONS_MOBILE: LinkWithIconsType = [
-	...NAV_ICONS_BASE.reverse(),
-	{
-		site: 'message',
-		href:
-			'mailto:info@landmine-gitaroktatas.hu?subject=Gitároktatás -jelentkezés, érdeklődés'
-	},
-	{
-		site: 'telephone',
-		href: 'tel:06307207878'
-	}
-]
+export const NAV_ICONS_MOBILE: LinkWithIconsType = [...NAV_ICONS_BASE]

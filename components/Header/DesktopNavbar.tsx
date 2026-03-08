@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 import { NAV_ELEMENTS } from './constants'
-import { NAV_ICONS_BASE } from '@/constants/constants'
+import { NAV_SOCIALS_DESKTOP } from '@/constants/constants'
 
 import { LinksWithIconsWrapper } from '../LinksWithIconsWrapper'
 
@@ -21,7 +21,7 @@ export const DesktopNavbar = () => {
 					))}
 				</div>
 				<div className="flex gap-1.5 items-center justify-center *:transition-all *:hover:scale-110 *:hover:brightness-125 *:cursor-pointer">
-					<LinksWithIconsWrapper links={NAV_ICONS_BASE} />
+					<LinksWithIconsWrapper links={NAV_SOCIALS_DESKTOP} />
 				</div>
 			</nav>
 		</>

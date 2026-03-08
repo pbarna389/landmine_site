@@ -10,13 +10,7 @@ export const FOOTER_CONTENT = {
 				'Csatlakozz közösségi oldalaimhoz, ahol rengeteg hasznos anyagot osztok meg rendszeresen!',
 				'Gitáros videók, gyakorlási tippek, zenei játékok - és még sok más...'
 			],
-			links: [
-				...NAV_ICONS_BASE,
-				{
-					site: 'telephone',
-					href: 'tel:06307207878'
-				}
-			]
+			links: [...NAV_ICONS_BASE]
 		}
 	},
 	contact: {
