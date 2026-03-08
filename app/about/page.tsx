@@ -3,7 +3,7 @@ import { RotatableImage } from '@/components/RotatableImage/RotatableImage'
 import { PROFILE_CONTENT } from './constants/constants'
 import { NAV_ICONS_BASE } from '@/constants/constants'
 
-export default function Home() {
+export default function AboutPage() {
 	const {
 		profileContent: { textContent, profileInfo }
 	} = PROFILE_CONTENT
