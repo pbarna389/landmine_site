@@ -5,9 +5,5 @@ export default async function VideoCategoriesPage({
 }) {
 	const { videoCategory } = await params
 
-	return (
-		<div className="flex flex-col items-center justify-center h-screen text-white">
-			{videoCategory}
-		</div>
-	)
+	return <div className="w-full text-center p-5 bg-green-500/75">{videoCategory}</div>
 }
