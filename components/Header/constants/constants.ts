@@ -1,5 +1,5 @@
 import { NAV_ICONS_BASE } from '@/constants/constants'
-import type { LinkWithIconsType } from '@/types'
+import type { IconNames, LinkWithIconsType } from '@/types'
 
 export const NAV_ELEMENTS = [
 	{ text: 'főoldal', href: '/' },
@@ -13,15 +13,10 @@ export const NAV_ELEMENTS = [
 	{ text: 'cikkek', href: '/articles' }
 ]
 
-export const NAV_ICONS_MOBILE: LinkWithIconsType = [
-	...NAV_ICONS_BASE.reverse(),
-	{
-		site: 'message',
-		href:
-			'mailto:info@landmine-gitaroktatas.hu?subject=Gitároktatás -jelentkezés, érdeklődés'
-	},
-	{
-		site: 'telephone',
-		href: 'tel:06307207878'
-	}
-]
+const desktopIcons: IconNames[] = ['youtube', 'facebook', 'tiktok']
+
+export const NAV_ICONS_DESKTOP: LinkWithIconsType = NAV_ICONS_BASE.filter((icon) =>
+	desktopIcons.includes(icon.site)
+)
+
+export const NAV_ICONS_MOBILE: LinkWithIconsType = [...NAV_ICONS_BASE]
