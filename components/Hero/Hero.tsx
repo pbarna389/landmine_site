@@ -22,13 +22,14 @@ export default function Hero() {
 
 	return (
 		<div
-			className={`w-full h-screen relative z-1 transition-all duration-500 ${loaded ? 'opacity-100' : 'opacity-0'}`}
+			className={`w-full h-screen relative z-1 transition-all duration-500 shadow-2xl ${loaded ? 'opacity-100' : 'opacity-0'}`}
 		>
 			<Image
 				className="fill object-cover h-full w-full overflow-clip"
 				src={selectedData.img}
 				key={`hero-image-${selectedData.img}`}
 				alt={`Hero Image ${idx}`}
+				priority
 				onLoad={() => setLoaded(true)}
 				onError={() => setLoaded(true)}
 			/>
