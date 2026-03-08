@@ -1,3 +1,4 @@
+export { Card } from './Card'
 export { CarouselWrapper } from './CarouselWrapper'
 export { Heading } from './Heading'
 export { Icons } from './Icons'

@@ -1,7 +1,8 @@
+import { Card } from '@/components'
 import { PRICES_CONTENT } from './constants/constants'
 
 import { PricesCardBody } from './PricesCardBody'
-import { Card, Section } from '../../components'
+import { Section } from '../../components'
 
 export const PricesSection = () => {
 	const { header, content } = PRICES_CONTENT

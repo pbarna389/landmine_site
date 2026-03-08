@@ -13,6 +13,7 @@ export const VIDEOS_CONTENT = {
 	},
 	subPages: [
 		{
+			id: 1,
 			title: 'Gitáros okosságok',
 			href: './vlog',
 			text: 'Gitártechnikai és gyakorlási tippek, elemzések, érdekességek, hangszínek...',
@@ -22,6 +23,7 @@ export const VIDEOS_CONTENT = {
 			}
 		},
 		{
+			id: 2,
 			title: 'Zeneelmélet és hallás',
 			href: './elmelet',
 			text: 'A zenélés háttere, a "hogyanok és miértek", példák és összefüggések...',
@@ -31,6 +33,7 @@ export const VIDEOS_CONTENT = {
 			}
 		},
 		{
+			id: 3,
 			title: 'Havi egy szóló',
 			href: './hetiszolo',
 			text: 'Gitáros játék és kihívás, sokféle zenei alappal, sokféle stílusban...',

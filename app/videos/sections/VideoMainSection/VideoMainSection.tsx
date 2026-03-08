@@ -13,7 +13,7 @@ export const VideoMainSection = ({ children }: VideoMainSectionProps) => {
 		<section
 			className={`flex flex-col mt-2 w-full bg-[url(${bgUrl})] bg-fixed bg-cover overflow-hidden after:content-['']`}
 		>
-			<div className="w-full h-full p-32 pl-28 pr-28 bg-linear-to-b from-transparent to-white">
+			<div className="w-full h-full space-y-10 p-32 pl-5 pr-5 sm:pl-15 sm:pr-15 md:pl-20 md:pr-20 bg-linear-to-b from-transparent to-white">
 				{children}
 			</div>
 		</section>
