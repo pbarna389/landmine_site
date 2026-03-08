@@ -23,13 +23,15 @@ export default function VideosPage() {
 					</div>
 				</div>
 				<div className="flex flex-col justify-center items-center gap-5 md:flex-row md:flex-wrap">
-					{subPages.map((card) => (
+					{subPages.map((card, idx) => (
 						<Card
 							key={`video-card-${card.id}`}
 							className="pt-0 pr-0 pl-0 pb-0 min-w-9/10 rounded-lg overflow-hidden sm:min-w-3/10 lg:w-3/10 lg:min-h-fit"
 						>
 							<Link href={card.href} target="_blank">
-								<Image className="w-full" src={card.image.src} alt={card.image.alt} priority />
+								<Card.Header idx={idx} className="pt-0 pb-0">
+									<Image className="w-full" src={card.image.src} alt={card.image.alt} priority />
+								</Card.Header>
 								<div className="w-full p-5 space-y-10 *:text-center *:lg:text-center">
 									<Heading
 										text={card.title}
