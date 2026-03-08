@@ -1,3 +1,5 @@
+//TODO: Update the header to handle children and update all related components to the new implementation
+
 type CardHeaderProps = {
 	idx: number
 	title: string

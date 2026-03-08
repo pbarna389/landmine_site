@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { Card, Heading } from '@/components'
 import { VIDEOS_CONTENT } from './constants/constants'
 
-import { VideoMainSection } from './sections'
+import { VideoAdvertSection, VideoMainSection } from './sections'
 
 export default function VideosPage() {
 	const { title, textContent, subPages } = VIDEOS_CONTENT
@@ -26,14 +26,14 @@ export default function VideosPage() {
 					{subPages.map((card) => (
 						<Card
 							key={`video-card-${card.id}`}
-							className="pt-0 pr-0 pl-0 pb-0 rounded-lg overflow-hidden sm:min-w-3/10 lg:w-3/10 lg:min-h-fit"
+							className="pt-0 pr-0 pl-0 pb-0 min-w-9/10 rounded-lg overflow-hidden sm:min-w-3/10 lg:w-3/10 lg:min-h-fit"
 						>
 							<Link href={card.href} target="_blank">
 								<Image className="w-full" src={card.image.src} alt={card.image.alt} priority />
 								<div className="w-full p-5 space-y-10 *:text-center *:lg:text-center">
 									<Heading
 										text={card.title}
-										className="w-full text-nowrap capitalize sm:capitalize after:absolute after:-bottom-5 after:bg-section-heading-highlight lg:after:left-1/2 lg:after:transform lg:after:-translate-x-1/2"
+										className="w-full capitalize sm:capitalize after:absolute after:-bottom-5 after:bg-section-heading-highlight lg:text-nowrap lg:after:left-1/2 lg:after:transform lg:after:-translate-x-1/2"
 									/>
 									<p className="text-[15px]">{card.text}</p>
 								</div>
@@ -42,6 +42,7 @@ export default function VideosPage() {
 					))}
 				</div>
 			</VideoMainSection>
+			<VideoAdvertSection />
 		</main>
 	)
 }

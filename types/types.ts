@@ -17,6 +17,7 @@ export type HeightValuesType =
 export type LinkWithIconsType = {
 	href: string
 	site: IconNames
+	text: string
 }[]
 
 export type HeroCarouselPositionVariants = 'top' | 'middle' | 'end'
