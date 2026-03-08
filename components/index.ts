@@ -1,4 +1,5 @@
 export { CarouselWrapper } from './CarouselWrapper'
+export { Heading } from './Heading'
 export { Icons } from './Icons'
 export { LinksWithIconsWrapper } from './LinksWithIconsWrapper'
 export { RotatableImage } from './RotatableImage'
