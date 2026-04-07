@@ -39,6 +39,7 @@ export default function Home() {
 					<Image
 						className="rounded"
 						height={400}
+						loading="eager"
 						src={currentImage.src}
 						alt={currentImage.alt}
 					/>

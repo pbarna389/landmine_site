@@ -25,7 +25,7 @@ export const VIDEOS_CONTENT = {
 		{
 			id: 2,
 			title: 'Zeneelmélet és hallás',
-			href: '/videos/elmelet',
+			href: '/videos/theory',
 			text: 'A zenélés háttere, a "hogyanok és miértek", példák és összefüggések...',
 			image: {
 				src: Image2,

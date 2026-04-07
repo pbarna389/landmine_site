@@ -18,7 +18,7 @@ export const VIDEO_CATEGORY_CONTENT = {
 			},
 			{
 				id: 'sologuitar',
-				title: 'szólógitáros technikák',
+				title: 'technikák',
 				text: [
 					'Menő szólógitár-technikákkal ismerkedhetsz ebben a sorozatban',
 					'Gyakorlási tippek, fincsi figurák, gyakori hibák, példák és szuper gyakorlatok',
@@ -38,7 +38,7 @@ export const VIDEO_CATEGORY_CONTENT = {
 			},
 			{
 				id: 'creativeRiffs',
-				title: 'kreatív lickek, riffek és akkordmenetek',
+				title: 'lickek és riffek',
 				text: [
 					'A jó lickek szélesíthetik látókörünket, meglökhetik kreativitásunkat.. Jól esik az agynak, jól esik a kéznek!',
 					'Az ötletes riffek és akkordkörök inspirációt nyújthatnak -és még technikailag is fejlesztenek.',

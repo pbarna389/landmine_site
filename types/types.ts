@@ -21,3 +21,45 @@ export type LinkWithIconsType = {
 }[]
 
 export type HeroCarouselPositionVariants = 'top' | 'middle' | 'end'
+
+type ThumbnailKeys = 'default' | 'medium' | 'high' | 'standard' | 'maxRes'
+
+type YoutubeThumbnails = {
+	[key in ThumbnailKeys]: {
+		height: number
+		url: string
+		width: number
+	}
+}
+
+type YoutubePlaylistSnippet = {
+	channelId: string
+	channelTitle: string
+	description: string
+	playlistId: string
+	position: number
+	publishedAt: string
+	resourceId: {
+		kind: 'youtube#video'
+		videoId: string
+	}
+	thumbnails: YoutubeThumbnails
+	title: string
+	videoOwnerChannelId: string
+	videoOwnerChannelTitle: string
+}
+
+type YoutubeDetails = {
+	etag: string
+	kind: `youtube#${string}`
+}
+
+type YoutubePlayListItem = YoutubeDetails & {
+	id: string
+	snippet: YoutubePlaylistSnippet
+}
+
+export type YoutubePlaylistResponse = {
+	items: YoutubePlayListItem[]
+	nextPageToken: string | null
+}
