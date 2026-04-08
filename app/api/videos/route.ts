@@ -2,8 +2,6 @@ import { notFound } from 'next/navigation'
 
 import { getYoutubeData } from '@/utils'
 
-//TODO: update the route to get the id from the route - now the id is just a placeholder
-
 export async function GET(req: Request) {
 	const { searchParams } = new URL(req.url)
 
