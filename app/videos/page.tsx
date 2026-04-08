@@ -28,7 +28,7 @@ export default function VideosPage() {
 							key={`video-card-${card.id}`}
 							className="pt-0 pr-0 pl-0 pb-0 min-w-9/10 rounded-lg overflow-hidden sm:min-w-3/10 lg:w-3/10 lg:min-h-fit"
 						>
-							<Link href={card.href} target="_blank">
+							<Link href={card.href}>
 								<Card.Header idx={idx} className="pt-0 pb-0">
 									<Image className="w-full" src={card.image.src} alt={card.image.alt} priority />
 								</Card.Header>
