@@ -1,21 +1,23 @@
 'use client'
 
+import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 import type { YoutubePlaylistResponse } from '@/types'
 
 import { VideoLink } from './VideoLink'
 
 type VideoContainerProps = YoutubePlaylistResponse
 
-//TODO: implement the intersection hook
 //TODO: implement storage
 //TODO: implement infinite scrolling logic
 //TODO: move storage out to upper levels
 //TODO: implement client-side caching OR use SWR for client side caching
 
 export const VideoContainer = ({ items, nextPageToken }: VideoContainerProps) => {
+	const { ref } = useIntersectionObserver({})
+
 	return (
 		<>
-			<div className="flex flex-wrap gap-5 items-center justify-evenly">
+			<div ref={ref} className="flex flex-wrap gap-5 items-center justify-evenly">
 				{items.map((item) => (
 					<VideoLink key={item.id} item={item.snippet} />
 				))}
