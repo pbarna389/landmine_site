@@ -2,7 +2,7 @@ import type { RefObject } from 'react'
 import { useEffect, useRef, useState } from 'react'
 
 type UseIntersectionObserverProps = {
-	callback?: () => void
+	callback?: () => Promise<void>
 	shouldFreeze?: boolean
 }
 
@@ -31,9 +31,7 @@ export const useIntersectionObserver = ({
 
 		const { current } = ref
 
-		const observer = new IntersectionObserver(observerCb, {
-			rootMargin: '-50% 0px -50% 0px'
-		})
+		const observer = new IntersectionObserver(observerCb, { threshold: 0.6 })
 
 		if (current) {
 			observer.observe(current)

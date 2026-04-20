@@ -54,10 +54,15 @@ type YoutubeDetails = {
 	kind: `youtube#${string}`
 }
 
-type YoutubePlayListItem = YoutubeDetails & {
-	id: string
-	snippet: YoutubePlaylistSnippet
+type YoutubeStatus = {
+	privacyStatus: 'private' | 'public'
 }
+
+type YoutubePlayListItem = YoutubeDetails &
+	YoutubeStatus & {
+		id: string
+		snippet: YoutubePlaylistSnippet
+	}
 
 export type YoutubePlaylistResponse = {
 	items: YoutubePlayListItem[]

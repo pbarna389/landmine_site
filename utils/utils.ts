@@ -5,8 +5,8 @@ export async function getYoutubeData(
 	pageToken?: string
 ): Promise<YoutubePlaylistResponse> {
 	const searchParams = new URLSearchParams({
-		part: 'snippet',
-		maxResults: '10',
+		part: 'snippet,status',
+		maxResults: '15',
 		playlistId,
 		key: process.env.YOUTUBE_API_KEY!
 	})
@@ -18,7 +18,7 @@ export async function getYoutubeData(
 	const res = await fetch(
 		`https://youtube.googleapis.com/youtube/v3/playlistItems?${searchParams.toString()}`,
 		{
-			cache: 'no-store'
+			cache: 'no-cache'
 		}
 	)
 
