@@ -18,7 +18,7 @@ export async function getYoutubeData(
 	const res = await fetch(
 		`https://youtube.googleapis.com/youtube/v3/playlistItems?${searchParams.toString()}`,
 		{
-			cache: 'no-cache'
+			cache: 'force-cache'
 		}
 	)
 
