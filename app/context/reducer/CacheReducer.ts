@@ -24,15 +24,21 @@ type ErrorState = BaseCacheState & {
 	status: 'error'
 }
 
-export type CACHE_STATE = IdleState | LoadingState | ExhaustedState | ErrorState
+type CacheEntry = IdleState | LoadingState | ExhaustedState | ErrorState
 
-type CACHE_ACTION_TYPES =
-	| { type: 'FETCH_START' }
+export type CACHE_STATE = Record<string, CacheEntry | undefined>
+
+export type CACHE_ACTION_TYPES =
+	| { payload: { key: string }; type: 'FETCH_START' }
 	| {
-			payload: { items: YoutubePlaylistResponse['items']; nextPageToken: string | null }
+			payload: {
+				items: YoutubePlaylistResponse['items']
+				key: string
+				nextPageToken: string | null
+			}
 			type: 'FETCH_SUCCESS'
 	  }
-	| { payload: string; type: 'FETCH_ERROR' }
+	| { payload: { errorMessage: string; key: string }; type: 'FETCH_ERROR' }
 
 export const cacheReducer = (
 	state: CACHE_STATE,
@@ -40,42 +46,102 @@ export const cacheReducer = (
 ): CACHE_STATE => {
 	switch (action.type) {
 		case 'FETCH_START': {
-			if (state.status === 'loading' || state.status === 'exhausted') {
+			const { key } = action.payload
+
+			const cacheEntry = state[key]
+
+			if (!cacheEntry) {
+				return {
+					...state,
+					[key]: {
+						status: 'loading',
+						items: [],
+						nextPageToken: null,
+						error: null
+					}
+				}
+			}
+
+			if (cacheEntry.status === 'loading' || cacheEntry.status === 'exhausted') {
 				return state
 			}
 
 			return {
 				...state,
-				status: 'loading',
-				error: null
+				[key]: {
+					...cacheEntry,
+					status: 'loading',
+					error: null
+				}
 			}
 		}
 		case 'FETCH_SUCCESS': {
-			const newList = [...state.items, ...action.payload.items]
+			const { key } = action.payload
+
+			const cacheEntry = state[key]
+
+			if (!cacheEntry) {
+				return {
+					...state,
+					[key]: {
+						status: action.payload.nextPageToken ? 'idle' : 'exhausted',
+						items: action.payload.items,
+						nextPageToken: action.payload.nextPageToken,
+						error: null
+					}
+				}
+			}
+
+			const newList = [...cacheEntry.items, ...action.payload.items]
 			const nextToken = action.payload.nextPageToken
 
 			if (!nextToken) {
 				return {
-					status: 'exhausted',
-					items: newList,
-					nextPageToken: null,
-					error: null
+					...state,
+					[key]: {
+						status: 'exhausted',
+						items: newList,
+						nextPageToken: null,
+						error: null
+					}
 				}
 			}
 
 			return {
-				status: 'idle',
-				items: newList,
-				nextPageToken: nextToken,
-				error: null
+				...state,
+				[key]: {
+					status: 'idle',
+					items: newList,
+					nextPageToken: nextToken,
+					error: null
+				}
 			}
 		}
 		case 'FETCH_ERROR': {
+			const { key, errorMessage } = action.payload
+
+			const cacheEntry = state[key]
+
+			if (!cacheEntry) {
+				return {
+					...state,
+					[key]: {
+						status: 'error',
+						items: [],
+						nextPageToken: null,
+						error: errorMessage
+					}
+				}
+			}
+
 			return {
-				status: 'error',
-				items: state.items,
-				nextPageToken: state.nextPageToken,
-				error: action.payload
+				...state,
+				[key]: {
+					status: 'error',
+					items: cacheEntry.items,
+					nextPageToken: cacheEntry.nextPageToken,
+					error: errorMessage
+				}
 			}
 		}
 		default:

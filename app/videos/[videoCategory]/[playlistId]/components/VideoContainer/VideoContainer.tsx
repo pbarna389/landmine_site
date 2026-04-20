@@ -2,9 +2,9 @@
 
 import { useParams } from 'next/navigation'
 
-import { useEffect, useReducer } from 'react'
+import { useEffect } from 'react'
 
-import { type CACHE_STATE, cacheReducer } from '@/app/context'
+import { useCacheStateContext, useCacheStateDispatchContext } from '@/app/context'
 
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 import type { YoutubePlaylistResponse } from '@/types'
@@ -13,39 +13,51 @@ import { VideoLink } from './VideoLink'
 
 type VideoContainerProps = YoutubePlaylistResponse
 
-//TODO: implement client-side caching
-
-const initialState: CACHE_STATE = {
-	status: 'idle',
-	items: [],
-	nextPageToken: null,
-	error: null
-}
-
 export const VideoContainer = ({ items, nextPageToken }: VideoContainerProps) => {
 	const { playlistId } = useParams<{ playlistId: string }>()
 
-	const [state, dispatch] = useReducer(cacheReducer, initialState)
+	const state = useCacheStateContext()
+	const dispatch = useCacheStateDispatchContext()
 
 	useEffect(() => {
-		dispatch({ type: 'FETCH_SUCCESS', payload: { items, nextPageToken } })
-	}, [items, nextPageToken])
+		if (!state) {
+			dispatch({
+				type: 'FETCH_SUCCESS',
+				payload: {
+					key: playlistId,
+					items,
+					nextPageToken
+				}
+			})
+		}
+	}, [state, dispatch, items, nextPageToken, playlistId])
 
 	const updateVideos = async () => {
+		if (!state[playlistId]) {
+			dispatch({
+				type: 'FETCH_SUCCESS',
+				payload: {
+					key: playlistId,
+					items,
+					nextPageToken
+				}
+			})
+		}
+
 		if (
-			!state.nextPageToken ||
-			state.status === 'loading' ||
-			state.status === 'exhausted' ||
+			!state[playlistId]?.nextPageToken ||
+			state[playlistId].status === 'loading' ||
+			state[playlistId].status === 'exhausted' ||
 			!playlistId
 		) {
 			return
 		}
 
-		dispatch({ type: 'FETCH_START' })
+		dispatch({ type: 'FETCH_START', payload: { key: playlistId } })
 
 		try {
 			const data = await fetch(
-				`/api/videos?playlistId=${playlistId}&pageToken=${state.nextPageToken}`
+				`/api/videos?playlistId=${playlistId}&pageToken=${state[playlistId].nextPageToken}`
 			)
 
 			if (!data.ok) {
@@ -57,6 +69,7 @@ export const VideoContainer = ({ items, nextPageToken }: VideoContainerProps) =>
 			dispatch({
 				type: 'FETCH_SUCCESS',
 				payload: {
+					key: playlistId,
 					items: response.items,
 					nextPageToken: response.nextPageToken
 				}
@@ -64,25 +77,30 @@ export const VideoContainer = ({ items, nextPageToken }: VideoContainerProps) =>
 		} catch (err) {
 			dispatch({
 				type: 'FETCH_ERROR',
-				payload: err instanceof Error ? err.message : 'Unknown error'
+				payload: {
+					errorMessage: err instanceof Error ? err.message : 'Unknown error',
+					key: playlistId
+				}
 			})
 		}
 	}
 
 	const { ref } = useIntersectionObserver({
 		shouldFreeze:
-			!state.nextPageToken || state.status === 'error' || state.status === 'exhausted',
+			!state[playlistId] ||
+			state[playlistId].status === 'error' ||
+			state[playlistId].status === 'exhausted',
 		callback: updateVideos
 	})
 
 	return (
 		<>
 			<div ref={ref} className="flex flex-wrap gap-5 items-center justify-evenly">
-				{state.items.map((video) => (
+				{state[playlistId]?.items.map((video) => (
 					<VideoLink key={video.id} item={video.snippet} />
 				))}
 			</div>
-			{state.nextPageToken && (
+			{state[playlistId]?.nextPageToken && (
 				<p>There are more pages to load - storage should be implemented</p>
 			)}
 		</>
