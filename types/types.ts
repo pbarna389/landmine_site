@@ -55,14 +55,14 @@ type YoutubeDetails = {
 }
 
 type YoutubeStatus = {
-	privacyStatus: 'private' | 'public'
+	privacyStatus: 'private' | 'public' | 'unlisted'
 }
 
-type YoutubePlayListItem = YoutubeDetails &
-	YoutubeStatus & {
-		id: string
-		snippet: YoutubePlaylistSnippet
-	}
+type YoutubePlayListItem = YoutubeDetails & {
+	id: string
+	snippet: YoutubePlaylistSnippet
+	status: YoutubeStatus
+}
 
 export type YoutubePlaylistResponse = {
 	items: YoutubePlayListItem[]

@@ -38,6 +38,14 @@ export type CACHE_ACTION_TYPES =
 			}
 			type: 'FETCH_SUCCESS'
 	  }
+	| {
+			payload: {
+				items: YoutubePlaylistResponse['items']
+				key: string
+				nextPageToken: string | null
+			}
+			type: 'INIT_PLAYLIST'
+	  }
 	| { payload: { errorMessage: string; key: string }; type: 'FETCH_ERROR' }
 
 export const cacheReducer = (
@@ -71,6 +79,23 @@ export const cacheReducer = (
 				[key]: {
 					...cacheEntry,
 					status: 'loading',
+					error: null
+				}
+			}
+		}
+		case 'INIT_PLAYLIST': {
+			const { key, items, nextPageToken } = action.payload
+
+			if (state[key]) {
+				return state
+			}
+
+			return {
+				...state,
+				[key]: {
+					status: 'idle',
+					items,
+					nextPageToken,
 					error: null
 				}
 			}

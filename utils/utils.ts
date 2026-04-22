@@ -6,7 +6,7 @@ export async function getYoutubeData(
 ): Promise<YoutubePlaylistResponse> {
 	const searchParams = new URLSearchParams({
 		part: 'snippet,status',
-		maxResults: '15',
+		maxResults: '10',
 		playlistId,
 		key: process.env.YOUTUBE_API_KEY!
 	})
@@ -29,7 +29,11 @@ export async function getYoutubeData(
 	const data = (await res.json()) as YoutubePlaylistResponse
 
 	return {
-		items: data.items ?? [],
+		items:
+			data.items.filter(
+				(item) =>
+					item.status.privacyStatus === 'public' || item.status.privacyStatus === 'unlisted'
+			) ?? [],
 		nextPageToken: data.nextPageToken ?? null
 	}
 }

@@ -19,37 +19,25 @@ export const VideoContainer = ({ items, nextPageToken }: VideoContainerProps) =>
 	const state = useCacheStateContext()
 	const dispatch = useCacheStateDispatchContext()
 
+	const entry = state[playlistId]
+
 	useEffect(() => {
-		if (!state) {
-			dispatch({
-				type: 'FETCH_SUCCESS',
-				payload: {
-					key: playlistId,
-					items,
-					nextPageToken
-				}
-			})
-		}
-	}, [state, dispatch, items, nextPageToken, playlistId])
+		dispatch({
+			type: 'INIT_PLAYLIST',
+			payload: {
+				key: playlistId,
+				items,
+				nextPageToken
+			}
+		})
+	}, [dispatch, items, nextPageToken, playlistId])
 
 	const updateVideos = async () => {
-		if (!state[playlistId]) {
-			dispatch({
-				type: 'FETCH_SUCCESS',
-				payload: {
-					key: playlistId,
-					items,
-					nextPageToken
-				}
-			})
+		if (!entry) {
+			return
 		}
 
-		if (
-			!state[playlistId]?.nextPageToken ||
-			state[playlistId].status === 'loading' ||
-			state[playlistId].status === 'exhausted' ||
-			!playlistId
-		) {
+		if (!entry.nextPageToken || entry.status === 'loading') {
 			return
 		}
 
@@ -57,7 +45,7 @@ export const VideoContainer = ({ items, nextPageToken }: VideoContainerProps) =>
 
 		try {
 			const data = await fetch(
-				`/api/videos?playlistId=${playlistId}&pageToken=${state[playlistId].nextPageToken}`
+				`/api/videos?playlistId=${playlistId}&pageToken=${entry.nextPageToken}`
 			)
 
 			if (!data.ok) {
@@ -87,20 +75,29 @@ export const VideoContainer = ({ items, nextPageToken }: VideoContainerProps) =>
 
 	const { ref } = useIntersectionObserver({
 		shouldFreeze:
-			!state[playlistId] ||
-			state[playlistId].status === 'error' ||
-			state[playlistId].status === 'exhausted',
+			!entry ||
+			entry.status === 'loading' ||
+			entry.status === 'error' ||
+			entry.status === 'exhausted',
 		callback: updateVideos
 	})
 
+	const refIdx = entry?.items?.length ? entry?.items?.length - 1 : 0
+
 	return (
 		<>
-			<div ref={ref} className="flex flex-wrap gap-5 items-center justify-evenly">
-				{state[playlistId]?.items.map((video) => (
-					<VideoLink key={video.id} item={video.snippet} />
+			<div className="flex flex-wrap gap-5 items-center">
+				{entry?.items.map((video, idx) => (
+					<div
+						className="relative rounded-2xl overflow-hidden transition-transform duration-250 hover:scale-105"
+						key={video.id}
+						ref={refIdx === idx ? ref : null}
+					>
+						<VideoLink item={video.snippet} />
+					</div>
 				))}
 			</div>
-			{state[playlistId]?.nextPageToken && (
+			{entry?.nextPageToken && (
 				<p>There are more pages to load - storage should be implemented</p>
 			)}
 		</>

@@ -1,4 +1,3 @@
-import type { RefObject } from 'react'
 import { useEffect, useRef, useState } from 'react'
 
 type UseIntersectionObserverProps = {
@@ -14,7 +13,7 @@ export const useIntersectionObserver = ({
 
 	const frozen = shouldFreeze && inView
 
-	const ref: RefObject<HTMLDivElement | null> = useRef(null)
+	const ref = useRef(null)
 
 	useEffect(() => {
 		if (!ref || !(`IntersectionObserver` in window) || frozen) return
@@ -31,7 +30,9 @@ export const useIntersectionObserver = ({
 
 		const { current } = ref
 
-		const observer = new IntersectionObserver(observerCb, { threshold: 0.6 })
+		const observer = new IntersectionObserver(observerCb, {
+			rootMargin: '0px 0px 100px 0px'
+		})
 
 		if (current) {
 			observer.observe(current)
