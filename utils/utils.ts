@@ -1,5 +1,8 @@
 import type { YoutubePlaylistResponse } from '@/types'
 
+//TODO: update the logic to handle dynamic amount of results
+//TODO: handle error from BE
+
 export async function getYoutubeData(
 	playlistId: string,
 	pageToken?: string
@@ -29,11 +32,7 @@ export async function getYoutubeData(
 	const data = (await res.json()) as YoutubePlaylistResponse
 
 	return {
-		items:
-			data.items.filter(
-				(item) =>
-					item.status.privacyStatus === 'public' || item.status.privacyStatus === 'unlisted'
-			) ?? [],
+		items: data.items.filter((item) => item.status.privacyStatus !== 'private') ?? [],
 		nextPageToken: data.nextPageToken ?? null
 	}
 }

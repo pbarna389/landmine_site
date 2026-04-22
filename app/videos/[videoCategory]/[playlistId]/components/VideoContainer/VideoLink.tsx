@@ -7,6 +7,8 @@ import defaultImage from '../../../../../../public/6640187.jpg'
 
 type VideoLinkProps = { item: YoutubePlaylistResponse['items'][0]['snippet'] }
 
+// TODO: add dynamic width and height
+
 export const VideoLink = ({ item }: VideoLinkProps) => {
 	const imageSrc = item.thumbnails.high ? item.thumbnails.high.url : defaultImage
 

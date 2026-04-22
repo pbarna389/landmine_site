@@ -13,6 +13,11 @@ import { VideoLink } from './VideoLink'
 
 type VideoContainerProps = YoutubePlaylistResponse
 
+// TODO: handle loading state
+// TODO: handle error state
+// TODO: add skeleton loader
+// TODO: update styling
+
 export const VideoContainer = ({ items, nextPageToken }: VideoContainerProps) => {
 	const { playlistId } = useParams<{ playlistId: string }>()
 
