@@ -6,6 +6,7 @@ import { useEffect } from 'react'
 
 import { useCacheStateContext, useCacheStateDispatchContext } from '@/app/context'
 
+import { SkeletonCard } from '@/components'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 import type { YoutubePlaylistResponse } from '@/types'
 
@@ -16,7 +17,6 @@ type VideoContainerProps = YoutubePlaylistResponse
 // TODO: handle loading state
 // TODO: handle error state
 // TODO: add skeleton loader
-// TODO: update styling
 
 export const VideoContainer = ({ items, nextPageToken }: VideoContainerProps) => {
 	const { playlistId } = useParams<{ playlistId: string }>()
@@ -101,6 +101,12 @@ export const VideoContainer = ({ items, nextPageToken }: VideoContainerProps) =>
 						<VideoLink item={video.snippet} />
 					</div>
 				))}
+				{entry?.status === 'loading' && (
+					<SkeletonCard
+						amount={10}
+						className="max-[400px]:h-45 max-[650px]:h-65 h-75 sm:h-62.5 md:h-54 lg:h-50 xl:h-40 rounded-2xl bg-white/50 animate-skeletonAnim"
+					/>
+				)}
 			</div>
 		</>
 	)

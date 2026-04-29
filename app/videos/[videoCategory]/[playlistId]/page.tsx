@@ -3,7 +3,7 @@ import { Suspense } from 'react'
 import { VideoContainer } from './components'
 import { getYoutubeData } from '@/utils'
 
-import PlaylistLoading from './loading'
+import PlaylistSkeleton from './loading'
 
 export default async function VideoCategoriesPage({
 	params
@@ -16,7 +16,7 @@ export default async function VideoCategoriesPage({
 
 	return (
 		<section className="w-full text-center p-2.5 mt-5 space-y-10 ">
-			<Suspense fallback={<PlaylistLoading />}>
+			<Suspense fallback={<PlaylistSkeleton />}>
 				<VideoContainer items={data.items} nextPageToken={data.nextPageToken} />
 			</Suspense>
 		</section>
