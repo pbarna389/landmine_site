@@ -91,7 +91,7 @@ export const VideoContainer = ({ items, nextPageToken }: VideoContainerProps) =>
 
 	return (
 		<>
-			<div className="flex flex-wrap gap-5 items-center">
+			<div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
 				{entry?.items.map((video, idx) => (
 					<div
 						className="relative rounded-2xl overflow-hidden transition-transform duration-250 hover:scale-105"
@@ -102,9 +102,6 @@ export const VideoContainer = ({ items, nextPageToken }: VideoContainerProps) =>
 					</div>
 				))}
 			</div>
-			{entry?.nextPageToken && (
-				<p>There are more pages to load - storage should be implemented</p>
-			)}
 		</>
 	)
 }

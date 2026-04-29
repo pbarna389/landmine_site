@@ -1,6 +1,7 @@
 import type { YoutubePlaylistResponse } from '@/types'
 
 //TODO: update the logic to handle dynamic amount of results
+//TODO: update to handle different access from providers?
 //TODO: handle error from BE
 
 export async function getYoutubeData(

@@ -15,7 +15,7 @@ export default async function VideoCategoriesPage({
 	const data = await getYoutubeData(playlistId)
 
 	return (
-		<section className="w-full text-center p-5 space-y-10 ">
+		<section className="w-full text-center p-2.5 mt-5 space-y-10 ">
 			<Suspense fallback={<PlaylistLoading />}>
 				<VideoContainer items={data.items} nextPageToken={data.nextPageToken} />
 			</Suspense>
