@@ -1,7 +1,8 @@
+import { Card } from '@/components'
 import { PREMISE_CONTENT } from './constants/constants'
 
 import { PremiseCardBody } from './PremiseCardBody'
-import { Card, Section } from '../../components'
+import { Section } from '../../components'
 
 export const PremiseSection = () => {
 	const { header, content } = PREMISE_CONTENT

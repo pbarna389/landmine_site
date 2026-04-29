@@ -9,6 +9,7 @@ import {
 	Ubuntu
 } from 'next/font/google'
 
+import { CacheContextProvider } from './context'
 import Footer from '@/components/Footer/Footer'
 import Header from '@/components/Header/Header'
 import Hero from '@/components/Hero/Hero'
@@ -77,7 +78,7 @@ export default function RootLayout({
 			>
 				<Header />
 				<Hero />
-				{children}
+				<CacheContextProvider>{children}</CacheContextProvider>
 				<Footer />
 			</body>
 		</html>

@@ -8,6 +8,7 @@
 }
 
 @theme {
+	--color-video-advert: #171717;
 	--color-cube-secondary: #cbb37f;
 	--color-base: rgba(25, 18, 2, 0.9);
 	--color-carousel: #c4a255;
@@ -28,6 +29,7 @@
 	--font-raleway: var(--font-raleway);
 
 	--animate-profileAnim: profileAnim 1156ms ease-in-out 1;
+	--animate-skeletonAnim: skeletonAnim 1s linear infinite;
 
 	@keyframes profileAnim {
 		0% {
@@ -51,6 +53,21 @@
 		100% {
 			transform: scale(100%);
 		}
+	}
+}
+
+@keyframes skeletonAnim {
+	0% {
+		opacity: 0.5;
+	}
+	25% {
+		opacity: 1;
+	}
+	75% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 0.5;
 	}
 }
 
