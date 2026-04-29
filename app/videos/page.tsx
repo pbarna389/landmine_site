@@ -19,7 +19,7 @@ export default function VideosPage() {
 							className="text-[48px] sm:text-[48px] md:text-[48px] lg:text-[62px] text-white capitalize lg:text-black"
 						/>
 						<h2 className="text-2xl text-white capitalize lg:text-black">{title.subtext}</h2>
-						<article>{textContent.text}</article>
+						<article className="text-white lg:text-black">{textContent.text}</article>
 					</div>
 				</div>
 				<div className="flex flex-col justify-center items-center gap-5 md:flex-row md:flex-wrap">
@@ -28,9 +28,14 @@ export default function VideosPage() {
 							key={`video-card-${card.id}`}
 							className="pt-0 pr-0 pl-0 pb-0 min-w-9/10 rounded-lg overflow-hidden sm:min-w-3/10 lg:w-3/10 lg:min-h-fit"
 						>
-							<Link href={card.href} target="_blank">
+							<Link href={card.href} className="cursor-pointer">
 								<Card.Header idx={idx} className="pt-0 pb-0">
-									<Image className="w-full" src={card.image.src} alt={card.image.alt} priority />
+									<Image
+										className="w-full cursor-pointer"
+										src={card.image.src}
+										alt={card.image.alt}
+										priority
+									/>
 								</Card.Header>
 								<div className="w-full p-5 space-y-10 *:text-center *:lg:text-center">
 									<Heading

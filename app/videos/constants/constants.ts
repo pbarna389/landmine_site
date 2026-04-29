@@ -15,7 +15,7 @@ export const VIDEOS_CONTENT = {
 		{
 			id: 1,
 			title: 'Gitáros okosságok',
-			href: './vlog',
+			href: '/videos/vlog',
 			text: 'Gitártechnikai és gyakorlási tippek, elemzések, érdekességek, hangszínek...',
 			image: {
 				src: Image1,
@@ -25,7 +25,7 @@ export const VIDEOS_CONTENT = {
 		{
 			id: 2,
 			title: 'Zeneelmélet és hallás',
-			href: './elmelet',
+			href: '/videos/theory',
 			text: 'A zenélés háttere, a "hogyanok és miértek", példák és összefüggések...',
 			image: {
 				src: Image2,
@@ -35,7 +35,7 @@ export const VIDEOS_CONTENT = {
 		{
 			id: 3,
 			title: 'Havi egy szóló',
-			href: './hetiszolo',
+			href: '/videos/solo-game',
 			text: 'Gitáros játék és kihívás, sokféle zenei alappal, sokféle stílusban...',
 			image: {
 				src: Image3,

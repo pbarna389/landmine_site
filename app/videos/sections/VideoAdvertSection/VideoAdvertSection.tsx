@@ -27,7 +27,7 @@ export const VideoAdvertSection = () => {
 			<h2 className="font-bold text-xl lg:text-[41px]">{title.text}</h2>
 			<h3 className="font-light text-[24px] whitespace-pre-line">{title.subText}</h3>
 			<Image className="w-full min-w-40 max-w-190" src={image.src} alt={image.alt} />
-			<div className="flex flex-row flex-wrap items-center justify-center gap-5">
+			<div className="flex flex-row flex-wrap items-center justify-center lg:justify-between w-full min-w-40 max-w-190 gap-5">
 				{links.map((link) => (
 					<Link className="w-full sm:w-auto" key={`advert-link-${link.site}`} href={link.href}>
 						<AdvertBtn

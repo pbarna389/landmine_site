@@ -3,6 +3,7 @@ export type {
 	HeroCarouselPositionVariants,
 	IconNames,
 	LinkWithIconsType,
-	WidthValuesType
+	WidthValuesType,
+	YoutubePlaylistResponse
 } from './types'
 export type { ArrayElementType } from './utilities'

@@ -19,6 +19,6 @@ export const CLASSROOM_CONTENT = {
 	},
 	carouselTimeouts: {
 		intervalTimeout: 3500,
-		changeTimeout: 350
+		changeTimeout: 400
 	}
 }

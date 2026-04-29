@@ -77,7 +77,7 @@ export const MobileNavbar = () => {
 				</nav>
 			</div>
 			<span
-				className={`absolute top-8 left-0 w-full h-screen -z-1 opacity-0 transition-opacity backdrop-blur-sm duration-300 ${isOpen && 'z-1 opacity-100'}`}
+				className={`absolute top-8 left-0 w-full h-screen transition-opacity backdrop-blur-sm duration-300 ${isOpen ? 'z-1 opacity-100 scale-100' : '-z-1 opacity-0 scale-0'}`}
 			/>
 		</>
 	)
