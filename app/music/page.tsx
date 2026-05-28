@@ -1,7 +1,7 @@
 export default function MusicPage() {
 	return (
-		<main className="flex flex-col min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-			<h1 className="text-2xl">Music</h1>
-		</main>
+		<h1 className="text-2xl absolute transform translate-x-1/2 translate-y-1/2 top-[calc(50%-1.75rem)] left-1/2 z-1 text-white">
+			Music
+		</h1>
 	)
 }
