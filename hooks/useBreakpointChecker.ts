@@ -1,28 +1,47 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useCallback, useSyncExternalStore } from 'react'
+
+//!TODO: remove the resize event listener before shipping from the subscribe function - not needed
 
 /**
  * Hook to track if the viewport is below a given breakpoint.
+ *
+ * @remarks
+ *
+ * The resize event listener is only for a developer mode duck tape for Opera - should be removed before shipping!
+ *
  * @param breakpoint - the max-width in pixels to check
+ * @param serverValue -
  */
 
-export const useBreakpointChecker = (breakpoint = 1280) => {
-	const mediaQuery = window.matchMedia(`(max-width: ${breakpoint - 1}px)`)
+type QueryPropType = `(max-width: ${string}px)`
 
-	const [isBelow, setIsBelow] = useState(mediaQuery.matches)
+export const useBreakpointChecker = (breakpoint = 1280, serverValue = false) => {
+	const query: QueryPropType = `(max-width: ${breakpoint - 1}px)`
 
-	const handleChange = (matches: boolean) => {
-		setIsBelow(matches)
-	}
+	const subscribe = useCallback(
+		(callback: () => void) => {
+			const mediaQuery = window.matchMedia(query)
 
-	useEffect(() => {
-		const listener = (e: MediaQueryListEvent) => handleChange(e.matches)
+			mediaQuery.addEventListener('change', callback)
+			window.addEventListener('resize', callback)
 
-		mediaQuery.addEventListener('change', listener)
+			return () => {
+				mediaQuery.removeEventListener('change', callback)
+				window.removeEventListener('resize', callback)
+			}
+		},
+		[query]
+	)
 
-		return () => mediaQuery.removeEventListener('change', listener)
-	}, [breakpoint, mediaQuery])
+	const getSnapshot = useCallback(() => {
+		return window.matchMedia(query).matches
+	}, [query])
 
-	return isBelow
+	const getServerSnapshot = useCallback(() => {
+		return serverValue
+	}, [serverValue])
+
+	return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
 }
