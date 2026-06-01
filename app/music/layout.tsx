@@ -1,4 +1,4 @@
-import { BackgroundImage } from './components/BackgroundImage'
+import { BackgroundImage } from './components'
 
 export default function MusicLayout({ children }: { children: React.ReactNode }) {
 	return (
