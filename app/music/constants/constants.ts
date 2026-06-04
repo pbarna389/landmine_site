@@ -22,7 +22,7 @@ export const MUSIC_CATEGORY_CONTENT = {
 	title: 'Albumok - zenék',
 	textContent:
 		'2002 óta írogatok instrumentális, ill. újabban énekes zenéket is, melyek albumos elrendezésben meghallgathatók ezen a lapon.\nMinden "lemez" egy-egy kísérlet, így stílusilag különbözőek - habár egy egységesség, egy sajátos megközelítés mégis végigvonul rajtuk.\nSzületett már jazzes, metálos, prog. rockos, vagy meditatívabb album is, sokféle hangszereléssel, indíttatással, érzésvilággal.\nJó mazsolázást ;-)',
-	eras: [
+	subPages: [
 		{
 			id: 1,
 			title: 'early years',
