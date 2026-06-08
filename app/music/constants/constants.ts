@@ -1,4 +1,6 @@
 /* eslint-disable sonarjs/no-duplicate-string */
+import type { ArrayElementType } from '@/types'
+
 import EarlyImage01 from '../public/2003bor.jpg'
 import EarlyImage02 from '../public/2004bor.jpg'
 import EarlyImage03 from '../public/2006bor.jpg'
@@ -18,14 +20,19 @@ import NewEraImage04 from '../public/bori22knew.png'
 import NewEraImage05 from '../public/bori22wild.jpg'
 import NewEraImage06 from '../public/bori24.jpg'
 
+const SUBPAGE_EARLY = { id: 'subEraList-1', title: 'early years' }
+const SUBPAGE_MIDDLE = { id: 'subEraList-2', title: 'middle ages' }
+const SUBPAGE_NEW = { id: 'subEraList-3', title: 'the new era' }
+
+export const SUBPAGE_INFO = [SUBPAGE_EARLY, SUBPAGE_MIDDLE, SUBPAGE_NEW]
+
 export const MUSIC_CATEGORY_CONTENT = {
 	title: 'Albumok - zenék',
 	textContent:
 		'2002 óta írogatok instrumentális, ill. újabban énekes zenéket is, melyek albumos elrendezésben meghallgathatók ezen a lapon.\nMinden "lemez" egy-egy kísérlet, így stílusilag különbözőek - habár egy egységesség, egy sajátos megközelítés mégis végigvonul rajtuk.\nSzületett már jazzes, metálos, prog. rockos, vagy meditatívabb album is, sokféle hangszereléssel, indíttatással, érzésvilággal.\nJó mazsolázást ;-)',
 	subPages: [
 		{
-			id: 1,
-			title: 'early years',
+			...SUBPAGE_EARLY,
 			content: [
 				{
 					id: 'early-record-01',
@@ -96,8 +103,7 @@ export const MUSIC_CATEGORY_CONTENT = {
 			]
 		},
 		{
-			id: 2,
-			title: 'middle ages',
+			...SUBPAGE_MIDDLE,
 			content: [
 				{
 					id: 'middle-record-01',
@@ -168,8 +174,7 @@ export const MUSIC_CATEGORY_CONTENT = {
 			]
 		},
 		{
-			id: 3,
-			title: 'the new era',
+			...SUBPAGE_NEW,
 			content: [
 				{
 					id: 'new-era-record-01',
@@ -235,3 +240,7 @@ export const MUSIC_CATEGORY_CONTENT = {
 		}
 	]
 }
+
+type SubpageType = ArrayElementType<typeof MUSIC_CATEGORY_CONTENT.subPages>
+
+export type SubpageContentType = ArrayElementType<SubpageType['content']>
