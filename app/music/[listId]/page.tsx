@@ -11,16 +11,23 @@ export default async function MusicListPage({
 }) {
 	const { listId } = await params
 
-	const selectedList = MUSIC_CATEGORY_CONTENT.subPages.find((list) => list.id === listId)
+	const selectedList = MUSIC_CATEGORY_CONTENT.subPages.find(
+		(list) => list.id.toString() === listId
+	)
 
 	if (!selectedList) {
 		notFound()
 	}
 
+	const listContent = selectedList.content.sort(
+		(current, next) =>
+			Number(next.id.split('-').at(-1)) - Number(current.id.split('-').at(-1))
+	)
+
 	return (
-		<div className="text-2xl text-white flex flex-col gap-5">
-			{selectedList.content.map((album) => (
-				<AlbumDetails key={album.id} album={album} />
+		<div className="text-2xl text-white flex flex-col max-w-[43vw]">
+			{listContent.map((album, idx) => (
+				<AlbumDetails key={album.id} album={album} idx={idx} />
 			))}
 		</div>
 	)

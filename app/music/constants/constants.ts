@@ -20,9 +20,9 @@ import NewEraImage04 from '../public/bori22knew.png'
 import NewEraImage05 from '../public/bori22wild.jpg'
 import NewEraImage06 from '../public/bori24.jpg'
 
-const SUBPAGE_EARLY = { id: 'subEraList-1', title: 'early years' }
-const SUBPAGE_MIDDLE = { id: 'subEraList-2', title: 'middle ages' }
-const SUBPAGE_NEW = { id: 'subEraList-3', title: 'the new era' }
+const SUBPAGE_EARLY = { id: 1, title: 'early years' }
+const SUBPAGE_MIDDLE = { id: 2, title: 'middle ages' }
+const SUBPAGE_NEW = { id: 3, title: 'the new era' }
 
 export const SUBPAGE_INFO = [SUBPAGE_EARLY, SUBPAGE_MIDDLE, SUBPAGE_NEW]
 
