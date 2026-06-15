@@ -17,7 +17,7 @@ export default function MusicLayout({ children }: { children: React.ReactNode })
 						text={title}
 						className="lg:after:transform lg:after:-translate-x-1/2 lg:after:left-1/2 lg:text-[60px] lg:capitalize font-montserrat"
 					/>
-					<article className="whitespace-pre-line text-[14px] w-[90vw] sm:pl-5 sm:pr-5 sm:w-[70vw] md:text-[16px] md:w-[50vw]">
+					<article className="whitespace-pre-line text-[14px] w-[90vw] text-center sm:pl-5 sm:pr-5 sm:w-[70vw] md:text-[16px] md:w-[50vw]">
 						{textContent}
 					</article>
 					<div className="flex flex-col lg:flex-row wrap gap-6">

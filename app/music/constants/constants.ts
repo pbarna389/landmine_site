@@ -39,7 +39,7 @@ export const MUSIC_CATEGORY_CONTENT = {
 					title: 'landmine1-demo',
 					format: 'demo',
 					releaseDate: 2003,
-					style: 'instrumental rock',
+					style: 'Instrumental rock',
 					image: EarlyImage01,
 					href: 'https://youtu.be/dTA_LZfXpNU',
 					details:

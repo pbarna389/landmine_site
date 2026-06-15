@@ -96,7 +96,7 @@ export const POSSIBILITIES_CONTENT = {
 			},
 			image: {
 				src: Image6,
-				alt: '',
+				alt: 'klásszrúm - a gitárorákulum-hely :)',
 				caption: 'klásszrúm - a gitárorákulum-hely :)'
 			},
 			text:
