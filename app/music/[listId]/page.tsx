@@ -25,7 +25,7 @@ export default async function MusicListPage({
 	)
 
 	return (
-		<div className="text-2xl text-white flex flex-col max-w-[43vw]">
+		<div className="text-2xl text-white flex flex-col sm:w-[70vw] md:w-[50vw] lg:max-w-[43vw]">
 			{listContent.map((album, idx) => (
 				<AlbumDetails key={album.id} album={album} idx={idx} />
 			))}
