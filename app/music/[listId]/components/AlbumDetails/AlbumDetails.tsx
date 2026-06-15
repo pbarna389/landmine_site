@@ -3,7 +3,8 @@ import Link from 'next/link'
 
 import { Button } from '@/components'
 
-import type { SubpageContentType } from '../../constants/constants'
+import AlbumStory from './AlbumStory'
+import type { SubpageContentType } from '../../../constants/constants'
 
 type AlbumDetailsProps = { album: SubpageContentType; idx: number }
 
@@ -32,15 +33,13 @@ export const AlbumDetails = ({ album, idx }: AlbumDetailsProps) => {
 					{album.format}, {album.releaseDate}
 				</p>
 				<p className="text-[18px] font-normal text-music-link">{album.style}</p>
-				<div className="flex gap-5">
+				<div className="flex gap-2.5">
 					<Button>
 						<Link href={link.href ? link.href : ''} target="_blank">
 							{link.text}
 						</Link>
 					</Button>
-					<Button>
-						<span>Napló</span>
-					</Button>
+					<AlbumStory details={album.details} text={'Napló'} />
 				</div>
 			</div>
 		</div>
