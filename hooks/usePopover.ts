@@ -14,7 +14,7 @@ export const usePopover = (timeoutTime = 100) => {
 		return () => clearTimeout(timeoutTime)
 	})
 
-	const handlePopover = () => {
+	const onPointerEnter = () => {
 		if (!hoverState.isHovered) {
 			clearTimeout(timeout.current)
 			setHoverState((prev) => {
@@ -28,18 +28,20 @@ export const usePopover = (timeoutTime = 100) => {
 					}),
 				50
 			)
-		} else {
-			setHoverState((prev) => {
-				return { ...prev, isHovered: false }
-			})
-
-			timeout.current = setTimeout(() => {
-				setHoverState((prev) => {
-					return { ...prev, mouseCaptured: false }
-				})
-			}, timeoutTime)
 		}
 	}
 
-	return { hoverState, handlePopover }
+	const onPointerLeave = () => {
+		setHoverState((prev) => {
+			return { ...prev, isHovered: false }
+		})
+
+		timeout.current = setTimeout(() => {
+			setHoverState((prev) => {
+				return { ...prev, mouseCaptured: false }
+			})
+		}, timeoutTime)
+	}
+
+	return { hoverState, handlePopover: { onPointerEnter, onPointerLeave } }
 }
