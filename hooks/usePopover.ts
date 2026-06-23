@@ -6,13 +6,13 @@ import {
 	POPOVER_HEIGHT
 } from './constants/constants'
 
-//TODO: add position checking for overflows - LEFT OVERFLOW remains
+//TODO: add other positional checking if needed
 
 export const usePopover = (timeoutTime = 100) => {
 	const [hoverState, setHoverState] = useState(BASE_HOVER_STATE)
 	const [overflowStates, setOverflowStates] = useState(BASE_OVERFLOW_STATES)
 
-	const ref = useRef<HTMLDivElement | null>(null)
+	const anchorRef = useRef<HTMLDivElement | null>(null)
 	const timeout = useRef<NodeJS.Timeout>(undefined)
 
 	const updateOverflowState = useCallback(
@@ -45,25 +45,26 @@ export const usePopover = (timeoutTime = 100) => {
 	}, [timeout])
 
 	useEffect(() => {
-		if (!hoverState.mouseCaptured || !ref?.current) return
+		if (!hoverState.mouseCaptured || !anchorRef?.current) return
+
+		const controller = new AbortController()
 
 		const handlePositionUpdate = () => {
-			updateOverflowState(ref.current)
+			updateOverflowState(anchorRef.current)
 		}
 
-		window.addEventListener('scroll', handlePositionUpdate)
-		window.addEventListener('resize', handlePositionUpdate)
+		window.addEventListener('scroll', handlePositionUpdate, { signal: controller.signal })
+		window.addEventListener('resize', handlePositionUpdate, { signal: controller.signal })
 
 		return () => {
-			window.removeEventListener('resize', handlePositionUpdate)
-			window.removeEventListener('scroll', handlePositionUpdate)
+			controller.abort()
 		}
 	}, [hoverState.mouseCaptured, updateOverflowState])
 
 	const onPointerEnter = () => {
 		if (!hoverState.isHovered) {
 			clearTimeout(timeout.current)
-			updateOverflowState(ref.current)
+			updateOverflowState(anchorRef.current)
 			setHoverState((prev) => {
 				return { ...prev, mouseCaptured: true }
 			})
@@ -95,6 +96,6 @@ export const usePopover = (timeoutTime = 100) => {
 		hoverState,
 		overflowStates,
 		handlePopover: { onPointerEnter, onPointerLeave },
-		anchorRef: ref
+		anchorRef
 	}
 }

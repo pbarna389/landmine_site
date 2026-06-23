@@ -3,6 +3,8 @@
 import { Button, Popover } from '@/components'
 import { usePopover } from '@/hooks/usePopover'
 
+//TODO: add Modal for the mobile view
+
 type AlbumStoryProp = {
 	details: string
 	text: string

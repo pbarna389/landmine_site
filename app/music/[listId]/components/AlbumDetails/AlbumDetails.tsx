@@ -27,13 +27,13 @@ export const AlbumDetails = ({ album, idx }: AlbumDetailsProps) => {
 					/>
 				</div>
 			</div>
-			<div className="basis-1/2 flex flex-col justify-between *:text-center *:lg:text-start *:font-montserrat">
+			<div className="basis-1/2 flex gap-5 flex-col justify-between lg:gap-0 *:text-center *:lg:text-start *:font-montserrat">
 				<h3 className="font-bold text-[22px]">{album.title}</h3>
 				<p className="text-[22px]">
 					{album.format}, {album.releaseDate}
 				</p>
 				<p className="text-[18px] font-normal text-music-link">{album.style}</p>
-				<div className="flex gap-2.5">
+				<div className="flex justify-center items-center lg:justify-start lg:items-start gap-2.5">
 					<Link href={link.href ? link.href : ''} target="_blank">
 						<Button className="p-3 pl-4.5 pr-4.5">{link.text}</Button>
 					</Link>
