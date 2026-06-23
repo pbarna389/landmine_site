@@ -14,9 +14,7 @@ import { VideoLink } from './VideoLink'
 
 type VideoContainerProps = YoutubePlaylistResponse
 
-// TODO: handle loading state
 // TODO: handle error state
-// TODO: add skeleton loader
 
 export const VideoContainer = ({ items, nextPageToken }: VideoContainerProps) => {
 	const { playlistId } = useParams<{ playlistId: string }>()
@@ -94,7 +92,7 @@ export const VideoContainer = ({ items, nextPageToken }: VideoContainerProps) =>
 			<div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
 				{entry?.items.map((video, idx) => (
 					<div
-						className="relative rounded-2xl overflow-hidden transition-transform duration-250 hover:scale-105"
+						className="relative rounded-2xl overflow-hidden transition-transform duration-250 hover:scale-105 animate-imageLoadAnim"
 						key={video.id}
 						ref={refIdx === idx ? ref : null}
 					>

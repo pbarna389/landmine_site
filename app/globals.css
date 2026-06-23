@@ -15,6 +15,7 @@
 	--color-price-header: #bda778;
 	--color-hero-highlight: #c4a255;
 	--color-hover: #97772f;
+	--color-music-link: #cbcccc;
 	--color-header-mobile-bg: #8e734e;
 	--color-header-mobile-border: #a98a5f;
 	--color-intro-mobile-advert-bg: #fcf9f1;
@@ -30,29 +31,30 @@
 
 	--animate-profileAnim: profileAnim 1156ms ease-in-out 1;
 	--animate-skeletonAnim: skeletonAnim 1s linear infinite;
+	--animate-imageLoadAnim: imageLoadAnim 0.5s ease-in-out 1;
+}
 
-	@keyframes profileAnim {
-		0% {
-			transform: scale(0%);
-		}
-		75% {
-			transform: scale(110%);
-		}
-		80% {
-			transform: scale(108%);
-		}
-		85% {
-			transform: scale(106%);
-		}
-		90% {
-			transform: scale(104%);
-		}
-		95% {
-			transform: scale(102%);
-		}
-		100% {
-			transform: scale(100%);
-		}
+@keyframes profileAnim {
+	0% {
+		transform: scale(0%);
+	}
+	75% {
+		transform: scale(110%);
+	}
+	80% {
+		transform: scale(108%);
+	}
+	85% {
+		transform: scale(106%);
+	}
+	90% {
+		transform: scale(104%);
+	}
+	95% {
+		transform: scale(102%);
+	}
+	100% {
+		transform: scale(100%);
 	}
 }
 
@@ -68,6 +70,15 @@
 	}
 	100% {
 		opacity: 0.5;
+	}
+}
+
+@keyframes imageLoadAnim {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
 	}
 }
 

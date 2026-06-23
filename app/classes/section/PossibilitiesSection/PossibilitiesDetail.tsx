@@ -1,5 +1,6 @@
 import Link from 'next/link'
 
+import { Button } from '@/components'
 import { RotatableImage } from '@/components/RotatableImage/RotatableImage'
 import type { PossibilitiesDetailsType } from './constants/constants'
 import type { ArrayElementType } from '@/types'
@@ -48,11 +49,11 @@ export const PossibilitiesDetail = ({
 					<p className="whitespace-pre-line text-start leading-4 text-[14px] sm:text-[15px] md:text-[17px] lg:text-[16px]">
 						{text}
 					</p>
-					<button className="capitalize text-[16px] p-1.5 border border-hover w-fit rounded transition-colors bg-transparent duration-300 hover:bg-hover hover:text-white active:bg-hover active:text-white focus:bg-hover focus:text-white target:bg-hover target:text-white focus-visible:bg-hover focus-visible:text-white">
+					<Button>
 						<Link href={link.href ? link.href : ''} target="_blank">
 							{link.text}
 						</Link>
-					</button>
+					</Button>
 				</div>
 			</div>
 		</div>

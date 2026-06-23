@@ -7,8 +7,10 @@ import { useState } from 'react'
 
 import { IconContext } from 'react-icons'
 
+import Logo2 from '@/public/logo2.png'
 import Logo1 from '@/public/logo3.png'
 
+import { useBreakpointChecker } from '@/hooks/useBreakpointChecker'
 import { useDisableScrolling } from '@/hooks/useDisableScrolling'
 import { useOutsideClick } from '@/hooks/useOutsideClick'
 import { NAV_ELEMENTS, NAV_ICONS_MOBILE } from './constants'
@@ -17,6 +19,7 @@ import { Icons } from '../Icons/Icons'
 
 export const MobileNavbar = () => {
 	const [isOpen, setIsOpen] = useState(false)
+	const isMobile = useBreakpointChecker()
 
 	const handleClick = () => {
 		setIsOpen(!isOpen)
@@ -30,8 +33,17 @@ export const MobileNavbar = () => {
 
 	const ref = useOutsideClick<HTMLDivElement>(handleOutSideClick)
 
+	if (!isMobile) return
+
 	return (
 		<>
+			<Image
+				src={Logo2}
+				alt="logo"
+				role="banner"
+				className="block w-25 mb-1 object-contain select-none lg:w-38 lg:pt-1 lg:mb-0"
+				loading="eager"
+			/>
 			<div ref={ref}>
 				<div
 					className={`block text-black relative w-4 h-4 cursor-pointer before:content-[''] before:absolute before:h-0.5 before:w-full before:bg-gray-700 before:rounded ${isOpen ? 'before:-rotate-45 before:top-1/2' : ''} before:transition after:content-[''] after:absolute after:h-0.5 after:w-full after:bg-gray-700 after:rounded after:bottom-0 after:transition ${isOpen ? 'after:rotate-45 after:top-1/2' : ''}`}
