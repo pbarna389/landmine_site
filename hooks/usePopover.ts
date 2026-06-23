@@ -6,7 +6,7 @@ import {
 	POPOVER_HEIGHT
 } from './constants/constants'
 
-//TODO: add position checking for overflows - :EFT OVERFLOW remains
+//TODO: add position checking for overflows - LEFT OVERFLOW remains
 
 export const usePopover = (timeoutTime = 100) => {
 	const [hoverState, setHoverState] = useState(BASE_HOVER_STATE)
@@ -52,8 +52,10 @@ export const usePopover = (timeoutTime = 100) => {
 		}
 
 		window.addEventListener('scroll', handlePositionUpdate)
+		window.addEventListener('resize', handlePositionUpdate)
 
 		return () => {
+			window.removeEventListener('resize', handlePositionUpdate)
 			window.removeEventListener('scroll', handlePositionUpdate)
 		}
 	}, [hoverState.mouseCaptured, updateOverflowState])
