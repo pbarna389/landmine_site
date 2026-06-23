@@ -5,4 +5,4 @@ export const BASE_OVERFLOW_STATES = {
 	top: false,
 	bottom: false
 }
-export const HEADER_HEIGHT = 60
+export const POPOVER_HEIGHT = 235

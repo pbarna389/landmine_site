@@ -3,10 +3,10 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import {
 	BASE_HOVER_STATE,
 	BASE_OVERFLOW_STATES,
-	HEADER_HEIGHT
+	POPOVER_HEIGHT
 } from './constants/constants'
 
-//TODO: add position checking for overflows - REWRITE
+//TODO: add position checking for overflows - :EFT OVERFLOW remains
 
 export const usePopover = (timeoutTime = 100) => {
 	const [hoverState, setHoverState] = useState(BASE_HOVER_STATE)
@@ -22,23 +22,20 @@ export const usePopover = (timeoutTime = 100) => {
 			const { innerHeight } = window
 			const { top, bottom } = entry.getBoundingClientRect()
 
-			const topOverflow = top < HEADER_HEIGHT
-			const bottomOverflow = bottom > innerHeight
+			const topOverflow = top < POPOVER_HEIGHT
+			const bottomOverflow = bottom + POPOVER_HEIGHT > innerHeight
 
-			if (topOverflow === overflowStates.top && bottomOverflow === overflowStates.bottom) {
-				return
-			}
+			setOverflowStates((prev) => {
+				if (overflowStates.top === topOverflow && overflowStates.bottom === bottomOverflow) {
+					return prev
+				}
 
-			if (topOverflow) {
-				setOverflowStates((prev) => {
-					return { ...prev, top: topOverflow }
-				})
-			}
-			if (bottomOverflow) {
-				setOverflowStates((prev) => {
-					return { ...prev, bottom: bottomOverflow }
-				})
-			}
+				return {
+					...prev,
+					top: topOverflow,
+					bottom: bottomOverflow
+				}
+			})
 		},
 		[overflowStates.top, overflowStates.bottom]
 	)
@@ -64,6 +61,7 @@ export const usePopover = (timeoutTime = 100) => {
 	const onPointerEnter = () => {
 		if (!hoverState.isHovered) {
 			clearTimeout(timeout.current)
+			updateOverflowState(ref.current)
 			setHoverState((prev) => {
 				return { ...prev, mouseCaptured: true }
 			})
@@ -95,6 +93,6 @@ export const usePopover = (timeoutTime = 100) => {
 		hoverState,
 		overflowStates,
 		handlePopover: { onPointerEnter, onPointerLeave },
-		popoverRef: ref
+		anchorRef: ref
 	}
 }

@@ -1,4 +1,4 @@
-type overflowStates = 'top' | 'bottom' | 'left' | 'right'
+type overflowStates = 'top' | 'bottom'
 
 type PopoverProps = {
 	isHovered: boolean
@@ -6,28 +6,19 @@ type PopoverProps = {
 	overflowStates: {
 		[key in overflowStates]: boolean
 	}
-	popoverRef: React.RefObject<HTMLDivElement | null>
 	text: string
 }
 
-export const Popover = ({
-	text,
-	isHovered,
-	mouseCaptured,
-	overflowStates,
-	popoverRef
-}: PopoverProps) => {
-	const { top: topOverflow, bottom: bottomOverflow } = overflowStates
+export const Popover = ({ text, isHovered, overflowStates }: PopoverProps) => {
+	const { top: topOverflow } = overflowStates
 
-	const onlyTopOverflow =
-		topOverflow && !bottomOverflow ? 'top-0 pt-11 p-5' : '-bottom-0.5 pb-11 p-5'
+	const basePosition = 'bottom-full'
 
-	const onlyBottomOverflow = bottomOverflow && !topOverflow ? '-bottom-0.5 pb-11 p-5' : ''
+	const topOverflowPosition = topOverflow ? 'top-full' : ''
 
 	return (
 		<div
-			ref={popoverRef}
-			className={`absolute cursor-pointer normal-case z-2 -left-0.5 w-[25vw] border-2 border-gray-400 rounded-md bg-hover  text-white text-start  ${mouseCaptured ? 'block' : 'hidden'} ${isHovered ? 'opacity-100' : 'opacity-0'} ${onlyTopOverflow} ${onlyBottomOverflow}}`}
+			className={`absolute cursor-default normal-case z-2 -left-px p-5 w-[25vw] h-37.5  border-2 border-gray-400 rounded-md bg-transparent backdrop-blur-sm text-white transition-discrete duration-200 text-start overflow-y-scroll overscroll-none scrollbar-thin scrollbar-gutter-both scrollbar-track-transparent scrollbar-thumb-gray-400 ${isHovered ? 'opacity-100' : 'opacity-0'} ${basePosition} ${topOverflowPosition}`}
 		>
 			{text}
 		</div>
