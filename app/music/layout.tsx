@@ -6,7 +6,7 @@ import { MUSIC_CATEGORY_CONTENT, SUBPAGE_INFO } from './constants/constants'
 export default function MusicLayout({ children }: { children: React.ReactNode }) {
 	const { title, textContent } = MUSIC_CATEGORY_CONTENT
 
-	const sortedLinks = SUBPAGE_INFO.sort((a, b) => b.id - a.id)
+	const sortedLinks = [...SUBPAGE_INFO].sort((a, b) => b.id - a.id)
 
 	return (
 		<HeightRefContextProvider>

@@ -19,7 +19,7 @@ export default async function MusicListPage({
 		notFound()
 	}
 
-	const listContent = selectedList.content.sort(
+	const listContent = [...selectedList.content].sort(
 		(current, next) =>
 			Number(next.id.split('-').at(-1)) - Number(current.id.split('-').at(-1))
 	)
