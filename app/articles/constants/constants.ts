@@ -1,27 +1,33 @@
 const ARTICLE_FILTER_CATEGORIES = [
 	{
+		id: 'art-filter-all',
+		text: 'összes cikk',
+		linkName: 'all'
+	},
+	{
 		id: 'art-filter-theory',
-		text: 'zeneelmélet'
+		text: 'zeneelmélet',
+		linkName: 'theory'
 	},
 	{
 		id: 'art-filter-advices',
-		text: 'tippek'
+		text: 'tippek',
+		linkName: 'advices'
 	},
 	{
 		id: 'art-filter-int-facts',
-		text: 'érdekességek'
+		text: 'érdekességek',
+		linkName: 'facts'
 	},
 	{
 		id: 'art-filter-music',
-		text: 'zenékről'
+		text: 'zenékről',
+		linkName: 'music'
 	},
 	{
 		id: 'art-filter-philosophy',
-		text: 'filozófia'
-	},
-	{
-		id: 'art-filter-all',
-		text: 'összes cikk'
+		text: 'filozófia',
+		linkName: 'philosophy'
 	}
 ]
 
