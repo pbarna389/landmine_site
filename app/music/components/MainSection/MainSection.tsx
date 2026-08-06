@@ -13,11 +13,11 @@ export const MainSection = ({ children }: React.PropsWithChildren) => {
 	const getHeight = subPageChecker ? { height: `${value + 300}px` } : { height: 'auto' }
 
 	return (
-		<div
+		<main
 			className={`flex flex-col min-h-screen items-center justify-center relative pt-1 bg-zinc-50 font-raleway *:text-white`}
 			style={getHeight}
 		>
 			{children}
-		</div>
+		</main>
 	)
 }

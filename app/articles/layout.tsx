@@ -21,7 +21,7 @@ export default function ArticleLayout({ children }: { children: React.ReactNode 
 					<p>{text}</p>
 					<p className="font-bold">{subText}</p>
 				</article>
-				<div className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 lg:flex-row wrap gap-6 *:text-black">
+				<nav className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 lg:flex-row wrap gap-6 *:text-black">
 					{filters.map((link) => (
 						<SubrouteLink
 							key={`subroute-link-${link.id}`}
@@ -32,7 +32,7 @@ export default function ArticleLayout({ children }: { children: React.ReactNode 
 							className="bg-amber-400 text-center text-black p-2 pt-1 pb-1 rounded-md outline outline-black w-full hover:text-white hover:bg-amber-400/40 after:content-['']"
 						/>
 					))}
-				</div>
+				</nav>
 				{children}
 			</ArticleMainSection>
 		</main>

@@ -5,5 +5,9 @@ export default async function ArticlesCategoryPage({
 }) {
 	const { listId } = await params
 
-	return <h1 className="capitalize">{listId}</h1>
+	return (
+		<section className="border border-black w-full h-full text-center">
+			<h1 className="capitalize">{listId}</h1>
+		</section>
+	)
 }
