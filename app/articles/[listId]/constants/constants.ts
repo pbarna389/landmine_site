@@ -44,7 +44,7 @@ export const ARTICLE_LIST_CONTENT = [
 	},
 	{
 		id: 5,
-		title: 'the devil put dinosaurs here -ajánló',
+		title: 'the devil put dinosaurs here - ajánló',
 		date: '2018-04-03',
 		img: Picture05,
 		tags: ['music'],
@@ -61,3 +61,5 @@ export const ARTICLE_LIST_CONTENT = [
 			'Hogyan segíthet a zenélés az önismeretben? Miért olyan hatásos eszköz a művészet? Ebben a vázlatos írásban szó esik egy olyan útról, ami önmagunk mélyebb rétegei felé hatol...'
 	}
 ]
+
+export type ArticleCardType = (typeof ARTICLE_LIST_CONTENT)[0]
