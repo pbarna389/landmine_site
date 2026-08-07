@@ -38,7 +38,7 @@ export async function getYoutubeData(
 	}
 }
 
-export const mimicResponse = async <T>(data: T, timeoutTime = 800): Promise<T> => {
+export const mockResponse = async <T>(data: T, timeoutTime = 800): Promise<T> => {
 	return new Promise<T>((resolve) => {
 		setTimeout(() => {
 			resolve(data)

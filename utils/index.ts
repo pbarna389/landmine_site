@@ -1,1 +1,1 @@
-export { getYoutubeData, mimicResponse } from './utils'
+export { getYoutubeData, mockResponse } from './utils'
