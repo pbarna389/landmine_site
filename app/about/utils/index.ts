@@ -1,0 +1,1 @@
+export { getProfileContent } from './utils'
