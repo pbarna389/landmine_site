@@ -24,6 +24,7 @@ export const DesktopNavbar = () => {
 				role="banner"
 				className="block w-25 mb-1 object-contain select-none lg:w-38 lg:pt-1 lg:mb-0"
 				loading="eager"
+				preload
 			/>
 			<nav className="flex justify-center items-center gap-8.5">
 				<div className="flex gap-5.25 text-black">

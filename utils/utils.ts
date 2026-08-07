@@ -37,3 +37,11 @@ export async function getYoutubeData(
 		nextPageToken: data.nextPageToken ?? null
 	}
 }
+
+export const mockResponse = async <T>(data: T, timeoutTime = 800): Promise<T> => {
+	return new Promise<T>((resolve) => {
+		setTimeout(() => {
+			resolve(data)
+		}, timeoutTime)
+	})
+}

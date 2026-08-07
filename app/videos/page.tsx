@@ -22,7 +22,7 @@ export default function VideosPage() {
 						<article className="text-white lg:text-black">{textContent.text}</article>
 					</div>
 				</div>
-				<div className="flex flex-col justify-center items-center gap-5 md:flex-row md:flex-wrap">
+				<nav className="flex flex-col justify-center items-center gap-5 md:flex-row md:flex-wrap">
 					{subPages.map((card, idx) => (
 						<Card
 							key={`video-card-${card.id}`}
@@ -47,7 +47,7 @@ export default function VideosPage() {
 							</Link>
 						</Card>
 					))}
-				</div>
+				</nav>
 			</VideoMainSection>
 			<VideoAdvertSection />
 		</main>

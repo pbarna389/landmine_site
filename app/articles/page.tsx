@@ -1,7 +1,3 @@
 export default function ArticlesPage() {
-	return (
-		<main className="flex flex-col min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-			<h1 className="text-2xl">Articles</h1>
-		</main>
-	)
+	return <h1>Válassz kategóriát!</h1>
 }

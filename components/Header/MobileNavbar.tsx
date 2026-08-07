@@ -68,7 +68,13 @@ export const MobileNavbar = () => {
 							</Link>
 						))}
 					</div>
-					<Image src={Logo1} alt="logo" className="object-contain w-75 p-10" loading="eager" />
+					<Image
+						src={Logo1}
+						alt="logo"
+						className="object-contain w-75 p-10"
+						loading="eager"
+						preload
+					/>
 					<div className="flex flex-col w-full justify-center items-center ">
 						<IconContext value={{ size: '28' }}>
 							{NAV_ICONS_MOBILE.map((link) => (

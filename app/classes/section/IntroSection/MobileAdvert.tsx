@@ -8,7 +8,7 @@ export const MobileAdvert = () => {
 	const { mobileCarouselContent } = INTRO_SECTION_CONTENT
 
 	return (
-		<div className="flex flex-col gap-3 items-center justify-center mt-15 font-montserrat bg-intro-mobile-advert-bg border-t-section-heading-highlight border-t border-b-section-heading-highlight border-b w-[calc(100vw*0.8)] min-w-42.5 min-h-37.5">
+		<div className="flex flex-col gap-3 items-center justify-center mt-15 font-montserrat bg-intro-mobile-advert-bg border-t-section-heading-highlight border-t border-b-section-heading-highlight border-b w-[80vw] min-w-42.5 min-h-37.5">
 			<CarouselWrapper
 				carouselData={mobileCarouselContent}
 				components={{

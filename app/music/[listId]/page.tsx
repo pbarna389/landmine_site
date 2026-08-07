@@ -19,16 +19,16 @@ export default async function MusicListPage({
 		notFound()
 	}
 
-	const listContent = selectedList.content.sort(
+	const listContent = [...selectedList.content].sort(
 		(current, next) =>
 			Number(next.id.split('-').at(-1)) - Number(current.id.split('-').at(-1))
 	)
 
 	return (
-		<div className="text-2xl text-white flex flex-col sm:w-[70vw] md:w-[50vw] lg:max-w-[43vw]">
+		<section className="text-2xl text-white flex flex-col sm:w-[70vw] md:w-[50vw] lg:max-w-[43vw]">
 			{listContent.map((album, idx) => (
 				<AlbumDetails key={album.id} album={album} idx={idx} />
 			))}
-		</div>
+		</section>
 	)
 }
