@@ -1,10 +1,10 @@
+import type { ArticleCardType } from '../../types'
 import Picture05 from '../assets/alice3.jpg'
 import Picture03 from '../assets/fejes.jpg'
 import Picture04 from '../assets/fules.jpg'
 import Picture02 from '../assets/gyakterv.jpg'
 import Picture01 from '../assets/improgyak.jpg'
 import Picture06 from '../assets/onism1.jpg'
-import type { ArticleCardType } from '../types'
 
 export const SKELETON_CLASSES = {
 	parentSkeleton:

@@ -1,1 +1,0 @@
-export { getArticleContent } from './utils'
