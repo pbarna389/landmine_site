@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 import { Card } from '@/components'
 
-import type { ArticleCardType } from '../../constants/constants'
+import type { ArticleCardType } from '../../types'
 
 type ArticleCardProps = ArticleCardType & {
 	idx: number

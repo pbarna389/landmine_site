@@ -1,19 +1,15 @@
 import { ArticleCard } from './components'
 import { getArticleContent } from './utils'
+import type { ListIdParamType } from './types'
 
 export default async function ArticlesCategoryPage({
 	params
 }: {
-	params: Promise<{ listId: string }>
+	params: Promise<{ listId: ListIdParamType }>
 }) {
 	const { listId } = await params
 
-	const testAsyncArticle = await getArticleContent()
-
-	const selectedArticle =
-		listId === 'all'
-			? testAsyncArticle
-			: testAsyncArticle.filter((article) => article.tags.includes(listId))
+	const selectedArticle = await getArticleContent(listId)
 
 	return (
 		<section className="grid gap-5 w-full h-full grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">

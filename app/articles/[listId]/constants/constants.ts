@@ -4,6 +4,7 @@ import Picture04 from '../assets/fules.jpg'
 import Picture02 from '../assets/gyakterv.jpg'
 import Picture01 from '../assets/improgyak.jpg'
 import Picture06 from '../assets/onism1.jpg'
+import type { ArticleCardType } from '../types'
 
 export const SKELETON_CLASSES = {
 	parentSkeleton:
@@ -12,7 +13,7 @@ export const SKELETON_CLASSES = {
 		'items-start gap-2.5 max-w-full w-full h-65 lg:h-80 rounded-xl border border-black p-0 pt-0 pr-0 pl-0 pb-0 overflow-hidden group sm:min-w-1/4 lg:w-full lg:min-h-full *:font-montserrat bg-black/50 animate-skeletonAnim'
 }
 
-export const ARTICLE_LIST_CONTENT = [
+export const ARTICLE_LIST_CONTENT: ArticleCardType[] = [
 	{
 		id: 1,
 		title: 'improvizációs lehetőségek',
@@ -68,5 +69,3 @@ export const ARTICLE_LIST_CONTENT = [
 			'Hogyan segíthet a zenélés az önismeretben? Miért olyan hatásos eszköz a művészet? Ebben a vázlatos írásban szó esik egy olyan útról, ami önmagunk mélyebb rétegei felé hatol...'
 	}
 ]
-
-export type ArticleCardType = (typeof ARTICLE_LIST_CONTENT)[0]
