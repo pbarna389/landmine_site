@@ -1,10 +1,11 @@
 import { Heading, LinksWithIconsWrapper } from '@/components'
 import { RotatableImage } from '@/components/RotatableImage/RotatableImage'
-import { getProfileContent } from './utils'
 import { NAV_ICONS_BASE } from '@/constants/constants'
 
+import { getAboutContent } from './server'
+
 export default async function AboutPage() {
-	const profileContent = await getProfileContent()
+	const profileContent = await getAboutContent()
 
 	const { textContent, profileInfo } = profileContent
 
