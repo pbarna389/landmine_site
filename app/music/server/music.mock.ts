@@ -11,11 +11,11 @@ export const getMusicContentMock = async () => {
 		subpageData: [...SUBPAGE_INFO]
 	}
 
-	return mockResponse(data, 5000)
+	return mockResponse(data)
 }
 
 export const getMusicListContentMock = async () => {
 	const data = MUSIC_CATEGORY_CONTENT.subPages
 
-	return mockResponse(data, 5000)
+	return mockResponse(data)
 }
