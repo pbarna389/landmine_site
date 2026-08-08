@@ -20,6 +20,12 @@ import NewEraImage04 from '../public/bori22knew.png'
 import NewEraImage05 from '../public/bori22wild.jpg'
 import NewEraImage06 from '../public/bori24.jpg'
 
+export const SKELETON_CLASSES = {
+	parentSkeleton: 'flex flex-col gap-16 sm:w-[70vw] md:w-[50vw] lg:max-w-[43vw]',
+	childrenSkeleton:
+		'flex gap-7 p-8 pl-1 pr-1 flex-col w-full h-72 sm:p-8 sm:pl-5 sm:pr-5 lg:flex-row bg-white/50 animate-skeletonAnim'
+}
+
 const SUBPAGE_EARLY = { id: 1, title: 'early years' }
 const SUBPAGE_MIDDLE = { id: 2, title: 'middle ages' }
 const SUBPAGE_NEW = { id: 3, title: 'the new era' }
