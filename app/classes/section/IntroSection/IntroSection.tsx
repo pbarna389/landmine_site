@@ -4,12 +4,16 @@ import Image from 'next/image'
 
 import { RotatableImage } from '@/components/RotatableImage/RotatableImage'
 import { useBreakpointChecker } from '@/hooks/useBreakpointChecker'
-import { INTRO_SECTION_CONTENT } from './constants/constants'
+import type { INTRO_SECTION_CONTENT } from './constants/constants'
 
 import { MobileAdvert } from './MobileAdvert'
 
-export const IntroSection = () => {
-	const { header, image, textContent } = INTRO_SECTION_CONTENT
+type IntroSectionProps = {
+	data: typeof INTRO_SECTION_CONTENT
+}
+
+export const IntroSection = ({ data }: IntroSectionProps) => {
+	const { header, image, textContent } = data
 
 	const isMobile = useBreakpointChecker()
 

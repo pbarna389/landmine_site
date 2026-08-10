@@ -4,16 +4,19 @@ import {
 	PremiseSection,
 	PricesSection
 } from './section'
+import { getClassesContent } from './server'
 
 // TODO: implement mock requests here
 
-export default function ClassesPage() {
+export default async function ClassesPage() {
+	const { intro, premise, possibilities, prices } = await getClassesContent()
+
 	return (
-		<main className="flex flex-col min-h-screen items-center bg-zinc-50 font-sans dark:bg-black">
-			<IntroSection />
-			<PremiseSection />
-			<PossibilitiesSection />
-			<PricesSection />
-		</main>
+		<>
+			<IntroSection data={intro} />
+			<PremiseSection data={premise} />
+			<PossibilitiesSection data={possibilities} />
+			<PricesSection data={prices} />
+		</>
 	)
 }

@@ -1,11 +1,15 @@
 import { Card } from '@/components'
-import { PRICES_CONTENT } from './constants/constants'
+import type { PRICES_CONTENT } from './constants/constants'
 
 import { PricesCardBody } from './PricesCardBody'
 import { Section } from '../../components'
 
-export const PricesSection = () => {
-	const { header, content } = PRICES_CONTENT
+type PricesSectionProps = {
+	data: typeof PRICES_CONTENT
+}
+
+export const PricesSection = ({ data }: PricesSectionProps) => {
+	const { header, content } = data
 
 	return (
 		<Section className="shadow-2xl lg:shadow-none">

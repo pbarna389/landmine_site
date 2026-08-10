@@ -1,15 +1,19 @@
-import { POSSIBILITIES_CONTENT } from './constants/constants'
+import type { POSSIBILITIES_CONTENT } from './constants/constants'
 
 import { PossibilitiesDetail } from './PossibilitiesDetail'
 import { PossibilityParagraph } from './PossibilityParagraph'
 import { Pentagon, Quote, Section, Triangle } from '../../components'
 
-export const PossibilitiesSection = () => {
+type PossibilitiesSectionProps = {
+	data: typeof POSSIBILITIES_CONTENT
+}
+
+export const PossibilitiesSection = ({ data }: PossibilitiesSectionProps) => {
 	const {
 		header,
 		content: { body, quote },
 		info
-	} = POSSIBILITIES_CONTENT
+	} = data
 
 	return (
 		<Section className="relative">

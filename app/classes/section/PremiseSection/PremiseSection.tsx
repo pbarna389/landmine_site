@@ -1,11 +1,15 @@
 import { Card } from '@/components'
-import { PREMISE_CONTENT } from './constants/constants'
+import type { PREMISE_CONTENT } from './constants/constants'
 
 import { PremiseCardBody } from './PremiseCardBody'
 import { Section } from '../../components'
 
-export const PremiseSection = () => {
-	const { header, content } = PREMISE_CONTENT
+type PremiseSectionProps = {
+	data: typeof PREMISE_CONTENT
+}
+
+export const PremiseSection = ({ data }: PremiseSectionProps) => {
+	const { header, content } = data
 
 	return (
 		<Section className="">
