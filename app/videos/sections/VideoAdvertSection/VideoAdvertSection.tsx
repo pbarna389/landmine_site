@@ -1,10 +1,10 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { VIDEO_ADVERT_CONTENT } from './constants/constants'
 import type { IconNames } from '@/types'
 
 import { AdvertBtn } from './AdvertBtn'
+import { getVideoAdvert } from '../../server'
 
 type TypeAdvertLinks = {
 	[key in IconNames]?: string
@@ -19,11 +19,11 @@ const VIDEO_ADVERT_LINK_STYLES: TypeAdvertLinks = {
 		'bg-black hover:bg-white hover:text-black active:brightness-75 focus-within:bg-white focus-within:font-black'
 }
 
-export const VideoAdvertSection = () => {
-	const { title, image, links } = VIDEO_ADVERT_CONTENT
+export const VideoAdvertSection = async () => {
+	const { title, image, links } = await getVideoAdvert()
 
 	return (
-		<section className="flex flex-col gap-5 p-16 justify-center items-center bg-video-advert w-full *:text-white *:text-center *:font-montserrat">
+		<>
 			<h2 className="font-bold text-xl lg:text-[41px]">{title.text}</h2>
 			<h3 className="font-light text-[24px] whitespace-pre-line">{title.subText}</h3>
 			<Image className="w-full min-w-40 max-w-190" src={image.src} alt={image.alt} />
@@ -37,6 +37,6 @@ export const VideoAdvertSection = () => {
 					</Link>
 				))}
 			</div>
-		</section>
+		</>
 	)
 }

@@ -1,12 +1,13 @@
 import { Heading, LinksWithIconsWrapper } from '@/components'
 import { RotatableImage } from '@/components/RotatableImage/RotatableImage'
-import { PROFILE_CONTENT } from './constants/constants'
 import { NAV_ICONS_BASE } from '@/constants/constants'
 
-export default function AboutPage() {
-	const {
-		profileContent: { textContent, profileInfo }
-	} = PROFILE_CONTENT
+import { getAboutContent } from './server'
+
+export default async function AboutPage() {
+	const profileContent = await getAboutContent()
+
+	const { textContent, profileInfo } = profileContent
 
 	return (
 		<main className="flex flex-col p-28 pl-5 pr-5 w-full gap-5 bg-white font-sans text-black sm:pl-15 sm:pr-15 md:pl-20 md:pr-20 md:flex-row md:gap-15 lg:pr-41 lg:pl-41 lg:gap-22 *:font-montserrat">

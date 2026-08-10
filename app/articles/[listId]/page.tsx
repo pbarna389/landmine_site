@@ -1,6 +1,7 @@
 import { ArticleCard } from './components'
-import { getArticleContent } from './utils'
-import type { ListIdParamType } from './types'
+
+import { getArticleContent } from '../server'
+import type { ListIdParamType } from '../types'
 
 export default async function ArticlesCategoryPage({
 	params

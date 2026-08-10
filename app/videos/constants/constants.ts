@@ -44,3 +44,5 @@ export const VIDEOS_CONTENT = {
 		}
 	]
 }
+
+export type VideoSubPageType = (typeof VIDEOS_CONTENT)['subPages'][0]

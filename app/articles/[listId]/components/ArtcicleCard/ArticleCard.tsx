@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import { Card } from '@/components'
 
-import type { ArticleCardType } from '../../types'
+import type { ArticleCardType } from '../../../types'
 
 type ArticleCardProps = ArticleCardType & {
 	idx: number
