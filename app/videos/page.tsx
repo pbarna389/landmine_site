@@ -1,4 +1,4 @@
-import { MainContent } from './components/MainContent/MainContent'
+import { MainContent } from './components'
 
 export default function VideosPage() {
 	return <MainContent />

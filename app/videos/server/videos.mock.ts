@@ -8,5 +8,5 @@ export const getVideosContentMock = async () => {
 }
 
 export const getVideosAdvertMock = async () => {
-	return mockResponse(VIDEO_ADVERT_CONTENT, 5000)
+	return mockResponse(VIDEO_ADVERT_CONTENT)
 }

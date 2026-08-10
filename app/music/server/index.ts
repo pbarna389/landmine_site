@@ -1,1 +1,1 @@
-export { getMusicContent } from './music.service'
+export { getMusicContent, getMusicListContent } from './music.service'

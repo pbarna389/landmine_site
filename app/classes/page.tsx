@@ -6,8 +6,6 @@ import {
 } from './section'
 import { getClassesContent } from './server'
 
-// TODO: implement mock requests here
-
 export default async function ClassesPage() {
 	const { intro, premise, possibilities, prices } = await getClassesContent()
 

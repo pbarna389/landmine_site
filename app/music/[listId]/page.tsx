@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation'
 
 import { AlbumDetails } from './components'
 
-import { getMusicListContent } from '../server/music.service'
+import { getMusicListContent } from '../server'
 
 export default async function MusicListPage({
 	params
