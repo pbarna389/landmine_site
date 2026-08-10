@@ -1,4 +1,4 @@
-import type { PremiseContentType } from './constants/constants'
+import type { PremiseContentType } from '../../constants/constants'
 
 type PremiseCardBodyProps = Omit<PremiseContentType, 'image'>
 
