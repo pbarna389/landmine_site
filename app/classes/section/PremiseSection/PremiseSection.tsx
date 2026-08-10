@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 import { Card } from '@/components'
 import type { PREMISE_CONTENT } from './constants/constants'
 
@@ -27,7 +29,12 @@ export const PremiseSection = ({ data }: PremiseSectionProps) => {
 			<Section.Body className="flex flex-col items-center justify-center gap-11 w-full h-full *:text-black lg:flex-row lg:row lg:items-baseline">
 				{content.map((card) => (
 					<Card key={card.title.text}>
-						<Card.Body content={card}>
+						<Card.Body>
+							<Image
+								className="w-1/2 sm:w-3/8 lg:w-11/20"
+								src={card.image.src}
+								alt={`${card.image.alt}`}
+							/>
 							<PremiseCardBody {...card} />
 						</Card.Body>
 					</Card>

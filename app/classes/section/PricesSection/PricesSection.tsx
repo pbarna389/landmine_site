@@ -1,7 +1,6 @@
-import { Card } from '@/components'
+import { PricesCard } from './components'
 import type { PRICES_CONTENT } from './constants/constants'
 
-import { PricesCardBody } from './PricesCardBody'
 import { Section } from '../../components'
 
 type PricesSectionProps = {
@@ -22,15 +21,7 @@ export const PricesSection = ({ data }: PricesSectionProps) => {
 			</Section.Header>
 			<Section.Body className="flex flex-col items-center justify-center gap-11 w-full h-full *:text-black lg:flex-row lg:row lg:items-baseline">
 				{content.map((card, idx) => (
-					<Card
-						key={card.title.text}
-						className="gap-5 rounded-none pt-0 pb-0 pr-0 pl-0 w-full lg:min-h-120 group"
-					>
-						<Card.Header idx={idx}>{card.title.text}</Card.Header>
-						<Card.Body content={card}>
-							<PricesCardBody {...card} />
-						</Card.Body>
-					</Card>
+					<PricesCard key={`prices-card-${card.title.text}`} card={card} idx={idx} />
 				))}
 			</Section.Body>
 		</Section>

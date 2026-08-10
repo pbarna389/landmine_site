@@ -1,4 +1,5 @@
 import { CardBody } from './CardBody'
+import { CardFooter } from './CardFooter'
 import { CardHeader } from './CardHeader'
 
 type CardProps = React.PropsWithChildren & {
@@ -17,3 +18,4 @@ export const Card = ({ children, className }: CardProps) => {
 
 Card.Header = CardHeader
 Card.Body = CardBody
+Card.Footer = CardFooter
