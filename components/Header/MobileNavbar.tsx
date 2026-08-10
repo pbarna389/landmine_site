@@ -10,6 +10,7 @@ import { IconContext } from 'react-icons'
 import Logo2 from '@/public/logo2.png'
 import Logo1 from '@/public/logo3.png'
 
+import { MobileLink } from './components'
 import { useBreakpointChecker } from '@/hooks/useBreakpointChecker'
 import { useDisableScrolling } from '@/hooks/useDisableScrolling'
 import { useOutsideClick } from '@/hooks/useOutsideClick'
@@ -58,14 +59,11 @@ export const MobileNavbar = () => {
 				>
 					<div className="flex flex-col w-full justify-center items-center">
 						{NAV_ELEMENTS.map((link) => (
-							<Link
-								href={link.href}
-								className="top-0 font-raleway p-1 pl-0 pr-0 bg-header-mobile-bg text-black capitalize border border-header-mobile-border w-full cursor-pointer text-center transition-all duration-50 active:scale-105"
-								key={`nav-mobile-main-links-${link.text}`}
-								onClick={handleClick}
-							>
-								{link.text}
-							</Link>
+							<MobileLink
+								key={`mobile-navbar-link-${link.text}`}
+								link={link}
+								callback={handleClick}
+							/>
 						))}
 					</div>
 					<Image
