@@ -47,3 +47,11 @@ export const CONTACT_FORM_INPUTS: {
 		placeholder: 'Az üzeneted szövege'
 	}
 ]
+
+export const CONTACT_FORM_DEFAULT_VALUES = {
+	name: '',
+	email: '',
+	message: ''
+}
+
+export type ContactFormInputs = typeof CONTACT_FORM_INPUTS

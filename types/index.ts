@@ -2,6 +2,7 @@ export type {
 	HeightValuesType,
 	HeroCarouselPositionVariants,
 	IconNames,
+	InputKeysType,
 	LinkWithIconsType,
 	WidthValuesType,
 	YoutubePlaylistResponse
