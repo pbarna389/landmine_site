@@ -1,10 +1,22 @@
+/* eslint-disable no-console */
 'use server'
 
-export async function emailAction<T>(
-	previousState: T | null,
-	data: T
-): Promise<T | null> {
-	console.log(data)
+import type { ActionStateType } from '../types'
 
-	return data
+//TODO: implement EmailJS usage here
+
+export async function emailAction<T>(
+	_: ActionStateType,
+	data: T
+): Promise<ActionStateType> {
+	try {
+		console.log(data)
+
+		return { status: 'success' }
+	} catch {
+		return {
+			status: 'error',
+			message: 'Failed to send email'
+		}
+	}
 }

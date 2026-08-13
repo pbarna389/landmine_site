@@ -13,9 +13,13 @@ import type { ZodType } from 'zod'
 import type { InputKeysType } from '@/types'
 
 import { InputFactory } from './InputFactory'
+import type { ActionStateType } from '../Contact/types'
 
 type FormProps<T extends FieldValues> = {
-	action: (previousState: T | null, data: T) => T | null | Promise<T | null>
+	action: (
+		previousState: ActionStateType,
+		data: T
+	) => ActionStateType | Promise<ActionStateType>
 	defaultValues: DefaultValues<T>
 	inputs: { name: Path<T>; placeholder: string; type: InputKeysType }[]
 	schema: ZodType<T, T>
@@ -27,7 +31,9 @@ export const Form = <T extends FieldValues>({
 	schema,
 	action
 }: FormProps<T>) => {
-	const [state, submitAction, isPending] = useActionState<T | null, T>(action, null)
+	const [_, submitAction, isPending] = useActionState<ActionStateType, T>(action, {
+		status: 'idle'
+	})
 
 	const {
 		register,
