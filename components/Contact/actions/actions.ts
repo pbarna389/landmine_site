@@ -11,8 +11,6 @@ export async function emailAction<T extends ContactFormDataType>(
 	try {
 		const result = await emailService.sendContactEmail(data)
 
-		console.log(result)
-
 		return result
 	} catch (err: unknown) {
 		if (err instanceof Error) {

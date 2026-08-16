@@ -27,8 +27,6 @@ export const emailJSProvider: EmailProvider = {
 			})
 		})
 
-		console.log(response)
-
 		if (!response.ok) {
 			throw new Error('Something went wrong on the EmailJS side ')
 		} else {
