@@ -5,7 +5,7 @@ import type { ContactFormDataType } from '../schema/schema'
 import type { ActionStateType } from '../types'
 
 export async function emailAction<T extends ContactFormDataType>(
-	_: ActionStateType,
+	_previousState: ActionStateType,
 	data: T
 ): Promise<ActionStateType> {
 	try {

@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client'
 
 import { startTransition, useActionState } from 'react'
@@ -28,7 +26,7 @@ export const Form = <T extends FieldValues>({
 	schema,
 	action
 }: FormProps<T>) => {
-	const [_, submitAction, isPending] = useActionState<ActionStateType, T>(action, {
+	const [_state, submitAction, isPending] = useActionState<ActionStateType, T>(action, {
 		status: 'idle'
 	})
 
@@ -42,17 +40,8 @@ export const Form = <T extends FieldValues>({
 	})
 
 	const onSubmit = handleSubmit((data) => {
-		console.log(data)
-
-		console.log('action executes after client side validation')
-
 		startTransition(() => submitAction(data))
 	})
-
-	if (errors) {
-		console.log('errors in clientside')
-		console.log(errors)
-	}
 
 	return (
 		<form

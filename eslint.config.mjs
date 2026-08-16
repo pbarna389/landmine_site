@@ -52,7 +52,18 @@ export default defineConfig([
 			// ✅ TypeScript strictness
 			'@typescript-eslint/no-throw-literal': 'off', // Let TS handle
 			'@typescript-eslint/adjacent-overload-signatures': 'error',
-			'@typescript-eslint/no-unused-vars': 'warn',
+			'@typescript-eslint/no-unused-vars': [
+				'warn',
+				{
+					args: 'all',
+					argsIgnorePattern: '^_',
+					caughtErrors: 'all',
+					caughtErrorsIgnorePattern: '^_',
+					destructuredArrayIgnorePattern: '^_',
+					varsIgnorePattern: '^_',
+					ignoreRestSiblings: true
+				}
+			],
 			'@typescript-eslint/no-explicit-any': 'error',
 			'@typescript-eslint/no-shadow': 'error',
 			'@typescript-eslint/array-type': 'error',
