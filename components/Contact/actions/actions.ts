@@ -1,22 +1,30 @@
-/* eslint-disable no-console */
 'use server'
 
+import { emailService } from './service/email.service'
+import type { ContactFormDataType } from '../schema/schema'
 import type { ActionStateType } from '../types'
 
-//TODO: implement EmailJS usage here
-
-export async function emailAction<T>(
+export async function emailAction<T extends ContactFormDataType>(
 	_: ActionStateType,
 	data: T
 ): Promise<ActionStateType> {
 	try {
-		console.log(data)
+		const result = await emailService.sendContactEmail(data)
 
-		return { status: 'success' }
-	} catch {
+		console.log(result)
+
+		return result
+	} catch (err: unknown) {
+		if (err instanceof Error) {
+			return {
+				status: 'error',
+				message: err.message
+			}
+		}
+
 		return {
 			status: 'error',
-			message: 'Failed to send email'
+			message: 'unknown error'
 		}
 	}
 }
