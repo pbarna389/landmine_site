@@ -30,13 +30,15 @@ export const Form = <T extends FieldValues>({
 		status: 'idle'
 	})
 
-	const { register, handleSubmit, getFieldState, formState } = useForm<T>({
+	const { register, handleSubmit, getFieldState, formState, reset } = useForm<T>({
+		mode: 'all',
 		defaultValues,
 		resolver: zodResolver(schema)
 	})
 
 	const onSubmit = handleSubmit((data) => {
 		startTransition(() => submitAction(data))
+		reset()
 	})
 
 	return (
@@ -46,13 +48,14 @@ export const Form = <T extends FieldValues>({
 			autoComplete="off"
 		>
 			{inputs.map((input) => {
-				const { error } = getFieldState(input.name, formState)
+				const { error, isDirty } = getFieldState(input.name, formState)
 
 				return (
 					<InputFactory
 						key={`form-input-factory-${input.name}`}
 						inputDetails={input}
 						isDisabled={isPending}
+						isDirty={isDirty}
 						isValid={formState.isValid}
 						register={register}
 						error={error}
@@ -60,8 +63,8 @@ export const Form = <T extends FieldValues>({
 				)
 			})}
 			<button
-				className="border-3 outline-black rounded-md  w-full min-w-1/2 max-w-3/4 sm:min-w-1/4 lg:min-w-full  p-5 pt-2.5 pb-2.5 cursor-pointer transition-['scale'] hover:scale-105 focus:scale-105 lg:hover:scale-110 lg:focus:scale-110 disabled:cursor-not-allowed disabled:brightness-75"
-				disabled={isPending}
+				className="border-3 outline-black rounded-md  w-full min-w-1/2 max-w-3/4 sm:min-w-1/4 lg:max-w-[4/5]  p-5 pt-2.5 pb-2.5 cursor-pointer transition-all hover:scale-105 opacity-100 focus:scale-105 lg:hover:scale-105 lg:focus:scale-110 disabled:cursor-not-allowed disabled:opacity-50 hover:disabled:scale-100"
+				disabled={isPending || !formState.isValid}
 				type="submit"
 			>
 				Submit

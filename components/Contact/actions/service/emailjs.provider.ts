@@ -1,4 +1,4 @@
-import type { EmailProvider } from './emil.types'
+import type { EmailProvider } from './email.types'
 import { CONTACT_FORM_SCHEMA } from '../../schema/schema'
 
 export const emailJSProvider: EmailProvider = {

@@ -39,12 +39,12 @@ export const CONTACT_FORM_INPUTS: {
 	{
 		name: 'email',
 		type: 'email',
-		placeholder: 'Az email címed'
+		placeholder: 'name@domain.com'
 	},
 	{
 		name: 'message',
 		type: 'textarea',
-		placeholder: 'Az üzeneted szövege'
+		placeholder: 'Üzenet szöveg'
 	}
 ]
 

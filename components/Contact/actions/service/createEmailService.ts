@@ -1,4 +1,4 @@
-import type { EmailProvider } from './emil.types'
+import type { EmailProvider } from './email.types'
 import type { ContactFormDataType } from '../../schema/schema'
 
 export const createEmailService = (provider: EmailProvider) => ({
