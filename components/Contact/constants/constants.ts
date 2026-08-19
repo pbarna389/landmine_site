@@ -27,22 +27,26 @@ export const CONTACT_SCHEMA_CONSTANTS = {
 }
 
 export const CONTACT_FORM_INPUTS: {
+	label: string
 	name: keyof ContactFormDataType
 	placeholder: string
 	type: 'text' | 'email' | 'textarea'
 }[] = [
 	{
 		name: 'name',
+		label: 'név',
 		type: 'text',
 		placeholder: 'Név'
 	},
 	{
 		name: 'email',
+		label: 'email',
 		type: 'email',
 		placeholder: 'name@domain.com'
 	},
 	{
 		name: 'message',
+		label: 'üzenet',
 		type: 'textarea',
 		placeholder: 'Üzenet szöveg'
 	}
