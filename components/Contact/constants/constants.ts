@@ -58,4 +58,10 @@ export const CONTACT_FORM_DEFAULT_VALUES = {
 	message: ''
 }
 
+export const CONTACT_FORM_TEXT_CONTENT = {
+	error: 'Hiba',
+	success: 'Sikeres üzenetküldés!',
+	submit: 'Üzenet küldése'
+}
+
 export type ContactFormInputs = typeof CONTACT_FORM_INPUTS

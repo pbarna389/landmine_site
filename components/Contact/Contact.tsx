@@ -1,6 +1,10 @@
 'use client'
 
-import { CONTACT_FORM_DEFAULT_VALUES, CONTACT_FORM_INPUTS } from './constants/constants'
+import {
+	CONTACT_FORM_DEFAULT_VALUES,
+	CONTACT_FORM_INPUTS,
+	CONTACT_FORM_TEXT_CONTENT
+} from './constants/constants'
 
 import { emailAction } from './actions/actions'
 import { CONTACT_FORM_SCHEMA } from './schema/schema'
@@ -14,6 +18,7 @@ export default function Contact() {
 				defaultValues={CONTACT_FORM_DEFAULT_VALUES}
 				inputs={CONTACT_FORM_INPUTS}
 				schema={CONTACT_FORM_SCHEMA}
+				messageTexts={CONTACT_FORM_TEXT_CONTENT}
 				action={emailAction}
 			/>
 		</section>

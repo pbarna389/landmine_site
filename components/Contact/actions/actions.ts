@@ -1,7 +1,7 @@
 'use server'
 
 import { emailService } from './service/email.service'
-import type { ContactFormDataType } from '../schema/schema'
+import { CONTACT_FORM_SCHEMA, type ContactFormDataType } from '../schema/schema'
 import type { ActionStateType } from '../types'
 
 export async function emailAction<T extends ContactFormDataType>(
@@ -9,9 +9,15 @@ export async function emailAction<T extends ContactFormDataType>(
 	data: T
 ): Promise<ActionStateType> {
 	try {
-		const result = await emailService.sendContactEmail(data)
+		const parsedData = CONTACT_FORM_SCHEMA.safeParse(data)
 
-		return result
+		if (!parsedData.success) {
+			throw new Error('Schema validation failed on the BE side')
+		}
+
+		await emailService.sendContactEmail(parsedData.data)
+
+		return { status: 'success' }
 	} catch (err: unknown) {
 		if (err instanceof Error) {
 			return {

@@ -13,10 +13,16 @@ import type { InputKeysType } from '@/types'
 import { InputFactory } from './InputFactory'
 import type { ActionStateType } from '../Contact/types'
 
+//TODO: update the status update presentation
+//TODO: implement rate limiting
+//TODO: generalize ActionStateType
+//TODO: reset approach should be re-conceptualized when status presentation is available
+
 type FormProps<T extends FieldValues> = {
 	action: (previousState: ActionStateType, data: T) => Promise<ActionStateType>
 	defaultValues: DefaultValues<T>
 	inputs: { label: string; name: Path<T>; placeholder: string; type: InputKeysType }[]
+	messageTexts: { error: string; submit: string; success: string }
 	schema: ZodType<T, T>
 }
 
@@ -24,9 +30,10 @@ export const Form = <T extends FieldValues>({
 	defaultValues,
 	inputs,
 	schema,
+	messageTexts,
 	action
 }: FormProps<T>) => {
-	const [_state, submitAction, isPending] = useActionState<ActionStateType, T>(action, {
+	const [state, submitAction, isPending] = useActionState<ActionStateType, T>(action, {
 		status: 'idle'
 	})
 
@@ -38,12 +45,13 @@ export const Form = <T extends FieldValues>({
 
 	const onSubmit = handleSubmit((data) => {
 		startTransition(() => submitAction(data))
+
 		reset()
 	})
 
 	return (
 		<form
-			className="flex flex-col items-center justify-center gap-25 sm:gap-10 w-full"
+			className="relative flex flex-col items-center justify-center gap-25 sm:gap-10 w-full"
 			onSubmit={onSubmit}
 			autoComplete="off"
 		>
@@ -67,8 +75,18 @@ export const Form = <T extends FieldValues>({
 				disabled={isPending || !formState.isValid}
 				type="submit"
 			>
-				Submit
+				{messageTexts.submit}
 			</button>
+			{state.status === 'error' && (
+				<p className="absolute -translate-x-1/2 bottom-15 left-1/2 text-red-700">
+					{messageTexts.error}: {state.message}
+				</p>
+			)}
+			{state.status === 'success' && (
+				<p className="absolute -translate-x-1/2 bottom-15 left-1/2 text-emerald-700">
+					{messageTexts.success}
+				</p>
+			)}
 		</form>
 	)
 }
