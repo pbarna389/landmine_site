@@ -6,7 +6,7 @@ import {
 	POPOVER_HEIGHT
 } from './constants/constants'
 
-//TODO: add other positional checking if needed
+//TODO: add other positional checking in the future
 
 export const usePopover = (timeoutTime = 100) => {
 	const [hoverState, setHoverState] = useState(BASE_HOVER_STATE)
