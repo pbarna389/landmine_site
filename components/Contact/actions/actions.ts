@@ -20,9 +20,11 @@ export async function emailAction<T extends ContactFormDataType>(
 		return { status: 'success' }
 	} catch (err: unknown) {
 		if (err instanceof Error) {
+			console.error(err)
+
 			return {
 				status: 'error',
-				message: err.message
+				message: 'Az üzenet elküldése sikertelen volt'
 			}
 		}
 
