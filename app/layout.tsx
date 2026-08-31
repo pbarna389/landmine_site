@@ -10,6 +10,7 @@ import {
 } from 'next/font/google'
 
 import { CacheContextProvider } from './context'
+import Contact from '@/components/Contact/Contact'
 import Footer from '@/components/Footer/Footer'
 import Header from '@/components/Header/Header'
 import Hero from '@/components/Hero/Hero'
@@ -79,6 +80,7 @@ export default function RootLayout({
 				<Header />
 				<Hero />
 				<CacheContextProvider>{children}</CacheContextProvider>
+				<Contact />
 				<Footer />
 			</body>
 		</html>

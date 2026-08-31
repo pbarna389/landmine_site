@@ -68,3 +68,5 @@ export type YoutubePlaylistResponse = {
 	items: YoutubePlayListItem[]
 	nextPageToken: string | null
 }
+
+export type InputKeysType = 'text' | 'email' | 'textarea'

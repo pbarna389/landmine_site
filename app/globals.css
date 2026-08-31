@@ -5,6 +5,7 @@
 	--foreground: #171717;
 	--font-montserrat: var(--font-montserrat);
 	--font-raleway: var(--font-raleway);
+	--font-cuprum: var(--font-cuprum);
 }
 
 @theme {
