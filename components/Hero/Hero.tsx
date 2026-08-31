@@ -22,6 +22,7 @@ export default function Hero() {
 
 	return (
 		<div
+			id="hero"
 			className={`w-full h-screen relative z-1 transition-all duration-500 shadow-2xl ${loaded ? 'opacity-100' : 'opacity-0'}`}
 		>
 			<Image

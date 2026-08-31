@@ -1,0 +1,1 @@
+export const NAVIGATOR_REMOVE_HEIGHT = 200
