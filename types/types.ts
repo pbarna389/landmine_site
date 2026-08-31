@@ -1,4 +1,5 @@
-export type IconNames = 'facebook' | 'youtube' | 'message' | 'telephone' | 'tiktok'
+export type IconNames =
+	'facebook' | 'youtube' | 'message' | 'telephone' | 'tiktok' | 'arrowUp'
 
 export type WidthValuesType =
 	| 'w-full'
