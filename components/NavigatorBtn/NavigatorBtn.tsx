@@ -2,8 +2,6 @@
 
 import { useEffect, useState } from 'react'
 
-import { NAVIGATOR_REMOVE_HEIGHT } from './constants/constants'
-
 import { Icons } from '../Icons'
 
 const scrollToTop = () => {
@@ -18,7 +16,7 @@ export const NavigatorBtn = () => {
 
 	useEffect(() => {
 		const callback = () => {
-			setIsVisible(window.scrollY > NAVIGATOR_REMOVE_HEIGHT)
+			setIsVisible(window.scrollY > 0)
 		}
 
 		window.addEventListener('scroll', callback)
@@ -28,7 +26,7 @@ export const NavigatorBtn = () => {
 
 	return (
 		<button
-			className={`fixed z-3 bottom-1/24 rounded-full p-2.5 border-4 border-gray-400 bg-black/50 transition-all duration-400 hover:bg-black hover:scale-115 cursor-pointer ${isVisible ? 'right-1/24' : '-right-1/24'} `}
+			className={`fixed z-3 bottom-1/24 rounded-full p-2.5 border-4 border-gray-400 bg-black/50 transition-all duration-400 hover:bg-black hover:scale-115 focus:bg-black focus:scale-115 active:border-gray-300 active:bg-black/75 active:scale-85 cursor-pointer ${isVisible ? 'right-1/24' : '-right-1/4 sm:-right-24'} `}
 			type="button"
 			onClick={scrollToTop}
 		>
