@@ -1,13 +1,21 @@
 import { useEffect, useRef, useState } from 'react'
 
+import { useBreakpointChecker } from './useBreakpointChecker'
 import { useDisableScrolling } from './useDisableScrolling'
 import { useOutsideClick } from './useOutsideClick'
 
 export function useModal() {
-	const ref = useRef<HTMLDialogElement>(null)
 	const [isOpen, setIsOpen] = useState<boolean>(false)
+	const isMobile = useBreakpointChecker()
+	const ref = useRef<HTMLDialogElement>(null)
 
-	useDisableScrolling(isOpen === null ? false : isOpen)
+	useDisableScrolling(isOpen)
+
+	useEffect(() => {
+		if (!isMobile && ref.current?.open) {
+			ref.current.close()
+		}
+	}, [isMobile])
 
 	useEffect(() => {
 		const keyPressCb = (e: KeyboardEvent) => {
@@ -29,9 +37,23 @@ export function useModal() {
 		ref.current?.close()
 	}, ref)
 
+	const handleModalClick = () => {
+		if (!ref.current) return
+
+		if (!isOpen) {
+			ref.current.showModal()
+		} else {
+			ref.current.close()
+		}
+
+		setIsOpen((prev) => !prev)
+	}
+
 	return {
 		ref: modalRef,
 		isOpen,
+		isMobile,
+		handleModalClick,
 		setIsOpen
 	}
 }

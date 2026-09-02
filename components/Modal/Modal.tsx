@@ -2,18 +2,30 @@
 
 import type { RefObject } from 'react'
 
-type ModalProps = React.PropsWithChildren & {
-	ref: RefObject<HTMLDialogElement | null>
-	className?: string
+type ModalClassNames = 'default' | 'music'
+
+const ModalClassNames: { [K in ModalClassNames]: string } = {
+	default: 'modal fixed opacity-0 open:opacity-100 transition-opacity w-screen h-screen',
+	music:
+		'backdrop:bg-transparent open:backdrop-blur-sm top-1/2 left-1/2 -translate-1/2 bg-transparent'
 }
 
-export const Modal = ({ children, ref }: ModalProps) => {
+type ModalProps = React.PropsWithChildren & {
+	modalClass: Exclude<ModalClassNames, 'default'>
+	onCloseHandler: () => void
+	ref: RefObject<HTMLDialogElement | null>
+}
+
+export const Modal = ({ children, ref, modalClass, onCloseHandler }: ModalProps) => {
+	const selectedModalClass = ModalClassNames[modalClass]
+
 	return (
 		<dialog
 			popover="auto"
 			closedby="any"
-			className="modal fixed opacity-0 open:opacity-100 transition-[opacity, transition, display, overlay] duration-200 backdrop:bg-transparent open:backdrop-blur-sm top-1/2 left-1/2 -translate-1/2 bg-transparent w-screen h-screen"
+			className={`${ModalClassNames.default} ${selectedModalClass}`}
 			ref={ref}
+			onClose={onCloseHandler}
 		>
 			{children}
 		</dialog>

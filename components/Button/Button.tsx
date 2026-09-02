@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 //TODO: update the component to be more universal
 //TODO: update other components to use this component
 
 type ButtonProps = React.PropsWithChildren & {
 	className?: string
-	onClick?: (...params: never[]) => unknown
+	onClick?: (...params: any[]) => any
 }
 
 export const Button = ({ children, onClick, className = '' }: ButtonProps) => {
