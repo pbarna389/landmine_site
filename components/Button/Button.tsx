@@ -3,7 +3,7 @@
 
 type ButtonProps = React.PropsWithChildren & {
 	className?: string
-	onClick?: (...params: unknown[]) => unknown
+	onClick?: (...params: never[]) => unknown
 }
 
 export const Button = ({ children, onClick, className = '' }: ButtonProps) => {

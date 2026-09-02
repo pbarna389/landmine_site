@@ -30,7 +30,7 @@ export const AlbumStory = ({ details, text }: AlbumStoryProp) => {
 		overflowStates,
 		hoverState: { isHovered, mouseCaptured },
 		handlePopover: { onPointerEnter, onPointerLeave },
-		anchorRef
+		popoverRef
 	} = usePopover(200)
 
 	const handleModalClick = () => {
@@ -47,7 +47,7 @@ export const AlbumStory = ({ details, text }: AlbumStoryProp) => {
 
 	return (
 		<div
-			ref={anchorRef}
+			ref={popoverRef}
 			className={`relative`}
 			onPointerEnter={onPointerEnter}
 			onPointerLeave={onPointerLeave}
@@ -64,17 +64,23 @@ export const AlbumStory = ({ details, text }: AlbumStoryProp) => {
 						mouseCaptured={mouseCaptured}
 					/>
 				)}
-				{isMobile && (
-					<Modal ref={ref}>
-						<article
-							className={`grid place-items-center cursor-default normal-case z-2 -left-px p-5 w-full h-full border-2 border-gray-400 rounded-md text-white text-start overflow-y-scroll overscroll-none scrollbar-thin scrollbar-gutter-both scrollbar-track-transparent scrollbar-thumb-gray-400`}
-						>
-							{details}
-						</article>
-					</Modal>
-				)}
 				<span className="relative z-2">{text}</span>
 			</Button>
+			{isMobile && (
+				<Modal ref={ref}>
+					<article
+						className={`grid place-items-center cursor-default normal-case z-2 -left-px p-5 w-full h-full border-2 border-gray-400 rounded-md text-white text-md text-center overflow-y-scroll overscroll-none scrollbar-thin scrollbar-gutter-both scrollbar-track-transparent scrollbar-thumb-gray-400`}
+					>
+						{details}
+					</article>
+					<button
+						className="absolute top-0 left-0 bg-black text-white"
+						onClick={handleModalClick}
+					>
+						Remove modal
+					</button>
+				</Modal>
+			)}
 		</div>
 	)
 }

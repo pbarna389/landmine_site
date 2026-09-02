@@ -1,8 +1,10 @@
-import { useEffect, useRef } from 'react'
+import type { RefObject } from 'react'
+import { useEffect } from 'react'
 
-export function useOutsideClick<T extends HTMLElement>(callback: () => void) {
-	const ref = useRef<T | null>(null)
-
+export function useOutsideClick<T extends HTMLElement>(
+	callback: () => void,
+	ref: RefObject<T | null>
+) {
 	useEffect(() => {
 		const handler = (e: PointerEvent) => {
 			if (!ref.current) return
@@ -19,7 +21,7 @@ export function useOutsideClick<T extends HTMLElement>(callback: () => void) {
 		return () => {
 			document.removeEventListener('pointerdown', handler)
 		}
-	}, [callback])
+	}, [callback, ref])
 
 	return ref
 }

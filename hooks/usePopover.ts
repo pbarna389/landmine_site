@@ -96,6 +96,6 @@ export const usePopover = (timeoutTime = 100) => {
 		hoverState,
 		overflowStates,
 		handlePopover: { onPointerEnter, onPointerLeave },
-		anchorRef
+		popoverRef: anchorRef
 	}
 }
