@@ -77,6 +77,7 @@ export default function RootLayout({
 		<html lang="en">
 			<body
 				className={`${montserrat.variable} ${raleway.variable} ${cuprum.variable} ${nunito.variable} ${openSans.variable} ${rubik.variable} ${ubuntu.variable} antialiased`}
+				style={{ overflow: 'auto' }}
 			>
 				<Header />
 				<Hero />

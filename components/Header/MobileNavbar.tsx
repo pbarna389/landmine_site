@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 import { IconContext } from 'react-icons'
 
@@ -21,6 +21,9 @@ import { Icons } from '../Icons/Icons'
 export const MobileNavbar = () => {
 	const [isOpen, setIsOpen] = useState(false)
 	const isMobile = useBreakpointChecker()
+	const navbarRef = useRef<HTMLDivElement | null>(null)
+
+	useDisableScrolling(isOpen)
 
 	const handleClick = () => {
 		setIsOpen(!isOpen)
@@ -30,9 +33,7 @@ export const MobileNavbar = () => {
 		setIsOpen(false)
 	}
 
-	useDisableScrolling(isOpen)
-
-	const ref = useOutsideClick<HTMLDivElement>(handleOutSideClick)
+	const ref = useOutsideClick<HTMLDivElement>(handleOutSideClick, navbarRef)
 
 	if (!isMobile) return
 

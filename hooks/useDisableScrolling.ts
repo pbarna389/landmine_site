@@ -4,9 +4,8 @@ export const useDisableScrolling = (shouldDisable: boolean) => {
 	useEffect(() => {
 		if (!shouldDisable) return
 
-		const originalOverflow = document.body.style.overflow
-			? document.body.style.overflow
-			: 'auto'
+		const originalOverflow =
+			document.body.style.overflow === 'auto' ? document.body.style.overflow : 'auto'
 
 		document.body.style.overflow = 'hidden'
 

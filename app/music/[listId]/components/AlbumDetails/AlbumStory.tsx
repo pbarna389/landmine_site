@@ -1,9 +1,10 @@
 'use client'
 
-import { Button, Popover } from '@/components'
-import { usePopover } from '@/hooks/usePopover'
+import { useEffect } from 'react'
 
-//TODO: add Modal for the mobile view
+import { Button, Modal, Popover } from '@/components'
+import { useModal } from '@/hooks/useModal'
+import { usePopover } from '@/hooks/usePopover'
 
 type AlbumStoryProp = {
 	details: string
@@ -11,22 +12,33 @@ type AlbumStoryProp = {
 }
 
 export const AlbumStory = ({ details, text }: AlbumStoryProp) => {
+	const { ref, handleModalClick, isMobile, setIsOpen } = useModal()
+
+	useEffect(() => {
+		if (!isMobile) {
+			setIsOpen(false)
+		}
+	}, [isMobile, setIsOpen])
+
 	const {
 		overflowStates,
 		hoverState: { isHovered, mouseCaptured },
 		handlePopover: { onPointerEnter, onPointerLeave },
-		anchorRef
+		popoverRef
 	} = usePopover(200)
 
 	return (
 		<div
-			ref={anchorRef}
+			ref={popoverRef}
 			className={`relative`}
-			onPointerEnter={onPointerEnter}
-			onPointerLeave={onPointerLeave}
+			onPointerEnter={!isMobile ? onPointerEnter : undefined}
+			onPointerLeave={!isMobile ? onPointerLeave : undefined}
 		>
-			<Button className="p-3 pl-4.5 pr-4.5 w-full h-full z-5 bg-transparent cursor-default hover:border-black hover:text-white active:bg-black active:text-white focus:bg-black focus:text-white target:bg-black target:text-white focus-visible:bg-black focus-visible:text-white">
-				{mouseCaptured && (
+			<Button
+				className="p-3 pl-4.5 pr-4.5 w-full h-full z-5 bg-transparent cursor-default hover:border-black hover:text-white active:bg-black active:text-white focus:bg-black focus:text-white target:bg-black target:text-white focus-visible:bg-black focus-visible:text-white"
+				onClick={isMobile ? handleModalClick : undefined}
+			>
+				{!isMobile && mouseCaptured && (
 					<Popover
 						text={details}
 						overflowStates={overflowStates}
@@ -36,6 +48,21 @@ export const AlbumStory = ({ details, text }: AlbumStoryProp) => {
 				)}
 				<span className="relative z-2">{text}</span>
 			</Button>
+			{isMobile && (
+				<Modal ref={ref} modalClass="music">
+					<article
+						className={`grid place-items-center cursor-default normal-case z-2 -left-px p-15 sm:p-5 w-full h-full border-2 border-gray-400 rounded-md text-white text-[16px] sm:text-xl text-center overflow-y-scroll overscroll-none scrollbar-thin scrollbar-gutter-both scrollbar-track-transparent scrollbar-thumb-gray-400`}
+					>
+						{details}
+					</article>
+					<button
+						className="absolute top-0 left-0 bg-black text-white"
+						onClick={handleModalClick}
+					>
+						Remove modal
+					</button>
+				</Modal>
+			)}
 		</div>
 	)
 }

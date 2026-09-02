@@ -33,6 +33,8 @@
 	--animate-profileAnim: profileAnim 1156ms ease-in-out 1;
 	--animate-skeletonAnim: skeletonAnim 1s linear infinite;
 	--animate-imageLoadAnim: imageLoadAnim 0.5s ease-in-out 1;
+
+	--modal: modal;
 }
 
 @keyframes profileAnim {
@@ -110,6 +112,27 @@
 
 @utility clip-pentagon {
 	clip-path: polygon(0 0, 75% 0, 100% 50%, 75% 100%, 0 100%);
+}
+
+dialog {
+	transition:
+		opacity 200ms ease,
+		transform 200ms ease,
+		display 200ms allow-discrete,
+		overlay 200ms allow-discrete;
+}
+
+@starting-style {
+	dialog:open {
+		opacity: 0;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	dialog,
+	dialog::backdrop {
+		transition: none;
+	}
 }
 
 body {
