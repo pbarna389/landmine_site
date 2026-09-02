@@ -1,5 +1,7 @@
 'use client'
 
+import { useEffect } from 'react'
+
 import { Button, Modal, Popover } from '@/components'
 import { useModal } from '@/hooks/useModal'
 import { usePopover } from '@/hooks/usePopover'
@@ -12,16 +14,18 @@ type AlbumStoryProp = {
 export const AlbumStory = ({ details, text }: AlbumStoryProp) => {
 	const { ref, handleModalClick, isMobile, setIsOpen } = useModal()
 
+	useEffect(() => {
+		if (!isMobile) {
+			setIsOpen(false)
+		}
+	}, [isMobile, setIsOpen])
+
 	const {
 		overflowStates,
 		hoverState: { isHovered, mouseCaptured },
 		handlePopover: { onPointerEnter, onPointerLeave },
 		popoverRef
 	} = usePopover(200)
-
-	const onCloseHandler = () => {
-		setIsOpen(false)
-	}
 
 	return (
 		<div
@@ -45,7 +49,7 @@ export const AlbumStory = ({ details, text }: AlbumStoryProp) => {
 				<span className="relative z-2">{text}</span>
 			</Button>
 			{isMobile && (
-				<Modal ref={ref} modalClass="music" onCloseHandler={onCloseHandler}>
+				<Modal ref={ref} modalClass="music">
 					<article
 						className={`grid place-items-center cursor-default normal-case z-2 -left-px p-5 w-full h-full border-2 border-gray-400 rounded-md text-white text-md text-center overflow-y-scroll overscroll-none scrollbar-thin scrollbar-gutter-both scrollbar-track-transparent scrollbar-thumb-gray-400`}
 					>

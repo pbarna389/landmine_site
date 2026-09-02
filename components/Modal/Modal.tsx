@@ -12,11 +12,10 @@ const ModalClassNames: { [K in ModalClassNames]: string } = {
 
 type ModalProps = React.PropsWithChildren & {
 	modalClass: Exclude<ModalClassNames, 'default'>
-	onCloseHandler: () => void
 	ref: RefObject<HTMLDialogElement | null>
 }
 
-export const Modal = ({ children, ref, modalClass, onCloseHandler }: ModalProps) => {
+export const Modal = ({ children, ref, modalClass }: ModalProps) => {
 	const selectedModalClass = ModalClassNames[modalClass]
 
 	return (
@@ -25,7 +24,6 @@ export const Modal = ({ children, ref, modalClass, onCloseHandler }: ModalProps)
 			closedby="any"
 			className={`${ModalClassNames.default} ${selectedModalClass}`}
 			ref={ref}
-			onClose={onCloseHandler}
 		>
 			{children}
 		</dialog>
