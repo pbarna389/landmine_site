@@ -5,6 +5,7 @@ import Image from 'next/image'
 import {
 	HeroCarouselList,
 	HeroCarouselMainText,
+	HeroCarouselSelector,
 	HeroCarouselTextParent
 } from './components'
 import { useCarousel } from '@/hooks/useCarousel'
@@ -41,15 +42,13 @@ export default function Hero() {
 					<HeroCarouselList subText={selectedData.subText} />
 				</HeroCarouselTextParent>
 			</div>
-			<div className="absolute z-1 bottom-5 -translate-x-1/2 left-1/2 flex items-center justify-center gap-10">
-				{HERO_DATA.map((element, carIdx) => (
-					<span
-						key={`selector-id-${element.id}`}
-						className={`h-5 w-5 rounded-full opacity-80 outline-0 outline-carousel bg-white cursor-pointer relative transition-all duration-250 hover:opacity-100 hover:brightness-105  after:absolute after:-translate-1/2 after:top-1/2 after:left-1/2 after:z-2 after:bg-carousel/75 after:rounded-full after:transition-all after:content-[''] after:w-1 after:h-1 after:duration-750 ${idx === carIdx ? 'after:w-9/10 after:duration-7500 after:h-9/10' : ''} ${nextIdx === carIdx ? 'outline-2' : ''}`}
-						onClick={() => changeCurrentSlide(carIdx)}
-					/>
-				))}
-			</div>
+			<HeroCarouselSelector
+				callback={changeCurrentSlide}
+				idx={idx}
+				nextIdx={nextIdx}
+				loaded={loaded}
+				length={HERO_DATA.length}
+			/>
 		</div>
 	)
 }
