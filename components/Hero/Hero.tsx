@@ -43,6 +43,7 @@ export default function Hero() {
 				</HeroCarouselTextParent>
 			</div>
 			<HeroCarouselSelector
+				carouselTimer={BASE_TIMEOUT}
 				callback={changeCurrentSlide}
 				idx={idx}
 				nextIdx={nextIdx}
