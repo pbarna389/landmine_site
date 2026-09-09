@@ -53,8 +53,6 @@ export const CarouselWrapper = <TItem extends object>({
 		intervalTimeout
 	)
 
-	const selectedData = carouselData[idx]
-
 	useEffect(() => {
 		if (!shouldHandleLoading) return
 
@@ -63,32 +61,30 @@ export const CarouselWrapper = <TItem extends object>({
 		return () => clearTimeout(timeout)
 	}, [setLoaded, idx, animationTimeout, shouldHandleLoading])
 
-	if (ParentComponent) {
-		return (
-			<>
-				<ParentComponent.component loadState={loaded}>
-					<BaseComponent
-						loadState={loaded}
-						setLoaded={setLoaded}
-						idx={idx}
-						{...selectedData}
-					/>
-				</ParentComponent.component>
-				{SelectorComponent && (
-					<SelectorComponent
-						carouselTimer={intervalTimeout}
-						callback={changeCurrentSlide}
-						idx={idx}
-						nextIdx={nextIdx}
-						loaded={loaded}
-						length={carouselData.length}
-					/>
-				)}
-			</>
-		)
-	}
+	const selectedData = carouselData[idx]
+
+	const content = (
+		<BaseComponent loadState={loaded} setLoaded={setLoaded} idx={idx} {...selectedData} />
+	)
+	const selector = SelectorComponent ? (
+		<SelectorComponent
+			carouselTimer={intervalTimeout}
+			callback={changeCurrentSlide}
+			idx={idx}
+			nextIdx={nextIdx}
+			loaded={loaded}
+			length={carouselData.length}
+		/>
+	) : null
 
 	return (
-		<BaseComponent loadState={loaded} setLoaded={setLoaded} idx={idx} {...selectedData} />
+		<>
+			{ParentComponent ? (
+				<ParentComponent.component loadState={loaded}>{content}</ParentComponent.component>
+			) : (
+				content
+			)}
+			{selector}
+		</>
 	)
 }
