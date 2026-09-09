@@ -1,6 +1,4 @@
-type HeroCarouselWrapperProps = React.PropsWithChildren & {
-	loadState: boolean
-}
+type HeroCarouselWrapperProps = React.PropsWithChildren
 
 export const HeroCarouselWrapper = ({ children }: HeroCarouselWrapperProps) => {
 	return (

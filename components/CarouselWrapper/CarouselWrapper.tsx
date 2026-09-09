@@ -64,7 +64,7 @@ export const CarouselWrapper = <TItem extends object>({
 	const selectedData = carouselData[idx]
 
 	const content = (
-		<BaseComponent loadState={loaded} setLoaded={setLoaded} idx={idx} {...selectedData} />
+		<BaseComponent {...selectedData} loadState={loaded} setLoaded={setLoaded} idx={idx} />
 	)
 	const selector = SelectorComponent ? (
 		<SelectorComponent
