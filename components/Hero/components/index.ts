@@ -1,4 +1,3 @@
-export { HeroCarouselList } from './HeroCarouselList'
-export { HeroCarouselMainText } from './HeroCarouselMainText'
+export { HeroCarouselContent } from './HeroCarouselContent'
 export { HeroCarouselSelector } from './HeroCarouselSelector'
-export { HeroCarouselTextParent } from './HeroCarouselTextParent'
+export { HeroCarouselWrapper } from './HeroCarouselWrapper'
