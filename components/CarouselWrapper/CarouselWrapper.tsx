@@ -59,7 +59,7 @@ export const CarouselWrapper = <TItem extends object>({
 		const timeout = setTimeout(() => setLoaded(true), 0)
 
 		return () => clearTimeout(timeout)
-	}, [setLoaded, idx, animationTimeout, shouldHandleLoading])
+	}, [setLoaded, idx, shouldHandleLoading])
 
 	const selectedData = carouselData[idx]
 
