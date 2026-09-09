@@ -34,17 +34,6 @@ export const useCarousel = (
 		}, intervalTimeout)
 	}, [forwardTimeout, intervalTimeout, length])
 
-	const moveSlideBackward = useCallback(() => {
-		intervalRef.current = setInterval(() => {
-			setLoaded(false)
-			setNextIdx((prev) => (prev + 1) % length)
-
-			timeoutRef.current = setTimeout(() => {
-				setIdx((prev) => (prev - 1) % length)
-			}, forwardTimeout)
-		}, intervalTimeout)
-	}, [forwardTimeout, intervalTimeout, length])
-
 	const selectNextSlide = useCallback(() => {
 		clearTimeouts()
 		moveSlideForward()
@@ -80,7 +69,6 @@ export const useCarousel = (
 		loaded,
 		setLoaded,
 		moveSlideForward,
-		moveSlideBackward,
 		selectNextSlide,
 		changeCurrentSlide
 	}

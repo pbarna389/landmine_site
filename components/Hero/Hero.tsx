@@ -24,6 +24,7 @@ export default function Hero() {
 					animationTimeout: BASE_BASE_ANIM_TIMEOUT,
 					intervalTimeout: BASE_TIMEOUT
 				}}
+				shouldHandleLoading={false}
 			/>
 		</div>
 	)

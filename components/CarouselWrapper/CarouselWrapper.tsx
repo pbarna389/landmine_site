@@ -34,12 +34,14 @@ type CarouselWrapperProps<TData extends object> = {
 		animationTimeout: number
 		intervalTimeout: number
 	}
+	shouldHandleLoading?: boolean
 }
 
 export const CarouselWrapper = <TItem extends object>({
 	components,
 	timers,
-	carouselData
+	carouselData,
+	shouldHandleLoading = true
 }: CarouselWrapperProps<TItem>) => {
 	const { ParentComponent, BaseComponent, SelectorComponent } = components
 
@@ -54,10 +56,12 @@ export const CarouselWrapper = <TItem extends object>({
 	const selectedData = carouselData[idx]
 
 	useEffect(() => {
+		if (!shouldHandleLoading) return
+
 		const timeout = setTimeout(() => setLoaded(true), 0)
 
 		return () => clearTimeout(timeout)
-	}, [setLoaded, idx, animationTimeout])
+	}, [setLoaded, idx, animationTimeout, shouldHandleLoading])
 
 	if (ParentComponent) {
 		return (
