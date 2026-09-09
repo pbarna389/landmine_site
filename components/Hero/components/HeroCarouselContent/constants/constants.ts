@@ -15,3 +15,8 @@ export const POSITION_VARIANTS = {
 		duration: 'duration-1600'
 	}
 }
+
+export const TEXT_VARIANTS = {
+	main: 'font-white',
+	other: 'text-hero-highlight'
+}

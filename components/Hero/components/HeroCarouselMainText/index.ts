@@ -1,1 +1,0 @@
-export { HeroCarouselMainText } from './HeroCarouselMainText'

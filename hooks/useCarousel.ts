@@ -41,7 +41,7 @@ export const useCarousel = (
 
 	const changeCurrentSlide = useCallback(
 		(newIdx: number) => {
-			if (idx === newIdx || nextIdx === newIdx) return
+			if (nextIdx === newIdx) return
 
 			clearTimeouts()
 
@@ -54,7 +54,7 @@ export const useCarousel = (
 				moveSlideForward()
 			}, forwardTimeout)
 		},
-		[clearTimeouts, forwardTimeout, idx, moveSlideForward, nextIdx]
+		[clearTimeouts, forwardTimeout, moveSlideForward, nextIdx]
 	)
 
 	useEffect(() => {
