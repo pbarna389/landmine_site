@@ -9,7 +9,7 @@ import { CLASSROOM_CONTENT } from './constants/constants'
 
 //TODO: update this to a gallery component and even remove the endpoint
 
-export default function Home() {
+export default function ClassroomPage() {
 	const { title, content, carouselTimeouts } = CLASSROOM_CONTENT
 
 	const { idx, loaded, setLoaded } = useCarousel(
