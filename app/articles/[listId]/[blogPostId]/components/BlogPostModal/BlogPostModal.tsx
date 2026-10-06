@@ -6,7 +6,7 @@ import { Modal } from '@/components'
 import { useModal } from '@/hooks/useModal'
 
 export const BlogPostModal = ({ children }: React.PropsWithChildren) => {
-	const { ref, setIsOpen, handleModalClick } = useModal(true)
+	const { ref, setIsOpen, handleModalClick } = useModal({ shouldTravelBack: true })
 
 	useEffect(() => {
 		const dialog = ref.current

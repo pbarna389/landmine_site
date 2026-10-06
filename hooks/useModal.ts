@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useBreakpointChecker } from './useBreakpointChecker'
 import { useDisableScrolling } from './useDisableScrolling'
 
-export function useModal(shouldTravelBack = false) {
+export function useModal({ shouldTravelBack = false }: { shouldTravelBack?: boolean }) {
 	const router = useRouter()
 
 	const [isOpen, setIsOpen] = useState<boolean>(false)
