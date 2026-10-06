@@ -1,7 +1,5 @@
-import { Suspense } from 'react'
-
 export default async function ArticlesCategoryPage({
 	children
 }: React.PropsWithChildren) {
-	return <Suspense>{children}</Suspense>
+	return <section className="max-h-fit">{children}</section>
 }

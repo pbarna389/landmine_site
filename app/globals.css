@@ -116,15 +116,17 @@
 
 dialog {
 	transition:
-		opacity 200ms ease,
-		transform 200ms ease,
-		display 200ms allow-discrete,
-		overlay 200ms allow-discrete;
+		opacity 400ms ease,
+		transform 400ms ease,
+		scale 400ms ease,
+		display 400ms allow-discrete,
+		overlay 400ms allow-discrete;
 }
 
 @starting-style {
 	dialog:open {
 		opacity: 0;
+		transform: scaleY(0);
 	}
 }
 

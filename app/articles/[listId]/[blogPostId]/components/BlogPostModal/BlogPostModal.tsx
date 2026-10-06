@@ -28,7 +28,7 @@ export const BlogPostModal = ({ children }: React.PropsWithChildren) => {
 	}, [ref, setIsOpen])
 
 	return (
-		<Modal ref={ref}>
+		<Modal ref={ref} modalClass="blogPost">
 			{children}
 			<button
 				className="text-black border border-black cursor-pointer"

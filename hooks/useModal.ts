@@ -27,7 +27,7 @@ export function useModal({ shouldTravelBack = false }: { shouldTravelBack?: bool
 
 					timeoutRef.current = setTimeout(() => {
 						router.back()
-					}, 100)
+					}, 400)
 				}
 			}
 		}
@@ -51,7 +51,7 @@ export function useModal({ shouldTravelBack = false }: { shouldTravelBack?: bool
 			if (shouldTravelBack) {
 				timeoutRef.current = setTimeout(() => {
 					router.back()
-				}, 100)
+				}, 400)
 			}
 		}
 		setIsOpen((prev) => !prev)

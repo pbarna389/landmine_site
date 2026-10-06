@@ -1,4 +1,4 @@
-import { Suspense } from 'react'
+import { getBlockPostContent } from './server'
 
 export default async function ArticleBlogPostPage({
 	params
@@ -7,10 +7,12 @@ export default async function ArticleBlogPostPage({
 }) {
 	const { listId, blogPostId } = await params
 
+	const blogPostData = await getBlockPostContent()
+
 	return (
-		<Suspense>
+		<>
 			<p>listId: {listId}</p>
 			<p>blogPostId: {blogPostId}</p>
-		</Suspense>
+		</>
 	)
 }
