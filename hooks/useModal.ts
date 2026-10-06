@@ -1,9 +1,13 @@
+import { useRouter } from 'next/navigation'
+
 import { useEffect, useRef, useState } from 'react'
 
 import { useBreakpointChecker } from './useBreakpointChecker'
 import { useDisableScrolling } from './useDisableScrolling'
 
 export function useModal() {
+	const router = useRouter()
+
 	const [isOpen, setIsOpen] = useState<boolean>(false)
 	const isMobile = useBreakpointChecker()
 	const ref = useRef<HTMLDialogElement>(null)
@@ -15,6 +19,8 @@ export function useModal() {
 			if (!ref.current) return
 			if (e.key === 'Escape' || e.key === 'Esc') {
 				setIsOpen(false)
+
+				router.back()
 			}
 		}
 
@@ -23,7 +29,7 @@ export function useModal() {
 		return () => {
 			window.removeEventListener('keydown', keyPressCb)
 		}
-	}, [ref, isOpen])
+	}, [ref, isOpen, router])
 
 	const handleModalClick = () => {
 		if (!ref.current) return

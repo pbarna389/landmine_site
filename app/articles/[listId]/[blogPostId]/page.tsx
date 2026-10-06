@@ -1,4 +1,6 @@
-export default async function ArticleBlogPost({
+import { Suspense } from 'react'
+
+export default async function ArticleBlogPostPage({
 	params
 }: {
 	params: Promise<{ blogPostId: string; listId: string }>
@@ -6,9 +8,9 @@ export default async function ArticleBlogPost({
 	const { listId, blogPostId } = await params
 
 	return (
-		<div>
+		<Suspense>
 			<p>listId: {listId}</p>
 			<p>blogPostId: {blogPostId}</p>
-		</div>
+		</Suspense>
 	)
 }

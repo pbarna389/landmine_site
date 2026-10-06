@@ -7,9 +7,13 @@ export function useOutsideClick<T extends HTMLElement>(
 ) {
 	useEffect(() => {
 		const handler = (e: PointerEvent) => {
-			if (!ref.current) return
+			if (!ref.current) {
+				return
+			}
 
-			if (!(e.target instanceof Node)) return
+			if (!(e.target instanceof Node)) {
+				return
+			}
 
 			if (!ref.current.contains(e.target)) {
 				callback()
