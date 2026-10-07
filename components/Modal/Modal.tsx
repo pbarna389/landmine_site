@@ -16,14 +16,21 @@ const ModalClassNames: { [K in ModalClassNames]: string } = {
 type ModalProps = React.PropsWithChildren & {
 	ref: RefObject<HTMLDialogElement | null>
 	modalClass?: ModalClassNames
+	onPointerDown?: (e: React.PointerEvent<HTMLDialogElement>) => void
 }
 
-export const Modal = ({ children, ref, modalClass = 'default' }: ModalProps) => {
+export const Modal = ({
+	children,
+	ref,
+	onPointerDown,
+	modalClass = 'default'
+}: ModalProps) => {
 	const selectedModalClass = ModalClassNames[modalClass]
 
 	return (
 		<dialog
 			closedby="closerequest"
+			onPointerDown={onPointerDown}
 			className={`${ModalClassNames.default} ${selectedModalClass}`}
 			ref={ref}
 		>

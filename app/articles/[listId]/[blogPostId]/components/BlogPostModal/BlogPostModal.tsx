@@ -1,12 +1,16 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useCallback, useEffect } from 'react'
 
 import { Modal } from '@/components'
 import { useModal } from '@/hooks/useModal'
 
 export const BlogPostModal = ({ children }: React.PropsWithChildren) => {
-	const { ref, setIsOpen, handleModalClick } = useModal({ shouldTravelBack: true })
+	const {
+		ref,
+		setIsOpen,
+		handleModalClick: modalClose
+	} = useModal({ shouldTravelBack: true })
 
 	useEffect(() => {
 		const dialog = ref.current
@@ -27,13 +31,31 @@ export const BlogPostModal = ({ children }: React.PropsWithChildren) => {
 		}
 	}, [ref, setIsOpen])
 
+	const pointerEvent = useCallback(
+		(e: React.PointerEvent<HTMLDialogElement>) => {
+			const dialog = e.currentTarget
+			const rect = dialog.getBoundingClientRect()
+
+			const clickedBackdrop =
+				e.clientX < rect.left ||
+				e.clientX > rect.right ||
+				e.clientY < rect.top ||
+				e.clientY > rect.bottom
+
+			if (clickedBackdrop) {
+				modalClose()
+			}
+		},
+		[modalClose]
+	)
+
 	return (
-		<Modal ref={ref} modalClass="blogPost">
+		<Modal ref={ref} modalClass="blogPost" onPointerDown={pointerEvent}>
 			{children}
 			<button
 				className="text-black border border-black cursor-pointer"
 				type="button"
-				onClick={handleModalClick}
+				onClick={modalClose}
 			>
 				Close
 			</button>

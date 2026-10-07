@@ -62,6 +62,7 @@ export function useModal({ shouldTravelBack = false }: { shouldTravelBack?: bool
 		isOpen,
 		isMobile,
 		handleModalClick,
-		setIsOpen
+		setIsOpen,
+		modalRouter: router
 	}
 }
