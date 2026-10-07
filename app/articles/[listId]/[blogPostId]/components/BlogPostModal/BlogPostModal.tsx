@@ -33,14 +33,16 @@ export const BlogPostModal = ({ children }: React.PropsWithChildren) => {
 
 	const pointerEvent = useCallback(
 		(e: React.PointerEvent<HTMLDialogElement>) => {
+			const { clientX, clientY } = e
+
 			const dialog = e.currentTarget
 			const rect = dialog.getBoundingClientRect()
 
 			const clickedBackdrop =
-				e.clientX < rect.left ||
-				e.clientX > rect.right ||
-				e.clientY < rect.top ||
-				e.clientY > rect.bottom
+				clientX < rect.left ||
+				clientX > rect.right ||
+				clientY < rect.top ||
+				clientY > rect.bottom
 
 			if (clickedBackdrop) {
 				modalClose()
