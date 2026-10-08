@@ -55,7 +55,7 @@ export const BlogPostModal = ({ children }: React.PropsWithChildren) => {
 		<Modal ref={ref} modalClass="blogPost" onPointerDown={pointerEvent}>
 			{children}
 			<button
-				className="text-black border border-black cursor-pointer"
+				className="absolute top-0 left-0 text-black border border-black cursor-pointer"
 				type="button"
 				onClick={modalClose}
 			>

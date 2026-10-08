@@ -1,7 +1,9 @@
 import { BLOGPOST_MOCK } from './blogPost.mock'
 
-export const getBlockPostContent = async () => {
-	const result = await BLOGPOST_MOCK()
+export const getBlockPostContent = async (id: number) => {
+	const data = await BLOGPOST_MOCK()
 
-	return result
+	const result = data.find((post) => post.id === id)
+
+	return result?.content
 }

@@ -1,67 +1,12 @@
-import Picture02 from '../assets/gyakterv.jpg'
+import Picture02 from '../../assets/gyakterv.jpg'
 import Picture01 from '../assets/vlog47.jpg'
+import type { BlogPostModalType } from '../types'
 
 // TODO: clickable image representation
 
-type BlogPostModalType = {
-	content: DocType
-	id: number
-}
-
-type DocType = {
-	content: (ParagraphType | HeadingType | ImageType | BulletListType)[]
-	type: 'doc'
-}
-
-type ParagraphType = {
-	content: (TextType | HardBreakType)[]
-	type: 'paragraph'
-}
-
-type HeadingType = {
-	attrs: {
-		level: number
-	}
-	content: TextType[]
-	type: 'heading'
-}
-
-type ImageAttributes = 'alt' | 'src' | 'title'
-
-type ImageType = {
-	attrs: {
-		[key in ImageAttributes]: string
-	}
-	type: 'image'
-}
-
-type HardBreakType = {
-	type: 'hardBreak'
-}
-
-type MarksType = {
-	type: 'bold' | 'italic' | 'underline'
-}
-
-type TextType = {
-	text: string
-	type: 'text'
-	marks?: MarksType[]
-}
-
-type ListItemType = {
-	content: (ParagraphType | BulletListType)[]
-	type: 'listItem'
-}
-
-type BulletListType = {
-	content: ListItemType[]
-	type: 'bulletList'
-}
-
 export const BLOGPOST_MODAL_CONTENT: BlogPostModalType[] = [
 	{
-		id: 4,
+		id: 2,
 		content: {
 			type: 'doc',
 			content: [

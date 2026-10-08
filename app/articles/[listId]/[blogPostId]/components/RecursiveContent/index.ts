@@ -1,2 +1,1 @@
-export { BlogPostModal } from './BlogPostModal'
 export { RecursiveContent } from './RecursiveContent'
