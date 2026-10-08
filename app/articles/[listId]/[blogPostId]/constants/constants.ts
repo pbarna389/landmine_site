@@ -108,14 +108,32 @@ export const BLOGPOST_MODAL_CONTENT: BlogPostModalType[] = [
 							type: 'listItem',
 							content: [
 								{
+									type: 'paragraph',
+									content: [
+										{
+											type: 'text',
+											text: 'PARENT TEST'
+										}
+									]
+								},
+								{
 									type: 'bulletList',
 									content: [
 										{
 											type: 'listItem',
-											content: [{ type: 'paragraph', content: [{ type: 'text', text: 'TESZT' }] }]
+											content: [{ type: 'paragraph', content: [{ type: 'text', text: 'TESZT1' }] }]
+										},
+										{
+											type: 'listItem',
+											content: [{ type: 'paragraph', content: [{ type: 'text', text: 'TESZT2' }] }]
 										}
 									]
-								},
+								}
+							]
+						},
+						{
+							type: 'listItem',
+							content: [
 								{
 									type: 'paragraph',
 									content: [
