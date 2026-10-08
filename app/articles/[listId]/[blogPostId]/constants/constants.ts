@@ -50,7 +50,7 @@ type TextType = {
 }
 
 type ListItemType = {
-	content: ParagraphType[] | BulletListType[]
+	content: (ParagraphType | BulletListType)[]
 	type: 'listItem'
 }
 
@@ -158,6 +158,15 @@ export const BLOGPOST_MODAL_CONTENT: BlogPostModalType[] = [
 						{
 							type: 'listItem',
 							content: [
+								{
+									type: 'bulletList',
+									content: [
+										{
+											type: 'listItem',
+											content: [{ type: 'paragraph', content: [{ type: 'text', text: 'TESZT' }] }]
+										}
+									]
+								},
 								{
 									type: 'paragraph',
 									content: [
