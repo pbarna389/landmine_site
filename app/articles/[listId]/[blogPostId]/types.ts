@@ -8,12 +8,12 @@ type DocType = {
 	type: 'doc'
 }
 
-type ParagraphType = {
+export type ParagraphType = {
 	content: (TextType | HardBreakType)[]
 	type: 'paragraph'
 }
 
-type HeadingType = {
+export type HeadingType = {
 	attrs: {
 		level: 1 | 2 | 3 | 4 | 5 | 6
 	}
@@ -23,33 +23,33 @@ type HeadingType = {
 
 type ImageAttributes = 'alt' | 'src' | 'title'
 
-type ImageType = {
+export type ImageType = {
 	attrs: {
 		[key in ImageAttributes]: string
 	}
 	type: 'image'
 }
 
-type HardBreakType = {
+export type HardBreakType = {
 	type: 'hardBreak'
 }
 
-type MarksType = {
+export type MarksType = {
 	type: 'bold' | 'italic' | 'underline'
 }
 
-type TextType = {
+export type TextType = {
 	text: string
 	type: 'text'
 	marks?: MarksType[]
 }
 
-type ListItemType = {
+export type ListItemType = {
 	content: (ParagraphType | BulletListType)[]
 	type: 'listItem'
 }
 
-type BulletListType = {
+export type BulletListType = {
 	content: ListItemType[]
 	type: 'bulletList'
 }

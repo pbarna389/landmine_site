@@ -13,9 +13,9 @@ export default async function ArticleBlogPostPage({
 
 	return (
 		<>
-			<RecursiveContent data={blogPostData?.content} />
 			<p>listId: {listId}</p>
 			<p>blogPostId: {blogPostId}</p>
+			<RecursiveContent data={blogPostData?.content} level={0} />
 		</>
 	)
 }

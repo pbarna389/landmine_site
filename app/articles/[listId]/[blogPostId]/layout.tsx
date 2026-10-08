@@ -4,9 +4,7 @@ export default function BlogPostIdLayout({ children }: React.PropsWithChildren) 
 	return (
 		<>
 			<BlogPostModal>
-				<article className="flex flex-col items-center gap-5 justify-center">
-					{children}
-				</article>
+				<article className="flex flex-col gap-5 justify-center p-7.5">{children}</article>
 			</BlogPostModal>
 		</>
 	)
