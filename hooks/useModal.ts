@@ -5,6 +5,8 @@ import { useEffect, useRef, useState } from 'react'
 import { useBreakpointChecker } from './useBreakpointChecker'
 import { useDisableScrolling } from './useDisableScrolling'
 
+const timeoutTime = 400
+
 export function useModal({ shouldTravelBack = false }: { shouldTravelBack?: boolean }) {
 	const router = useRouter()
 
@@ -27,7 +29,7 @@ export function useModal({ shouldTravelBack = false }: { shouldTravelBack?: bool
 
 					timeoutRef.current = setTimeout(() => {
 						router.back()
-					}, 400)
+					}, timeoutTime)
 				}
 			}
 		}
@@ -51,7 +53,7 @@ export function useModal({ shouldTravelBack = false }: { shouldTravelBack?: bool
 			if (shouldTravelBack) {
 				timeoutRef.current = setTimeout(() => {
 					router.back()
-				}, 400)
+				}, timeoutTime)
 			}
 		}
 		setIsOpen((prev) => !prev)
