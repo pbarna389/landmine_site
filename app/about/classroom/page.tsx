@@ -7,7 +7,9 @@ import { useEffect } from 'react'
 import { useCarousel } from '@/hooks/useCarousel'
 import { CLASSROOM_CONTENT } from './constants/constants'
 
-export default function Home() {
+//TODO: update this to a gallery component and even remove the endpoint
+
+export default function ClassroomPage() {
 	const { title, content, carouselTimeouts } = CLASSROOM_CONTENT
 
 	const { idx, loaded, setLoaded } = useCarousel(

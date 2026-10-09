@@ -1,12 +1,7 @@
-import { Skeleton } from '@/components'
-import { SKELETON_CLASSES } from './constants/constants'
-
 export default function Loading() {
-	const { parentSkeleton, childrenSkeleton } = SKELETON_CLASSES
-
 	return (
-		<Skeleton className={parentSkeleton}>
-			<Skeleton.SkeletonCard amount={3} className={childrenSkeleton} />
-		</Skeleton>
+		<span className="uppercase fixed z-1 translate top-1/2 left-1/2 text-center cursor-default bg-black text-white p-5 pt-2.5 pb-2.5">
+			Loading...
+		</span>
 	)
 }

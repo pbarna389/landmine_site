@@ -2,26 +2,37 @@
 
 import type { RefObject } from 'react'
 
-type ModalClassNames = 'default' | 'music'
+// TODO: blogPost Modal Mobile view
+
+type ModalClassNames = 'default' | 'music' | 'blogPost'
 
 const ModalClassNames: { [K in ModalClassNames]: string } = {
 	default:
-		'modal fixed opacity-0 open:opacity-100 transition-opacity w-screen h-screen m-0 p-1 border-0 max-w-none max-h-none',
+		'modal fixed -translate-1/2 top-1/2 left-1/2 w-9/10 h-9/10 m-0 p-1 border-0 max-w-none max-h-none',
 	music:
-		'backdrop:bg-transparent open:backdrop:bg-black/75 open:backdrop-blur-xl brightness-125 top-1/2 left-1/2 -translate-1/2 bg-transparent'
+		'w-full h-full opacity-0  backdrop:bg-transparent open:opacity-100 open:backdrop:bg-black/75 open:backdrop-blur-xl brightness-125 top-1/2 left-1/2 -translate-1/2 bg-transparent',
+	blogPost:
+		'fixed overflow-hidden text-[18px] font-raleway outline-carousel outline-5 opacity-25 scale-y-0 open:scale-y-100 open:opacity-100 backdrop:bg-transparent open:backdrop:bg-black/50 open:backdrop-blur-3xl brightness-125 top-1/2 left-1/2 -translate-1/2 rounded-lg'
 }
 
 type ModalProps = React.PropsWithChildren & {
-	modalClass: Exclude<ModalClassNames, 'default'>
 	ref: RefObject<HTMLDialogElement | null>
+	modalClass?: ModalClassNames
+	onPointerDown?: (e: React.PointerEvent<HTMLDialogElement>) => void
 }
 
-export const Modal = ({ children, ref, modalClass }: ModalProps) => {
+export const Modal = ({
+	children,
+	ref,
+	onPointerDown,
+	modalClass = 'default'
+}: ModalProps) => {
 	const selectedModalClass = ModalClassNames[modalClass]
 
 	return (
 		<dialog
 			closedby="closerequest"
+			onPointerDown={onPointerDown}
 			className={`${ModalClassNames.default} ${selectedModalClass}`}
 			ref={ref}
 		>

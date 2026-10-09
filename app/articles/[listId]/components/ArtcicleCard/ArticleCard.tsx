@@ -1,3 +1,5 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -7,6 +9,7 @@ import type { ArticleCardType } from '../../../types'
 
 type ArticleCardProps = ArticleCardType & {
 	idx: number
+	listId: string
 }
 
 const TAG_CONVERT: { [key: string]: string } = {
@@ -23,11 +26,12 @@ export const ArticleCard = ({
 	date,
 	tags,
 	img,
+	listId,
 	text,
 	idx
 }: ArticleCardProps) => {
 	return (
-		<Link className="cursor-pointer" href={`/blogPost/${id}`}>
+		<Link className="cursor-pointer" href={`/articles/${listId}/${id}`}>
 			<Card className="items-start gap-2.5 max-w-full w-full h-65 lg:h-80 rounded-xl border border-black p-0 pt-0 pr-0 pl-0 pb-0 overflow-hidden group sm:min-w-1/4 lg:w-full lg:min-h-full *:font-montserrat">
 				<Card.Header
 					idx={idx}

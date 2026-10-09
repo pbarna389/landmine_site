@@ -1,12 +1,22 @@
+import { useRouter } from 'next/navigation'
+
 import { useEffect, useRef, useState } from 'react'
 
 import { useBreakpointChecker } from './useBreakpointChecker'
 import { useDisableScrolling } from './useDisableScrolling'
 
-export function useModal() {
+const timeoutTime = 400
+
+//TODO: implement the backward traversal with useParams and useRouter combined instead of just using router.back()
+
+export function useModal({ shouldTravelBack = false }: { shouldTravelBack?: boolean }) {
+	const router = useRouter()
+
 	const [isOpen, setIsOpen] = useState<boolean>(false)
 	const isMobile = useBreakpointChecker()
 	const ref = useRef<HTMLDialogElement>(null)
+
+	const timeoutRef = useRef<ReturnType<typeof setTimeout>>(null)
 
 	useDisableScrolling(isOpen)
 
@@ -15,15 +25,24 @@ export function useModal() {
 			if (!ref.current) return
 			if (e.key === 'Escape' || e.key === 'Esc') {
 				setIsOpen(false)
+
+				if (shouldTravelBack) {
+					if (timeoutRef.current) clearTimeout(timeoutRef.current)
+
+					timeoutRef.current = setTimeout(() => {
+						router.back()
+					}, timeoutTime)
+				}
 			}
 		}
 
 		window.addEventListener('keydown', keyPressCb)
 
 		return () => {
+			if (timeoutRef.current) clearTimeout(timeoutRef.current)
 			window.removeEventListener('keydown', keyPressCb)
 		}
-	}, [ref, isOpen])
+	}, [ref, router, shouldTravelBack])
 
 	const handleModalClick = () => {
 		if (!ref.current) return
@@ -32,8 +51,13 @@ export function useModal() {
 			ref.current.showModal()
 		} else {
 			ref.current.close()
-		}
 
+			if (shouldTravelBack) {
+				timeoutRef.current = setTimeout(() => {
+					router.back()
+				}, timeoutTime)
+			}
+		}
 		setIsOpen((prev) => !prev)
 	}
 
@@ -42,6 +66,7 @@ export function useModal() {
 		isOpen,
 		isMobile,
 		handleModalClick,
-		setIsOpen
+		setIsOpen,
+		modalRouter: router
 	}
 }

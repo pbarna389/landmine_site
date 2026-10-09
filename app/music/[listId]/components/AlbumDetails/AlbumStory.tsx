@@ -12,7 +12,9 @@ type AlbumStoryProp = {
 }
 
 export const AlbumStory = ({ details, text }: AlbumStoryProp) => {
-	const { ref, handleModalClick, isMobile, setIsOpen } = useModal()
+	const { ref, handleModalClick, isMobile, setIsOpen } = useModal({
+		shouldTravelBack: false
+	})
 
 	useEffect(() => {
 		if (!isMobile) {
