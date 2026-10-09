@@ -37,7 +37,7 @@ export const RecursiveContent = ({ data, level }: RecursiveTypeProps) => {
 		if (subData.type === 'paragraph') {
 			return (
 				<ParagraphContent
-					key={`recursive-paragraph-${level + 1}-${subData.content[0].type ?? 'empty'}-${idx}`}
+					key={`recursive-paragraph-${level + 1}-${subData.content[0]?.type ?? 'empty'}-${idx}`}
 					paragraph={subData}
 					level={level + 1}
 				/>
