@@ -2,6 +2,7 @@ export type BlogPostModalType = {
 	content: DocType
 	date: `${number}-${number}-${number}`
 	id: number
+	tags: string[]
 }
 
 type DocType = {

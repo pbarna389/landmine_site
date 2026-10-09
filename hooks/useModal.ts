@@ -7,6 +7,8 @@ import { useDisableScrolling } from './useDisableScrolling'
 
 const timeoutTime = 400
 
+//TODO: implement the backward traversal with useParams and useRouter combined instead of just using router.back()
+
 export function useModal({ shouldTravelBack = false }: { shouldTravelBack?: boolean }) {
 	const router = useRouter()
 

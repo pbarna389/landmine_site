@@ -10,7 +10,7 @@ const ModalClassNames: { [K in ModalClassNames]: string } = {
 	default:
 		'modal fixed -translate-1/2 top-1/2 left-1/2 w-9/10 h-9/10 m-0 p-1 border-0 max-w-none max-h-none',
 	music:
-		'backdrop:bg-transparent open:backdrop:bg-black/75 open:backdrop-blur-xl brightness-125 top-1/2 left-1/2 -translate-1/2 bg-transparent',
+		'w-full h-full opacity-0  backdrop:bg-transparent open:opacity-100 open:backdrop:bg-black/75 open:backdrop-blur-xl brightness-125 top-1/2 left-1/2 -translate-1/2 bg-transparent',
 	blogPost:
 		'fixed overflow-hidden text-[18px] font-raleway outline-carousel outline-5 opacity-25 scale-y-0 open:scale-y-100 open:opacity-100 backdrop:bg-transparent open:backdrop:bg-black/50 open:backdrop-blur-3xl brightness-125 top-1/2 left-1/2 -translate-1/2 rounded-lg'
 }

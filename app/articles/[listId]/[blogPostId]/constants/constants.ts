@@ -26,6 +26,7 @@ export const BLOGPOST_MODAL_CONTENT: BlogPostModalType[] = [
 	{
 		id: 1,
 		date: '2020-09-20',
+		tags: ['theory'],
 		content: {
 			type: 'doc',
 			content: [
@@ -974,6 +975,7 @@ export const BLOGPOST_MODAL_CONTENT: BlogPostModalType[] = [
 	{
 		id: 2,
 		date: '2025-09-15',
+		tags: ['advices'],
 		content: {
 			type: 'doc',
 			content: [
@@ -1309,6 +1311,7 @@ export const BLOGPOST_MODAL_CONTENT: BlogPostModalType[] = [
 	{
 		id: 3,
 		date: '2025-01-29',
+		tags: ['advices', 'facts'],
 		content: {
 			type: 'doc',
 			content: [
@@ -1668,6 +1671,7 @@ export const BLOGPOST_MODAL_CONTENT: BlogPostModalType[] = [
 	{
 		id: 4,
 		date: '2026-04-06',
+		tags: ['advices', 'facts'],
 		content: {
 			type: 'doc',
 			content: [
@@ -2115,6 +2119,7 @@ export const BLOGPOST_MODAL_CONTENT: BlogPostModalType[] = [
 	{
 		id: 5,
 		date: '2018-04-03',
+		tags: ['music'],
 		content: {
 			type: 'doc',
 			content: [
@@ -2389,6 +2394,7 @@ export const BLOGPOST_MODAL_CONTENT: BlogPostModalType[] = [
 	{
 		id: 6,
 		date: '2017-11-13',
+		tags: ['philosophy'],
 		content: {
 			type: 'doc',
 			content: [

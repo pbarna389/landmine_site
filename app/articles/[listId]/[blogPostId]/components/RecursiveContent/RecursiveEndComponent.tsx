@@ -17,16 +17,15 @@ export const RecursiveEndComponent = ({ data }: RecursiveEndComponentProps) => {
 		}
 		case 'image': {
 			return (
-				<div className="w-full flex justify-center">
+				<span className="flex w-full justify-center">
 					<Image
 						src={data.attrs.src}
 						alt={data.attrs.alt}
 						height={300}
 						width={300}
 						loading="eager"
-						style={{ height: 'auto', width: 'auto' }}
 					/>
-				</div>
+				</span>
 			)
 		}
 		default: {
