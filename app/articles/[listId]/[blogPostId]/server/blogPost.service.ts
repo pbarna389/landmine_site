@@ -5,5 +5,5 @@ export const getBlockPostContent = async (id: number) => {
 
 	const result = data.find((post) => post.id === id)
 
-	return result?.content
+	return result
 }

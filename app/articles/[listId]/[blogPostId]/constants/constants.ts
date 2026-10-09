@@ -2,15 +2,978 @@ import Picture06 from '../../assets/alice3.jpg'
 import Picture03 from '../../assets/fules.jpg'
 import Picture02 from '../../assets/gyakterv.jpg'
 import Picture05 from '../assets/alice2.jpg'
+import Picture09 from '../assets/fejes.jpg'
+import Picture07 from '../assets/onism1.jpg'
+import Picture08 from '../assets/onism2.jpg'
+import DefaultPicture from '../assets/play.jpg'
+import Picture13 from '../assets/utr1.png'
+import Picture14 from '../assets/utr2.png'
+import Picture12 from '../assets/utr3.png'
+import Picture10 from '../assets/vlog36.jpg'
+import Picture11 from '../assets/vlog39.jpg'
 import Picture01 from '../assets/vlog47.jpg'
 import Picture04 from '../assets/vlog54.jpg'
 import type { BlogPostModalType } from '../types'
 
 // TODO: clickable image representation
+// TODO: by default, in tiptap, the image config doesn't allow inline placement.
+// TODO: To enable it:
+// TODO: Image.configure({
+// TODO: 	inline: true
+// TODO: })
 
 export const BLOGPOST_MODAL_CONTENT: BlogPostModalType[] = [
 	{
+		id: 1,
+		date: '2020-09-20',
+		content: {
+			type: 'doc',
+			content: [
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							text: 'Ebben a részben felvázolhatjuk, '
+						},
+						{
+							type: 'text',
+							marks: [{ type: 'underline' }],
+							text: 'milyen lehetőségeink vannak az improvizálás terén.'
+						}
+					]
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							text:
+								'Az improvizálásnál vagy szólóírásnál mindig a hangnem, ill. az akkordkör (vagy riff) a meghatározó - ennek megfelelően választhatjuk ki a skáláinkat, amikből dallamokat, figurákat játszhatunk.'
+						}
+					]
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							text: 'A '
+						},
+						{
+							type: 'text',
+							marks: [{ type: 'bold' }],
+							text: 'riffek'
+						},
+						{
+							type: 'text',
+							text:
+								' legtöbbször egyetlen akkordot "festenek le" lineárisan, így könnyű megfelelő skálá(ka)t találni.'
+						},
+						{
+							type: 'hardBreak'
+						},
+						{
+							type: 'text',
+							text:
+								'Az alábbi példán egy rock-alapú riffre játszom (az alaphang a D, ill. annak terce és kisszeptime szerepel még, azaz fisz és c). A mixolíd (N3, K7) a legegyértelműbb választás; de ráfér még a d-lá pentaton is, amivel (főleg a K3/N3 súrlódása miatt) egy blues-osabb jelleget adhatunk neki.'
+						}
+					]
+				},
+				{
+					type: 'image',
+					attrs: { src: DefaultPicture.src, alt: 'lejátszás gomb' }
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							text:
+								'A fenti azért ritkább eset, nagy százalékban alap dúr/moll hangneműek a riffek, és a skálák így még egyszerűbbek: pentatonok, hétfokú dúr/moll.'
+						}
+					]
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							marks: [{ type: 'bold' }],
+							text: 'Akkordkör'
+						},
+						{
+							type: 'text',
+							text:
+								' esetén még konkrétabb a helyzet, mert az akkordokhoz egyből kapcsolódnak a hozzájuk illő skálák.'
+						},
+						{
+							type: 'hardBreak'
+						},
+						{
+							type: 'text',
+							text: 'Foglaljuk össze elsőként, milyen akkordokra milyen hangsorok felelnek meg!'
+						},
+						{
+							type: 'hardBreak'
+						},
+						{
+							type: 'text',
+							text:
+								'(A könnyebb átláthatóság miatt csak a leggyakrabban használt lehetőségeket vesszük számba)'
+						}
+					]
+				},
+				{
+					type: 'image',
+					attrs: { src: Picture12.src, alt: 'akkord-skála tábálzat' }
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							text:
+								'Téma- és hangulatfüggő, mennyire "törünk szét" egy-egy akkordkört. Van, hogy az egyszerűsítés elvét érdemes követni (azaz egyetlen skálát használni végig, hangnem szerint); máskor pedig belefér az is, ha az egyes akkordokat külön-külön fejezzük ki..'
+						}
+					]
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							text: 'Gyors példaként adott egy akkordkör:'
+						},
+						{
+							type: 'hardBreak'
+						},
+						{
+							type: 'text',
+							marks: [{ type: 'textStyle', attrs: { fontSize: '20px' } }],
+							text: 'C, Em, C, Em, G, D, Em, Am.'
+						},
+						{
+							type: 'hardBreak'
+						},
+						{
+							type: 'text',
+							text:
+								'Itt pl. mehet rá simán egy e-moll skála (ahol C akkordon az e-moll skála lídnek felel meg, D akkordon mixolídnek - de a hangnemi gyökér miatt az egészet e-mollnak halljuk, és nem érzünk modálisokat).'
+						}
+					]
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							text:
+								'Ahhoz, hogy összetettebb akkordmenetekre improvizálni/szólózni tudjunk, biztosan kell ismernünk a fenti táblázatot (lehetőleg számolgatás nélkül); valamint hangszerünkön is magabiztosan kell tudnunk használni őket. Ez természetesen megkíván némi előkészítést, ill. sok-sok gyakorlást... itt most csak az elmélti háttérre nézünk lehetőségeket.'
+						},
+						{
+							type: 'hardBreak'
+						},
+						{
+							type: 'text',
+							text: 'Haladjunk tehát sorban, '
+						},
+						{
+							type: 'text',
+							marks: [{ type: 'bold' }],
+							text: 'kezdjük a legegyszerűbb lépcsőfokokkal'
+						},
+						{
+							type: 'text',
+							text: ', és fokozatosan építsük fel a fentieket!'
+						}
+					]
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							text:
+								'Elsőként nem is feltétlenül csak skálákkal lehet kezdeni; nagyon hasznos tud lenni, ha egy harmóniamenet egyes akkordjait külön-külön is ki tudjuk fejezni. Erre jók az '
+						},
+						{
+							type: 'text',
+							marks: [{ type: 'bold' }],
+							text: ' akkordbontások (arpeggiók).'
+						},
+						{
+							type: 'hardBreak'
+						},
+						{
+							type: 'text',
+							text: 'Az arpeggiók pontosan az akkord hangjait tartalmazzák.'
+						},
+						{
+							type: 'hardBreak'
+						},
+						{
+							type: 'text',
+							text: 'Az alábbi példán kizárólag bontásokat használok.'
+						},
+						{
+							type: 'hardBreak'
+						},
+						{
+							type: 'text',
+							text: 'Az akkordkör: '
+						},
+						{
+							type: 'text',
+							marks: [{ type: 'textStyle', attrs: { fontSize: '20px' } }],
+							text: 'Cm7-F7-Bbmaj7 (azaz II-V-I).'
+						}
+					]
+				},
+				{
+					type: 'image',
+					attrs: { src: DefaultPicture.src, alt: 'link youtube videóra' }
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							text: 'Ezekre aztán már könnyebb "felhúzni" a skálákat, pontosabban '
+						},
+						{
+							type: 'text',
+							marks: [{ type: 'bold' }],
+							text: 'vegyíteni a kétféle megközelítést'
+						},
+						{
+							type: 'text',
+							text: ' (lineáris-horizontális).'
+						},
+						{
+							type: 'hardBreak'
+						},
+						{
+							type: 'text',
+							text:
+								'Lent ugyanerre az akkordkörre játszom vegyesen. Skálák tekintetében az alap bé-dúr mellett az I. fokú Bbmaj7 akkordra lídet használok.'
+						},
+						{
+							type: 'hardBreak'
+						},
+						{
+							type: 'text',
+							text:
+								'(A bé-dúr skála Cm7-re vetítve egy c-dórnak, F7-re vetítve egy f-mixolídnak felel meg, de a bé-dúr hangnemi centrum miatt itt egyszerűen b-dúrnak halljuk a skálát)'
+						}
+					]
+				},
+				{
+					type: 'image',
+					attrs: { src: DefaultPicture.src, alt: 'youtube link' }
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							marks: [{ type: 'bold' }],
+							text: 'Stílusfüggő'
+						},
+						{
+							type: 'text',
+							text:
+								', mi fér még rá egy-egy akkordkörre. Jazzesebbé tehetjük pl. a hangzást, ha kromatikus átvezetőket, körülírásokat rakunk a szólóba. Ha a kíséretet szabadabban értelmezzük, az alterált akkordokkal (pl. F7#5#9) és skálákkal is eljátszhatunk..'
+						}
+					]
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							text: 'Fontos még, hogy akkordváltásoknál, kitartott hangoknál '
+						},
+						{
+							type: 'text',
+							marks: [{ type: 'bold' }],
+							text: 'jó helyekre lépjünk'
+						},
+						{
+							type: 'text',
+							text:
+								' A legjobbak az akkordhangok (ezért is jó látni a bontásokat, akkordképeket), esetleg a szekund vagy a "hatos" - helyzettől függ.'
+						}
+					]
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							marks: [{ type: 'underline' }],
+							text: 'További ötletek:'
+						},
+						{
+							type: 'hardBreak'
+						}
+					]
+				},
+				{
+					type: 'bulletList',
+					content: [
+						{
+							type: 'listItem',
+							content: [
+								{
+									type: 'paragraph',
+									content: [
+										{
+											type: 'text',
+											text:
+												'igazodhatunk az adott témához, stílushoz, megnézhetjük, mi az, amit hangulatban elbír és mi az, amit nem..'
+										}
+									]
+								}
+							]
+						},
+						{
+							type: 'listItem',
+							content: [
+								{
+									type: 'paragraph',
+									content: [
+										{
+											type: 'text',
+											marks: [{ type: 'bold' }],
+											text: 'a skála csak eszköz'
+										},
+										{
+											type: 'text',
+											text:
+												', alárendelve a dallamoknak, a hangulatoknak, a kifejezéseknek, a mondanivalónak..'
+										}
+									]
+								}
+							]
+						},
+						{
+							type: 'listItem',
+							content: [
+								{
+									type: 'paragraph',
+									content: [
+										{
+											type: 'text',
+											text:
+												'nem érdemes gyömöszölni túl sokféle skálát egy körbe, attól csak zsúfoltabb és darabosabb lesz, semmiképp sem izgalamsabb..'
+										}
+									]
+								}
+							]
+						},
+						{
+							type: 'listItem',
+							content: [
+								{
+									type: 'paragraph',
+									content: [
+										{
+											type: 'text',
+											text:
+												'elválaszthatjuk (szünetekkel) az egyes részeket, különálló mondatokban gondolkodjunk..'
+										}
+									]
+								}
+							]
+						},
+						{
+							type: 'listItem',
+							content: [
+								{
+									type: 'paragraph',
+									content: [
+										{
+											type: 'text',
+											text: 'a karakteres, frappáns motívumok a fontosak, nem a minél több hang..'
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					type: 'heading',
+					attrs: { level: 2 },
+					content: [
+						{
+							type: 'text',
+							text: 'Akkordszólók'
+						}
+					]
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							text: 'Amikor '
+						},
+						{
+							type: 'text',
+							marks: [{ type: 'bold' }],
+							text: 'az akkordokat és a skálákat vegyítjük'
+						},
+						{
+							type: 'text',
+							text: ', akkordszólókat kapunk.'
+						},
+						{
+							type: 'hardBreak'
+						},
+						{
+							type: 'text',
+							text:
+								'Akkordszólók lehetnek rövidke kis motívumok, vagy egész darabok is. Lényeg, hogy harmóniákat is kifejezzünk, és mellettük (vagy ezzel együtt) dallamokat is kapjunk.'
+						}
+					]
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							text: 'Nézzünk néhány variációt a fenti körre (Cm7-F7-Bbmaj):'
+						}
+					]
+				},
+				{
+					type: 'orderedList',
+					content: [
+						{
+							type: 'listItem',
+							content: [
+								{
+									type: 'paragraph',
+									content: [
+										{
+											type: 'text',
+											text: 'csak egy-egy hanggal színezzük az akkordokat'
+										}
+									]
+								}
+							]
+						},
+						{
+							type: 'listItem',
+							content: [
+								{
+									type: 'paragraph',
+									content: [
+										{
+											type: 'text',
+											text: 'konkrétabb dallamokkal színezzük'
+										}
+									]
+								}
+							]
+						},
+						{
+							type: 'listItem',
+							content: [
+								{
+									type: 'paragraph',
+									content: [
+										{
+											type: 'text',
+											text:
+												'vegyesen használjuk (egy-egy akkordot skálákkal/arpeggiókkal fejezünk ki)'
+										}
+									]
+								}
+							]
+						},
+						{
+							type: 'listItem',
+							content: [
+								{
+									type: 'paragraph',
+									content: [
+										{
+											type: 'text',
+											text: 'a különféle akkordfordítások legmagasabb hangjai rajzolnak ki dallamot'
+										}
+									]
+								}
+							]
+						},
+						{
+							type: 'listItem',
+							content: [
+								{
+									type: 'paragraph',
+									content: [
+										{
+											type: 'text',
+											text: 'szekvenciákat használunk'
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					type: 'image',
+					attrs: { src: DefaultPicture.src, alt: 'youtube link' }
+				},
+				{
+					type: 'heading',
+					attrs: { level: 2 },
+					content: [
+						{
+							type: 'text',
+							text: 'Hangnemváltások'
+						}
+					]
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							text:
+								'Ha egy-egy téma után valami újat (hangulatot, váltást) szeretnénk behozni, izgalmas lehetősgeket nyújthatnak a hangnemváltások.'
+						},
+						{
+							type: 'hardBreak'
+						},
+						{
+							type: 'text',
+							text:
+								'Hangnemet váltani bármikor és bárhogyan lehet, nincs rá különösebb szabály.. lehet valamilyen ritmikai tördeléssel, vagy harmónia-alapon is. Nézzünk azért néhány tippet! ('
+						},
+						{
+							type: 'text',
+							marks: [{ type: 'underline' }],
+							text: 'Próbáljuk ki'
+						},
+						{
+							type: 'text',
+							text: ' őket hangszerünkön!)'
+						}
+					]
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							text: '➠ Ha a hangnemváltás '
+						},
+						{
+							type: 'text',
+							marks: [{ type: 'bold' }],
+							text: 'előkészített'
+						}
+					]
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							text:
+								'Előkészítés alatt azt érthetjük, hogy harmóniailag értelmezhetően vezetjük át a két hangnemet.'
+						},
+						{
+							type: 'hardBreak'
+						},
+						{
+							type: 'text',
+							text:
+								'Vegyük a fenti akkordkört (Cm7-F7-Bbmaj7). Gondolhatunk úgy az egyes akkordokra, hogy azok '
+						},
+						{
+							type: 'text',
+							marks: [{ type: 'bold' }],
+							text: 'többféle funkcióval'
+						},
+						{
+							type: 'text',
+							text:
+								' is bírhatnak. Major7 akkord hol is fordulhat elő egy hangnemben? I. és IV. fokon. A Bbmaj7 akkordot vehetjük tehát kettős funkciójú akkordnak: az I. fok (tonika) mellett lehetne akár IV. fok is (szubdomináns) - azaz egy F-dúr hangnem IV. foka.'
+						}
+					]
+				},
+				{
+					type: 'image',
+					attrs: { src: Picture13.src, alt: 'hangnem áthidalás magyarázatat' }
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							text:
+								'Az elválasztó akkord tehát a Bbmaj7, amely a Bb-dúr (II-V-I) és az F-dúr (IV-II-V-I) hangnemeket hidalja át.'
+						}
+					]
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							marks: [{ type: 'bold' }],
+							text: '➠ Funkciót váltunk'
+						},
+						{
+							type: 'text',
+							text: ' azonos akkorddal'
+						}
+					]
+				},
+				{
+					type: 'bulletList',
+					content: [
+						{
+							type: 'listItem',
+							content: [
+								{
+									type: 'paragraph',
+									content: [
+										{
+											type: 'text',
+											marks: [{ type: 'textStyle', attrs: { fontSize: '20px' } }],
+											text: 'Cm7-F7-Bbmaj7- | -Bb7-Ebmaj7'
+										},
+										{
+											type: 'text',
+											text: ' (V-I esz-dúrban)'
+										}
+									]
+								}
+							]
+						},
+						{
+							type: 'listItem',
+							content: [
+								{
+									type: 'paragraph',
+									content: [
+										{
+											type: 'text',
+											marks: [{ type: 'textStyle', attrs: { fontSize: '20px' } }],
+											text: 'Cm7-F7-Bbmaj7-|-Bbm7-Eb7-Abmaj7'
+										},
+										{
+											type: 'text',
+											text: ' (II-V-I asz-dúrban)'
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							marks: [{ type: 'bold' }],
+							text: '➠ Váltódomináns'
+						}
+					]
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							text:
+								'Az I. fokra való feloldás helyett a Bb akkordot az új hangnem jegyében egyből domináns (V.) fokként gondoljuk el.'
+						},
+						{
+							type: 'hardBreak'
+						},
+						{
+							type: 'text',
+							text:
+								'Jellegzetes lépés, hogy két dom7 akkord kerül egymás mellé, mintegy láncban váltják egymást..'
+						}
+					]
+				},
+				{
+					type: 'image',
+					attrs: { src: Picture14.src, alt: 'váltódomináns magyarázat' }
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							marks: [{ type: 'bold' }],
+							text: '➠ Tritonusz-csere'
+						}
+					]
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							text:
+								'Az F7 nem oldódik fel, hanem annak tritonuszcseréjét beiktatva új hangnembe kerülünk.'
+						},
+						{
+							type: 'hardBreak'
+						},
+						{
+							type: 'text',
+							text: '(Tritonusz=Sz5, vagyis F7 esetén H7)'
+						}
+					]
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							text: '➠ De hangnemet válthatunk teljesen '
+						},
+						{
+							type: 'text',
+							marks: [{ type: 'bold' }],
+							text: 'spontán'
+						},
+						{
+							type: 'text',
+							text: ' is, mindenféle előkészítés nélkül...'
+						}
+					]
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							text: 'Legegyszerűbb módja, ha rokon hangnemekbe (1-2 hang eltérés) lépünk át.'
+						},
+						{
+							type: 'hardBreak'
+						},
+						{
+							type: 'text',
+							marks: [{ type: 'textStyle', attrs: { fontSize: '20px' } }],
+							text: 'Pl. e-moll → a-moll vagy F-dúr → Bb-dúr'
+						}
+					]
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							text:
+								'... de még ez sem feltétel - ha ügyesen van megoldva lehet, egészen távoli hangnem is.'
+						}
+					]
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							marks: [{ type: 'bold' }],
+							text: '➠ Hangnemi kitérés'
+						}
+					]
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							marks: [{ type: 'textStyle', attrs: { fontSize: '20px' } }],
+							text:
+								'A következő kör egy jazzes-menet C-dúrban, ahol a Db9 az V. fokú G7 tritonuszcserés akkordja, a Dm7 a II. fok; az Eb9 pedig szintén egy tritonuszcserés megoldás: A7 cseréje - utóbbi a Dm7 V. foka (=körön belüli V-I lépés d-mollban).'
+						},
+						{
+							type: 'hardBreak'
+						},
+						{
+							type: 'text',
+							text:
+								'Ez ugyan nem minősül hangnemváltásnak, csak egy kis kitérés - viszont figyeljük meg, milyen szépen ereszkedik az akkordok basszusa kromatikusan!'
+						}
+					]
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							marks: [{ type: 'textStyle', attrs: { fontSize: '20px' } }],
+							text: 'Cmaj7-Eb9-|-Dm7-Db9-|-Cmaj7 |'
+						}
+					]
+				},
+				{
+					type: 'heading',
+					attrs: { level: 2 },
+					content: [
+						{
+							type: 'text',
+							text: 'Hogyan építsünk fel egy szólót?'
+						}
+					]
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							text: 'Természetesen erre sincs általános recept, '
+						},
+						{
+							type: 'text',
+							marks: [{ type: 'bold' }],
+							text: 'minden a környezettől függ'
+						},
+						{
+							type: 'text',
+							text:
+								'... Egyrészt illenie kell szólóinknak az alapunk stílusához, tempójához, hangulatához, ritmikai lüktetéséhez. Ezek a legfontosabbak.'
+						},
+						{
+							type: 'hardBreak'
+						},
+						{
+							type: 'text',
+							text:
+								'A skálák kikeresése csak az első lépés - viszont ebből már könnyű elindulni.'
+						}
+					]
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							text: 'Rövidebb szólók esetén mindenképp jó, ha van egy '
+						},
+						{
+							type: 'text',
+							marks: [{ type: 'bold' }],
+							text: 'dallamosabb alap-motívum'
+						},
+						{
+							type: 'text',
+							text:
+								', amit aztán szépen tovább lehet fűzni, de akár el is lehet vinni teljesen más irányokba - megint csak hangulattól függ, mit hozunk ki egy-egy szólóból. Hosszabb impro-k esetén érdekesebb lehet pl. a '
+						},
+						{
+							type: 'text',
+							marks: [{ type: 'bold' }],
+							text: 'struktúra'
+						},
+						{
+							type: 'text',
+							text:
+								'. Az első néhány ütem (felvezető szakasz) visszafogottabb dallamait követhetik az egyre összetettebbek; a tetőpontra érve felvihetjük dallamíveinket magasabb'
+						},
+						{
+							type: 'hardBreak'
+						},
+						{
+							type: 'text',
+							text: 'hangtartományokba, dolgozhatunk gyorsabb, technikásabb figurákkal..'
+						}
+					]
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							text:
+								'Egy-egy motívum is ezerféle lehet; léteznek bevezető motívumok, lezárók, felvezetők, fokozók, tetőpontok, stb... Minden szólóban hasznosak a '
+						},
+						{
+							type: 'text',
+							marks: [{ type: 'bold' }],
+							text: 'visszatérő motívumok'
+						},
+						{
+							type: 'text',
+							text: ', az apró (akár ritmikai, akár dallami) '
+						},
+						{
+							type: 'text',
+							marks: [{ type: 'bold' }],
+							text: 'ismétlések'
+						},
+						{
+							type: 'text',
+							text:
+								', mert ezek kapaszkodót jelenthetnek a hallgatóknak, és adnak a szólónak egy értelmezhető szerkezetet, ill. akár keretet is.'
+						}
+					]
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							text: 'Érdemes lehet sok szólót '
+						},
+						{
+							type: 'text',
+							marks: [{ type: 'bold' }],
+							text: 'végigelemezni'
+						},
+						{
+							type: 'text',
+							text:
+								', megtanulni, rengeteg ötletet meríthetünk belőlük. Megfigyelhetjük, hogyan használnak ritmikákat, variációkat, ismétléseket, hogyan fejtik ki az alapdallamokat, hogyan érnek el a tetőpontokig; és persze, hogy hogyan bánnak a skálákkal, milyen hangokra érkeznek..'
+						},
+						{
+							type: 'hardBreak'
+						},
+						{
+							type: 'text',
+							text:
+								'Szólóírás vagy impro gyakorlásához hasznosak lehetnek a különféle stílusú és tempójú '
+						},
+						{
+							type: 'text',
+							marks: [{ type: 'underline' }],
+							text: 'backing trackek'
+						},
+						{
+							type: 'text',
+							text: ' - melyekhez minta-szólókat is találsz.'
+						}
+					]
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							text: 'További jó zenélést! :)'
+						}
+					]
+				}
+			]
+		}
+	},
+	{
 		id: 2,
+		date: '2025-09-15',
 		content: {
 			type: 'doc',
 			content: [
@@ -218,6 +1181,7 @@ export const BLOGPOST_MODAL_CONTENT: BlogPostModalType[] = [
 						},
 						{
 							type: 'text',
+							marks: [{ type: 'textStyle', attrs: { backgroundColor: '#f9e601' } }],
 							text: 'A cikk végén, a videóban '
 						},
 						{
@@ -343,7 +1307,367 @@ export const BLOGPOST_MODAL_CONTENT: BlogPostModalType[] = [
 		}
 	},
 	{
+		id: 3,
+		date: '2025-01-29',
+		content: {
+			type: 'doc',
+			content: [
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							text:
+								'A jó zenei hallás a zenélés bármely területén hatalmas előny. Ha nem csak értjük, hanem érezzük is a zenei folyamatokat, az sokkal spontánabbá tudja tenni a játékot, az improvizálást, és a zeneírást egyaránt.'
+						},
+						{
+							type: 'hardBreak'
+						},
+						{
+							type: 'text',
+							text:
+								'Ennek a gyakorlásnak az egyik fontos és ajánlott eleme a hallás utáni leszedés.'
+						}
+					]
+				},
+				{
+					type: 'image',
+					attrs: {
+						src: Picture09.src,
+						alt: 'A FEJES',
+						title: 'Marshall fejhallgató a jobb halláskárosodás reményében'
+					}
+				},
+				{
+					type: 'heading',
+					attrs: { level: 2 },
+					content: [
+						{
+							type: 'text',
+							text: 'Bevezető gyakorlatok'
+						}
+					]
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							text:
+								'Mielőtt nekiugranánk egy teljes dal vagy szóló, netán akkordkör lefülelésének, érdemes lehet felvezetni a folyamatot egy kis '
+						},
+						{
+							type: 'text',
+							marks: [{ type: 'bold' }],
+							text: 'izolált gyakorlással.'
+						},
+						{
+							type: 'text',
+							text:
+								' Ha magabiztosak vagyunk az apró részletekben, sokkal jobb eséllyel fog sikerülni "nagyban" is.'
+						},
+						{
+							type: 'hardBreak'
+						},
+						{
+							type: 'text',
+							text:
+								'Feljátszhatunk magunknak hangközöket, kisebb dallamokat, ritmusokat, majd ezeket visszafejthetjük hallás után - végül az elején feljegyzett "megoldókulcsunkkal" ellenőrizhetjük.'
+						},
+						{
+							type: 'hardBreak'
+						},
+						{
+							type: 'text',
+							text:
+								'Gyakorolhatunk külön akkordmeneteket - minél több ilyet csinálunk, annál jobban "megmaradnak fülben" fordulatok, sémák.'
+						},
+						{
+							type: 'hardBreak'
+						},
+						{
+							type: 'text',
+							text:
+								'Ha bizonyos elemek nehezen mennek, legalább tudjuk, milyen területekre kell több figyelmet fordítanunk.'
+						}
+					]
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							text: 'A sikerélmény ezen a téren is igen fontos, tehát '
+						},
+						{
+							type: 'text',
+							marks: [{ type: 'bold' }],
+							text: 'ne féljünk minél egyszerűbb dalokkal kezdeni.'
+						},
+						{
+							type: 'text',
+							text:
+								' Egy párakkordos sláger, egy kisebb gitárdallam, egy könnyed rock dal több, mint megfelelő kezdetben. Ha már belejöttünk, folyamatosan jöhetnek a nehezebbek.'
+						}
+					]
+				},
+				{
+					type: 'heading',
+					attrs: { level: 2 },
+					content: [
+						{
+							type: 'text',
+							text: 'Néhány tipp, amik segíthetnek elindulni'
+						}
+					]
+				},
+				{
+					type: 'orderedList',
+					content: [
+						{
+							type: 'listItem',
+							content: [
+								{
+									type: 'paragraph',
+									content: [
+										{
+											type: 'text',
+											text: 'Dallamok, szólók esetén:'
+										}
+									]
+								},
+								{
+									type: 'bulletList',
+									content: [
+										{
+											type: 'listItem',
+											content: [
+												{
+													type: 'paragraph',
+													content: [
+														{
+															type: 'text',
+															text: 'a hangnem megfejtése megmutatja a '
+														},
+														{
+															type: 'text',
+															marks: [{ type: 'bold' }],
+															text: 'skálát'
+														},
+														{
+															type: 'text',
+															text: ', amin mozog, így tudjuk, egyáltalán hol kell keresgélni'
+														}
+													]
+												}
+											]
+										},
+										{
+											type: 'listItem',
+											content: [
+												{
+													type: 'paragraph',
+													content: [
+														{
+															type: 'text',
+															text:
+																'loop-olhatunk pár hangos kis részleteket, és lassíthatunk is (a technika a barátunk)'
+														},
+														{
+															type: 'text',
+															text:
+																'ha egyből rájátszuk a zenére, jobban halljuk az esetleges eltéréseket'
+														}
+													]
+												}
+											]
+										},
+										{
+											type: 'listItem',
+											content: [
+												{
+													type: 'paragraph',
+													content: [
+														{
+															type: 'text',
+															text: 'később figyelhetünk külön a '
+														},
+														{
+															type: 'text',
+															marks: [{ type: 'bold' }],
+															text: 'hangképzés'
+														},
+														{
+															type: 'text',
+															text: 'finomságaira (hajlítások, hammer-pull technikák, stb)'
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							type: 'listItem',
+							content: [
+								{
+									type: 'paragraph',
+									content: [
+										{
+											type: 'text',
+											text: 'Akkordkörök, riffek esetén:'
+										}
+									]
+								},
+								{
+									type: 'bulletList',
+									content: [
+										{
+											type: 'listItem',
+											content: [
+												{
+													type: 'paragraph',
+													content: [
+														{
+															type: 'text',
+															text: 'ha a '
+														},
+														{
+															type: 'text',
+															marks: [{ type: 'bold' }],
+															text: 'basszusokra'
+														},
+														{
+															type: 'text',
+															text: 'figyelünk, az a legtöbb esetben megmutatja az akkordok alaphangait'
+														}
+													]
+												}
+											]
+										},
+										{
+											type: 'listItem',
+											content: [
+												{
+													type: 'paragraph',
+													content: [
+														{
+															type: 'text',
+															text:
+																'egy kis elméleti jártassággal a hangnemből is lehet következtetni az akkordokra, ill. azok minőségeire'
+														}
+													]
+												}
+											]
+										},
+										{
+											type: 'listItem',
+											content: [
+												{
+													type: 'paragraph',
+													content: [
+														{
+															type: 'text',
+															text:
+																'szokatlanabb akkordokat megpróbálhatunk elemeire bontani, akár hangközökre, hangokra is'
+														}
+													]
+												}
+											]
+										},
+										{
+											type: 'listItem',
+											content: [
+												{
+													type: 'paragraph',
+													content: [
+														{
+															type: 'text',
+															text:
+																'a riffek általában valamilyen skálán mozognak, esetleg akkord-részletekből dolgoznak, tehát érdemes'
+														},
+														{
+															type: 'text',
+															marks: [{ type: 'bold' }],
+															text: 'összefüggéseket keresni'
+														},
+														{
+															type: 'text',
+															text: ' ezekkel'
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							text:
+								'Összességében az izolált gyakorlás és a zeneelméleti megértés, következtetés segíthetik a folyamatot, de minél több leszedésen vagyunk már túl, annál kevésbé lesz szükség mankókra. A '
+						},
+						{
+							type: 'text',
+							marks: [{ type: 'bold' }],
+							text: 'zenei sémák, fordulatok'
+						},
+						{
+							type: 'text',
+							text:
+								' épp úgy tudnak rögzülni, akár egy dallam. Egyszóval akármilyen meglepő is, itt is a gyakorlás hozza meg az eredményt és a sikereket ;)'
+						}
+					]
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							marks: [{ type: 'textStyle', attrs: { backgroundColor: '#F29A9A' } }],
+							text: 'A lenti videókban'
+						},
+						{
+							type: 'text',
+							text: ' egy-egy ilyen folyamatot mutatok be részleteiben.'
+						}
+					]
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'image',
+							attrs: {
+								src: Picture10.src,
+								alt: 'Riff-leszedési technikák videó link',
+								title: ''
+							}
+						},
+						{
+							type: 'image',
+							attrs: {
+								src: Picture11.src,
+								alt: 'Akkord-leszedési technikák videó link',
+								title: ''
+							}
+						}
+					]
+				}
+			]
+		}
+	},
+	{
 		id: 4,
+		date: '2026-04-06',
 		content: {
 			type: 'doc',
 			content: [
@@ -540,7 +1864,23 @@ export const BLOGPOST_MODAL_CONTENT: BlogPostModalType[] = [
 						{
 							type: 'text',
 							text:
-								'), mert ő régen nagy kedvencem volt. Ez persze nem egy kezdő szintű szóló.. de az alapvető elvek nehézségi szintektől függetlenül ugyanazok. A folyamatot a lenti videóban követheted végig.'
+								'), mert ő régen nagy kedvencem volt. Ez persze nem egy kezdő szintű szóló.. de az alapvető elvek nehézségi szintektől függetlenül ugyanazok. A folyamatot '
+						},
+						{
+							type: 'text',
+							marks: [
+								{
+									type: 'textStyle',
+									attrs: {
+										backgroundColor: '#FFD700'
+									}
+								}
+							],
+							text: 'a lenti videóban'
+						},
+						{
+							type: 'text',
+							text: ' követheted végig.'
 						},
 						{
 							type: 'hardBreak'
@@ -774,6 +2114,7 @@ export const BLOGPOST_MODAL_CONTENT: BlogPostModalType[] = [
 	},
 	{
 		id: 5,
+		date: '2018-04-03',
 		content: {
 			type: 'doc',
 			content: [
@@ -1039,6 +2380,216 @@ export const BLOGPOST_MODAL_CONTENT: BlogPostModalType[] = [
 							type: 'text',
 							text:
 								'Ajánlom bárkinek, aki szereti a progresszívebb, sajátos hangulatú rockzenéket.'
+						}
+					]
+				}
+			]
+		}
+	},
+	{
+		id: 6,
+		date: '2017-11-13',
+		content: {
+			type: 'doc',
+			content: [
+				{
+					type: 'image',
+					attrs: {
+						src: Picture07.src,
+						alt: 'A magányos kondenzátor mikrofon magában lamentál az élet hasztalanságán',
+						title: 'Önismeret - tuti, hogy az éneklés nekem való? :D'
+					}
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							text: 'A különféle kultúrákban mindig is megvoltak a '
+						},
+						{
+							type: 'text',
+							marks: [{ type: 'bold' }],
+							text: 'sajátságos utak'
+						},
+						{
+							type: 'text',
+							text:
+								' önmagunk mélyebb, valódibb megismeréséhez. Keleten a direktebb utaknak több száz éves hagyományaik vannak (mint pl. a meditációk, a különböző ezoterikus technikák), sőt az egyik legősibb tan, a buddhizmus középpontjában is épp ez az igény áll. Ilyesmi utak Európában is léteztek, de a modernkori kereszténység és a tudományos világkép kibontakozása háttérbe szorította őket. Egyedüli kivételként talán a pszichológiát lehetne említeni, amit a materialista uralom mégis legalizált (talán, mert belátták, hogy a psziché nem kezelhető kizárólag anyagi módszerekkel).'
+						}
+					]
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							text: 'Ettől függetlenül '
+						},
+						{
+							type: 'text',
+							marks: [{ type: 'bold' }],
+							text: 'az önismeret nem kíván feltétlenül ilyen direkt eszközöket'
+						},
+						{
+							type: 'text',
+							text:
+								'. Vannak közvetett utak is, amelyek ugyanolyan hatékonyak, sőt, jóval tapasztalatibbak, mint a fent említett technikák. Ilyen pl. a művészet.'
+						},
+						{
+							type: 'hardBreak'
+						},
+						{
+							type: 'text',
+							text:
+								'A művészet nagyjából egykorú az emberiséggel. Az igény, hogy önmagunkat felfedezzük és kifejezzük, egy belénk kódolt program. '
+						},
+						{
+							type: 'text',
+							marks: [{ type: 'bold' }],
+							text:
+								'A művészetben való elmélyülés analogikusan az önmagunkba mélyedésnek felel meg.'
+						},
+						{
+							type: 'hardBreak'
+						},
+						{
+							type: 'text',
+							text:
+								'Mondhatni, a kettő ugyanaz, s együtt történik - amihez a művészeti forma egy remek '
+						},
+						{
+							type: 'text',
+							marks: [{ type: 'italic' }],
+							text: 'eszköz.'
+						}
+					]
+				},
+				{
+					type: 'heading',
+					attrs: { level: 2 },
+					content: [
+						{
+							type: 'text',
+							text: 'Forma és tartalom'
+						}
+					]
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							text: 'A fenti aspektus hamarosan '
+						},
+						{
+							type: 'text',
+							marks: [{ type: 'bold' }],
+							text: 'tartalmi részekkel egészülhet ki'
+						},
+						{
+							type: 'text',
+							text:
+								', ami folyamatosan mélyülhet. Itt az intellektus már háttérbe szorul, helyét valami megfoghatatlanabb veszi át: az inspiráció, az átélés, az intuíció, a kreativitás, stb. A művészeti tartalom dimenziója az érzelem, munkája egyre kevésbé kontrollált.'
+						},
+						{
+							type: 'hardBreak'
+						},
+						{
+							type: 'text',
+							text:
+								'A tartalmi szféra újabb önismereti rétegeket tudatosít: finomabb érzelmeket, hangulatokat fed fel, vagy alakít ki bennünk. Néha olyan dolgokat is felszínre hoz, amik a tudatküszöb alatt szunnyadtak elfedve. Utóbbiak lehetnek kifejezetten örömteliek - de akár félelmetesek vagy taszítóak is. A tartalmi szint mindig hordoz magában drámaiságot, '
+						},
+						{
+							type: 'text',
+							marks: [{ type: 'bold' }],
+							text: 'hatása felkavaró lehet'
+						},
+						{
+							type: 'text',
+							text:
+								'az érett befogadó számára (is). Viszont az önismeret erről szól: minden, ami vagyok, vagy ami bennem van, azzal őszintén szembenézni, megismerni és elfogadni.'
+						}
+					]
+				},
+				{
+					type: 'image',
+					attrs: {
+						src: Picture08.src,
+						alt: 'kép egy kognitív viselkedéstanhoz köthető mindmapről',
+						title: 'kép egy kognitív viselkedéstanhoz köthető mindmapről'
+					}
+				},
+				{
+					type: 'heading',
+					attrs: { level: 2 },
+					content: [
+						{
+							type: 'text',
+							text: 'Mi vár az út végén...?'
+						}
+					]
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							text: 'A művészet, mint út (tao) idáig vezethet el. '
+						},
+						{
+							type: 'text',
+							marks: [{ type: 'bold' }],
+							text: 'A művészet az emberé, és az emberről szól.'
+						},
+						{
+							type: 'text',
+							text:
+								' Elsősorban a személyről. Beleértve annak minden mentális és érzelmi lényegét.'
+						},
+						{
+							type: 'hardBreak'
+						},
+						{
+							type: 'text',
+							text:
+								'Ahogy mélyül a tartalmi dimenzió, különféle tulajdonságaink, érzelmeink, hangulataink egyre megfoghatatlanabbakká válnak. Egy-egy kifejezés rájuk aggatása már közel sem fejezi ki teljességüket és sokrétűségüket. Nézőpontiságuk eltűnik. Mintha kezdenének egymásba olvadni, eggyé válni. Az "önmagunk", amit a művészettel, mint eszközzel és úttal mélyebben megismertünk, kezd transzparenssé válni.'
+						}
+					]
+				},
+				{
+					type: 'paragraph',
+					content: [
+						{
+							type: 'text',
+							text:
+								'A zene a forma szintjén eszköz. A tartalom szintjén út és eszköz egyszerre - és végül "kijárat". A fejlődés, a szándék, a stílus: forma; a belső küzdelem, az elengedés, a felismerés: tartalom.'
+						},
+						{
+							type: 'hardBreak'
+						},
+						{
+							type: 'text',
+							text:
+								'Ami ezen túl van, oda a művészet már nem érhet el. Ott a művészet már nem létezik, s a személy is feloldódott. Az "önismeret" oda vezet, ami ezután is fennmarad, s ami mindig is voltunk. '
+						},
+						{
+							type: 'text',
+							marks: [{ type: 'bold' }],
+							text: 'Az önismerettel így valójában azt ismertük fel'
+						},
+						{
+							type: 'text',
+							text: ', ill. azt (az illúziót és külső burkot) hárítottuk el, '
+						},
+						{
+							type: 'text',
+							marks: [{ type: 'bold' }],
+							text: 'amik nem vagyunk.'
+						},
+						{
+							type: 'text',
+							text: ' És ami marad, az a valódi.'
 						}
 					]
 				}

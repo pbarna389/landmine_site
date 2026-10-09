@@ -1,6 +1,7 @@
 import { BulletList } from './BulletList'
 import { HeadingContent } from './HeadingContent'
 import { ListItem } from './ListItem'
+import { OrderedList } from './OrderedList'
 import { ParagraphContent } from './ParagraphContent'
 import { RecursiveEndComponent } from './RecursiveEndComponent'
 import type {
@@ -17,7 +18,7 @@ type RecursiveTypeProps = {
 		| TextType
 		| ImageType
 		| HardBreakType
-		| (TextType | HardBreakType)[]
+		| (TextType | HardBreakType | ImageType)[]
 		| ListItemType[]
 		| undefined
 	level: number
@@ -56,6 +57,16 @@ export const RecursiveContent = ({ data, level }: RecursiveTypeProps) => {
 			return (
 				<BulletList
 					key={`recusrive-bulletList-${level + 1}-${idx}`}
+					list={subData.content}
+					level={level + 1}
+				/>
+			)
+		}
+
+		if (subData.type === 'orderedList') {
+			return (
+				<OrderedList
+					key={`recusrive-orderedList-${level + 1}-${idx}`}
 					list={subData.content}
 					level={level + 1}
 				/>

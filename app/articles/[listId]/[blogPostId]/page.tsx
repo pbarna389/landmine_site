@@ -1,4 +1,4 @@
-import { RecursiveContent } from './components'
+import { Copyright, CreationDetails, RecursiveContent } from './components'
 
 import { getBlockPostContent } from './server'
 
@@ -7,15 +7,15 @@ export default async function ArticleBlogPostPage({
 }: {
 	params: Promise<{ blogPostId: string; listId: string }>
 }) {
-	const { listId, blogPostId } = await params
+	const { blogPostId } = await params
 
 	const blogPostData = await getBlockPostContent(Number(blogPostId))
 
 	return (
 		<>
-			<p>listId: {listId}</p>
-			<p>blogPostId: {blogPostId}</p>
-			<RecursiveContent data={blogPostData?.content} level={0} />
+			<CreationDetails date={blogPostData?.date} />
+			<Copyright />
+			<RecursiveContent data={blogPostData?.content.content} level={0} />
 		</>
 	)
 }

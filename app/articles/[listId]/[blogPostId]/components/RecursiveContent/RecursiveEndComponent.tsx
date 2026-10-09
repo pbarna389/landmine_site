@@ -3,6 +3,8 @@ import Image from 'next/image'
 import { TextContent } from './TextContent'
 import type { HardBreakType, ImageType, TextType } from '../../types'
 
+// TODO: IMAGE STYLING
+
 type RecursiveEndComponentProps = { data: TextType | ImageType | HardBreakType }
 
 export const RecursiveEndComponent = ({ data }: RecursiveEndComponentProps) => {
@@ -15,13 +17,16 @@ export const RecursiveEndComponent = ({ data }: RecursiveEndComponentProps) => {
 		}
 		case 'image': {
 			return (
-				<Image
-					src={data.attrs.src}
-					alt={data.attrs.alt}
-					height={400}
-					width={400}
-					loading="eager"
-				/>
+				<div className="w-full flex justify-center">
+					<Image
+						src={data.attrs.src}
+						alt={data.attrs.alt}
+						height={300}
+						width={300}
+						loading="eager"
+						style={{ height: 'auto', width: 'auto' }}
+					/>
+				</div>
 			)
 		}
 		default: {

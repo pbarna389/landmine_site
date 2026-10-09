@@ -1,15 +1,16 @@
 export type BlogPostModalType = {
 	content: DocType
+	date: `${number}-${number}-${number}`
 	id: number
 }
 
 type DocType = {
-	content: (ParagraphType | HeadingType | ImageType | BulletListType)[]
+	content: (ParagraphType | HeadingType | ImageType | BulletListType | OrderedListType)[]
 	type: 'doc'
 }
 
 export type ParagraphType = {
-	content: (TextType | HardBreakType)[]
+	content: (TextType | HardBreakType | ImageType)[]
 	type: 'paragraph'
 }
 
@@ -25,7 +26,9 @@ type ImageAttributes = 'alt' | 'src' | 'title'
 
 export type ImageType = {
 	attrs: {
-		[key in ImageAttributes]: string
+		[key in Exclude<ImageAttributes, 'title'>]: string
+	} & {
+		title?: string
 	}
 	type: 'image'
 }
@@ -34,9 +37,18 @@ export type HardBreakType = {
 	type: 'hardBreak'
 }
 
-export type MarksType = {
-	type: 'bold' | 'italic' | 'underline'
-}
+export type MarksType =
+	| {
+			type: 'bold' | 'italic' | 'underline'
+	  }
+	| {
+			attrs: {
+				backgroundColor?: `#${string}${string}${string}${string}${string}${string}`
+				color?: `#${string}${string}${string}${string}${string}${string}`
+				fontSize?: `${number}px`
+			}
+			type: 'textStyle'
+	  }
 
 export type TextType = {
 	text: string
@@ -45,11 +57,16 @@ export type TextType = {
 }
 
 export type ListItemType = {
-	content: (ParagraphType | BulletListType)[]
+	content: (ParagraphType | BulletListType | OrderedListType)[]
 	type: 'listItem'
 }
 
 export type BulletListType = {
 	content: ListItemType[]
 	type: 'bulletList'
+}
+
+export type OrderedListType = {
+	content: ListItemType[]
+	type: 'orderedList'
 }
