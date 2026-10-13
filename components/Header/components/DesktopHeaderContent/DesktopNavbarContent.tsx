@@ -1,12 +1,13 @@
 'use client'
 
-import { useState } from 'react'
+import { useSubNavbarRef } from './context'
 
 import { DesktopLink } from './DesktopLink'
+import { DesktopNavbarExpander } from './DesktopNavbarExpander'
 import { NAV_ELEMENTS } from '../../constants'
 
-export const DesktopRecursiveWrapper = () => {
-	const [isOpen, setIsOpen] = useState(false)
+export const DesktopNavbarContent = () => {
+	const { ref } = useSubNavbarRef()
 
 	const mainElements = NAV_ELEMENTS.map((element) => ({
 		text: element.text,
@@ -15,17 +16,15 @@ export const DesktopRecursiveWrapper = () => {
 	}))
 
 	return (
-		<div className="flex gap-5.25 text-black">
+		<div ref={ref} className="flex gap-5.25 items-center justify-center text-black">
 			{mainElements.map((link) =>
 				!link.shouldBeExpandable ? (
 					<DesktopLink key={`navbar-desktop-link-${link.text}`} link={link} />
 				) : (
-					<span
-						className="flex justify-center items-center"
-						key={`navbar-desktop-link-${link.text}`}
-					>
-						<DesktopLink link={link} showIcon={true} />
-					</span>
+					<DesktopNavbarExpander
+						key={`navbar-desktop-expander-button-${link.text}`}
+						link={link}
+					/>
 				)
 			)}
 		</div>
