@@ -11,6 +11,7 @@ import {
 
 import { CacheContextProvider } from './context'
 import { NavigatorBtn } from '@/components'
+import Breadcrumbs from '@/components/Breadcrumbs/Breadcrumbs'
 import Contact from '@/components/Contact/Contact'
 import Footer from '@/components/Footer/Footer'
 import Header from '@/components/Header/Header'
@@ -81,6 +82,7 @@ export default function RootLayout({
 			>
 				<Header />
 				<Hero />
+				<Breadcrumbs />
 				<CacheContextProvider>{children}</CacheContextProvider>
 				<Contact />
 				<NavigatorBtn />
