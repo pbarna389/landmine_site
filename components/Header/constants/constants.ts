@@ -6,11 +6,20 @@ export const NAV_ELEMENTS = [
 	{ text: 'adatlap', href: '/about' },
 	{
 		text: 'gitároktatás',
-		href: '/classes'
+		href: '/classes',
+		content: []
 	},
-	{ text: 'videók', href: '/videos' },
-	{ text: 'zenék', href: '/music' },
-	{ text: 'cikkek', href: '/articles' }
+	{
+		text: 'videók',
+		href: '/videos',
+		content: []
+	},
+	{
+		text: 'zenék',
+		href: '/music',
+		content: []
+	},
+	{ text: 'cikkek', href: '/articles', content: [] }
 ]
 
 export const NAV_ICONS_MOBILE: LinkWithIconsType = [...NAV_ICONS_BASE]

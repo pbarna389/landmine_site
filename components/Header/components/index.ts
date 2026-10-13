@@ -1,2 +1,2 @@
-export { DesktopLink } from './DesktopLink'
+export { DesktopContent } from './DesktopContent'
 export { MobileLink } from './MobileLink'
