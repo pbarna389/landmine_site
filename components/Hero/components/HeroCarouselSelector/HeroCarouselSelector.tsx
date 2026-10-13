@@ -32,7 +32,7 @@ export const HeroCarouselSelector = ({
 							'--carousel-timer': `${carouselTimer}ms`
 						} as React.CSSProperties
 					}
-					className={`h-5 w-5 rounded-full overflow-hidden opacity-80 bg-white cursor-pointer relative transition-all duration-250 hover:opacity-100 hover:brightness-115 hover:scale-115  after:absolute after:bottom-0  after:origin-bottom after:left-0 after:z-2 after:bg-carousel/75 after:transition-all after:content-[''] after:w-full after:h-full after:duration-750 after:scale-y-0 ${idx === cardIdx && loaded ? `after:[transition-duration:var(--carousel-timer)] after:scale-y-100` : ''} ${nextIdx === cardIdx ? 'brightness-90 opacity-100 scale-125 hover:scale-130' : ''}`}
+					className={`h-5 w-5 rounded-full overflow-hidden opacity-50 bg-white cursor-pointer relative transition-all duration-250 hover:opacity-100 hover:brightness-115 hover:scale-115  after:absolute after:bottom-0  after:origin-bottom after:left-0 after:z-2 after:opacity-50 after:bg-carousel/75 after:transition-all after:content-[''] after:w-full after:h-full after:duration-750 after:scale-y-0 ${idx === cardIdx && loaded ? `after:[transition-duration:var(--carousel-timer)] after:scale-y-100` : ''} ${nextIdx === cardIdx ? 'brightness-90 opacity-75 scale-125 hover:scale-130' : ''}`}
 					onClick={() => callback(cardIdx)}
 				/>
 			))}
