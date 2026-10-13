@@ -1,5 +1,12 @@
 export type IconNames =
-	'facebook' | 'youtube' | 'message' | 'telephone' | 'tiktok' | 'arrowUp'
+	| 'facebook'
+	| 'youtube'
+	| 'message'
+	| 'telephone'
+	| 'tiktok'
+	| 'arrowUp'
+	| 'home'
+	| 'chevronLeft'
 
 export type WidthValuesType =
 	| 'w-full'

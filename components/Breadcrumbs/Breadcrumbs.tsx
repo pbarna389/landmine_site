@@ -3,6 +3,8 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
+import { Icons } from '../Icons'
+
 const convertRoute: Record<string, string> = {
 	articles: 'cikkek',
 	videos: 'videók',
@@ -27,12 +29,16 @@ export default function Breadcrumbs() {
 
 	return (
 		<nav className="w-full flex flex-wrap items-center gap-2.5 text-sm p-1 pl-5 bg-zinc-50 text-black font-raleway">
-			<Link href="/">Home</Link>
+			<Link href="/">
+				<Icons iconVars={'home'} />
+			</Link>
 			{generatedLinks.includes('home')
 				? null
 				: generatedLinks.map((route, idx) => (
 						<>
-							<span>/</span>
+							<span className="cursor-default">
+								<Icons iconVars={'chevronLeft'} />
+							</span>
 							<Link
 								className="capitalize"
 								key={`breadcrumbs-link-${route}-${idx}`}
