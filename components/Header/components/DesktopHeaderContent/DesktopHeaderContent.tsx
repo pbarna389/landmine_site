@@ -8,7 +8,7 @@ import { useBreakpointChecker } from '@/hooks/useBreakpointChecker'
 
 import { DesktopNavbar } from './DesktopNavbar'
 
-export const DesktopContent = () => {
+export const DesktopHeaderContent = () => {
 	const isMobile = useBreakpointChecker()
 
 	if (isMobile) return

@@ -1,9 +1,13 @@
-import { Icons } from '@/components/Icons'
+'use client'
+
+import { useState } from 'react'
 
 import { DesktopLink } from './DesktopLink'
 import { NAV_ELEMENTS } from '../../constants'
 
 export const DesktopRecursiveWrapper = () => {
+	const [isOpen, setIsOpen] = useState(false)
+
 	const mainElements = NAV_ELEMENTS.map((element) => ({
 		text: element.text,
 		href: element.href,
@@ -20,8 +24,7 @@ export const DesktopRecursiveWrapper = () => {
 						className="flex justify-center items-center"
 						key={`navbar-desktop-link-${link.text}`}
 					>
-						<DesktopLink link={link} />
-						<Icons iconVars={'chevronDown'} />
+						<DesktopLink link={link} showIcon={true} />
 					</span>
 				)
 			)}
