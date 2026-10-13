@@ -26,7 +26,10 @@ export const DesktopNavbar = () => {
 				loading="eager"
 				preload
 			/>
-			<nav className="flex justify-center items-center gap-8.5">
+			<nav
+				aria-label="Fő navigáció - asztali PC"
+				className="flex justify-center items-center gap-8.5"
+			>
 				<div className="flex gap-5.25 text-black">
 					{NAV_ELEMENTS.map((link) => (
 						<DesktopLink key={`navbar-desktop-link-${link.text}`} link={link} />
