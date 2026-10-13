@@ -19,8 +19,6 @@ const convertRoute: Record<string, string> = {
 }
 
 const generateLinkRoute = (arr: string[], idx: number): string => {
-	console.log(arr)
-
 	return arr.slice(0, idx + 1).join('/')
 }
 
