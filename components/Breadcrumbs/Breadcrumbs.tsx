@@ -10,14 +10,17 @@ const convertRoute: Record<string, string> = {
 	videos: 'videók',
 	classes: 'gitároktatás',
 	about: 'adatlap',
-	music: 'zene',
+	music: 'zenék',
 	all: 'összes cikk',
 	theory: 'zeneelmélet',
 	advices: 'tippek',
+	philosophy: 'filozófia',
 	facts: 'érdekességek'
 }
 
 const generateLinkRoute = (arr: string[], idx: number): string => {
+	console.log(arr)
+
 	return arr.slice(0, idx + 1).join('/')
 }
 
@@ -27,9 +30,16 @@ export default function Breadcrumbs() {
 	const routeNames = pathName.split('/')
 	const generatedLinks = routeNames.slice(1, routeNames.length - 1)
 
+	if (!generatedLinks.length) {
+		return null
+	}
+
 	return (
-		<nav className="w-full flex flex-wrap items-center justify-center sm:justify-normal gap-2.5 text-sm p-1 pl-10 bg-zinc-50 text-black font-raleway">
-			<Link href="/">
+		<nav className="h-10 w-full flex flex-wrap items-center justify-center sm:justify-normal gap-2.5 text-sm p-1 pl-10 bg-zinc-50 text-black font-raleway">
+			<Link
+				className="transition-[scale] hover:scale-110 focus:scale-110 focus:p-1"
+				href="/"
+			>
 				<Icons iconVars={'home'} />
 			</Link>
 			{generatedLinks.includes('home')
@@ -40,8 +50,7 @@ export default function Breadcrumbs() {
 								<Icons iconVars={'chevronLeft'} />
 							</span>
 							<Link
-								className="capitalize font-bold italic"
-
+								className="capitalize font-bold italic transition-[scale] hover:scale-110 focus:scale-110 focus:pr-1 focus:pl-1 focus-within:scale-110"
 								href={`/${generateLinkRoute(generatedLinks, idx)}`}
 							>
 								{convertRoute[route] ? convertRoute[route] : route}
