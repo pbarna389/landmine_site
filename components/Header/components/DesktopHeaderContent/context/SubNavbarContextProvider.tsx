@@ -1,18 +1,20 @@
 'use client'
 
 import type { PropsWithChildren } from 'react'
-import { useRef, useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 
 import { useDisableScrolling } from '@/hooks/useDisableScrolling'
 import { useOutsideClick } from '@/hooks/useOutsideClick'
+import type { RouteState } from './types'
 
 import { SubNavbarHandlersContext } from './SubNavbarHandlersContext'
 import { SubNavbarRefContext } from './SubNavbarRefContext'
 import { SubNavbarStateContext } from './SubNavbarStateContext'
 
 export const SubNavbarContextProvider = ({ children }: PropsWithChildren) => {
-	const [state, setState] = useState<{ isOpen: boolean; selectedRoute: null | string }>({
+	const [state, setState] = useState<RouteState>({
 		isOpen: false,
+		recursionLevel: 2,
 		selectedRoute: null
 	})
 	const ref = useRef<HTMLDivElement | null>(null)
@@ -22,26 +24,29 @@ export const SubNavbarContextProvider = ({ children }: PropsWithChildren) => {
 	const handleOutsideClick = () => {
 		setState({
 			selectedRoute: null,
+			recursionLevel: 0,
 			isOpen: false
 		})
 	}
 
 	const modifiedRef = useOutsideClick(handleOutsideClick, ref)
 
-	const handleClick = (route: string) => {
-		setState((prev) => ({
-			isOpen: state.selectedRoute === route ? !prev.isOpen : true,
-			selectedRoute: route
-		}))
-	}
+	const handleClick = useCallback(
+		(route: string) => {
+			setState((prev) => ({
+				isOpen: state.selectedRoute === route ? !prev.isOpen : true,
+				recursionLevel: 1,
+				selectedRoute: route
+			}))
+		},
+		[state.selectedRoute]
+	)
 
 	return (
 		<SubNavbarRefContext value={{ ref: modifiedRef }}>
-			<SubNavbarStateContext value={{ state, setState }}>
-				<SubNavbarHandlersContext value={{ handleClick }}>
-					{children}
-				</SubNavbarHandlersContext>
-			</SubNavbarStateContext>
+			<SubNavbarHandlersContext value={{ handleClick, handleOutsideClick }}>
+				<SubNavbarStateContext value={{ state, setState }}>{children}</SubNavbarStateContext>
+			</SubNavbarHandlersContext>
 		</SubNavbarRefContext>
 	)
 }
