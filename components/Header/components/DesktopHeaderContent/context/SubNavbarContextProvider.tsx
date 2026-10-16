@@ -11,12 +11,14 @@ import { SubNavbarHandlersContext } from './SubNavbarHandlersContext'
 import { SubNavbarRefContext } from './SubNavbarRefContext'
 import { SubNavbarStateContext } from './SubNavbarStateContext'
 
+const stateInitialValues = {
+	isOpen: false,
+	recursionLevel: 2,
+	selectedRoute: null
+}
+
 export const SubNavbarContextProvider = ({ children }: PropsWithChildren) => {
-	const [state, setState] = useState<RouteState>({
-		isOpen: false,
-		recursionLevel: 2,
-		selectedRoute: null
-	})
+	const [state, setState] = useState<RouteState>(stateInitialValues)
 	const ref = useRef<HTMLDivElement | null>(null)
 
 	useDisableScrolling(state.isOpen)
@@ -33,11 +35,15 @@ export const SubNavbarContextProvider = ({ children }: PropsWithChildren) => {
 
 	const handleClick = useCallback(
 		(route: string) => {
-			setState((prev) => ({
-				isOpen: state.selectedRoute === route ? !prev.isOpen : true,
-				recursionLevel: 1,
-				selectedRoute: route
-			}))
+			setState(() =>
+				state.selectedRoute?.[0] === route
+					? stateInitialValues
+					: {
+							isOpen: true,
+							recursionLevel: 1,
+							selectedRoute: [route]
+						}
+			)
 		},
 		[state.selectedRoute]
 	)

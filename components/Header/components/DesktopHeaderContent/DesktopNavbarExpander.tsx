@@ -20,7 +20,7 @@ export const DesktopNavbarExpander = ({ link }: DesktopNavbarExpanderProps) => {
 
 	const isCurrentActive = pathname === link.href || pathname.startsWith(`${link.href}`)
 
-	const thisRouteCurrentlySelected = state.selectedRoute === link.href
+	const thisRouteCurrentlySelected = state.selectedRoute?.[0] === link.href
 
 	return (
 		<>
@@ -34,7 +34,7 @@ export const DesktopNavbarExpander = ({ link }: DesktopNavbarExpanderProps) => {
 			</button>
 			{state.isOpen && thisRouteCurrentlySelected && (
 				<div className="bg-black/50 absolute top-[3.22rem] left-0 w-full flex flex-col p-2 gap-5 items-center justify-center text-white">
-					<DesktopRecursiveContent maxRecursionLayer={0} subChild={link.content} />
+					<DesktopRecursiveContent recursionLayer={0} subChild={link.content} />
 				</div>
 			)}
 		</>

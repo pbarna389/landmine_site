@@ -29,7 +29,7 @@ export const NAV_ELEMENTS: NavItem[] = [
 						]
 					},
 					{
-						text: 'gitároktatás sub-sub-Page 2',
+						text: 'gitároktatás subpage1: sub-sub-Page 2',
 						href: '/subsubpage2'
 					}
 				]
