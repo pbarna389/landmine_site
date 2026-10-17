@@ -13,7 +13,6 @@ import { SubNavbarStateContext } from './SubNavbarStateContext'
 
 const stateInitialValues = {
 	isOpen: false,
-	recursionLevel: 2,
 	selectedRoute: null
 }
 
@@ -26,7 +25,6 @@ export const SubNavbarContextProvider = ({ children }: PropsWithChildren) => {
 	const handleOutsideClick = () => {
 		setState({
 			selectedRoute: null,
-			recursionLevel: 0,
 			isOpen: false
 		})
 	}
@@ -36,21 +34,46 @@ export const SubNavbarContextProvider = ({ children }: PropsWithChildren) => {
 	const handleClick = useCallback(
 		(route: string) => {
 			setState(() =>
-				state.selectedRoute?.[0] === route
+				state.selectedRoute?.[0].routeName === route
 					? stateInitialValues
 					: {
 							isOpen: true,
-							recursionLevel: 1,
-							selectedRoute: [route]
+							selectedRoute: [
+								{
+									routeName: route,
+									selectedChild: null
+								}
+							]
 						}
 			)
 		},
 		[state.selectedRoute]
 	)
 
+	const handlePointerEnter = useCallback(
+		(route: string, layer: number, childIdx: number) => {
+			if (state.selectedRoute?.some((createdRoute) => createdRoute.routeName === route))
+				return null
+
+			const newRoute = state.selectedRoute
+				? [...state.selectedRoute.slice(0, layer), { routeName: route, selectedChild: null }]
+				: null
+
+			if (newRoute) newRoute[layer - 1] = { ...newRoute[layer - 1], selectedChild: childIdx }
+
+			setState((prev) => ({
+				...prev,
+				selectedRoute: newRoute
+			}))
+		},
+		[state.selectedRoute]
+	)
+
 	return (
 		<SubNavbarRefContext value={{ ref: modifiedRef }}>
-			<SubNavbarHandlersContext value={{ handleClick, handleOutsideClick }}>
+			<SubNavbarHandlersContext
+				value={{ handleClick, handleOutsideClick, handlePointerEnter }}
+			>
 				<SubNavbarStateContext value={{ state, setState }}>{children}</SubNavbarStateContext>
 			</SubNavbarHandlersContext>
 		</SubNavbarRefContext>

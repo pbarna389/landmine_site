@@ -5,6 +5,7 @@ import Image2 from '../Assets/p2.png'
 import Image3 from '../Assets/p3.png'
 
 export const PRICES_CONTENT = {
+	id: 'prices',
 	header: {
 		title: 'helyszín és árak',
 		subTitle: ''

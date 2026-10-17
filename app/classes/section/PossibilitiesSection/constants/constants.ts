@@ -6,6 +6,7 @@ import Image1 from '../Assets/kp1_t.png'
 import Image2 from '../Assets/kp2_t.png'
 
 export const POSSIBILITIES_CONTENT = {
+	id: 'possibilities',
 	header: {
 		title: 'irányok és lehetőségek',
 		subTitle: 'gyakorlat-központúság'

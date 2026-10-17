@@ -1,5 +1,9 @@
 'use client'
 
+import Link from 'next/link'
+
+import { useSubNavbarHandlersContext, useSubNavbarState } from './context'
+
 import type { NavItem } from '../../constants/constants'
 
 type DesktopRecursiveContentProps = {
@@ -7,20 +11,31 @@ type DesktopRecursiveContentProps = {
 	subChild: NavItem | NavItem[] | undefined
 }
 
-const selectedChild = 0
-
 export const DesktopRecursiveContent = ({
 	subChild,
 	recursionLayer
 }: DesktopRecursiveContentProps) => {
-	if (!subChild) return null
+	const {
+		state: { selectedRoute }
+	} = useSubNavbarState()
+
+	const parent = selectedRoute?.[recursionLayer - 1]
+
+	const { handlePointerEnter, handleOutsideClick } = useSubNavbarHandlersContext()
+
+	if (!subChild || !parent) {
+		return null
+	}
 
 	if (!Array.isArray(subChild)) {
 		return (
-			<>
-				<div className="non-array-subchild flex gap-2 flex-col">
+			<div
+				onPointerEnter={() => handlePointerEnter(subChild.text, recursionLayer, 0)}
+				onClick={handleOutsideClick}
+			>
+				<Link href={subChild.href} className="non-array-subchild flex gap-2 flex-col">
 					<span>{subChild.text}</span>
-				</div>
+				</Link>
 
 				{subChild.content && (
 					<DesktopRecursiveContent
@@ -28,28 +43,33 @@ export const DesktopRecursiveContent = ({
 						subChild={subChild.content}
 					/>
 				)}
-			</>
+			</div>
 		)
 	}
+
+	const selectedElement = parent.selectedChild ? parent.selectedChild : 0
 
 	return (
 		<>
 			<div className="array subchild with elements flex gap-2">
-				{subChild.map((child) => {
+				{subChild.map((child, idx) => {
 					return (
 						<div
-							className="subchild element"
 							key={`navbar-recursive-array-child-${child.text}`}
+							onPointerEnter={() => handlePointerEnter(child.text, recursionLayer, idx)}
+							onClick={handleOutsideClick}
 						>
-							<span>{child.text}</span>
+							<Link href={child.href} className="subchild element">
+								<span>{child.text}</span>
+							</Link>
 						</div>
 					)
 				})}
 			</div>
-			{subChild[selectedChild].content && (
+			{subChild[selectedElement].content && (
 				<DesktopRecursiveContent
 					recursionLayer={recursionLayer + 1}
-					subChild={subChild[selectedChild].content}
+					subChild={subChild[selectedElement].content}
 				/>
 			)}
 		</>

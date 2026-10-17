@@ -5,6 +5,7 @@ import Image2 from '../Assets/flexibility.png'
 import Image3 from '../Assets/pers_or_online.png'
 
 export const PREMISE_CONTENT = {
+	id: 'premise',
 	header: {
 		title: 'amire számíthatsz',
 		subTitle: 'tapasztalat és rugalmasság'

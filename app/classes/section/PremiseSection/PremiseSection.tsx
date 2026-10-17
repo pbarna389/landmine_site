@@ -8,11 +8,11 @@ type PremiseSectionProps = {
 }
 
 export const PremiseSection = ({ data }: PremiseSectionProps) => {
-	const { header, content } = data
+	const { id, header, content } = data
 
 	return (
-		<Section className="">
-			<Section.Header>
+		<Section id={id} className="">
+			<Section.Header id={id}>
 				<div className="flex flex-col gap-4 items-center justify-center mb-17">
 					<h2 className="font-bold capitalize text-[30px] sm:text-[32px] md:text-[34px] lg:text-[36px]">
 						{header.title}
@@ -23,7 +23,10 @@ export const PremiseSection = ({ data }: PremiseSectionProps) => {
 					</h2>
 				</div>
 			</Section.Header>
-			<Section.Body className="flex flex-col items-center justify-center gap-11 w-full h-full *:text-black lg:flex-row lg:row lg:items-baseline">
+			<Section.Body
+				id={id}
+				className="flex flex-col items-center justify-center gap-11 w-full h-full *:text-black lg:flex-row lg:row lg:items-baseline"
+			>
 				{content.map((card) => (
 					<PremiseCard key={`premise-card-${card.title.text}`} card={card} />
 				))}

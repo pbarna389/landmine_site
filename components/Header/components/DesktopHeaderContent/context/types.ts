@@ -1,5 +1,9 @@
+type SelectedRouteType = {
+	routeName: string | null
+	selectedChild: number | null
+}
+
 export type RouteState = {
 	isOpen: boolean
-	recursionLevel: number
-	selectedRoute: null | string[]
+	selectedRoute: null | SelectedRouteType[]
 }
