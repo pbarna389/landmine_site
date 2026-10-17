@@ -53,15 +53,14 @@ export const SubNavbarContextProvider = ({ children }: PropsWithChildren) => {
 
 	const handlePointerEnter = useCallback(
 		(route: string, layer: number, childIdx: number, addedHref: string) => {
-			if (state.selectedRoute?.some((createdRoute) => createdRoute.routeName === route))
-				return null
+			if (state.selectedRoute?.[layer]?.routeName === route) return null
 
 			const newRoute = state.selectedRoute
 				? [
 						...state.selectedRoute.slice(0, layer),
 						{
 							routeName: route,
-							routeHref: `${state.selectedRoute[layer - 1].routeHref}/.${addedHref}`,
+							routeHref: `${state.selectedRoute[layer - 1].routeHref}${addedHref}`,
 							selectedChild: null
 						}
 					]

@@ -31,14 +31,16 @@ export const DesktopRecursiveContent = ({
 
 	if (!Array.isArray(subChild)) {
 		return (
-			<button
-				aria-label={`navigációs al-link, szint: ${recursionLayer}, cél: ${subChild.text}`}
-				onPointerEnter={() =>
-					handlePointerEnter(subChild.text, recursionLayer, 0, subChild.href)
-				}
-				onClick={handleOutsideClick}
-			>
-				<Link href={`${parent.routeHref}${subChild.href}`} className="flex gap-2 flex-col">
+			<>
+				<Link
+					href={`${parent.routeHref}${subChild.href}`}
+					className="flex gap-2 flex-col"
+					aria-label={`navigációs al-link, szint: ${recursionLayer}, cél: ${subChild.text}`}
+					onPointerEnter={() =>
+						handlePointerEnter(subChild.text, recursionLayer, 0, subChild.href)
+					}
+					onClick={handleOutsideClick}
+				>
 					<span>{subChild.text}</span>
 				</Link>
 
@@ -48,7 +50,7 @@ export const DesktopRecursiveContent = ({
 						subChild={subChild.content}
 					/>
 				)}
-			</button>
+			</>
 		)
 	}
 
@@ -59,7 +61,8 @@ export const DesktopRecursiveContent = ({
 			<div className="flex gap-2">
 				{subChild.map((child, idx) => {
 					return (
-						<button
+						<Link
+							href={`${parent.routeHref}${child.href}`}
 							aria-label={`navigációs al-link, szint: ${recursionLayer}, cél: ${child.text}`}
 							key={`navbar-recursive-array-child-${child.text}`}
 							onPointerEnter={() =>
@@ -67,10 +70,8 @@ export const DesktopRecursiveContent = ({
 							}
 							onClick={handleOutsideClick}
 						>
-							<Link href={`${parent.routeHref}${child.href}`}>
-								<span>{child.text}</span>
-							</Link>
-						</button>
+							<span>{child.text}</span>
+						</Link>
 					)
 				})}
 			</div>
