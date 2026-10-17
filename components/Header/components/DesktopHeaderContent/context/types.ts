@@ -1,4 +1,5 @@
 type SelectedRouteType = {
+	routeHref: string
 	routeName: string | null
 	selectedChild: number | null
 }

@@ -11,7 +11,7 @@ import { SubNavbarHandlersContext } from './SubNavbarHandlersContext'
 import { SubNavbarRefContext } from './SubNavbarRefContext'
 import { SubNavbarStateContext } from './SubNavbarStateContext'
 
-const stateInitialValues = {
+const stateInitialValues: RouteState = {
 	isOpen: false,
 	selectedRoute: null
 }
@@ -32,7 +32,7 @@ export const SubNavbarContextProvider = ({ children }: PropsWithChildren) => {
 	const modifiedRef = useOutsideClick(handleOutsideClick, ref)
 
 	const handleClick = useCallback(
-		(route: string) => {
+		(route: string, baseHref: string) => {
 			setState(() =>
 				state.selectedRoute?.[0].routeName === route
 					? stateInitialValues
@@ -41,6 +41,7 @@ export const SubNavbarContextProvider = ({ children }: PropsWithChildren) => {
 							selectedRoute: [
 								{
 									routeName: route,
+									routeHref: baseHref,
 									selectedChild: null
 								}
 							]
@@ -51,12 +52,19 @@ export const SubNavbarContextProvider = ({ children }: PropsWithChildren) => {
 	)
 
 	const handlePointerEnter = useCallback(
-		(route: string, layer: number, childIdx: number) => {
+		(route: string, layer: number, childIdx: number, addedHref: string) => {
 			if (state.selectedRoute?.some((createdRoute) => createdRoute.routeName === route))
 				return null
 
 			const newRoute = state.selectedRoute
-				? [...state.selectedRoute.slice(0, layer), { routeName: route, selectedChild: null }]
+				? [
+						...state.selectedRoute.slice(0, layer),
+						{
+							routeName: route,
+							routeHref: `${state.selectedRoute[layer - 1].routeHref}/.${addedHref}`,
+							selectedChild: null
+						}
+					]
 				: null
 
 			if (newRoute) newRoute[layer - 1] = { ...newRoute[layer - 1], selectedChild: childIdx }

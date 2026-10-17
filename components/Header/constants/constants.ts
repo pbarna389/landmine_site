@@ -15,19 +15,19 @@ export const NAV_ELEMENTS: NavItem[] = [
 		href: '/classes',
 		content: [
 			{
-				href: '/classes/#intro',
+				href: '/#intro',
 				text: 'Bemutatkozás'
 			},
 			{
-				href: '/classes/#premise',
+				href: '/#premise',
 				text: 'Amire számíthatsz'
 			},
 			{
-				href: '/classes/#possibilities',
+				href: '/#possibilities',
 				text: 'Irányok és lehetőségek'
 			},
 			{
-				href: '/classes/#prices',
+				href: '/#prices',
 				text: 'Helyszín és árak'
 			}
 		]
@@ -37,56 +37,56 @@ export const NAV_ELEMENTS: NavItem[] = [
 		href: '/videos',
 		content: [
 			{
-				href: '/videos/vlog',
+				href: '/vlog',
 				text: 'Gitáros csemegék',
 				content: [
 					{
 						text: 'Zenei csemegék',
-						href: '/videos/vlog/PLn5cNXlh5JYNmWSHVLMsA6F_3wNRhaofk'
+						href: '/PLn5cNXlh5JYNmWSHVLMsA6F_3wNRhaofk'
 					},
 					{
 						text: 'Technikák',
-						href: '/videos/vlog/PLn5cNXlh5JYNJwmXN08v2fKEoC7dwTKWv'
+						href: '/PLn5cNXlh5JYNJwmXN08v2fKEoC7dwTKWv'
 					},
 					{
 						text: 'Gitáros egypercesek',
-						href: '/videos/vlog/PLn5cNXlh5JYPHRBJL_zEBp0TZ7bktfo6Y'
+						href: '/PLn5cNXlh5JYPHRBJL_zEBp0TZ7bktfo6Y'
 					},
 					{
 						text: 'Riffek és akkordmenetek',
-						href: '/videos/vlog/PLn5cNXlh5JYOkBpxQwINbPpTYBdFwn_xD'
+						href: '/PLn5cNXlh5JYOkBpxQwINbPpTYBdFwn_xD'
 					},
 					{
 						text: 'Lickek hazai gitárosoktól',
-						href: '/videos/vlog/PLn5cNXlh5JYP7tqC2WmM6yB86XyK1Crwb'
+						href: '/PLn5cNXlh5JYP7tqC2WmM6yB86XyK1Crwb'
 					},
 					{
 						text: 'Saját lickek',
-						href: '/videos/vlog/PLn5cNXlh5JYMDfijriMMmsFTR2MQPFTp0'
+						href: '/PLn5cNXlh5JYMDfijriMMmsFTR2MQPFTp0'
 					}
 				]
 			},
 			{
-				href: '/videos/theory',
+				href: '/theory',
 				text: 'Zeneelmélet',
 				content: [
 					{
 						text: 'Zeneelméleti videók',
-						href: '/videos/theory/PLn5cNXlh5JYOK0qIXqaZz0LsQ0zHpK30U'
+						href: '/PLn5cNXlh5JYOK0qIXqaZz0LsQ0zHpK30U'
 					},
 					{
 						text: 'Improvizálás',
-						href: '/videos/theory/PLn5cNXlh5JYP_qrnVQGcRtylKSUVF5AOU'
+						href: '/PLn5cNXlh5JYP_qrnVQGcRtylKSUVF5AOU'
 					},
 					{
 						text: 'Zeneírás',
-						href: '/videos/theory/PLn5cNXlh5JYMEgspuw_Ns5tqzHOF0zCro'
+						href: '/PLn5cNXlh5JYMEgspuw_Ns5tqzHOF0zCro'
 					}
 				]
 			},
 			{
-				href: '/videos/solo-game',
-				text: 'Havi egy szóló'
+				text: 'Havi egy szóló',
+				href: '/solo-game'
 			}
 		]
 	},
@@ -96,15 +96,15 @@ export const NAV_ELEMENTS: NavItem[] = [
 		content: [
 			{
 				text: 'The New Era',
-				href: '/music/3'
+				href: '/3'
 			},
 			{
 				text: 'Middle Ages',
-				href: '/music/2'
+				href: '/2'
 			},
 			{
 				text: 'Early Years',
-				href: '/music/1'
+				href: '/1'
 			}
 		]
 	},
@@ -114,27 +114,95 @@ export const NAV_ELEMENTS: NavItem[] = [
 		content: [
 			{
 				text: 'Összes cikk',
-				href: '/articles/all'
+				href: '/all',
+				content: [
+					{
+						text: 'Improvizációs lehetőségek',
+						href: '/1'
+					},
+					{
+						text: 'Gyakorlási terv',
+						href: '/2'
+					},
+					{
+						text: 'Zenék leszedése hallásból',
+						href: '/3'
+					},
+					{
+						text: 'Szóló-leszedés',
+						href: '/4'
+					},
+					{
+						text: 'The Devil Put Dinosaurs here - Ajánló',
+						href: '/5'
+					},
+					{
+						text: 'Zene és önismeret',
+						href: '/6'
+					}
+				]
 			},
 			{
 				text: 'Zeneelmélet',
-				href: '/articles/theory'
+				href: '/theory',
+				content: [
+					{
+						text: 'Improvizációs lehetőségek',
+						href: '/1'
+					}
+				]
 			},
 			{
 				text: 'Tippek',
-				href: '/articles/advices'
+				href: '/advices',
+				content: [
+					{
+						text: 'Gyakorlási terv',
+						href: '/2'
+					},
+					{
+						text: 'Zenék leszedése hallásból',
+						href: '/3'
+					},
+					{
+						text: 'Szóló-leszedés',
+						href: '/4'
+					}
+				]
 			},
 			{
 				text: 'Érdekességek',
-				href: '/articles/facts'
+				href: '/facts',
+				content: [
+					{
+						text: 'Zenék leszedése hallásból',
+						href: '/3'
+					},
+					{
+						text: 'Szóló-leszedés',
+						href: '/4'
+					}
+				]
 			},
 			{
 				text: 'Zenékről',
-				href: '/articles/music'
+				href: '/music',
+				content: [
+					{
+						text: 'The Devil Put Dinosaurs here - Ajánló',
+						href: '/5'
+					}
+				]
 			},
 			{
 				text: 'Filozófia',
-				href: '/articles/philosophy'
+				href: '/philosophy',
+				content: [
+					{
+						text: 'Zene és önismeret',
+						href: '/6'
+					}
+				]
 			}
 		]
 	}

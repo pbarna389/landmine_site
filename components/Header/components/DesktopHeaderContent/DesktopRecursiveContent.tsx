@@ -30,10 +30,15 @@ export const DesktopRecursiveContent = ({
 	if (!Array.isArray(subChild)) {
 		return (
 			<div
-				onPointerEnter={() => handlePointerEnter(subChild.text, recursionLayer, 0)}
+				onPointerEnter={() =>
+					handlePointerEnter(subChild.text, recursionLayer, 0, subChild.href)
+				}
 				onClick={handleOutsideClick}
 			>
-				<Link href={subChild.href} className="non-array-subchild flex gap-2 flex-col">
+				<Link
+					href={`${parent.routeHref}${subChild.href}`}
+					className="non-array-subchild flex gap-2 flex-col"
+				>
 					<span>{subChild.text}</span>
 				</Link>
 
@@ -56,10 +61,12 @@ export const DesktopRecursiveContent = ({
 					return (
 						<div
 							key={`navbar-recursive-array-child-${child.text}`}
-							onPointerEnter={() => handlePointerEnter(child.text, recursionLayer, idx)}
+							onPointerEnter={() =>
+								handlePointerEnter(child.text, recursionLayer, idx, child.href)
+							}
 							onClick={handleOutsideClick}
 						>
-							<Link href={child.href} className="subchild element">
+							<Link href={`${parent.routeHref}${child.href}`} className="subchild element">
 								<span>{child.text}</span>
 							</Link>
 						</div>
