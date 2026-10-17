@@ -11,6 +11,8 @@ type DesktopRecursiveContentProps = {
 	subChild: NavItem | NavItem[] | undefined
 }
 
+// TODO: Finish the design of the blocks
+
 export const DesktopRecursiveContent = ({
 	subChild,
 	recursionLayer
@@ -29,16 +31,14 @@ export const DesktopRecursiveContent = ({
 
 	if (!Array.isArray(subChild)) {
 		return (
-			<div
+			<button
+				aria-label={`navigációs al-link, szint: ${recursionLayer}, cél: ${subChild.text}`}
 				onPointerEnter={() =>
 					handlePointerEnter(subChild.text, recursionLayer, 0, subChild.href)
 				}
 				onClick={handleOutsideClick}
 			>
-				<Link
-					href={`${parent.routeHref}${subChild.href}`}
-					className="non-array-subchild flex gap-2 flex-col"
-				>
+				<Link href={`${parent.routeHref}${subChild.href}`} className="flex gap-2 flex-col">
 					<span>{subChild.text}</span>
 				</Link>
 
@@ -48,7 +48,7 @@ export const DesktopRecursiveContent = ({
 						subChild={subChild.content}
 					/>
 				)}
-			</div>
+			</button>
 		)
 	}
 
@@ -56,20 +56,21 @@ export const DesktopRecursiveContent = ({
 
 	return (
 		<>
-			<div className="array subchild with elements flex gap-2">
+			<div className="flex gap-2">
 				{subChild.map((child, idx) => {
 					return (
-						<div
+						<button
+							aria-label={`navigációs al-link, szint: ${recursionLayer}, cél: ${child.text}`}
 							key={`navbar-recursive-array-child-${child.text}`}
 							onPointerEnter={() =>
 								handlePointerEnter(child.text, recursionLayer, idx, child.href)
 							}
 							onClick={handleOutsideClick}
 						>
-							<Link href={`${parent.routeHref}${child.href}`} className="subchild element">
+							<Link href={`${parent.routeHref}${child.href}`}>
 								<span>{child.text}</span>
 							</Link>
-						</div>
+						</button>
 					)
 				})}
 			</div>
