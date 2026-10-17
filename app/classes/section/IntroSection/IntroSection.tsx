@@ -13,12 +13,13 @@ type IntroSectionProps = {
 }
 
 export const IntroSection = ({ data }: IntroSectionProps) => {
-	const { header, image, textContent } = data
+	const { id, header, image, textContent } = data
 
 	const isMobile = useBreakpointChecker()
 
 	return (
 		<section
+			id={id}
 			className={`bg-white text-black w-full flex flex-col-reverse items-center justify-center p-8 lg:flex lg:flex-row lg:gap-10 lg:items-start lg:p-35 lg:pt-28 lg:pb-28`}
 		>
 			{isMobile && <MobileAdvert />}

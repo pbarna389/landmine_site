@@ -3,11 +3,11 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-import type { NAV_ELEMENTS } from '../../constants'
+import type { NavItem } from '../../constants/constants'
 
 type MobileLinkProps = {
 	callback: () => void
-	link: (typeof NAV_ELEMENTS)[0]
+	link: NavItem
 }
 
 export const MobileLink = ({ link, callback }: MobileLinkProps) => {

@@ -2,6 +2,7 @@ import Image1 from '../Assets/gitarora.webp'
 import Image2 from '../Assets/pecset.webp'
 
 export const INTRO_SECTION_CONTENT = {
+	id: 'intro',
 	header: {
 		title: 'Gitároktatás',
 		subTitle: 'Budapesten vagy online!'

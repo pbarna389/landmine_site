@@ -37,6 +37,9 @@
 
 	--modal: modal;
 }
+* {
+	scroll-behavior: smooth;
+}
 
 @keyframes profileAnim {
 	0% {
