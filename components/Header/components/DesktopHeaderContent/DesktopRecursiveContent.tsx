@@ -39,6 +39,7 @@ export const DesktopRecursiveContent = ({
 					onPointerEnter={() =>
 						handlePointerEnter(subChild.text, recursionLayer, 0, subChild.href)
 					}
+					onFocus={() => handlePointerEnter(subChild.text, recursionLayer, 0, subChild.href)}
 					onClick={handleOutsideClick}
 				>
 					<span>{subChild.text}</span>
@@ -68,6 +69,7 @@ export const DesktopRecursiveContent = ({
 							onPointerEnter={() =>
 								handlePointerEnter(child.text, recursionLayer, idx, child.href)
 							}
+							onFocus={() => handlePointerEnter(child.text, recursionLayer, idx, child.href)}
 							onClick={handleOutsideClick}
 						>
 							<span>{child.text}</span>
