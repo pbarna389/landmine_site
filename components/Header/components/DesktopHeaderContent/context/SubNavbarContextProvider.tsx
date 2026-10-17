@@ -22,12 +22,12 @@ export const SubNavbarContextProvider = ({ children }: PropsWithChildren) => {
 
 	useDisableScrolling(state.isOpen)
 
-	const handleOutsideClick = () => {
+	const handleOutsideClick = useCallback(() => {
 		setState({
 			selectedRoute: null,
 			isOpen: false
 		})
-	}
+	}, [])
 
 	const modifiedRef = useOutsideClick(handleOutsideClick, ref)
 
