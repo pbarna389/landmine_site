@@ -4,6 +4,7 @@ import Image from 'next/image'
 
 import Logo1 from '@/public/logo2.png'
 
+import { SubNavbarContextProvider } from './context'
 import { useBreakpointChecker } from '@/hooks/useBreakpointChecker'
 
 import { DesktopNavbar } from './DesktopNavbar'
@@ -23,7 +24,9 @@ export const DesktopHeaderContent = () => {
 				loading="eager"
 				preload
 			/>
-			<DesktopNavbar />
+			<SubNavbarContextProvider>
+				<DesktopNavbar />
+			</SubNavbarContextProvider>
 		</>
 	)
 }
