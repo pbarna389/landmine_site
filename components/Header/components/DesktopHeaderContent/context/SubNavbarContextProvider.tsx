@@ -55,6 +55,12 @@ export const SubNavbarContextProvider = ({ children }: PropsWithChildren) => {
 		(route: string, layer: number, childIdx: number, addedHref: string) => {
 			if (state.selectedRoute?.[layer]?.routeName === route) return null
 
+			if (layer === 0) {
+				handleClick(route, addedHref)
+
+				return
+			}
+
 			const newRoute = state.selectedRoute
 				? [
 						...state.selectedRoute.slice(0, layer),
@@ -73,7 +79,7 @@ export const SubNavbarContextProvider = ({ children }: PropsWithChildren) => {
 				selectedRoute: newRoute
 			}))
 		},
-		[state.selectedRoute]
+		[state.selectedRoute, handleClick]
 	)
 
 	return (
