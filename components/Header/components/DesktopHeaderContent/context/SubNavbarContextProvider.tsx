@@ -3,7 +3,6 @@
 import type { PropsWithChildren } from 'react'
 import { useCallback, useRef, useState } from 'react'
 
-import { useDisableScrolling } from '@/hooks/useDisableScrolling'
 import { useOutsideClick } from '@/hooks/useOutsideClick'
 import type { RouteState } from './types'
 
@@ -19,8 +18,6 @@ const stateInitialValues: RouteState = {
 export const SubNavbarContextProvider = ({ children }: PropsWithChildren) => {
 	const [state, setState] = useState<RouteState>(stateInitialValues)
 	const ref = useRef<HTMLDivElement | null>(null)
-
-	useDisableScrolling(state.isOpen)
 
 	const handleOutsideClick = useCallback(() => {
 		setState({

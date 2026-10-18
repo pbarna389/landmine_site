@@ -14,6 +14,7 @@ type DesktopNavbarExpanderProps = {
 }
 
 // TODO: finish the recursive wrapper design
+// TODO: HANDLE THE KEYBOARD USAGE
 
 export const DesktopNavbarExpander = ({ link }: DesktopNavbarExpanderProps) => {
 	const pathname = usePathname()
@@ -41,7 +42,7 @@ export const DesktopNavbarExpander = ({ link }: DesktopNavbarExpanderProps) => {
 			</Link>
 			{state.isOpen && thisRouteCurrentlySelected && (
 				<>
-					<div className="bg-black/50 absolute z-2 top-[3.22rem] left-0 w-full flex flex-col p-2 gap-5 items-center justify-center text-white">
+					<div className="bg-black/50 absolute z-2 top-[3.22rem] left-0 w-full flex flex-col p-2 gap-5 items-center justify-center text-white before:absolute before:w-screen before:-top-4 before:h-5 before:left-0 ">
 						<DesktopRecursiveContent recursionLayer={1} subChild={link.content} />
 					</div>
 				</>
