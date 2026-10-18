@@ -29,7 +29,6 @@ export const DesktopNavbarExpander = ({ link }: DesktopNavbarExpanderProps) => {
 	return (
 		<>
 			<Link
-				aria-label={`Subnavigációs menű megnyitó - ${link.text}`}
 				href={link.href}
 				onPointerEnter={() => handlePointerEnter(link.text, 0, 0, link.href)}
 				onFocus={() => handlePointerEnter(link.text, 0, 0, link.href)}
