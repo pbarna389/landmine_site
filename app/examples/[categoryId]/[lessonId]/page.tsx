@@ -21,8 +21,8 @@ export default async function ExamplesLessonPage({ params }: ExamplesLessonPage)
 	}
 
 	return (
-		<div className="min-w-55 max-w-134.75 h-fit">
-			<div className="relative w-full h-50">
+		<div className="w-full sm:min-w-45 sm:max-w-150 h-fit">
+			<div className="relative w-full min-h-50">
 				<Image
 					src={selectedContent?.content.img.src}
 					alt={selectedContent.content.name}
@@ -30,7 +30,7 @@ export default async function ExamplesLessonPage({ params }: ExamplesLessonPage)
 					fill
 				/>
 			</div>
-			<p className="p-5">{selectedContent.content.text}</p>
+			<p className="p-5 text-center sm:text-start">{selectedContent.content.text}</p>
 		</div>
 	)
 }
