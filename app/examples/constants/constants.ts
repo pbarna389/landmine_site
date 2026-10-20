@@ -80,7 +80,7 @@ const EXAMPLE_METAL_CONTENT = [
 ]
 
 const EXAMPLES_METAL = {
-	id: 1,
+	id: 'metal',
 	name: 'Rock/Metal',
 	link: 'examples/metal',
 	text: EXAMPLES_METAL_TEXT,
@@ -88,30 +88,37 @@ const EXAMPLES_METAL = {
 }
 
 const EXAMPLES_FUNK_POP_ACU = {
-	id: 2,
+	id: 'funk-pop',
 	name: 'funk/pop/aku',
 	link: 'examples/funk-pop',
 	text: [],
 	content: []
 }
 const EXAMPLES_BLUES_JAZZ = {
-	id: 3,
+	id: 'blues-jazz',
 	name: 'blues/jazz',
 	link: 'examples/blues-jazz',
 	text: [],
 	content: []
 }
 const EXAMPLES_TECH_THEORY = {
-	id: 4,
+	id: 'tech-theory',
 	name: 'technika/elmélet',
 	link: 'examples/tech-theory',
 	text: [],
 	content: []
 }
 
+export const EXAMPLES_CONTENT: { [key: string]: typeof EXAMPLES_METAL } = {
+	metal: EXAMPLES_METAL,
+	'funk-pop': EXAMPLES_FUNK_POP_ACU,
+	'blues-jazz': EXAMPLES_BLUES_JAZZ,
+	'tech-theory': EXAMPLES_TECH_THEORY
+}
+
 export const EXAMPLES_MAIN_CONTENT: {
 	filters: {
-		id: number
+		id: string
 		link: string
 		text: string
 	}[]

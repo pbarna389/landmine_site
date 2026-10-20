@@ -9,7 +9,7 @@ export default function ExamplesMainLayout({ children }: PropsWithChildren) {
 	const { textContent, title, link, filters } = EXAMPLES_MAIN_CONTENT
 
 	return (
-		<main className="flex flex-col items-center bg-zinc-50 font-sans text-black">
+		<main className="flex relative flex-col items-center bg-zinc-50 font-sans text-black">
 			<ExamplesMainSection textContent={textContent} title={title} link={link} />
 			<ExamplesNavbar links={filters} />
 			{children}
