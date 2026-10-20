@@ -14,7 +14,7 @@ export default function Footer() {
 	const { media, contact, info } = FOOTER_CONTENT
 
 	return (
-		<footer className="flex flex-col items-center justify-center w-full p-13 pr-0 pl-0 bg-section-header-bg text-footer-text font-raleway space-y-10 lg:p-7 lg:pl-50 lg:pr-50 lg:flex-row lg:items-start lg:gap-20">
+		<footer className="flex flex-col items-center justify-center w-full p-13 pr-0 pl-0 bg-section-header-background text-footer-text font-raleway space-y-10 lg:p-7 lg:pl-50 lg:pr-50 lg:flex-row lg:items-start lg:gap-20">
 			<div className="basis-3/11 hidden text-left space-y-7.5 pt-5 h-full lg:block lg:text-left">
 				<h3 className="text-[30px] uppercase">{media.content.title}</h3>
 				<div className="space-y-5 text-[15px] text-justify">

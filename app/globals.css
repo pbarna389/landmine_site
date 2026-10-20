@@ -9,6 +9,7 @@
 }
 
 @theme {
+	--color-section-header-background: #d7c294;
 	--color-video-advert: #171717;
 	--color-cube-secondary: #cbb37f;
 	--color-base: rgba(25, 18, 2, 0.9);
@@ -22,7 +23,6 @@
 	--color-intro-mobile-advert-bg: #fcf9f1;
 	--color-section-body: #fafafa;
 	--color-section-heading-highlight: #a37f2f;
-	--color-section-header-bg: #d7c294;
 	--color-section-detail-bg: #e2cfa580;
 	--color-section-detail: #e2cfa580;
 	--color-quote: #ede0c6;

@@ -1,7 +1,8 @@
 import Image from 'next/image'
 
+import type { HardBreakType, ImageType, TextType } from '@/types'
+
 import { TextContent } from './TextContent'
-import type { HardBreakType, ImageType, TextType } from '../../types'
 
 // TODO: IMAGE STYLING
 

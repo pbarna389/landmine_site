@@ -1,4 +1,4 @@
-import type { MarksType, TextType } from '../../types'
+import type { MarksType, TextType } from '@/types'
 
 type TextContentProps = { textContent: TextType }
 
