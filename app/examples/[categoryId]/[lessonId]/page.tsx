@@ -25,7 +25,7 @@ export default async function ExamplesLessonPage({ params }: ExamplesLessonPage)
 			<Link
 				className="relative w-full min-h-50"
 				href={selectedLesson.content.link}
-				aria-label={`Link a lecke videójáhozÉ ${selectedLesson.content.name}`}
+				aria-label={`Link a lecke videójához: ${selectedLesson.content.name}`}
 			>
 				<Image
 					src={selectedLesson?.content.img.src}
@@ -35,7 +35,6 @@ export default async function ExamplesLessonPage({ params }: ExamplesLessonPage)
 					fill
 				/>
 			</Link>
-			<div className="flex w-full"></div>
 			<StarRating rating={selectedLesson.content.difficulty} id={selectedLesson.id} />
 			<p className="p-5 pt-0 text-center sm:text-start">{selectedLesson.content.text}</p>
 		</div>
