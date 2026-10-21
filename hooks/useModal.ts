@@ -1,4 +1,4 @@
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 
 import { useEffect, useRef, useState } from 'react'
 
@@ -7,10 +7,13 @@ import { useDisableScrolling } from './useDisableScrolling'
 
 const timeoutTime = 400
 
-//TODO: implement the backward traversal with useParams and useRouter combined instead of just using router.back()
-
 export function useModal({ shouldTravelBack = false }: { shouldTravelBack?: boolean }) {
 	const router = useRouter()
+	const pathName = usePathname()
+
+	const currentPath = pathName.split('/').slice(1)
+	currentPath.pop()
+	const prevPath = currentPath.join('/')
 
 	const [isOpen, setIsOpen] = useState<boolean>(false)
 	const isMobile = useBreakpointChecker()
@@ -21,51 +24,41 @@ export function useModal({ shouldTravelBack = false }: { shouldTravelBack?: bool
 	useDisableScrolling(isOpen)
 
 	useEffect(() => {
-		const keyPressCb = (e: KeyboardEvent) => {
-			if (!ref.current) return
-			if (e.key === 'Escape' || e.key === 'Esc') {
-				setIsOpen(false)
-
-				if (shouldTravelBack) {
-					if (timeoutRef.current) clearTimeout(timeoutRef.current)
-
-					timeoutRef.current = setTimeout(() => {
-						router.back()
-					}, timeoutTime)
-				}
-			}
-		}
-
-		window.addEventListener('keydown', keyPressCb)
-
 		return () => {
 			if (timeoutRef.current) clearTimeout(timeoutRef.current)
-			window.removeEventListener('keydown', keyPressCb)
 		}
-	}, [ref, router, shouldTravelBack])
+	}, [])
 
-	const handleModalClick = () => {
+	const onCloseComplete = () => {
+		if (ref.current?.open || !ref.current) return
+
+		setIsOpen(false)
+		if (timeoutRef.current) clearTimeout(timeoutRef.current)
+
+		if (shouldTravelBack) {
+			timeoutRef.current = setTimeout(() => {
+				router.replace(`/${prevPath}`)
+			}, timeoutTime)
+		}
+	}
+
+	const handleModalStatus = () => {
 		if (!ref.current) return
 
 		if (!isOpen) {
 			ref.current.showModal()
+			setIsOpen(true)
 		} else {
 			ref.current.close()
-
-			if (shouldTravelBack) {
-				timeoutRef.current = setTimeout(() => {
-					router.back()
-				}, timeoutTime)
-			}
 		}
-		setIsOpen((prev) => !prev)
 	}
 
 	return {
 		ref,
 		isOpen,
 		isMobile,
-		handleModalClick,
+		handleModalStatus,
+		onCloseComplete,
 		setIsOpen,
 		modalRouter: router
 	}
