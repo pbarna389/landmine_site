@@ -1,5 +1,6 @@
+import type { TextType } from '@/types'
+
 import { RecursiveContent } from './RecursiveContent'
-import type { TextType } from '../../types'
 
 type HeadingTypeProps = {
 	hierarchyLevel: number

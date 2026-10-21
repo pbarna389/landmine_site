@@ -1,5 +1,6 @@
+import type { OrderedListType } from '@/types'
+
 import { ListItem } from './ListItem'
-import type { OrderedListType } from '../../types'
 
 type OrderedListProps = { level: number; list: OrderedListType['content'] }
 

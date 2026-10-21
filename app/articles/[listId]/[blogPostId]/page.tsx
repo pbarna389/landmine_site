@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
 
-import { Copyright, CreationDetails, RecursiveContent } from './components'
+import { Copyright, CreationDetails } from './components'
+import { RecursiveContent } from '@/components'
 
 import { getBlockPostContent } from './server'
 

@@ -1,20 +1,15 @@
+import type { DocType, HardBreakType, ImageType, ListItemType, TextType } from '@/types'
+
 import { BulletList } from './BulletList'
 import { HeadingContent } from './HeadingContent'
 import { ListItem } from './ListItem'
 import { OrderedList } from './OrderedList'
 import { ParagraphContent } from './ParagraphContent'
 import { RecursiveEndComponent } from './RecursiveEndComponent'
-import type {
-	BlogPostModalType,
-	HardBreakType,
-	ImageType,
-	ListItemType,
-	TextType
-} from '../../types'
 
 type RecursiveTypeProps = {
 	data:
-		| BlogPostModalType['content']['content']
+		| DocType['content']
 		| TextType
 		| ImageType
 		| HardBreakType

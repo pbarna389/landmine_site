@@ -5,6 +5,8 @@ import { useParams } from 'next/navigation'
 
 import { useMemo } from 'react'
 
+// TODO: Upgrade the links to handle different routes - just use the related hooks
+
 type SubrouteLinkProps = {
 	id: string
 	route: 'music' | 'classes' | 'articles' | 'about' | 'videos'

@@ -1,5 +1,6 @@
+import type { BulletListType } from '@/types'
+
 import { ListItem } from './ListItem'
-import type { BulletListType } from '../../types'
 
 type BulletListProps = { level: number; list: BulletListType['content'] }
 

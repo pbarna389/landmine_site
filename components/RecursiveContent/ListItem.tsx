@@ -1,5 +1,6 @@
+import type { ListItemType } from '@/types'
+
 import { RecursiveContent } from './RecursiveContent'
-import type { ListItemType } from '../../types'
 
 type ListItemProps = { items: ListItemType['content']; level: number }
 

@@ -3,7 +3,7 @@ import type { HeightValuesType, WidthValuesType } from '@/types'
 type TriangleProps = {
 	height: HeightValuesType
 	width: WidthValuesType
-	background?: 'bg-section-header-bg' | 'bg-cube-secondary' | 'bg-quote'
+	background?: 'bg-section-header-background' | 'bg-cube-secondary' | 'bg-quote'
 	className?: string
 	position?: 'top' | 'bottom'
 	rotateDeg?: `${number extends number ? number : never}`
@@ -12,7 +12,7 @@ type TriangleProps = {
 export const Triangle = ({
 	width,
 	height,
-	background = 'bg-section-header-bg',
+	background = 'bg-section-header-background',
 	position = 'top',
 	className = ''
 }: TriangleProps) => {

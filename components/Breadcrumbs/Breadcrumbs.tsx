@@ -5,6 +5,9 @@ import { usePathname } from 'next/navigation'
 
 import { Icons } from '../Icons'
 
+// TODO: also move the related stuff to their utils/constant folder
+// TODO: update the logic to be shown all the time - the current one turned out to be cumbersome to use
+
 const convertRoute: Record<string, string> = {
 	articles: 'cikkek',
 	videos: 'videók',
