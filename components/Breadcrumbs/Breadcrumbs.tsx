@@ -5,8 +5,8 @@ import { usePathname } from 'next/navigation'
 
 import { Icons } from '../Icons'
 
-// TODO: also move the related stuff to their utils/constant folder
 // TODO: update the logic to be shown all the time - the current one turned out to be cumbersome to use
+// TODO: also move the related stuff to their utils/constant folder
 
 const convertRoute: Record<string, string> = {
 	articles: 'cikkek',
@@ -29,11 +29,8 @@ export default function Breadcrumbs() {
 	const pathName = usePathname()
 
 	const routeNames = pathName.split('/')
-	const generatedLinks = routeNames.slice(1, routeNames.length - 1)
 
-	if (!generatedLinks.length) {
-		return null
-	}
+	const generatedLinks = routeNames.slice(1, routeNames.length - 1)
 
 	return (
 		<nav
@@ -47,22 +44,20 @@ export default function Breadcrumbs() {
 			>
 				<Icons iconVars={'home'} />
 			</Link>
-			{generatedLinks.includes('home')
-				? null
-				: generatedLinks.map((route, idx) => (
-						<div className="flex gap-2.5" key={`breadcrumbs-link-${route}-${idx}`}>
-							<span className="cursor-default">
-								<Icons iconVars={'chevronLeft'} />
-							</span>
-							<Link
-								aria-label={`Aloldal-${convertRoute[route]}`}
-								className="capitalize font-bold italic transition-[scale] hover:scale-110 focus:scale-110 focus:pr-1 focus:pl-1 focus-within:scale-110"
-								href={`/${generateLinkRoute(generatedLinks, idx)}`}
-							>
-								{convertRoute[route] ? convertRoute[route] : route}
-							</Link>
-						</div>
-					))}
+			{generatedLinks.map((route, idx) => (
+				<div className="flex gap-2.5" key={`breadcrumbs-link-${route}-${idx}`}>
+					<span className="cursor-default">
+						<Icons iconVars={'chevronLeft'} />
+					</span>
+					<Link
+						aria-label={`Aloldal-${convertRoute[route]}`}
+						className="capitalize font-bold italic transition-[scale] hover:scale-110 focus:scale-110 focus:pr-1 focus:pl-1 focus-within:scale-110"
+						href={`/${generateLinkRoute(generatedLinks, idx)}`}
+					>
+						{convertRoute[route] ? convertRoute[route] : route}
+					</Link>
+				</div>
+			))}
 		</nav>
 	)
 }
