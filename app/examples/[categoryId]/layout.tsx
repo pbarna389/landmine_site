@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 
-import { type PropsWithChildren, Suspense } from 'react'
+import type { PropsWithChildren } from 'react'
 
 import { CategorySummary } from './components'
 import { SubcategorySelector } from './components/SubcategorySelector'

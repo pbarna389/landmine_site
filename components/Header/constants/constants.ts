@@ -33,6 +33,116 @@ export const NAV_ELEMENTS: NavItem[] = [
 		]
 	},
 	{
+		text: 'Leckék',
+		href: '/examples',
+		content: [
+			{
+				text: 'Rock/Metal',
+				href: '/metal',
+				content: [
+					{
+						text: 'Klasszik Rock',
+						href: '/1'
+					},
+					{
+						text: 'Drop Metal',
+						href: '/2'
+					},
+					{
+						text: 'Pop-Rock',
+						href: '/3'
+					},
+					{
+						text: 'Grunge',
+						href: '/4'
+					},
+					{
+						text: 'Thrash',
+						href: '/5'
+					}
+				]
+			},
+			{
+				text: 'Funk/Pop/Aku',
+				href: '/funk-pop',
+				content: [
+					{
+						text: 'Funk',
+						href: '/1'
+					},
+					{
+						text: 'Fingerpicking',
+						href: '/2'
+					},
+					{
+						text: 'Akusztikus',
+						href: '/3'
+					},
+					{
+						text: 'Klasszikus',
+						href: '/4'
+					},
+					{
+						text: 'Sláger/Átirat',
+						href: '/5'
+					}
+				]
+			},
+			{
+				text: 'Blues/Jazz',
+				href: '/blues-jazz',
+				content: [
+					{
+						text: 'Texas Blues',
+						href: '/1'
+					},
+					{
+						text: 'Jazzrock',
+						href: '/2'
+					},
+					{
+						text: 'Swing',
+						href: '/3'
+					},
+					{
+						text: 'Jazz Gyaki',
+						href: '/4'
+					},
+					{
+						text: 'Blues Lickek',
+						href: '/5'
+					}
+				]
+			},
+			{
+				text: 'Technika/Elmélet',
+				href: '/tech-theory',
+				content: [
+					{
+						text: 'Neoclassic',
+						href: '/1'
+					},
+					{
+						text: 'Tapping',
+						href: '/2'
+					},
+					{
+						text: 'Tremolókar',
+						href: '/3'
+					},
+					{
+						text: 'Tercpárhuzam',
+						href: '/4'
+					},
+					{
+						text: 'Kidolgozás',
+						href: '/5'
+					}
+				]
+			}
+		]
+	},
+	{
 		text: 'videók',
 		href: '/videos',
 		content: [
