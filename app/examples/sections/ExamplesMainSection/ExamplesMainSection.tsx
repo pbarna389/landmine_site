@@ -1,22 +1,12 @@
 import Link from 'next/link'
 
 import { Heading, RecursiveContent } from '@/components'
-import type { DocType } from '@/types'
 
-type ExamplesMainSectionProps = {
-	link: {
-		href: string
-		text: string
-	}
-	textContent: DocType
-	title: string
-}
+import { getExamplesMainContent } from '../../server/examples.service'
 
-export const ExamplesMainSection = ({
-	textContent,
-	title,
-	link
-}: ExamplesMainSectionProps) => {
+export const ExamplesMainSection = async () => {
+	const { textContent, title, link } = await getExamplesMainContent()
+
 	return (
 		<section
 			className={`w-full relative bg-[url(/gvidihtr.jpg)] bg-fixed bg-cover overflow-hidden"`}

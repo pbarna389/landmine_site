@@ -1,10 +1,10 @@
-'use client'
-
 import Link from 'next/link'
 
-type ExamplesNavbarProps = { links: { id: string; link: string; text: string }[] }
+import { getExamplesMainContent } from '../../server/examples.service'
 
-export const ExamplesNavbar = ({ links }: ExamplesNavbarProps) => {
+export const ExamplesNavbar = async () => {
+	const { filters: links } = await getExamplesMainContent()
+
 	return (
 		<nav
 			aria-label="lecke példák navigációs sor"
