@@ -12,7 +12,7 @@ type AlbumStoryProp = {
 }
 
 export const AlbumStory = ({ details, text }: AlbumStoryProp) => {
-	const { ref, handleModalClick, isMobile, setIsOpen } = useModal({
+	const { ref, handleModalStatus, onCloseComplete, isMobile, setIsOpen } = useModal({
 		shouldTravelBack: false
 	})
 
@@ -38,7 +38,7 @@ export const AlbumStory = ({ details, text }: AlbumStoryProp) => {
 		>
 			<Button
 				className="p-3 pl-4.5 pr-4.5 w-full h-full z-5 bg-transparent cursor-default hover:border-black hover:text-white active:bg-black active:text-white focus:bg-black focus:text-white target:bg-black target:text-white focus-visible:bg-black focus-visible:text-white"
-				onClick={isMobile ? handleModalClick : undefined}
+				onClick={isMobile ? handleModalStatus : undefined}
 			>
 				{!isMobile && mouseCaptured && (
 					<Popover
@@ -51,7 +51,7 @@ export const AlbumStory = ({ details, text }: AlbumStoryProp) => {
 				<span className="relative z-2">{text}</span>
 			</Button>
 			{isMobile && (
-				<Modal ref={ref} modalClass="music">
+				<Modal ref={ref} modalClass="music" onCloseComplete={onCloseComplete}>
 					<article
 						className={`grid place-items-center cursor-default normal-case z-2 -left-px p-15 sm:p-5 w-full h-full border-2 border-gray-400 rounded-md text-white text-[16px] sm:text-xl text-center overflow-y-scroll overscroll-none scrollbar-thin scrollbar-gutter-both scrollbar-track-transparent scrollbar-thumb-gray-400`}
 					>
@@ -59,7 +59,7 @@ export const AlbumStory = ({ details, text }: AlbumStoryProp) => {
 					</article>
 					<button
 						className="absolute top-0 left-0 bg-black text-white"
-						onClick={handleModalClick}
+						onClick={handleModalStatus}
 					>
 						Remove modal
 					</button>
