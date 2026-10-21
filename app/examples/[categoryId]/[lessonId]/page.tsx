@@ -34,7 +34,7 @@ export default async function ExamplesLessonPage({ params }: ExamplesLessonPage)
 			</div>
 			<div className="flex w-full"></div>
 			<StarRating rating={selectedContent.content.difficulty} id={selectedContent.id} />
-			<p className="p-5 text-center sm:text-start">{selectedContent.content.text}</p>
+			<p className="p-5 pt-0 text-center sm:text-start">{selectedContent.content.text}</p>
 		</div>
 	)
 }
