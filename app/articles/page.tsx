@@ -1,3 +1,5 @@
+import { redirect } from 'next/navigation'
+
 export default function ArticlesPage() {
-	return <h1>Válassz kategóriát!</h1>
+	redirect(`/articles/all`)
 }
