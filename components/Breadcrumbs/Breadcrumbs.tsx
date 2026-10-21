@@ -5,7 +5,6 @@ import { usePathname } from 'next/navigation'
 
 import { Icons } from '../Icons'
 
-// TODO: update the logic to be shown all the time - the current one turned out to be cumbersome to use
 // TODO: also move the related stuff to their utils/constant folder
 
 const convertRoute: Record<string, string> = {
@@ -50,7 +49,7 @@ export default function Breadcrumbs() {
 						<Icons iconVars={'chevronLeft'} />
 					</span>
 					<Link
-						aria-label={`Aloldal-${convertRoute[route]}`}
+						aria-label={`Aloldal-${convertRoute[route] ? convertRoute[route] : route}`}
 						className="capitalize font-bold italic transition-[scale] hover:scale-110 focus:scale-110 focus:pr-1 focus:pl-1 focus-within:scale-110"
 						href={`/${generateLinkRoute(generatedLinks, idx)}`}
 					>
