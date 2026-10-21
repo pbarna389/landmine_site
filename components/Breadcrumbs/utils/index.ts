@@ -1,0 +1,1 @@
+export { generateLinkRoute } from './utils'

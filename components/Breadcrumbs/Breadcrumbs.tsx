@@ -3,26 +3,10 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
+import { generateLinkRoute } from './utils'
+import { convertRoute } from './constants/constants'
+
 import { Icons } from '../Icons'
-
-// TODO: also move the related stuff to their utils/constant folder
-
-const convertRoute: Record<string, string> = {
-	articles: 'cikkek',
-	videos: 'videók',
-	classes: 'gitároktatás',
-	about: 'adatlap',
-	music: 'zenék',
-	all: 'összes cikk',
-	theory: 'zeneelmélet',
-	advices: 'tippek',
-	philosophy: 'filozófia',
-	facts: 'érdekességek'
-}
-
-const generateLinkRoute = (arr: string[], idx: number): string => {
-	return arr.slice(0, idx + 1).join('/')
-}
 
 export default function Breadcrumbs() {
 	const pathName = usePathname()
