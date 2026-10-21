@@ -7,11 +7,11 @@ export default async function ArticlesCategoryLayout({
 	children,
 	params
 }: React.PropsWithChildren & {
-	params: Promise<{ listId: ListIdParamType }>
+	params: Promise<{ listId: string }>
 }) {
 	const { listId } = await params
 
-	const selectedArticle = await getArticleContent(listId)
+	const selectedArticle = await getArticleContent(listId as ListIdParamType)
 
 	return (
 		<>

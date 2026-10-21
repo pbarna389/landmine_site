@@ -1,6 +1,6 @@
-import Image1 from '../assets/mm01.webp'
-import Image2 from '../assets/mm02.webp'
-import Image3 from '../assets/mm03.webp'
+import Image1 from '../Assets/mm01.webp'
+import Image2 from '../Assets/mm02.webp'
+import Image3 from '../Assets/mm03.webp'
 
 export const HERO_DATA = [
 	{

@@ -21,10 +21,10 @@ export const getExampleMainFallback = async () => {
 	}
 }
 
-export const getExampleCategoryFallback = cache(async (categoryId: ExampleKeys) => {
+export const getExampleCategoryFallback = cache(async (categoryId: string) => {
 	const data = await getExamplesContentMock()
 
-	const selectedCategoryData = data[categoryId]
+	const selectedCategoryData = data[categoryId as ExampleKeys]
 
 	if (!selectedCategoryData) {
 		return

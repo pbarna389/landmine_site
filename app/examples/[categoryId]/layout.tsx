@@ -9,7 +9,7 @@ import type { ExampleKeys } from '../constants/constants'
 import { getExampleCategoryFallback } from '../server/examples.service'
 
 type ExampleCategoryLayoutProps = {
-	params: Promise<{ categoryId: ExampleKeys }>
+	params: Promise<{ categoryId: string }>
 }
 
 export default async function ExampleCategoryLayout({
@@ -18,7 +18,7 @@ export default async function ExampleCategoryLayout({
 }: PropsWithChildren & ExampleCategoryLayoutProps) {
 	const { categoryId } = await params
 
-	const data = await getExampleCategoryFallback(categoryId)
+	const data = await getExampleCategoryFallback(categoryId as ExampleKeys)
 
 	if (!data) {
 		notFound()
