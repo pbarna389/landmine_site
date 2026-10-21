@@ -12,7 +12,7 @@ export default async function ExamplesMainLayout({ children }: PropsWithChildren
 				<ExamplesMainSection />
 				<ExamplesNavbar />
 			</Suspense>
-			<Suspense>{children}</Suspense>
+			{children}
 		</main>
 	)
 }

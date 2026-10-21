@@ -9,7 +9,7 @@ export const ExamplesMainSection = async () => {
 
 	return (
 		<section
-			className={`w-full relative bg-[url(/gvidihtr.jpg)] bg-fixed bg-cover overflow-hidden"`}
+			className={`w-full relative bg-[url(/gvidihtr.jpg)] bg-fixed bg-cover overflow-hidden`}
 		>
 			<article className="w-full h-full flex flex-col items-center gap-11 p-32 pl-2.5 pr-2.5 sm:pl-15 sm:pr-15 md:pl-20 md:pr-20 transition-all bg-linear-to-b from-white/40 from-0% to-[650px] to-section-header-background text-black font-montserrat text-[20px]">
 				<Heading

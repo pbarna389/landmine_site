@@ -10,8 +10,8 @@ export const getExamplesMainContentMock = cache(async () => {
 	return result
 })
 
-export const getExamplesContentMock = async () => {
+export const getExamplesContentMock = cache(async () => {
 	const result = mockResponse(EXAMPLES_CONTENT, 2000)
 
 	return result
-}
+})

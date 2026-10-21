@@ -12,11 +12,11 @@ export default async function ExamplesCategoryPage({ params }: ExampleCategoryPa
 
 	const data = await getExampleCategoryFallback(categoryId)
 
-	if (!data.content.length) {
+	if (!data || data.content.length === 0) {
 		notFound()
 	}
 
-	if (data.content.length !== 0) {
+	{
 		redirect(`/examples/${categoryId}/${data.content[0].id}`)
 	}
 }

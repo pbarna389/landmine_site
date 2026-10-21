@@ -20,7 +20,7 @@ export default async function ExampleCategoryLayout({
 
 	const data = await getExampleCategoryFallback(categoryId)
 
-	if (!data.content.length) {
+	if (!data) {
 		notFound()
 	}
 

@@ -26,6 +26,10 @@ export const getExampleCategoryFallback = cache(async (categoryId: ExampleKeys) 
 
 	const selectedCategoryData = data[categoryId]
 
+	if (!selectedCategoryData) {
+		return
+	}
+
 	const selectedData = {
 		...selectedCategoryData,
 		content: selectedCategoryData.content.map((cat) => ({ id: cat.id, text: cat.name }))
@@ -36,6 +40,13 @@ export const getExampleCategoryFallback = cache(async (categoryId: ExampleKeys) 
 
 export const getExampleLesson = async (categoryId: ExampleKeys, lessonId: string) => {
 	const data = await getExamplesContentMock()
+
+	const selectedCategoryData = data[categoryId]
+
+	if (!selectedCategoryData) {
+		return
+	}
+
 	const convertLessonId = Number(lessonId)
 
 	const selectedLesson = data[categoryId].content.find(
