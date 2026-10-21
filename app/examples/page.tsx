@@ -1,7 +1,13 @@
-export default function ExamplePage() {
-	return (
-		<section className="flex flex-col items-center justify-center w-full">
-			Example main page
-		</section>
-	)
+import { notFound, redirect } from 'next/navigation'
+
+import { getExampleMainFallback } from './server/examples.service'
+
+export default async function ExamplePage() {
+	const { categoryId, lessonId } = await getExampleMainFallback()
+
+	if (!categoryId || !lessonId) {
+		notFound()
+	}
+
+	redirect(`/examples/${categoryId}/${lessonId}`)
 }

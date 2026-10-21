@@ -1,26 +1,22 @@
 import { notFound, redirect } from 'next/navigation'
 
-import { EXAMPLES_CONTENT } from '../constants/constants'
+import type { ExampleKeys } from '../constants/constants'
+import { getExampleCategoryFallback } from '../server/examples.service'
 
 type ExampleCategoryPageProps = {
-	params: Promise<{ categoryId: string }>
+	params: Promise<{ categoryId: ExampleKeys }>
 }
 
 export default async function ExamplesCategoryPage({ params }: ExampleCategoryPageProps) {
 	const { categoryId } = await params
 
-	const selectedData = EXAMPLES_CONTENT[categoryId]
+	const data = await getExampleCategoryFallback(categoryId)
 
-	const newData = {
-		...selectedData,
-		content: selectedData.content.map((cat) => ({ id: cat.id, text: cat.name }))
-	}
-
-	if (!newData.content.length) {
+	if (!data.content.length) {
 		notFound()
 	}
 
-	if (newData.content.length !== 0) {
-		redirect(`/examples/${categoryId}/${newData.content[0].id}`)
+	if (data.content.length !== 0) {
+		redirect(`/examples/${categoryId}/${data.content[0].id}`)
 	}
 }

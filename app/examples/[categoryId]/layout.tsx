@@ -5,10 +5,11 @@ import type { PropsWithChildren } from 'react'
 import { CategorySummary } from './components'
 import { SubcategorySelector } from './components/SubcategorySelector'
 
-import { EXAMPLES_CONTENT } from '../constants/constants'
+import type { ExampleKeys } from '../constants/constants'
+import { getExampleCategoryFallback } from '../server/examples.service'
 
 type ExampleCategoryLayoutProps = {
-	params: Promise<{ categoryId: string }>
+	params: Promise<{ categoryId: ExampleKeys }>
 }
 
 export default async function ExampleCategoryLayout({
@@ -17,22 +18,17 @@ export default async function ExampleCategoryLayout({
 }: PropsWithChildren & ExampleCategoryLayoutProps) {
 	const { categoryId } = await params
 
-	const selectedData = EXAMPLES_CONTENT[categoryId]
+	const data = await getExampleCategoryFallback(categoryId)
 
-	if (!selectedData) {
+	if (!data.content.length) {
 		notFound()
-	}
-
-	const newData = {
-		...selectedData,
-		content: selectedData.content.map((cat) => ({ id: cat.id, text: cat.name }))
 	}
 
 	return (
 		<section className="flex flex-col items-center justify-center p-10 pl-5 pr-5 gap-5 bg-zinc-50 font-sans text-black w-full">
-			<CategorySummary headerText={newData.name} selectedDataText={newData.text} />
-			<div className="flex flex-col items-center justify-center space-y-2.5 border-black/40 border-2">
-				<SubcategorySelector categoryId={categoryId} content={newData.content} />
+			<CategorySummary headerText={data.name} selectedDataText={data.text} />
+			<div className="flex flex-col items-center w-full justify-center space-y-2.5 sm:w-auto rounded-md overflow-hidden">
+				<SubcategorySelector categoryId={categoryId} content={data.content} />
 				{children}
 			</div>
 		</section>

@@ -344,7 +344,11 @@ const EXAMPLES_TECH_THEORY = {
 	content: EXAMPLE_TECH_THEORY_CONTENT
 }
 
-export const EXAMPLES_CONTENT: { [key: string]: typeof EXAMPLES_METAL } = {
+export type ExampleKeys = 'metal' | 'funk-pop' | 'blues-jazz' | 'tech-theory'
+
+export const EXAMPLES_CONTENT: {
+	[key in ExampleKeys]: typeof EXAMPLES_METAL
+} = {
 	metal: EXAMPLES_METAL,
 	'funk-pop': EXAMPLES_FUNK_POP_ACU,
 	'blues-jazz': EXAMPLES_BLUES_JAZZ,
