@@ -18,7 +18,7 @@ import { NAV_ELEMENTS, NAV_ICONS_MOBILE } from './constants'
 
 import { Icons } from '../Icons/Icons'
 
-// TODO: if needed, convert to the recursion - tools for that are in the DesktopHeaderContent's content folder
+// TODO: if needed, convert to recursion - tools for that are in the DesktopHeaderContent's content folder
 
 export const MobileNavbar = () => {
 	const [isOpen, setIsOpen] = useState(false)
