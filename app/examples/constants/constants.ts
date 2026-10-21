@@ -87,7 +87,7 @@ const EXAMPLE_METAL_CONTENT = [
 		name: 'Klasszik rock',
 		content: {
 			name: 'Along traditions',
-			difficulty: 3.1,
+			difficulty: 3.36,
 			img: PICTURE_01,
 			link: 'https://www.youtube.com/watch?v=QrHyOgzEOKE',
 			text: `Mik voltak jellemzők a '60-es, '70-as, '80-es évek rockzenéire? Hogyan épültek fel a dalok? Milyen motívumokat használtak a szólókban? Mik voltak a legkedveltebb akkordmenetek és hogyan alakították riffekké őket?Akik kedvelik ezt az irányt, a rock-stílusgyakorlatokban ilyesmikre kaphatnak választ, ill. előkészíthetik a terepet a klasszikus rock-dalok tanulására, ill. átlátására. Olyan zenekarok dalaiból csemegézve, mint a Zeppelin, a Doors, a Stones, a Deep Purple, a Queen, a Guns'n Roses, az Aerosmith, a Maiden - és még sok más!`
@@ -98,7 +98,7 @@ const EXAMPLE_METAL_CONTENT = [
 		name: 'drop metal',
 		content: {
 			name: 'Shark tale',
-			difficulty: 4,
+			difficulty: 3.6,
 			img: PICTURE_02,
 			link: 'https://www.youtube.com/watch?v=R71zbrwYyMQ',
 			text: `A modern rock-metal zene előszeretettel használja a drop hangolásokat, melyben e téma is íródott. A groove-os riffek, a modern elemeket is felvonultató szólók igen jellemzőek ezekben a dalokban. Különféle tematikájú témákkal és sok-sok technikai elemmel fejleszthetjük játékunkat, skálák felhasználási módjaival ismerkedhetünk, hogy később a kihívást jelentő mai zenék se okozhassanak gondot. Mindig zenére gyakorlunk, s ezzel a ritmusérzék is észrevétlenül fejlődhet!`
@@ -109,7 +109,7 @@ const EXAMPLE_METAL_CONTENT = [
 		name: 'Pop-rock',
 		content: {
 			name: 'Chocolate',
-			difficulty: 2.2,
+			difficulty: 2.4,
 			img: PICTURE_03,
 			link: 'https://www.youtube.com/watch?v=aAs41Edq5lA',
 			text: `Kezdő szinten is fontos a gyors sikerélmény, így már az elején megpróbáljuk élvezetessé tenni a gyakorlást az ehhez hasonló egyszerűbb, dallamos témákkal. A cél az, hogy könnyedén ivódjanak be az olyan technikai elemek, mint a slide-ok, a hajlítások, a vibrátók, ill. hogy menet közben még át is lássuk, milyen skálákból épül fel egy-egy motívum. A bátrabbak már improvizálhatnak is a szólókörökre, melyekhez minden témánál biztosítok zenei alapot (backing track-et)!`
@@ -120,7 +120,7 @@ const EXAMPLE_METAL_CONTENT = [
 		name: 'Grunge',
 		content: {
 			name: 'Along traditions',
-			difficulty: 3.4,
+			difficulty: 3.5,
 			img: PICTURE_04,
 			link: 'https://www.youtube.com/watch?v=vlmtg2_oNn0',
 			text: `A rockzene "könnyedebb" ágaival is megismerkedhetünk, legyen szó akár progresszív rock-ról (pl. Toto, Pink Floyd, Dream Theater), akár grunge-ról (pl. Audioslave, Pearl Jam, STP), akár alternatív zenékről (pl. Faith No More, Red Hot Chili, Radiohead, magyar bandák...). Az itt szereplő kis téma a grunge (és a strat) kedvelőinek nyújt némi betekintést, akik éppen ismerkednek a stílussal, jellegzetességekkel, megközelítésekkel. Fontos az alapozás, hogy legyen mire építeni!`
@@ -131,7 +131,7 @@ const EXAMPLE_METAL_CONTENT = [
 		name: 'Thrash',
 		content: {
 			name: 'Coffee Grinder',
-			difficulty: 4.2,
+			difficulty: 4.35,
 			img: PICTURE_05,
 			link: 'https://www.youtube.com/watch?v=QrHyOgzEOKE',
 			text: `Akik kedvelik a keményebb stílusokat, azoknak meg kell bírkózniuk a sokszor igen nehéz technikákkal és tempókkal. Ennek érdekében külön megcélozhatjuk ezeket a területeket. Legyen az kemény vagy gyors riffelés, precíz játék, szólók tisztítása, stb., a folyamatosság a kulcstényező. Ha szintenként emeljük a gyakorlási tempókat, a finom mozgások könynebben be tudjanak ivódni, az elemek be tudjanak érni. Azután már bátrabban szembenézhetünk pl. a Metallica, az Extreme, a Tool, az Opeth, vagy épp a gitárhősök (Satriani, Vai) dalaival is!`
@@ -204,7 +204,7 @@ const EXAMPLE_BLUES_JAZZ_CONTENT = [
 		name: 'Texas blues',
 		content: {
 			name: 'Texas blues szóló',
-			difficulty: 4.4,
+			difficulty: 4.45,
 			img: PICTURE_11,
 			link: 'https://www.youtube.com/watch?v=vBoAziBA16Q',
 			text: `A blues a legtöbb modern műfaj alapja, így érdemes lehet ezzel is ismerkedni: ebben segítenek a blues-stílusgyakorlatok. A klasszikus 12 ütemes forma egyeduralma mellett találkozni azért ma már afféle ötvözetekkel is, pl. jazzbe ültetve, vagy éppen rock alapokra helyezve (mint a jelen példában). Clapton, SRV... A blues az improvizálásról szól, de hasznos néha megtanulni 1-1 szólót, akkordkör-variációt is, majd elemezni, mi-hogy-miért történik - ezekből aztán beépíthetünk ezt-azt saját szólóinkba, gondolkodásmódunkba is!`
@@ -215,7 +215,7 @@ const EXAMPLE_BLUES_JAZZ_CONTENT = [
 		name: 'jazzrock',
 		content: {
 			name: 'Archaic house',
-			difficulty: 2.4,
+			difficulty: 2.678,
 			img: PICTURE_12,
 			link: 'https://www.youtube.com/watch?v=zhtx5ty4UEs',
 			text: `A jazzrock egy olyan szintetizált műfaj, ahol kétfajta gondolkodásmód is tetten érhető: a jazzre jellemző kifinomultság (dinamikák, frazírok, összetett akkordok és skálák) a rock lendületével (és sokszor erős hangszíneivel) keveredik. Az elméleti- és improvizációs alapozás, ill. néhány rávezető téma után a nagyoktól is tanulhatunk (pl. Robben Ford, Pat Metheny, Julian Lage, stb.) és próbálhatunk zenei felfogásukból meríteni!`
@@ -237,7 +237,7 @@ const EXAMPLE_BLUES_JAZZ_CONTENT = [
 		name: 'jazz gyaki',
 		content: {
 			name: 'Jazz walkin',
-			difficulty: 4.12,
+			difficulty: 3.67,
 			img: PICTURE_14,
 			link: 'https://www.youtube.com/watch?v=qNKtXiJ_Mfw',
 			text: `A modern jazz előszeretettel használ akkordszólókat, ami egy-egy téma vagy standard önálló kibontását jelenti, olyakor hangszerelés nélkül is. Legtöbbször az alapkör harmóniái és a hozzáillő dallamok vagy improvizációk egy szólamban bontakoznak ki. Egyik megközelítése gitáron pl. a walking bass alapú játék, melynek nagy ikonja Joe Pass. Egyszerűbb akkordkörökben kezdhetünk ismerkedni a különböző technikák eszköztárával, majd később teljes standardekre ültethetjük át őket! (Akkordkör: C. Parker-Donna Lee)`
@@ -248,7 +248,7 @@ const EXAMPLE_BLUES_JAZZ_CONTENT = [
 		name: 'blues lickek',
 		content: {
 			name: 'Highway blues',
-			difficulty: 1.2,
+			difficulty: 1.34,
 			img: PICTURE_15,
 			link: 'https://www.youtube.com/watch?v=uoAkxf8XIx4',
 			text: `Kezdő gitárosoknál igen hasznos, ha begyakorolnak egypár gyakran használt licket, ami alapjául szolgálhat az első improvizációknak. Ha ezek az elemek már kézben vannak és szépen is szólnak, át lehet formálni őket ízlés szerint, majd később saját ötletekkel megtűzdelni, ill. felépíteni belőlük egy-egy teljes szólót. Minden ujjrendnek megvannak a sajátosságai, ezért az összes fekvésben otthonosan kell mozognunk, ill. biztosan kell tudnunk "közlekedni" közöttük!`

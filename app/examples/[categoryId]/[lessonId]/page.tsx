@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
 
+import { StarRating } from './components'
+
 import { EXAMPLES_CONTENT } from '../../constants/constants'
 
 type ExamplesLessonPage = {
@@ -21,7 +23,7 @@ export default async function ExamplesLessonPage({ params }: ExamplesLessonPage)
 	}
 
 	return (
-		<div className="w-full sm:min-w-45 sm:max-w-150 h-fit">
+		<div className="w-full flex flex-col items-center gap-2.5 sm:min-w-45 sm:max-w-150 h-fit">
 			<div className="relative w-full min-h-50">
 				<Image
 					src={selectedContent?.content.img.src}
@@ -30,6 +32,8 @@ export default async function ExamplesLessonPage({ params }: ExamplesLessonPage)
 					fill
 				/>
 			</div>
+			<div className="flex w-full"></div>
+			<StarRating rating={selectedContent.content.difficulty} id={selectedContent.id} />
 			<p className="p-5 text-center sm:text-start">{selectedContent.content.text}</p>
 		</div>
 	)
