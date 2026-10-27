@@ -77,7 +77,7 @@ export default function RootLayout({
 	return (
 		<html lang="en" data-scroll-behavior="smooth">
 			<body
-				className={`${montserrat.variable} ${raleway.variable} ${cuprum.variable} ${nunito.variable} ${openSans.variable} ${rubik.variable} ${ubuntu.variable} antialiased text-[20px] xl:text-[1rem] 2xl:text-[1.1rem]`}
+				className={`${montserrat.variable} ${raleway.variable} ${cuprum.variable} ${nunito.variable} ${openSans.variable} ${rubik.variable} ${ubuntu.variable} antialiased`}
 				style={{ overflow: 'auto' }}
 			>
 				<Header />

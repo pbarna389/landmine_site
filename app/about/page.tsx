@@ -10,7 +10,7 @@ export default async function AboutPage() {
 	const { textContent, profileInfo } = profileContent
 
 	return (
-		<main className="flex flex-col p-28 pl-5 pr-5 w-full gap-5 bg-white font-sans text-black sm:pl-15 sm:pr-15 md:pl-[18%] md:pr-[18%]  md:gap-15 lg:pl-[13%] lg:pr-[12%] lg:gap-[9%] xl:flex-row 2xl:pl-[18%] 2xl:pr-[17%] 2xl:gap-[11%] *:font-montserrat">
+		<main className="about-page-text-base flex flex-col p-28 pl-5 pr-5 w-full gap-5 bg-white font-sans text-black sm:pl-15 sm:pr-15 md:pl-[18%] md:pr-[18%]  md:gap-15 lg:pl-[13%] lg:pr-[12%] lg:gap-[9%] xl:flex-row 2xl:pl-[18%] 2xl:pr-[17%] 2xl:gap-[11%] *:font-montserrat">
 			<article className="lg:basis-[48%] xl:basis-[47%] 2xl:basis-[46%]">
 				<h1 className="text-[220%] capitalize mb-12 text-center font-bold basis-3/4 relative xl:text-[290%] 2xl:text-[300%] after:content-[''] after:absolute after:-bottom-5 after:transform after:-translate-x-1/2 after:left-1/2 after:w-17 after:h-1 after:bg-section-heading-highlight xl:text-start xl:after:left-0 xl:after:transform-none xl:after:translate-0">
 					{textContent.title.text}
