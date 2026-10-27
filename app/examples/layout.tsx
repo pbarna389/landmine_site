@@ -7,7 +7,7 @@ import { ExamplesMainSection } from './sections'
 
 export default async function ExamplesMainLayout({ children }: PropsWithChildren) {
 	return (
-		<main className="flex relative flex-col items-center bg-zinc-50 font-sans text-black">
+		<main className="flex flex-col items-center bg-zinc-50 font-sans text-black relative">
 			<Suspense fallback={<MainContentLoading />}>
 				<ExamplesMainSection />
 				<ExamplesNavbar />

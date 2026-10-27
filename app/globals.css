@@ -152,6 +152,10 @@ html {
 
 @layer components {
 	.wrapper-base {
-		@apply flex flex-col items-center bg-zinc-50 font-sans text-black;
+		@apply flex flex-col items-center bg-zinc-50 font-sans text-black lg:text-[20px] xl:text-[1rem] 2xl:text-[1.1rem];
+	}
+
+	.main-text {
+		@apply text-[82%] xl:text-[93%] 2xl:text-[90%] 2xl:leading-normal;
 	}
 }

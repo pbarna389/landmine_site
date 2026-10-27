@@ -10,57 +10,57 @@ export default async function AboutPage() {
 	const { textContent, profileInfo } = profileContent
 
 	return (
-		<main className="flex flex-col p-28 pl-5 pr-5 w-full gap-5 bg-white font-sans text-black sm:pl-15 sm:pr-15 md:pl-20 md:pr-20 md:flex-row md:gap-15 lg:pr-41 lg:pl-41 lg:gap-22 *:font-montserrat">
-			<article className="basis-1/2">
-				<h1 className="text-3xl capitalize mb-12 text-center font-bold basis-3/4 relative sm:text-4xl md:text-5xl lg:text-[58px] after:content-[''] after:absolute after:-bottom-5 after:transform after:-translate-x-1/2 after:left-1/2 after:w-17 after:h-1 after:bg-section-heading-highlight lg:text-start lg:after:left-0 lg:after:transform-none lg:after:translate-0">
+		<main className="flex flex-col p-28 pl-5 pr-5 w-full gap-5 bg-white font-sans text-black sm:pl-15 sm:pr-15 md:pl-[18%] md:pr-[18%]  md:gap-15 lg:pl-[13%] lg:pr-[12%] lg:gap-[9%] xl:flex-row 2xl:pl-[18%] 2xl:pr-[17%] 2xl:gap-[11%] *:font-montserrat">
+			<article className="lg:basis-[48%] xl:basis-[47%] 2xl:basis-[46%]">
+				<h1 className="text-[220%] capitalize mb-12 text-center font-bold basis-3/4 relative xl:text-[290%] 2xl:text-[300%] after:content-[''] after:absolute after:-bottom-5 after:transform after:-translate-x-1/2 after:left-1/2 after:w-17 after:h-1 after:bg-section-heading-highlight xl:text-start xl:after:left-0 xl:after:transform-none xl:after:translate-0">
 					{textContent.title.text}
 				</h1>
-				<div className="*:text-justify *:leading-5.5">
+				<section className="flex flex-col gap-5">
 					{textContent.text.map((text, idx) => (
-						<p className="mb-5 text-[18px]" key={`profile-text-${idx}`}>
+						<p className="main-text text-justify" key={`profile-text-${idx}`}>
 							{text}
 						</p>
 					))}
-				</div>
+				</section>
 			</article>
-			<section className="flex flex-col gap-5 basis-1/2 animate-profileAnim">
-				<div className="group relative w-full mt-12 border-2 border-transparent transition-colors duration-400 hover:border-2 hover:border-hero-highlight focus-within:border-2 focus-within:border-hero-highlight focus:border-2 focus:border-hero-highlight">
+			<section className="flex flex-col justify-between gap-5 animate-profileAnim lg:basis-[44%] xl:basis-[43%]">
+				<div className="group relative w-full mt-12 border-2 border-transparent transition-colors duration-400 hover:border-2 hover:border-hero-highlight focus-within:border-2 focus-within:border-hero-highlight focus:border-2 focus:border-hero-highlight mb-5 xl:mb-0">
 					<RotatableImage
 						src={profileInfo.image.src}
 						alt={profileInfo.image.alt}
 						rotateLeft={false}
-						className="w-full"
+						className="w-full min-h-1/2"
 					/>
-					<span className="absolute transform translate-x-1/2 -bottom-5 right-1/2 text-[18px] opacity-100 transition-opacity duration-500 text-hero-highlight lg:group-hover:opacity-100 lg:opacity-0 lg:top-0 lg:right-2 lg:transform-none lg:translate-0">
+					<span className="absolute main-text transform translate-x-1/2 -bottom-5 right-1/2 opacity-100 transition-opacity duration-500 text-hero-highlight xl:group-hover:opacity-100 xl:opacity-0 xl:top-0 xl:right-2 xl:transform-none xl:translate-0">
 						&lsquo;landmine&lsquo;
 					</span>
 				</div>
-				<div className="space-y-10 text-center lg:text-start">
-					<Heading text={profileInfo.title.text} />
-				</div>
-				<div className="w-full mt-5 *:border-t *:border-black">
-					{profileInfo.content.map((content, idx) => (
-						<div
-							className={`pl-1 pt-2 flex items-center justify-center gap-2 w-full *:w-1/2 ${idx === profileInfo.content.length - 1 ? 'border-b border-black' : ''} lg:gap-5`}
-							key={`profile-content-${content.title}`}
-						>
-							<h5 className="font-bold uppercase text-[12px] tracking-[1.5px] sm:text-[16px]">
-								{content.title}
-							</h5>
-							<p className="text-[14px] sm:text-[18px]">{content.text}</p>
-						</div>
-					))}
-				</div>
-				<div className="space-y-10 text-center lg:text-start">
-					<Heading text="Social Media" />
-					<div className="flex justify-center gap-2 lg:justify-start *:transition-all *:hover:scale-110 *:hover:brightness-125 *:cursor-pointer">
-						<LinksWithIconsWrapper links={NAV_ICONS_BASE.slice(0, 3)} size="40" />
+				<div className="w-full">
+					<Heading text={profileInfo.title.text} className="after:-bottom mb-10 text-center" />
+					<div>
+						{profileInfo.content.map((content, idx) => (
+							<div
+								className={`pl-2 pt-1.5 pb-1.5 flex items-center justify-center gap-2 w-full border-t border-black *:w-1/2 ${idx === profileInfo.content.length - 1 ? 'border-b border-black' : ''} lg:gap-5`}
+								key={`profile-content-${content.title}`}
+							>
+								<h5 className="font-bold text-[75%] uppercase tracking-[2px]">{content.title}</h5>
+								<p className="main-text">{content.text}</p>
+							</div>
+						))}
 					</div>
 				</div>
-				<div className="space-y-10 text-center lg:text-start">
-					<Heading text="Kontakt" />
-					<div className="flex justify-center gap-2 lg:justify-start *:transition-all *:hover:scale-110 *:hover:brightness-125 *:cursor-pointer">
-						<LinksWithIconsWrapper links={NAV_ICONS_BASE.slice(3, 5)} size="40" />
+				<div className="flex flex-col no-wrap gap-10 justify-center sm:flex-row xl:justify-start">
+					<div className="space-y-10 text-center lg:text-start">
+						<Heading text="Social Media" />
+						<div className="flex justify-center gap-2 lg:justify-start *:transition-all *:hover:scale-110 *:hover:brightness-125 *:cursor-pointer">
+							<LinksWithIconsWrapper links={NAV_ICONS_BASE.slice(0, 3)} size="40" />
+						</div>
+					</div>
+					<div className="space-y-10 text-center lg:text-start">
+						<Heading text="Kontakt" />
+						<div className="flex justify-center gap-2 lg:justify-start *:transition-all *:hover:scale-110 *:hover:brightness-125 *:cursor-pointer">
+							<LinksWithIconsWrapper links={NAV_ICONS_BASE.slice(3, 5)} size="40" />
+						</div>
 					</div>
 				</div>
 			</section>

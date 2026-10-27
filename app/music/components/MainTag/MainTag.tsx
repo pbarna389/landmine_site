@@ -16,7 +16,7 @@ export const MainTag = ({ children }: React.PropsWithChildren) => {
 
 	return (
 		<main
-			className={`flex flex-col min-h-screen items-center justify-center relative bg-zinc-50 font-raleway *:text-white`}
+			className={`wrapper-base min-h-screen justify-center relative font-raleway *:text-white`}
 			style={adjustedElementHeight}
 		>
 			{children}
