@@ -33,7 +33,7 @@ export const PossibilitiesSection = ({ data }: PossibilitiesSectionProps) => {
 				id={id}
 				className="w-full flex flex-col justify-center items-center gap-32 *:font-montserrat"
 			>
-				<article className="w-9/10 sm:w-4/5 md:w-[70%] lg:w-1/2 p-5 bg-section-body shadow-2xl space-y-5 rounded  xl:w-[42%] xl:p-7.5 xl:pl-11 xl:pr-11 *:text-start *:text-[16px] *:md:text-[15px] *:lg:text-[16px] *:leading-4.5">
+				<article className="w-9/10 sm:w-4/5 text-main p-7.5 bg-section-body shadow-2xl space-y-5 rounded-lg md:pr-[4%] md:pl-[4%] md:w-[70%] lg:w-[60%] xl:w-[52%] 2xl:w-[42%] 2xl:pl-11 2xl:pr-11 *:text-justify">
 					{body.map((paragraph) => (
 						<PossibilityParagraph key={paragraph.id} content={paragraph} />
 					))}

@@ -8,7 +8,7 @@ export const MainContent = async () => {
 	return (
 		<>
 			<VideoHeader title={title} textContent={textContent} />
-			<nav className="flex flex-col justify-center items-center gap-5 md:flex-row md:flex-wrap">
+			<nav className="flex flex-col justify-center items-stretch gap-5 md:flex-row md:flex-wrap">
 				{subPages.map((card, idx) => (
 					<VideoCategoryCard key={`video-category-card-${card.id}`} card={card} idx={idx} />
 				))}

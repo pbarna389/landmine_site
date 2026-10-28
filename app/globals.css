@@ -159,7 +159,19 @@ html {
 		@apply text-[20px] xl:text-[1rem] 2xl:text-[1.1rem];
 	}
 
+	.classes-page-text-base {
+		@apply text-[20px] xl:text-[1rem] 2xl:text-[1.1rem];
+	}
+
 	.main-text {
 		@apply text-[82%] xl:text-[93%] 2xl:text-[90%] 2xl:leading-normal;
+	}
+
+	.premise-possibilities-text {
+		@apply text-[87%] sm:text-[82%]  lg:text-[78%] 2xl:text-[87%] 2xl:leading-normal;
+	}
+
+	.classes-heading-text {
+		@apply text-[116%] xl:text-[100%] 2xl:text-[124%] font-normal;
 	}
 }

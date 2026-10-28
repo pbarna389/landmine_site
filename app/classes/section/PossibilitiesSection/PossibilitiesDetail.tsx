@@ -36,7 +36,7 @@ export const PossibilitiesDetail = ({
 							className={'h-64.5 rounded-lg'}
 						/>
 						<p
-							className={`block w-full mt-2 capitalize italic text-[15px] ${isEvenElement ? 'text-start' : 'text-end'} z-0 opacity-100 cursor-default select-none lg:absolute lg:-bottom-5 lg:mt-0 lg:transition-opacity lg:duration-600 lg:translate-x-0 lg:group-hover:opacity-100 lg:group-focus:opacity-100 text-sm lg:opacity-0 lg:${isEvenElement ? 'left-0' : 'right-0'}`}
+							className={`block w-full mt-2 text-main capitalize italic ${isEvenElement ? 'text-start' : 'text-end'} z-0 opacity-100 cursor-default select-none lg:absolute lg:-bottom-5 lg:mt-0 lg:transition-opacity lg:duration-600 lg:translate-x-0 lg:group-hover:opacity-100 lg:group-focus:opacity-100 text-sm lg:opacity-0 lg:${isEvenElement ? 'left-0' : 'right-0'}`}
 						>
 							{image.caption}
 						</p>
@@ -46,9 +46,7 @@ export const PossibilitiesDetail = ({
 					<h4 className="uppercase text-start text-nowrap text-[21px] lg:text-[19px]">
 						{subTitle.text} <span>{subTitle.emoticon}</span>
 					</h4>
-					<p className="whitespace-pre-line text-start leading-4 text-[14px] sm:text-[15px] md:text-[17px] lg:text-[16px]">
-						{text}
-					</p>
+					<p className="whitespace-pre-line text-start premise-possibilities-text">{text}</p>
 					<Button>
 						<Link href={link.href ? link.href : ''} target="_blank">
 							{link.text}

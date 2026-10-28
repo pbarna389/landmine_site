@@ -25,7 +25,7 @@ export const PremiseSection = ({ data }: PremiseSectionProps) => {
 			</Section.Header>
 			<Section.Body
 				id={id}
-				className="flex flex-col items-center justify-center gap-11 w-full h-full *:text-black lg:flex-row lg:row lg:items-baseline"
+				className="flex flex-col items-center justify-center gap-11 sm:w-full lg:items-stretch lg:w-[85%] xl:w-[95%] 2xl:w-[85%] h-full *:text-black lg:flex-row lg:row"
 			>
 				{content.map((card) => (
 					<PremiseCard key={`premise-card-${card.title.text}`} card={card} />

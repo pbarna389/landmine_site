@@ -16,7 +16,7 @@ export const PossibilityParagraph = ({ content }: PossibilityParagraphProps) => 
 					{content.header}
 				</h5>
 			)}
-			<p className="whitespace-pre-line font-light lg:font-normal">{content.text}</p>
+			<p className="premise-possibilities-text whitespace-pre-line">{content.text}</p>
 			{content.images && Array.isArray(content.images) && (
 				<div className="flex flex-col items-center justify-center md:flex-row md:flex-wrap">
 					{content.images.map((image) => (

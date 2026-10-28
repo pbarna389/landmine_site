@@ -1,6 +1,6 @@
 export default function ClassesLayout({ children }: React.PropsWithChildren) {
 	return (
-		<main className="flex flex-col min-h-screen items-center bg-zinc-50 font-sans">
+		<main className="flex flex-col min-h-screen items-center bg-zinc-50 font-sans text-[19px]">
 			{children}
 		</main>
 	)
