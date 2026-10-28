@@ -36,7 +36,7 @@ export default async function AboutPage() {
 					</span>
 				</div>
 				<div className="w-full">
-					<Heading text={profileInfo.title.text} className="after:-bottom mb-10 text-center" />
+					<Heading text={profileInfo.title.text} className="mb-10 text-center" />
 					<div>
 						{profileInfo.content.map((content, idx) => (
 							<div

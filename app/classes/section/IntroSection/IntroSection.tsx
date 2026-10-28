@@ -25,7 +25,7 @@ export const IntroSection = ({ data }: IntroSectionProps) => {
 			{isMobile && <MobileAdvert />}
 			<div className="w-full min-w-42.5 xl:basis-[59.4%] 2xl:basis-[58%] relative group">
 				<RotatableImage alt={image.alt} src={image.src} className="lg:w-full" />
-				<p className="absolute text-nowrap text-[95%] -bottom left-1/2 transform -translate-x-1/2 z-0 opacity-100 cursor-default select-none xl:transition-opacity xl:duration-600 xl:translate-x-0 xl:group-hover:opacity-100 xl:group-focus:opacity-100 text-sm xl:opacity-0 xl:bottom-0 xl:left-auto xl:right-0">
+				<p className="absolute text-nowrap text-[95%] left-1/2 transform -translate-x-1/2 z-0 opacity-100 cursor-default select-none xl:transition-opacity xl:duration-600 xl:translate-x-0 xl:group-hover:opacity-100 xl:group-focus:opacity-100 text-sm xl:opacity-0 xl:bottom-0 xl:left-auto xl:right-0">
 					<span className="text-green-700 text-[87%] font-bold">✓</span>
 					{image.caption}
 				</p>
