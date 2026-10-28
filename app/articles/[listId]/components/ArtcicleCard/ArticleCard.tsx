@@ -32,7 +32,7 @@ export const ArticleCard = ({
 }: ArticleCardProps) => {
 	return (
 		<Link className="cursor-pointer" href={`/articles/${listId}/${id}`}>
-			<Card className="items-start gap-2.5 max-w-full w-full h-65 lg:h-80 rounded-xl border border-black p-0 pt-0 pr-0 pl-0 pb-0 overflow-hidden group sm:min-w-1/4 lg:w-full lg:min-h-full *:font-montserrat">
+			<Card className="items-start gap-2.5 max-w-full w-full h-80 sm:h-95 2xl:h-110 rounded-xl border border-black p-0 pt-0 pr-0 pl-0 pb-2 overflow-hidden group sm:min-w-1/4 lg:w-full lg:min-h-full *:font-montserrat">
 				<Card.Header
 					idx={idx}
 					className="relative basis-1/2 sm:basis-2/5 md:basis-1/2 h-full overflow-hidden p-0"
@@ -46,9 +46,9 @@ export const ArticleCard = ({
 						fill
 					/>
 				</Card.Header>
-				<div className="p-2.5 pt-0 text-start basis-1/2 sm:basis-2/5 md:basis-1/2 overflow-hidden ">
-					<h2 className="capitalize w-full m-0 text-sm sm:text-md">{title}</h2>
-					<p className="inline text-hover m-0 p-0 h-2 *:capitalize *:text-[12px]">
+				<div className="p-5 pt-0 text-start basis-1/2 sm:basis-2/5 md:basis-1/2 overflow-hidden ">
+					<h2 className="articles-post-header capitalize w-full m-0">{title}</h2>
+					<p className="inline articles-post-tags text-hover m-0 p-0 h-2 *:capitalize">
 						<span>
 							{date} {'>'}
 						</span>
@@ -59,7 +59,7 @@ export const ArticleCard = ({
 							</span>
 						))}
 					</p>
-					<article className="text-[15px] sm:text-[18px] text-wrap line-clamp-2 sm:line-clamp-3 lg:line-clamp-4 ">
+					<article className="articles-post-text text-wrap line-clamp-2 sm:line-clamp-3 ">
 						{text}
 					</article>
 				</div>

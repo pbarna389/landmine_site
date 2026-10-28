@@ -5,6 +5,8 @@ import { RotatableImage } from '@/components/RotatableImage/RotatableImage'
 import type { PossibilitiesDetailsType } from './constants/constants'
 import type { ArrayElementType } from '@/types'
 
+// TODO: Update the main layout to resemble the original design more
+
 type PossibilitiesDetailProps = {
 	content: ArrayElementType<PossibilitiesDetailsType>
 	idx: number

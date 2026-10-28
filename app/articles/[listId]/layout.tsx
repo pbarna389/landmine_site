@@ -15,7 +15,7 @@ export default async function ArticlesCategoryLayout({
 
 	return (
 		<>
-			<section className="grid gap-5 w-full h-full grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+			<section className="grid gap-5 w-full h-full items-stretch grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
 				{selectedArticle.map((article, idx) => (
 					<ArticleCard
 						key={`article-card-${article.id}`}
