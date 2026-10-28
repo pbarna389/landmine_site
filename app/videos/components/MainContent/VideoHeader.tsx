@@ -7,14 +7,14 @@ type HeaderProps = {
 
 export const VideoHeader = ({ title, textContent }: HeaderProps) => {
 	return (
-		<div className="flex w-full justify-center items-center md:justify-end md:basis-1/2">
-			<div className="flex flex-col gap-10 lg:w-1/2 *:text-center *:lg:text-start">
+		<div className="flex w-full justify-center items-center text-justify md:justify-end md:basis-1/2">
+			<div className="text-container flex flex-col gap-10 lg:w-1/2 *:text-center *:lg:text-start">
 				<Heading
 					text={title.text}
-					className="text-[48px] sm:text-[48px] md:text-[48px] lg:text-[62px] text-white capitalize lg:text-black"
+					className="text-[310%] sm:text-[310%] md:text-[310%] lg:text-[310%] text-white capitalize lg:text-black"
 				/>
-				<h2 className="text-2xl text-white capitalize lg:text-black">{title.subtext}</h2>
-				<article className="text-white lg:text-black">{textContent.text}</article>
+				<h2 className="videos-sub-heading-text text-white lg:text-black">{title.subtext}</h2>
+				<p className="videos-text text-white lg:text-black">{textContent.text}</p>
 			</div>
 		</div>
 	)

@@ -33,7 +33,7 @@ export const NavigatorBtn = () => {
 		<button
 			aria-label="Vissza az oldal tetejére"
 			disabled={!isVisible}
-			className={`fixed z-3 bottom-1/24 rounded-full p-2.5 border-4 border-gray-400 bg-black/50 transition-all duration-400 hover:bg-black hover:scale-115 focus-visible:bg-black focus-visible:scale-115 focus-visible:outline-none focus-visible:shadow-none active:border-gray-300 active:bg-black/75 active:scale-85 cursor-pointer ${isVisible ? 'right-1/24' : '-right-1/4 sm:-right-24'} `}
+			className={`fixed z-3 bottom-1/24 rounded-full p-2.5 border-4 border-gray-400 bg-black/50 transition-all duration-150 hover:bg-black hover:scale-115 focus-visible:bg-black focus-visible:scale-115 focus-visible:outline-none focus-visible:shadow-none active:border-gray-300 active:bg-black/75 active:scale-85 cursor-pointer ${isVisible ? 'right-1/24' : '-right-1/4 sm:-right-24'} `}
 			type="button"
 			onClick={scrollToTop}
 		>

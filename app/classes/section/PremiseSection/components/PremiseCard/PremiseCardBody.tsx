@@ -6,13 +6,13 @@ export const PremiseCardBody = ({ title, textContent }: PremiseCardBodyProps) =>
 	return (
 		<>
 			{' '}
-			<h3 className="uppercase text-md text-wrap lg:text-nowrap select-none cursor-default">
+			<h3 className="classes-heading-text uppercase text-wrap xl:text-nowrap select-none cursor-default">
 				{title.text}
 				<span className="ml-1">{title.emoticon}</span>
 			</h3>
 			<hr className="w-full border border-black/20" />
-			<div>
-				<p className="text-[15px] whitespace-pre-line">{textContent.text}</p>
+			<div className="text-main">
+				<p className="text-[87%] whitespace-pre-line">{textContent.text}</p>
 			</div>
 		</>
 	)

@@ -20,30 +20,26 @@ export const IntroSection = ({ data }: IntroSectionProps) => {
 	return (
 		<section
 			id={id}
-			className={`bg-white text-black w-full flex flex-col-reverse items-center justify-center p-8 lg:flex lg:flex-row lg:gap-10 lg:items-start lg:p-35 lg:pt-28 lg:pb-28`}
+			className={`bg-white text-black w-full flex flex-col-reverse items-center justify-center gap-10 p-28 pl-5 pr-5 sm:p-[13.07%] xl:flex xl:flex-row xl:gap-[3.5%] xl:items-start xl:p-35 xl:pl-[11%] xl:pr-[6%] 2xl:p-35 2xl:pl-[15%] 2xl:pr-[10%] 2xl:gap-[4%]`}
 		>
 			{isMobile && <MobileAdvert />}
-			<div className="basis-28/30 relative group">
-				<RotatableImage
-					alt={image.alt}
-					src={image.src}
-					className="pt-1.5 max-w-[80vw] min-w-42.5 lg:w-full"
-				/>
-				<p className="absolute text-nowrap -bottom-5 left-1/2 transform -translate-x-1/2 z-0 opacity-100 cursor-default select-none lg:transition-opacity lg:duration-600 lg:translate-x-0 lg:group-hover:opacity-100 lg:group-focus:opacity-100 text-sm lg:opacity-0 lg:bottom-0 lg:left-auto lg:right-0">
-					<span className="text-green-700 font-bold">✓</span>
+			<div className="w-full min-w-42.5 xl:basis-[59.4%] 2xl:basis-[58%] relative group">
+				<RotatableImage alt={image.alt} src={image.src} className="lg:w-full" />
+				<p className="absolute text-nowrap text-[95%] left-1/2 transform -translate-x-1/2 z-0 opacity-100 cursor-default select-none xl:transition-opacity xl:duration-600 xl:translate-x-0 xl:group-hover:opacity-100 xl:group-focus:opacity-100 text-sm xl:opacity-0 xl:bottom-0 xl:left-auto xl:right-0">
+					<span className="text-green-700 text-[87%] font-bold">✓</span>
 					{image.caption}
 				</p>
 			</div>
-			<div className="space-y-3 lg:space-y-1 font-bold font-montserrat leading-6 lg:leading-12 text-center lg:text-left">
-				<div className="text-[28px] lg:text-[49px]">
+			<div className="text-[95%] flex flex-col text-center gap-3 lg:gap-1 font-bold font-montserrat  xl:text-left  xl:basis-[44%] 2xl:basis-[41%] lg:leading-13 xl:leading-14.75 2xl:leading-16.5">
+				<div className="text-[220%] xl:text-[270%] 2xl:text-[300%]">
 					<h2 className="text-section-heading-highlight m-0">{header.title}</h2>
 					<h2 className="font-white">{header.subTitle}</h2>
 				</div>
-				<p className="text-[18px] font-normal">{textContent.text}</p>
+				<p className="classes-heading-text">{textContent.text}</p>
 				<Image
 					alt={textContent.image.alt}
 					src={textContent.image.src}
-					className="object-cover w-[63%] hidden lg:block"
+					className="object-cover hidden xl:block xl:w-[52.85%] 2xl:w-[58.95%]"
 				/>
 			</div>
 		</section>

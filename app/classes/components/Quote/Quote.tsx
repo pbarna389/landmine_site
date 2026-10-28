@@ -5,6 +5,8 @@ type QuoteProps = {
 	text: string
 }
 
+// TODO: Fix the styling
+
 export const Quote = ({ text, author }: QuoteProps) => {
 	return (
 		<div className="flex flex-col relative text-justify p-3 pl-8 pr-8 w-4/5 bg-quote text-black text-[14px] font-light lg:transform lg:overflow-hidden lg:w-68 lg:h-68 lg:-translate-y-1/2 lg:top-1/4 lg:right-0 lg:clip-half-circle lg:text-left lg:lg:pr-1.5 lg:absolute lg:justify-center lg:items-end lg:gap-2 select-none cursor-default xl:pr-4.5 xl:font-normal xl:text-[15px] xl:pt-0 xl:w-80 xl:h-80">

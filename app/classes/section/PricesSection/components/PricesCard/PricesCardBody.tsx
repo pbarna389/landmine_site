@@ -4,11 +4,11 @@ type PriceCardBodyProps = Omit<PricesContentType, 'image' | 'title'>
 
 export const PricesCardBody = ({ textContent, subText }: PriceCardBodyProps) => {
 	return (
-		<div className="p-5">
+		<div className="p-5 text-[19px]">
 			{textContent.text.map((text) => (
 				<p
 					key={`price-card-body-text-${text}`}
-					className="text-[15px] whitespace-pre-line pb-2"
+					className="premise-possibilities-text whitespace-pre-line pb-2"
 				>
 					<span>{textContent.emoticon}</span>
 					{text}

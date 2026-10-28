@@ -15,8 +15,8 @@ export const MainContent = async ({ children }: React.PropsWithChildren) => {
 				text={title}
 				className="lg:after:transform lg:after:-translate-x-1/2 lg:after:left-1/2 lg:text-[60px] lg:capitalize font-montserrat"
 			/>
-			<article className="whitespace-pre-line text-[14px] w-[90vw] text-center sm:pl-5 sm:pr-5 sm:w-[70vw] md:text-[16px] md:w-[45vw]">
-				{textContent}
+			<article className="text-center classes-page-text-base w-[90vw] sm:pl-5 sm:pr-5 sm:w-[85vw] md:w-[45vw]">
+				<p className="music-description-text">{textContent}</p>
 			</article>
 			<nav className="flex flex-col lg:flex-row wrap gap-6">
 				{sortedLinks.map((link) => (

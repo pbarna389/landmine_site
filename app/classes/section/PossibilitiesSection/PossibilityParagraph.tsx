@@ -11,12 +11,12 @@ export const PossibilityParagraph = ({ content }: PossibilityParagraphProps) => 
 	return (
 		<>
 			{content.header && (
-				<h5 className="text-md md:text-xl lg:text-2xl">
+				<h5 className="classes-heading-text">
 					{content.emoticon && <span>{content.emoticon}</span>}
 					{content.header}
 				</h5>
 			)}
-			<p className="whitespace-pre-line font-light lg:font-normal">{content.text}</p>
+			<p className="premise-possibilities-text whitespace-pre-line">{content.text}</p>
 			{content.images && Array.isArray(content.images) && (
 				<div className="flex flex-col items-center justify-center md:flex-row md:flex-wrap">
 					{content.images.map((image) => (

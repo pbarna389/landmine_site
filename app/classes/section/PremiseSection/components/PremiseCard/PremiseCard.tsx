@@ -11,10 +11,10 @@ type PremiseCardProps = {
 
 export const PremiseCard = ({ card }: PremiseCardProps) => {
 	return (
-		<Card>
+		<Card className="rounded-md gap-5 group p-10 sm:w-full lg:min-h-120 lg:p-5 xl:p-6">
 			<Card.Body>
 				<Image
-					className="w-1/2 sm:w-3/8 lg:w-11/20"
+					className="w-full min-h-50 sm:w-1/2 md:w-3/4 lg:w-4/5 xl:w-11/20"
 					src={card.image.src}
 					alt={card.image.alt}
 				/>
