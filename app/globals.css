@@ -174,4 +174,8 @@ html {
 	.classes-heading-text {
 		@apply text-[116%] xl:text-[100%] 2xl:text-[124%] font-normal;
 	}
+
+	.possibilities-heading-text {
+		@apply leading-[1.2] font-semibold text-[170%] lg:font-bold lg:text-[180%] xl:text-[190%] 2xl:text-[230%];
+	}
 }

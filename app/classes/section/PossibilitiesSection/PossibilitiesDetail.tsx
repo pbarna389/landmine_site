@@ -18,12 +18,12 @@ export const PossibilitiesDetail = ({
 	return (
 		<div className={`w-full flex ${idx % 2 === 0 ? 'justify-end' : 'justify-start'}`}>
 			<div
-				className={`w-full flex ${isEvenElement ? 'flex-col' : 'flex-col-reverse'} gap-7.5 justify-start items-start p-4 bg-section-detail rounded relative ${isEvenElement ? 'lg:flex-row' : 'lg:flex-row-reverse'} lg:gap-12 lg:w-37/40 lg:p-8`}
+				className={`w-full flex ${isEvenElement ? 'flex-col' : 'flex-col-reverse'} gap-7.5 justify-start items-start p-4 bg-section-detail rounded relative ${isEvenElement ? 'lg:flex-row' : 'lg:flex-row-reverse'} lg:gap-12 lg:w-37/40 lg:p-8 ${isEvenElement ? 'lg:pt-16.25' : 'pt-8'}`}
 			>
 				<div className="basis-9/20">
 					{title && (
 						<h3
-							className={`capitalize min-w-fit max-w-2/6 font-bold text-center text-lg p-3 border border-black sm:absolute sm:text-2xl sm:-top-1.5 sm:left-8 lg:text-3xl ${isEvenElement ? 'text-start' : 'text-end'}`}
+							className={`possibilities-heading-text capitalize min-w-fit max-w-2/6 text-center p-3 border border-black sm:absolute sm:-top-3 sm:left-8 ${isEvenElement ? 'text-start' : 'text-end'}`}
 						>
 							{title}
 						</h3>
@@ -43,7 +43,7 @@ export const PossibilitiesDetail = ({
 					</div>
 				</div>
 				<div className="basis-11/20 text-justify space-y-7.5">
-					<h4 className="uppercase text-start text-nowrap text-[21px] lg:text-[19px]">
+					<h4 className="classes-heading-text uppercase text-start text-nowrap">
 						{subTitle.text} <span>{subTitle.emoticon}</span>
 					</h4>
 					<p className="whitespace-pre-line text-start premise-possibilities-text">{text}</p>
