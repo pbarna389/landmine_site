@@ -1,1 +1,5 @@
-export { getVideoAdvert, getVideosContent } from './videos.service'
+export {
+	getVideoAdvert,
+	getVideoCategoryContent,
+	getVideosContent
+} from './videos.service'

@@ -1,4 +1,10 @@
-import { getVideosAdvertMock, getVideosContentMock } from './videos.mock'
+import { cache } from 'react'
+
+import {
+	getVideosAdvertMock,
+	getVideosCategoryMock,
+	getVideosContentMock
+} from './videos.mock'
 
 export const getVideosContent = async () => {
 	const result = getVideosContentMock()
@@ -11,3 +17,11 @@ export const getVideoAdvert = async () => {
 
 	return result
 }
+
+export const getVideoCategoryContent = cache(async (id: string) => {
+	const data = await getVideosCategoryMock()
+
+	const result = data[id]
+
+	return result
+})
