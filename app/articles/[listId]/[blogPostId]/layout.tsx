@@ -1,5 +1,7 @@
 import { BlogPostModal } from './components'
 
+// TODO: Add suspense for the loading state
+
 export default function BlogPostIdLayout({ children }: React.PropsWithChildren) {
 	return (
 		<>
