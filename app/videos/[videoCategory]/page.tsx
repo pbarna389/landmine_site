@@ -1,4 +1,4 @@
-import { redirect } from 'next/navigation'
+import { notFound, redirect } from 'next/navigation'
 
 import { getVideoCategoryContent } from '../server'
 
@@ -12,9 +12,14 @@ export default async function VideoCategoriesPage({
 	const { videoCategory } = await params
 
 	const data = await getVideoCategoryContent(videoCategory)
+
+	if (!data) {
+		notFound()
+	}
+
 	const firstElement = data.content[0]
 
 	if (firstElement) {
-		redirect(`./vlog/${firstElement.id}`)
+		redirect(`./${videoCategory}/${firstElement.id}`)
 	}
 }
