@@ -1,7 +1,8 @@
 import { notFound } from 'next/navigation'
 
 import { CategoryLink } from './components'
-import { VIDEO_CATEGORY_CONTENT } from './constants/constants'
+
+import { getVideoCategoryContent } from '../server'
 
 export default async function VideoCategoryLayout({
 	children,
@@ -12,7 +13,7 @@ export default async function VideoCategoryLayout({
 }) {
 	const { videoCategory } = await params
 
-	const data = VIDEO_CATEGORY_CONTENT[videoCategory]
+	const data = await getVideoCategoryContent(videoCategory)
 
 	if (!data) {
 		notFound()
