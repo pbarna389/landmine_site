@@ -7,6 +7,6 @@ export default async function MusicPage() {
 	const lastElement = subpageData.at(-1)
 
 	if (lastElement) {
-		redirect(`./music/${lastElement.id}`)
+		redirect(`/music/${lastElement.id}`)
 	}
 }

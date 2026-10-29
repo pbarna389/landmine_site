@@ -20,6 +20,6 @@ export default async function VideoCategoriesPage({
 	const firstElement = data.content[0]
 
 	if (firstElement) {
-		redirect(`./${videoCategory}/${firstElement.id}`)
+		redirect(`/videos/${videoCategory}/${firstElement.id}`)
 	}
 }
