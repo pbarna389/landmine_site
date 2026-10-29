@@ -1,3 +1,5 @@
+import { cache } from 'react'
+
 import { getMusicContentMock, getMusicListContentMock } from './music.mock'
 
 export const getMusicContent = async () => {
@@ -6,7 +8,7 @@ export const getMusicContent = async () => {
 	return result
 }
 
-export const getMusicListContent = async (listId: string) => {
+export const getMusicListContent = cache(async (listId: string) => {
 	const result = await getMusicListContentMock()
 
 	const selectedList = result.find((list) => list.id.toString() === listId)
@@ -19,4 +21,4 @@ export const getMusicListContent = async (listId: string) => {
 	)
 
 	return content
-}
+})

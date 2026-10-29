@@ -1,3 +1,12 @@
-export default function MusicPage() {
-	return <div className="text-2xl text-white">Válassz a listák közül!</div>
+import { redirect } from 'next/navigation'
+
+import { getMusicContent } from './server'
+
+export default async function MusicPage() {
+	const { subpageData } = await getMusicContent()
+	const lastElement = subpageData.at(-1)
+
+	if (lastElement) {
+		redirect(`./music/${lastElement.id}`)
+	}
 }
