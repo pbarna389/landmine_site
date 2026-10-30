@@ -33,7 +33,7 @@ export const AlbumStory = ({ details, text, id }: AlbumStoryProp) => {
 			onPointerLeave={!isMobile ? onPointerLeave : undefined}
 		>
 			<Link
-				href={`./${listId}/${id}`}
+				href={`/music/${listId}/${id}`}
 				className="capitalize cursor-pointer group/button text-[16px] border  border-hover  rounded transition-colors duration-300 hover:bg-hover  p-3 pl-4.5 pr-4.5 w-full h-full z-5 bg-transparent hover:border-black hover:text-white active:bg-black active:text-white focus:bg-black focus:text-white target:bg-black target:text-white focus-visible:bg-black focus-visible:text-white"
 			>
 				{!isMobile && mouseCaptured && (
