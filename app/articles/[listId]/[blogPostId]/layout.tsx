@@ -1,8 +1,5 @@
 import { BlogPostModal } from './components'
 
-// TODO: Add suspense for the loading state
-// TODO: FIX THE FLICKERING
-
 export default function BlogPostIdLayout({ children }: React.PropsWithChildren) {
 	return (
 		<>
