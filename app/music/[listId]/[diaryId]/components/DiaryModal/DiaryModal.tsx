@@ -61,7 +61,7 @@ export const DiaryModal = ({ children }: React.PropsWithChildren) => {
 				onCloseComplete={onCloseComplete}
 			>
 				<button
-					aria-label="close article"
+					aria-label="napló bezárása"
 					className="fixed z-2 top-2.5 right-5 w-10 h-10 cursor-pointer before:fixed before:w-10 before:rotate-45 before:bg-carousel before:h-1 before:top-7 before:right-5 before:transition-['scale'] before:scale-75 hover:before:scale-100 after:fixed after:w-10 after:-rotate-45 after:bg-carousel after:h-1 after:top-7 after:right-5 after:transition-['scale'] after:scale-75 hover:after:scale-100"
 					type="button"
 					onClick={modalClose}

@@ -1,3 +1,5 @@
+import { notFound } from 'next/navigation'
+
 import { getAlbumDiary } from '../../server'
 
 export default async function MusicDiaryPage({
@@ -8,6 +10,10 @@ export default async function MusicDiaryPage({
 	const { listId, diaryId } = await params
 
 	const details = await getAlbumDiary(listId, diaryId)
+
+	if (!details) {
+		notFound()
+	}
 
 	return (
 		<article

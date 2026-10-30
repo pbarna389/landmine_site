@@ -24,13 +24,11 @@ export const getMusicListContent = cache(async (listId: string) => {
 })
 
 export const getAlbumDiary = async (listId: string, diaryId: string) => {
-	const result = await getMusicListContentMock()
+	const result = await getMusicListContent(listId)
 
-	const selectedList = result.find((list) => list.id.toString() === listId)
+	if (!result) return
 
-	if (!selectedList) return
-
-	const selectedDetail = selectedList.content.find((album) => album.id === diaryId)
+	const selectedDetail = result.find((album) => album.id === diaryId)
 
 	if (!selectedDetail) return
 
