@@ -1,1 +1,1 @@
-export { AlbumDetails } from './AlbumDetails/AlbumDetails'
+export { AlbumDetails } from './AlbumDetails'

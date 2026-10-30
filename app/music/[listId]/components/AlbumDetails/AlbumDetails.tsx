@@ -1,8 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { Button } from '@/components'
-
 import { AlbumStory } from './AlbumStory'
 import type { SubpageContentType } from '../../../constants/constants'
 
@@ -34,10 +32,14 @@ export const AlbumDetails = ({ album, idx }: AlbumDetailsProps) => {
 				</p>
 				<p className="text-[18px] font-normal text-music-link">{album.style}</p>
 				<div className="flex justify-center items-center lg:justify-start lg:items-start gap-2.5">
-					<Link href={link.href ? link.href : ''} target="_blank">
-						<Button className="p-3 pl-4.5 pr-4.5">{link.text}</Button>
+					<Link
+						href={link.href ? link.href : ''}
+						target="_blank"
+						className="capitalize group/button text-[16px] border cursor-pointer border-hover w-fit rounded transition-colors bg-transparent duration-300 hover:bg-hover hover:text-white active:bg-hover active:text-white focus:bg-hover focus:text-white target:bg-hover target:text-white focus-visible:bg-hover focus-visible:text-white p-3 pl-4.5 pr-4.5"
+					>
+						{link.text}
 					</Link>
-					<AlbumStory details={album.details} text={'Napló'} />
+					<AlbumStory text={'Napló'} {...album} />
 				</div>
 			</div>
 		</div>

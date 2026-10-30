@@ -1,6 +1,5 @@
 import { Skeleton } from '@/components'
-
-import { SKELETON_CLASSES } from '../constants/constants'
+import { SKELETON_CLASSES } from './constants/constants'
 
 export default function Loading() {
 	const { parentSkeleton, childrenSkeleton } = SKELETON_CLASSES

@@ -1,1 +1,1 @@
-export { getMusicContent, getMusicListContent } from './music.service'
+export { getAlbumDiary, getMusicContent, getMusicListContent } from './music.service'
