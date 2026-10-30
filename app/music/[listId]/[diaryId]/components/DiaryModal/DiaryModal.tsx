@@ -5,7 +5,7 @@ import { useCallback, useEffect } from 'react'
 import { Modal } from '@/components'
 import { useModal } from '@/hooks/useModal'
 
-export const BlogPostModal = ({ children }: React.PropsWithChildren) => {
+export const DiaryModal = ({ children }: React.PropsWithChildren) => {
 	const {
 		ref,
 		setIsOpen,

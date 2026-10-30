@@ -1,0 +1,1 @@
+export { AlbumSkeleton } from './AlbumSkeleton'

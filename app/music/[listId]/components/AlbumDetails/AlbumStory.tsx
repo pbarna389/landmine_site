@@ -1,26 +1,22 @@
 'use client'
 
-import { useEffect } from 'react'
+import Link from 'next/link'
+import { useParams } from 'next/navigation'
 
-import { Button, Modal, Popover } from '@/components'
-import { useModal } from '@/hooks/useModal'
+import { Popover } from '@/components'
+import { useBreakpointChecker } from '@/hooks/useBreakpointChecker'
 import { usePopover } from '@/hooks/usePopover'
 
 type AlbumStoryProp = {
 	details: string
+	id: string
 	text: string
 }
 
-export const AlbumStory = ({ details, text }: AlbumStoryProp) => {
-	const { ref, handleModalStatus, onCloseComplete, isMobile, setIsOpen } = useModal({
-		shouldTravelBack: false
-	})
+export const AlbumStory = ({ details, text, id }: AlbumStoryProp) => {
+	const isMobile = useBreakpointChecker()
 
-	useEffect(() => {
-		if (!isMobile) {
-			setIsOpen(false)
-		}
-	}, [isMobile, setIsOpen])
+	const { listId } = useParams<{ listId: string }>()
 
 	const {
 		overflowStates,
@@ -36,9 +32,9 @@ export const AlbumStory = ({ details, text }: AlbumStoryProp) => {
 			onPointerEnter={!isMobile ? onPointerEnter : undefined}
 			onPointerLeave={!isMobile ? onPointerLeave : undefined}
 		>
-			<Button
-				className="p-3 pl-4.5 pr-4.5 w-full h-full z-5 bg-transparent cursor-default hover:border-black hover:text-white active:bg-black active:text-white focus:bg-black focus:text-white target:bg-black target:text-white focus-visible:bg-black focus-visible:text-white"
-				onClick={isMobile ? handleModalStatus : undefined}
+			<Link
+				href={`./${listId}/${id}`}
+				className="capitalize cursor-pointer group/button text-[16px] border  border-hover  rounded transition-colors duration-300 hover:bg-hover  p-3 pl-4.5 pr-4.5 w-full h-full z-5 bg-transparent hover:border-black hover:text-white active:bg-black active:text-white focus:bg-black focus:text-white target:bg-black target:text-white focus-visible:bg-black focus-visible:text-white"
 			>
 				{!isMobile && mouseCaptured && (
 					<Popover
@@ -49,22 +45,7 @@ export const AlbumStory = ({ details, text }: AlbumStoryProp) => {
 					/>
 				)}
 				<span className="relative z-2">{text}</span>
-			</Button>
-			{isMobile && (
-				<Modal ref={ref} modalClass="music" onCloseComplete={onCloseComplete}>
-					<article
-						className={`grid place-items-center cursor-default normal-case z-2 -left-px p-15 sm:p-5 w-full h-full border-2 border-gray-400 rounded-md text-white text-[16px] sm:text-xl text-center overflow-y-scroll overscroll-none scrollbar-thin scrollbar-gutter-both scrollbar-track-transparent scrollbar-thumb-gray-400`}
-					>
-						{details}
-					</article>
-					<button
-						className="absolute top-0 left-0 bg-black text-white"
-						onClick={handleModalStatus}
-					>
-						Remove modal
-					</button>
-				</Modal>
-			)}
+			</Link>
 		</div>
 	)
 }
