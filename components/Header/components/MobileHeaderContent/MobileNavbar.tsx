@@ -27,7 +27,7 @@ export const MobileNavbar = () => {
 						className={`absolute bg-gray-700 transform -translate-1/2 top-1/2 left-1/2 h-0.5 w-full transition rounded ${state.isOpen ? 'opacity-0' : 'opacity-100'}`}
 					/>
 				</div>
-				<MobileNavbarContent handleClick={handleClick} isOpen={state.isOpen} />
+				<MobileNavbarContent />
 			</div>
 			<span
 				className={`absolute top-8 left-0 w-full h-screen transition-opacity backdrop-blur-sm duration-300 ${state.isOpen ? 'z-1 opacity-100 scale-100' : '-z-1 opacity-0 scale-0'}`}
