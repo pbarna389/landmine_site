@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation'
 import { Icons } from '@/components'
 
 import type { NavItem } from '../../constants/constants'
-import { useSubNavbarHandlersContext } from '../../context'
+import { useSubNavbarHandlers } from '../../context'
 
 type DesktopLinkProps = {
 	link: NavItem
@@ -15,7 +15,7 @@ type DesktopLinkProps = {
 
 export const DesktopLink = ({ link, showIcon = false }: DesktopLinkProps) => {
 	const pathname = usePathname()
-	const { handleOutsideClick } = useSubNavbarHandlersContext()
+	const { handleOutsideClick } = useSubNavbarHandlers()
 
 	const isCurrentActive = pathname === link.href || pathname.startsWith(`${link.href}`)
 

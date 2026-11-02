@@ -3,7 +3,7 @@
 import Link from 'next/link'
 
 import type { NavItem } from '../../constants/constants'
-import { useSubNavbarHandlersContext, useSubNavbarState } from '../../context'
+import { useSubNavbarHandlers, useSubNavbarState } from '../../context'
 
 type DesktopRecursiveContentProps = {
 	recursionLayer: number
@@ -22,7 +22,7 @@ export const DesktopRecursiveContent = ({
 
 	const parent = selectedRoute?.[recursionLayer - 1]
 
-	const { handlePointerEnter, handleOutsideClick } = useSubNavbarHandlersContext()
+	const { handlePointerEnter, handleOutsideClick } = useSubNavbarHandlers()
 
 	if (!subChild || !parent) {
 		return null

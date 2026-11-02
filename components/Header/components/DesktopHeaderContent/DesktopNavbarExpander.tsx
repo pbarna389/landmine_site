@@ -7,7 +7,7 @@ import { Icons } from '@/components'
 
 import { DesktopRecursiveContent } from './DesktopRecursiveContent'
 import type { NavItem } from '../../constants/constants'
-import { useSubNavbarHandlersContext, useSubNavbarState } from '../../context'
+import { useSubNavbarHandlers, useSubNavbarState } from '../../context'
 
 type DesktopNavbarExpanderProps = {
 	link: NavItem
@@ -19,7 +19,7 @@ type DesktopNavbarExpanderProps = {
 export const DesktopNavbarExpander = ({ link }: DesktopNavbarExpanderProps) => {
 	const pathname = usePathname()
 
-	const { handlePointerEnter, handleOutsideClick } = useSubNavbarHandlersContext()
+	const { handlePointerEnter, handleOutsideClick } = useSubNavbarHandlers()
 	const { state } = useSubNavbarState()
 
 	const isCurrentActive = pathname === link.href || pathname.startsWith(`${link.href}`)

@@ -28,7 +28,7 @@ export const SubNavbarContextProvider = ({ children }: PropsWithChildren) => {
 
 	const modifiedRef = useOutsideClick(handleOutsideClick, ref)
 
-	const handleClick = useCallback(
+	const handleNavbarClick = useCallback(
 		(route: string, baseHref: string) => {
 			setState(() =>
 				state.selectedRoute?.[0].routeName === route
@@ -53,7 +53,7 @@ export const SubNavbarContextProvider = ({ children }: PropsWithChildren) => {
 			if (state.selectedRoute?.[layer]?.routeName === route) return null
 
 			if (layer === 0) {
-				handleClick(route, addedHref)
+				handleNavbarClick(route, addedHref)
 
 				return
 			}
@@ -76,13 +76,13 @@ export const SubNavbarContextProvider = ({ children }: PropsWithChildren) => {
 				selectedRoute: newRoute
 			}))
 		},
-		[state.selectedRoute, handleClick]
+		[state.selectedRoute, handleNavbarClick]
 	)
 
 	return (
 		<SubNavbarRefContext value={{ ref: modifiedRef }}>
 			<SubNavbarHandlersContext
-				value={{ handleClick, handleOutsideClick, handlePointerEnter }}
+				value={{ handleNavbarClick, handleOutsideClick, handlePointerEnter }}
 			>
 				<SubNavbarStateContext value={{ state, setState }}>{children}</SubNavbarStateContext>
 			</SubNavbarHandlersContext>

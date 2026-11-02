@@ -1,7 +1,7 @@
 import { createContext } from 'react'
 
 const subNavbarHandlersInitialState = {
-	handleClick: (_route: string, _baseHref: string) => {},
+	handleNavbarClick: (_route: string, _baseHref: string) => {},
 	handleOutsideClick: () => {},
 	handlePointerEnter: (
 		_route: string,
