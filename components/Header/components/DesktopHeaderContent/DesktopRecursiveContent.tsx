@@ -2,9 +2,8 @@
 
 import Link from 'next/link'
 
-import { useSubNavbarHandlersContext, useSubNavbarState } from './context'
-
 import type { NavItem } from '../../constants/constants'
+import { useSubNavbarHandlersContext, useSubNavbarState } from '../../context'
 
 type DesktopRecursiveContentProps = {
 	recursionLayer: number

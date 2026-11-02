@@ -3,11 +3,11 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-import { useSubNavbarHandlersContext, useSubNavbarState } from './context'
 import { Icons } from '@/components'
 
 import { DesktopRecursiveContent } from './DesktopRecursiveContent'
 import type { NavItem } from '../../constants/constants'
+import { useSubNavbarHandlersContext, useSubNavbarState } from '../../context'
 
 type DesktopNavbarExpanderProps = {
 	link: NavItem

@@ -4,10 +4,10 @@ import Image from 'next/image'
 
 import Logo1 from '@/public/logo2.png'
 
-import { SubNavbarContextProvider } from './context'
 import { useBreakpointChecker } from '@/hooks/useBreakpointChecker'
 
 import { DesktopNavbar } from './DesktopNavbar'
+import { SubNavbarContextProvider } from '../../context'
 
 export const DesktopHeaderContent = () => {
 	const isMobile = useBreakpointChecker()

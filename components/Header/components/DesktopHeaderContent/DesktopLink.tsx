@@ -3,10 +3,10 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-import { useSubNavbarHandlersContext } from './context'
 import { Icons } from '@/components'
 
 import type { NavItem } from '../../constants/constants'
+import { useSubNavbarHandlersContext } from '../../context'
 
 type DesktopLinkProps = {
 	link: NavItem
