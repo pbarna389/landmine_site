@@ -10,13 +10,13 @@ import { useSubNavbarState } from '../../context'
 
 export const MobileNavbarContent = () => {
 	const {
-		state: { isOpen }
+		state: { isSidebarOpen }
 	} = useSubNavbarState()
 
 	return (
 		<nav
 			aria-label="Fő navigáció - mobil"
-			className={`fixed flex flex-col overflow-y-auto overflow-x-hidden items-center border-l-2 border-r-2 border-t-0 border-b-0 border-white/98 z-2 top-8 bottom-0 right-0 bg-white/98 origin-right transition duration-300 opacity-97 *:brightness-115 ${isOpen ? 'scale-x-100' : 'scale-x-0'}`}
+			className={`fixed flex flex-col overflow-y-auto overflow-x-hidden items-center border-l-2 border-r-2 border-t-0 border-b-0 border-white/98 z-2 top-8 bottom-0 right-0 bg-white/98 origin-right transition duration-300 opacity-97 *:brightness-115 ${isSidebarOpen ? 'scale-x-100' : 'scale-x-0'}`}
 		>
 			<ul className="flex flex-col w-full justify-center items-center">
 				<MobileRoutes />

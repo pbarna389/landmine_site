@@ -11,6 +11,7 @@ import { SubNavbarRefContext } from './SubNavbarRefContext'
 import { SubNavbarStateContext } from './SubNavbarStateContext'
 
 const stateInitialValues: RouteState = {
+	isSidebarOpen: false,
 	isOpen: false,
 	selectedRoute: null
 }
@@ -21,19 +22,28 @@ export const SubNavbarContextProvider = ({ children }: PropsWithChildren) => {
 
 	const handleOutsideClick = useCallback(() => {
 		setState({
-			selectedRoute: null,
-			isOpen: false
+			isSidebarOpen: false,
+			isOpen: false,
+			selectedRoute: null
 		})
 	}, [])
 
 	const modifiedRef = useOutsideClick(handleOutsideClick, ref)
 
+	const handleSidebarState = useCallback(() => {
+		setState((prev) => ({
+			...prev,
+			isSidebarOpen: !prev.isSidebarOpen
+		}))
+	}, [setState])
+
 	const handleNavbarClick = useCallback(
 		(route: string, baseHref: string) => {
-			setState(() =>
+			setState((prev) =>
 				state.selectedRoute?.[0].routeName === route
 					? stateInitialValues
 					: {
+							...prev,
 							isOpen: true,
 							selectedRoute: [
 								{
@@ -82,7 +92,12 @@ export const SubNavbarContextProvider = ({ children }: PropsWithChildren) => {
 	return (
 		<SubNavbarRefContext value={{ ref: modifiedRef }}>
 			<SubNavbarHandlersContext
-				value={{ handleNavbarClick, handleOutsideClick, handlePointerEnter }}
+				value={{
+					handleNavbarClick,
+					handleOutsideClick,
+					handlePointerEnter,
+					handleSidebarState
+				}}
 			>
 				<SubNavbarStateContext value={{ state, setState }}>{children}</SubNavbarStateContext>
 			</SubNavbarHandlersContext>

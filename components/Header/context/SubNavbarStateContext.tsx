@@ -8,7 +8,7 @@ const subNavbarStateInitialValues: {
 	setState: React.Dispatch<React.SetStateAction<RouteState>>
 	state: RouteState
 } = {
-	state: { selectedRoute: null, isOpen: false },
+	state: { selectedRoute: null, isOpen: false, isSidebarOpen: false },
 	setState: () => {}
 }
 

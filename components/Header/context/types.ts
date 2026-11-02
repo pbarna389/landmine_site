@@ -6,5 +6,6 @@ type SelectedRouteType = {
 
 export type RouteState = {
 	isOpen: boolean
+	isSidebarOpen: boolean
 	selectedRoute: null | SelectedRouteType[]
 }
