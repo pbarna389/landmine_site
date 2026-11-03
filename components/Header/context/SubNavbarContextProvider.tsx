@@ -16,6 +16,8 @@ const stateInitialValues: RouteState = {
 	selectedRoute: null
 }
 
+// TODO: Update the href creation - it could be calculated on creation
+
 export const SubNavbarContextProvider = ({ children }: PropsWithChildren) => {
 	const [state, setState] = useState<RouteState>(stateInitialValues)
 	const ref = useRef<HTMLDivElement | null>(null)
@@ -58,6 +60,24 @@ export const SubNavbarContextProvider = ({ children }: PropsWithChildren) => {
 		[state.selectedRoute]
 	)
 
+	const handleBackNavigation = useCallback(() => {
+		if (state.selectedRoute?.length === 1) {
+			setState((prev) => ({
+				...prev,
+				selectedRoute: null
+			}))
+
+			return
+		}
+
+		const newRoute = state?.selectedRoute?.slice(0, -1)
+
+		setState((prev) => ({
+			...prev,
+			selectedRoute: newRoute ? newRoute : []
+		}))
+	}, [state.selectedRoute])
+
 	const handlePointerEnter = useCallback(
 		(route: string, layer: number, childIdx: number, addedHref: string) => {
 			if (state.selectedRoute?.[layer]?.routeName === route) return null
@@ -96,7 +116,8 @@ export const SubNavbarContextProvider = ({ children }: PropsWithChildren) => {
 					handleNavbarClick,
 					handleOutsideClick,
 					handlePointerEnter,
-					handleSidebarState
+					handleSidebarState,
+					handleBackNavigation
 				}}
 			>
 				<SubNavbarStateContext value={{ state, setState }}>{children}</SubNavbarStateContext>

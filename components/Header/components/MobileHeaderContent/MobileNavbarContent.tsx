@@ -4,6 +4,7 @@ import Image from 'next/image'
 
 import Logo1 from '@/public/logo3.png'
 
+import { MobileBackLink } from './MobileBackLink'
 import { MobileIcons } from './MobileIcons'
 import { MobileRoutes } from './MobileRoutes'
 import type { NavItem } from '../../constants/constants'
@@ -16,7 +17,7 @@ type MobileNavbarProps = {
 
 export const MobileNavbarContent = ({ content, recursionLayer }: MobileNavbarProps) => {
 	const {
-		state: { isSidebarOpen }
+		state: { isSidebarOpen, selectedRoute }
 	} = useSubNavbarState()
 
 	const currentZIdx = recursionLayer ? recursionLayer + 2 : 2
@@ -28,6 +29,7 @@ export const MobileNavbarContent = ({ content, recursionLayer }: MobileNavbarPro
 			style={{ zIndex: currentZIdx }}
 		>
 			<ul className="flex flex-col w-full justify-center items-center">
+				{selectedRoute && <MobileBackLink />}
 				<MobileRoutes content={content} recursionLayer={recursionLayer} />
 			</ul>
 			<Image

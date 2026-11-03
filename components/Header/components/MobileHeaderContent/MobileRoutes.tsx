@@ -17,44 +17,27 @@ export const MobileRoutes = ({ content, recursionLayer }: MobileRoutesProps) => 
 
 	const routes = content ? content : NAV_ELEMENTS
 
-	if (state.selectedRoute && recursionLayer) {
-		const parent = state.selectedRoute[recursionLayer - 1]
-
-		return routes.map((link, idx) => {
+	return routes.map((link, idx) => {
+		if (!link.content) {
+			const parent =
+				state.selectedRoute && recursionLayer
+					? state.selectedRoute[recursionLayer - 1]
+					: { routeHref: '' }
 			const newHref = `${parent.routeHref}${link.href}`
 
 			const updatedLink = { ...link, href: newHref }
 
-			if (!link.content) {
-				return (
-					<li
-						className="basic route link w-full flex bg-header-mobile-bg border border-header-mobile-border"
-						key={`mobile-navbar-link-${link.text}`}
-					>
-						<MobileLink link={updatedLink} callback={handleOutsideClick} />
-					</li>
-				)
-			}
 			return (
-				<MobileLinkExpander
-					key={`mobile-navbar-link-${link.text}`}
-					idx={idx}
-					link={link}
-					recursionLayer={recursionLayer}
-				/>
+				<li
+					className="basic route link w-full flex bg-header-mobile-bg border border-header-mobile-border"
+					key={`mobile-navbar-link-${updatedLink.text}`}
+				>
+					<MobileLink link={updatedLink} callback={handleOutsideClick} />
+				</li>
 			)
-		})
-	}
+		}
 
-	return routes.map((link, idx) =>
-		!link.content ? (
-			<li
-				className="basic route link w-full flex bg-header-mobile-bg border border-header-mobile-border"
-				key={`mobile-navbar-link-${link.text}`}
-			>
-				<MobileLink link={link} callback={handleOutsideClick} />
-			</li>
-		) : (
+		return (
 			<MobileLinkExpander
 				key={`mobile-navbar-link-${link.text}`}
 				idx={idx}
@@ -62,5 +45,5 @@ export const MobileRoutes = ({ content, recursionLayer }: MobileRoutesProps) => 
 				recursionLayer={recursionLayer}
 			/>
 		)
-	)
+	})
 }
