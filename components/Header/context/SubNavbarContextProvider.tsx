@@ -74,7 +74,7 @@ export const SubNavbarContextProvider = ({ children }: PropsWithChildren) => {
 
 		setState((prev) => ({
 			...prev,
-			selectedRoute: newRoute ? newRoute : []
+			selectedRoute: newRoute ? newRoute : null
 		}))
 	}, [state.selectedRoute])
 
