@@ -53,9 +53,8 @@ export const MobileRecursiveContent = ({
 
 	return (
 		<>
-			<div className="flex gap-2">
-				<MobileNavbarContent recursionLayer={recursionLayer + 1} content={subChild} />
-			</div>
+			<MobileNavbarContent recursionLayer={recursionLayer + 1} content={subChild} />
+
 			{subChild[selectedElement].content && (
 				<MobileRecursiveContent
 					recursionLayer={recursionLayer + 1}

@@ -14,7 +14,7 @@ export const MobileNavbar = () => {
 
 	return (
 		<>
-			<div ref={ref}>
+			<div ref={ref} className="portal-target">
 				<div
 					className={`block text-black relative w-4 h-4 cursor-pointer before:content-[''] before:absolute before:h-0.5 before:w-full before:bg-gray-700 before:rounded ${state.isSidebarOpen ? 'before:-rotate-45 before:top-1/2' : ''} before:transition after:content-[''] after:absolute after:h-0.5 after:w-full after:bg-gray-700 after:rounded after:bottom-0 after:transition ${state.isSidebarOpen ? 'after:rotate-45 after:top-1/2' : ''}`}
 					onClick={handleSidebarState}

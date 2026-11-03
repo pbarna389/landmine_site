@@ -1,11 +1,15 @@
 'use client'
 
+import { createPortal } from 'react-dom'
+
 import { Icons } from '@/components/Icons'
 
 import { MobileLink } from './MobileLink'
 import { MobileRecursiveContent } from './MobileRecursiveContent'
 import type { NavItem } from '../../constants/constants'
 import { useSubNavbarHandlers, useSubNavbarState } from '../../context'
+
+// TODO: Update the solution to not use Portal in the future
 
 type MobileLinkExpanderProps = {
 	idx: number
@@ -29,6 +33,8 @@ export const MobileLinkExpander = ({
 
 	const updatedContent = { ...link, href: linkHref }
 
+	const portalTarget = document.querySelector('.portal-target')
+
 	return (
 		<li className="relative bg-header-mobile-bg border border-header-mobile-border w-full flex item-center justify-center">
 			<MobileLink link={updatedContent} callback={handleOutsideClick} />
@@ -39,13 +45,13 @@ export const MobileLinkExpander = ({
 			>
 				<Icons iconVars={'chevronRight'} />
 			</button>
-			{state.isOpen && thisRouteCurrentlySelected && (
-				<>
-					<div className="bg-black/50 absolute z-2 top-0 left-0 w-full flex flex-col p-2 gap-5 items-center justify-center text-white before:absolute before:w-screen before:-top-4 before:h-5 before:left-0 ">
-						<MobileRecursiveContent recursionLayer={recursionLayer} subChild={link.content} />
-					</div>
-				</>
-			)}
+			{state.isOpen &&
+				thisRouteCurrentlySelected &&
+				portalTarget &&
+				createPortal(
+					<MobileRecursiveContent recursionLayer={recursionLayer} subChild={link.content} />,
+					portalTarget
+				)}
 		</li>
 	)
 }
