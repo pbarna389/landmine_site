@@ -18,7 +18,7 @@ export const MobileLink = ({ link, callback }: MobileLinkProps) => {
 	return (
 		<Link
 			href={link.href}
-			className={`top-0 font-raleway p-1 pl-0 pr-0 bg-header-mobile-bg text-black capitalize border border-header-mobile-border w-full cursor-pointer text-center transition-all duration-50 active:scale-105 ${isCurrentActive ? 'scale-115 brightness-115' : ''}`}
+			className={`top-0 font-raleway p-1 pl-0 pr-0  text-black capitalize  w-full cursor-pointer text-center transition-all duration-50 active:scale-105 ${isCurrentActive ? 'scale-115 brightness-115' : ''}`}
 			onClick={callback}
 		>
 			{link.text}

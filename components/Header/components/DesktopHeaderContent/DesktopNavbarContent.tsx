@@ -1,10 +1,9 @@
 'use client'
 
-import { useSubNavbarRef } from './context'
-
 import { DesktopLink } from './DesktopLink'
 import { DesktopNavbarExpander } from './DesktopNavbarExpander'
 import { NAV_ELEMENTS } from '../../constants'
+import { useSubNavbarRef } from '../../context'
 
 export const DesktopNavbarContent = () => {
 	const { ref } = useSubNavbarRef()

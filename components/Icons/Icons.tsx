@@ -6,6 +6,7 @@ import { FaPhoneSquareAlt } from 'react-icons/fa'
 import { FaArrowUp } from 'react-icons/fa'
 import { FaHome } from 'react-icons/fa'
 import { FaChevronLeft } from 'react-icons/fa'
+import { FaChevronRight } from 'react-icons/fa'
 import { FaChevronDown } from 'react-icons/fa'
 import { RiFacebookBoxFill } from 'react-icons/ri'
 import { TbBrandYoutubeFilled } from 'react-icons/tb'
@@ -27,7 +28,8 @@ const IconVariants: { [key in IconNames]: JSX.Element } = {
 	arrowUp: <FaArrowUp key={'icon-fa-arrow-up'} color="#FFF" />,
 	home: <FaHome key={'icon-fa-home'} color="#000" size={25} />,
 	chevronLeft: <FaChevronLeft key={'icon-fa-chevronLeft'} size={25} />,
-	chevronDown: <FaChevronDown key={'icon-fa-chevronDown'} size={15} />
+	chevronDown: <FaChevronDown key={'icon-fa-chevronDown'} size={15} />,
+	chevronRight: <FaChevronRight key={'icon-fa-chevronRight'} color="#000" size={15} />
 }
 
 export const Icons = ({ iconVars }: IconProps) => {

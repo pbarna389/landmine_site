@@ -7,6 +7,7 @@ export type IconNames =
 	| 'arrowUp'
 	| 'home'
 	| 'chevronLeft'
+	| 'chevronRight'
 	| 'chevronDown'
 
 export type WidthValuesType =

@@ -1,13 +1,13 @@
 'use client'
 
-import { useSubNavbarHandlersContext } from './context'
 import { LinksWithIconsWrapper } from '@/components'
 import { NAV_SOCIALS_DESKTOP } from '@/constants/constants'
 
 import { DesktopNavbarContent } from './DesktopNavbarContent'
+import { useSubNavbarHandlers } from '../../context'
 
 export const DesktopNavbar = () => {
-	const { handleOutsideClick } = useSubNavbarHandlersContext()
+	const { handleOutsideClick } = useSubNavbarHandlers()
 
 	return (
 		<nav

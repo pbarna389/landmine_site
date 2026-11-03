@@ -4,7 +4,7 @@ import { use } from 'react'
 
 import { SubNavbarHandlersContext } from '../SubNavbarHandlersContext'
 
-export const useSubNavbarHandlersContext = () => {
+export const useSubNavbarHandlers = () => {
 	const handlers = use(SubNavbarHandlersContext)
 
 	if (!handlers) {
