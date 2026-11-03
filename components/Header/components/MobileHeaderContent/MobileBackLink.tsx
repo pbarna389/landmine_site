@@ -8,11 +8,15 @@ export const MobileBackLink = () => {
 	const { handleBackNavigation } = useSubNavbarHandlers()
 
 	return (
-		<li
-			className="basic route link w-full flex items-center justify-center p-1 bg-header-mobile-bg border border-header-mobile-border"
-			onClick={handleBackNavigation}
-		>
-			<Icons iconVars={'chevronLeft'} />
+		<li className="basic route link w-full bg-header-mobile-bg border border-header-mobile-border">
+			<button
+				type="button"
+				aria-label="vissza az előző mobil navigációs menühöz"
+				className=" flex items-center justify-center p-1 w-full h-full text-center"
+				onClick={handleBackNavigation}
+			>
+				<Icons iconVars={'chevronLeft'} />
+			</button>
 		</li>
 	)
 }

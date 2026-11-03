@@ -55,7 +55,7 @@ export const MobileRecursiveContent = ({
 		<>
 			<MobileNavbarContent recursionLayer={recursionLayer + 1} content={subChild} />
 
-			{subChild[selectedElement].content && (
+			{subChild[selectedElement]?.content && (
 				<MobileRecursiveContent
 					recursionLayer={recursionLayer + 1}
 					subChild={subChild[selectedElement].content}

@@ -33,10 +33,11 @@ export const MobileLinkExpander = ({
 
 	const updatedContent = { ...link, href: linkHref }
 
-	const portalTarget = document.querySelector('.portal-target')
+	const portalTarget =
+		typeof document !== 'undefined' ? document.querySelector('.portal-target') : null
 
 	return (
-		<li className="relative bg-header-mobile-bg border border-header-mobile-border w-full flex item-center justify-center">
+		<li className="relative bg-header-mobile-bg border border-header-mobile-border w-full flex items-center justify-center">
 			<MobileLink link={updatedContent} callback={handleOutsideClick} />
 			<button
 				type="button"
