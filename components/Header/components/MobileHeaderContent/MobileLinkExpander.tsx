@@ -41,6 +41,7 @@ export const MobileLinkExpander = ({
 			<MobileLink link={updatedContent} callback={handleOutsideClick} />
 			<button
 				type="button"
+				aria-label={`Almenü megnyitása: ${link.text}`}
 				className="absolute flex items-center justify-center -translate-y-1/2 top-1/2 right-0 w-7.5 border-2 border-black h-full"
 				onClick={() => handlePointerEnter(link.text, recursionLayer, idx, link.href)}
 			>
