@@ -3,7 +3,7 @@ import type { HeightValuesType, WidthValuesType } from '@/types'
 type TriangleProps = {
 	height: HeightValuesType
 	width: WidthValuesType
-	background?: 'bg-section-header-background' | 'bg-cube-secondary' | 'bg-quote'
+	background?: `bg-section-header-background` | `bg-${string}-${string}` | 'bg-quote'
 	className?: string
 	position?: 'top' | 'bottom'
 	rotateDeg?: `${number extends number ? number : never}`

@@ -1,11 +1,11 @@
 import Link from 'next/link'
 
-import { Button } from '@/components'
+import { RecursiveContent } from '@/components'
 import { RotatableImage } from '@/components/RotatableImage/RotatableImage'
 import type { PossibilitiesDetailsType } from './constants/constants'
 import type { ArrayElementType } from '@/types'
 
-// TODO: Update the main layout to resemble the original design more
+// TODO: Do some touch ups if needed
 
 type PossibilitiesDetailProps = {
 	content: ArrayElementType<PossibilitiesDetailsType>
@@ -18,42 +18,50 @@ export const PossibilitiesDetail = ({
 	const isEvenElement = idx % 2 === 0
 
 	return (
-		<div className={`w-full flex ${idx % 2 === 0 ? 'justify-end' : 'justify-start'}`}>
+		<div
+			className={`w-full flex justify-center ${idx % 2 === 0 ? 'lg:justify-end' : 'lg:justify-start'}`}
+		>
 			<div
-				className={`w-full flex ${isEvenElement ? 'flex-col' : 'flex-col-reverse'} gap-7.5 justify-start items-start p-4 bg-section-detail rounded relative ${isEvenElement ? 'lg:flex-row' : 'lg:flex-row-reverse'} lg:gap-12 lg:w-37/40 lg:p-8 ${isEvenElement ? 'lg:pt-16.25' : 'pt-8'}`}
+				className={`flex justify-between items-start gap-4.25 p-[3%] bg-section-detail rounded relative sm:w-4/5 md:w-7/10 lg:w-full lg:p-[3.75%] ${isEvenElement ? 'flex-col lg:flex-row lg:ml-[9.05%] lg:pt-16.25 2xl:ml-[12.5%]' : 'flex-col-reverse pt-8 lg:flex-row-reverse lg:mr-[9.05%] 2xl:mr-[12.5%]'}`}
 			>
-				<div className="basis-9/20">
+				<div className="space-y-6 lg:basis-[43%] 2xl:basis-[47%]">
 					{title && (
 						<h3
-							className={`possibilities-heading-text capitalize min-w-fit max-w-2/6 text-center p-3 border border-black sm:absolute sm:-top-3 sm:left-8 ${isEvenElement ? 'text-start' : 'text-end'}`}
+							className={`possibilities-heading-text capitalize w-[70%] lg:w-1/3 text-center p-3.75 border border-black sm:absolute sm:-top-3 xl:left-[4.1%] 2xl:left-[4.4%] ${isEvenElement ? 'text-start' : 'text-end'}`}
 						>
 							{title}
 						</h3>
 					)}
-					<div className={`${isEvenElement ? 'mt-3' : 'mt-0'} sm:mt-13 relative group`}>
+					<div
+						className={`${isEvenElement ? 'sm:mt-15' : 'mt-5'} relative group lg:mt-7.5 2xl:mt-12`}
+					>
 						<RotatableImage
 							src={image.src}
 							alt={image.alt}
 							rotateLeft={isEvenElement ? false : true}
-							className={'h-64.5 rounded-lg'}
+							className={'w-full rounded-lg'}
 						/>
 						<p
-							className={`block w-full mt-2 text-main capitalize italic ${isEvenElement ? 'text-start' : 'text-end'} z-0 opacity-100 cursor-default select-none lg:absolute lg:-bottom-5 lg:mt-0 lg:transition-opacity lg:duration-600 lg:translate-x-0 lg:group-hover:opacity-100 lg:group-focus:opacity-100 text-sm lg:opacity-0 lg:${isEvenElement ? 'left-0' : 'right-0'}`}
+							className={`text-main block w-full mt-1 text-[14px] lg:text-[16.15px] capitalize italic z-0 opacity-100 cursor-default select-none lg:absolute lg:mt-5 lg:transition-opacity lg:duration-600 lg:translate-x-0 lg:group-hover:opacity-100 lg:group-focus:opacity-100 lg:opacity-0 lg:-bottom-10.5 xl:-bottom-11 2xl:w-1/2 2xl:-bottom-12.5  ${isEvenElement ? 'text-start left-0' : 'right-0 text-end'}`}
 						>
 							{image.caption}
 						</p>
 					</div>
 				</div>
-				<div className="basis-11/20 text-justify space-y-7.5">
+				<div className="text-justify space-y-4.25 lg:space-y-5.75 lg:basis-[51%] 2xl:basis-[47%]">
 					<h4 className="classes-heading-text uppercase text-start text-nowrap">
 						{subTitle.text} <span>{subTitle.emoticon}</span>
 					</h4>
-					<p className="whitespace-pre-line text-start premise-possibilities-text">{text}</p>
-					<Button>
-						<Link href={link.href ? link.href : ''} target="_blank">
-							{link.text}
-						</Link>
-					</Button>
+					<div className="whitespace-pre-line premise-possibilities-text text-justify">
+						<RecursiveContent data={text.content} level={0} />
+					</div>
+					<Link
+						className="capitalize group/button text-[16px] p-1.5 border cursor-pointer border-hover w-fit rounded transition-colors bg-transparent duration-300 hover:bg-hover hover:text-white active:bg-hover active:text-white focus:bg-hover focus:text-white target:bg-hover target:text-white focus-visible:bg-hover focus-visible:text-white"
+						href={link.href ? link.href : '/'}
+						target="_blank"
+					>
+						{link.text}
+					</Link>
 				</div>
 			</div>
 		</div>
