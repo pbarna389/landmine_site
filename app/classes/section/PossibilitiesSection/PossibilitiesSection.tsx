@@ -34,7 +34,7 @@ export const PossibilitiesSection = ({ data }: PossibilitiesSectionProps) => {
 						<PossibilityParagraph key={paragraph.id} content={paragraph} />
 					))}
 				</article>
-				<div className="flex flex-col justify-start items-start relative w-full gap-10 p-30 pr-3 pl-3 bg-section-detail-bg sm:pr-5 sm:pl-5 md:pr-9.5 md:pl-9.5 lg:pr-19 lg:pl-19">
+				<div className="flex flex-col justify-start items-start relative w-full gap-10 p-30 pr-3 pl-3 bg-[#c2af85] sm:pr-5 sm:pl-5 md:pr-9.5 md:pl-9.5 lg:pr-48 lg:pl-48">
 					<Pentagon width="w-[calc(100vw*0.1)]" height="h-14" />
 					<Triangle width="w-[90%]" height="h-7" background="bg-cube-secondary" />
 					<Triangle position="bottom" width="w-[90%]" height="h-7" />

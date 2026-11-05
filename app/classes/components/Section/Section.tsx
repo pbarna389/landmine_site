@@ -7,7 +7,7 @@ export const Section = ({ children, className, id }: SectionProps) => {
 	return (
 		<section
 			id={id}
-			className={`flex flex-col items-center justify-center bg-white w-full *:font-montserrat *:text-center pb-28 ${className}`}
+			className={`flex flex-col items-center justify-center bg-zinc-50 w-full *:font-montserrat *:text-center pb-28 ${className}`}
 		>
 			{children}
 		</section>
