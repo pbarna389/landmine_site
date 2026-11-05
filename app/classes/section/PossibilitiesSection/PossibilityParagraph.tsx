@@ -18,10 +18,10 @@ export const PossibilityParagraph = ({ content }: PossibilityParagraphProps) => 
 			)}
 			<p className="premise-possibilities-text whitespace-pre-line">{content.text}</p>
 			{content.images && Array.isArray(content.images) && (
-				<div className="flex flex-col items-center justify-center md:flex-row md:flex-wrap">
+				<div className="flex flex-col items-center justify-center sm:flex-wrap gap-2.5 sm:flex-row">
 					{content.images.map((image) => (
 						<Image
-							className="object-cover min-w-[50%] max-w-3/5 sm:min-w-1/3 sm:max-w-[30%]"
+							className="object-cover w-1/2 sm:w-[35%] md:w-[28%] lg:w-[27.3%] xl:w-[32.8%] 2xl:w-[28.87%]"
 							key={`pos-paragraph-${image.alt}`}
 							src={image.src}
 							alt={image.alt}
