@@ -2,6 +2,8 @@ import type { TextType } from '@/types'
 
 import { RecursiveContent } from './RecursiveContent'
 
+// TODO: update the heading classes!
+
 type HeadingTypeProps = {
 	hierarchyLevel: number
 	level: 1 | 2 | 3 | 4 | 5 | 6
@@ -12,7 +14,7 @@ export const HeadingContent = ({ level, text, hierarchyLevel }: HeadingTypeProps
 	switch (level) {
 		case 1: {
 			return (
-				<h1>
+				<h1 className="font-bold text-2xl">
 					<RecursiveContent data={text} level={hierarchyLevel + 1} />
 				</h1>
 			)
@@ -26,7 +28,7 @@ export const HeadingContent = ({ level, text, hierarchyLevel }: HeadingTypeProps
 		}
 		case 3: {
 			return (
-				<h3>
+				<h3 className="classes-heading-text">
 					<RecursiveContent data={text} level={hierarchyLevel + 1} />
 				</h3>
 			)
