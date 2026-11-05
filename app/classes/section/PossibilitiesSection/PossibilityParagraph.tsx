@@ -1,5 +1,6 @@
 import Image from 'next/image'
 
+import { RecursiveContent } from '@/components'
 import type { PossibilitiesBodyType } from './constants/constants'
 import type { ArrayElementType } from '@/types'
 
@@ -10,13 +11,7 @@ type PossibilityParagraphProps = {
 export const PossibilityParagraph = ({ content }: PossibilityParagraphProps) => {
 	return (
 		<>
-			{content.header && (
-				<h5 className="classes-heading-text">
-					{content.emoticon && <span>{content.emoticon}</span>}
-					{content.header}
-				</h5>
-			)}
-			<p className="premise-possibilities-text whitespace-pre-line">{content.text}</p>
+			<RecursiveContent data={content.text.content} level={0} classKey="possibilities" />
 			{content.images && Array.isArray(content.images) && (
 				<div className="flex flex-col items-center justify-center sm:flex-wrap gap-2.5 sm:flex-row">
 					{content.images.map((image) => (

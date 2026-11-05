@@ -17,9 +17,10 @@ type RecursiveTypeProps = {
 		| ListItemType[]
 		| undefined
 	level: number
+	classKey?: 'possibilities'
 }
 
-export const RecursiveContent = ({ data, level }: RecursiveTypeProps) => {
+export const RecursiveContent = ({ data, level, classKey }: RecursiveTypeProps) => {
 	if (!data) {
 		return <p>Data not available</p>
 	}
@@ -34,6 +35,7 @@ export const RecursiveContent = ({ data, level }: RecursiveTypeProps) => {
 				<ParagraphContent
 					key={`recursive-paragraph-${level + 1}-${subData.content[0]?.type ?? 'empty'}-${idx}`}
 					paragraph={subData}
+					classKey={classKey}
 					level={level + 1}
 				/>
 			)
