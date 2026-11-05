@@ -55,11 +55,9 @@ export const PossibilitiesDetail = ({
 					<div className="whitespace-pre-line premise-possibilities-text text-justify">
 						<RecursiveContent data={text.content} level={0} />
 					</div>
-					<Button>
-						<Link href={link.href ? link.href : ''} target="_blank">
-							{link.text}
-						</Link>
-					</Button>
+					<Link href={link.href ? link.href : '/'} target="_blank">
+						<Button>{link.text}</Button>
+					</Link>
 				</div>
 			</div>
 		</div>

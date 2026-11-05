@@ -209,7 +209,7 @@ export const POSSIBILITIES_INFO: POSSIBILITIES_INFO_TYPE[] = [
 		},
 		link: {
 			text: 'gitároktatás-videók',
-			href: './videos'
+			href: '/videos'
 		}
 	},
 	{
@@ -320,7 +320,7 @@ export const POSSIBILITIES_INFO: POSSIBILITIES_INFO_TYPE[] = [
 		},
 		link: {
 			text: 'studio-képek',
-			href: './about/classroom'
+			href: '/about/classroom'
 		}
 	}
 ]
