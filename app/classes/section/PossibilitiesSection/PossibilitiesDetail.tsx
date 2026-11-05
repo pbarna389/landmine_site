@@ -42,7 +42,7 @@ export const PossibilitiesDetail = ({
 							className={'w-full rounded-lg'}
 						/>
 						<p
-							className={`text-main block w-full mt-1 text-[14px] lg:text-[16.15px] capitalize italic z-0 opacity-100 cursor-default select-none lg:absolute lg:mt-5 lg:transition-opacity lg:duration-600 lg:translate-x-0 lg:group-hover:opacity-100 lg:group-focus:opacity-100 lg:opacity-0 lg:-bottom-10.5 xl:-bottom-11 2xl:w-1/2 2xl:-bottom-12.5  ${isEvenElement ? 'text-start left-0' : 'right-0 text-end'}`}
+							className={`text-main block w-full mt-1 text-[14px] lg:text-[16.15px] capitalize italic z-0 opacity-100 cursor-default select-none lg:absolute lg:mt-5 lg:transition-opacity lg:duration-600 lg:translate-x-0 lg:group-hover:opacity-100 lg:group-focus:opacity-100 lg:opacity-0 lg:-bottom-[3%] xl:w-4/9 xl:-bottom-[16%] 2xl:w-1/3 2xl:-bottom-[8%]  ${isEvenElement ? 'text-start left-0' : 'right-0 text-end'}`}
 						>
 							{image.caption}
 						</p>
