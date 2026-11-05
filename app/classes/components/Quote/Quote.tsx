@@ -20,7 +20,7 @@ export const Quote = ({ text, author }: QuoteProps) => {
 				height="h-[25px]"
 				width="w-[calc(100vw*0.09)]"
 				background="bg-quote"
-				className="none lg:block left-1/1 top-4/6 z-1 max-w-10 rotate-180"
+				className="hidden lg:block left-1/1 top-4/6 z-1 max-w-10 rotate-180"
 			/>
 		</div>
 	)
