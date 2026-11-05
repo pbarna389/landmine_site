@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import { Button, RecursiveContent } from '@/components'
+import { RecursiveContent } from '@/components'
 import { RotatableImage } from '@/components/RotatableImage/RotatableImage'
 import type { PossibilitiesDetailsType } from './constants/constants'
 import type { ArrayElementType } from '@/types'
@@ -55,8 +55,12 @@ export const PossibilitiesDetail = ({
 					<div className="whitespace-pre-line premise-possibilities-text text-justify">
 						<RecursiveContent data={text.content} level={0} />
 					</div>
-					<Link href={link.href ? link.href : '/'} target="_blank">
-						<Button>{link.text}</Button>
+					<Link
+						className="capitalize group/button text-[16px] p-1.5 border cursor-pointer border-hover w-fit rounded transition-colors bg-transparent duration-300 hover:bg-hover hover:text-white active:bg-hover active:text-white focus:bg-hover focus:text-white target:bg-hover target:text-white focus-visible:bg-hover focus-visible:text-white"
+						href={link.href ? link.href : '/'}
+						target="_blank"
+					>
+						{link.text}
 					</Link>
 				</div>
 			</div>
