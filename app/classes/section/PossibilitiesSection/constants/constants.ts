@@ -73,7 +73,7 @@ export const POSSIBILITIES_INFO: POSSIBILITIES_INFO_TYPE[] = [
 						},
 						{
 							type: 'text',
-							text: 'Az órák teljesen dalközpontúak, hiszen a hobbi-zenélésben a'
+							text: 'Az órák teljesen dalközpontúak, hiszen a hobbi-zenélésben a '
 						},
 						{
 							type: 'text',

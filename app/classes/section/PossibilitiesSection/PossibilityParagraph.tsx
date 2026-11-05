@@ -21,7 +21,7 @@ export const PossibilityParagraph = ({ content }: PossibilityParagraphProps) => 
 				<div className="flex flex-col items-center justify-center md:flex-row md:flex-wrap">
 					{content.images.map((image) => (
 						<Image
-							className="object-cover min-w-[50%] max-w-3/5 sm:min-w-1/3 sm:max-w-4/9"
+							className="object-cover min-w-[50%] max-w-3/5 sm:min-w-1/3 sm:max-w-[30%]"
 							key={`pos-paragraph-${image.alt}`}
 							src={image.src}
 							alt={image.alt}

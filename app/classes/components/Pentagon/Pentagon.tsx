@@ -8,7 +8,7 @@ type PentagonPropsType = {
 export const Pentagon = ({ width, height }: PentagonPropsType) => {
 	return (
 		<div
-			className={`absolute transform -translate-y-1/2 top-0 left-0 ${width} ${height} lg:h-25 clip-pentagon bg-cube-secondary`}
+			className={`absolute transform -translate-y-1/2 top-0 left-0 ${width} ${height} lg:h-25 clip-pentagon bg-rect-main`}
 		/>
 	)
 }

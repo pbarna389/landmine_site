@@ -34,14 +34,14 @@ export const PossibilitiesSection = ({ data }: PossibilitiesSectionProps) => {
 						<PossibilityParagraph key={paragraph.id} content={paragraph} />
 					))}
 				</article>
-				<div className="flex flex-col justify-start items-start relative w-full gap-10 p-30 pr-3 pl-3 bg-[#c2af85] sm:pr-5 sm:pl-5 md:pr-9.5 md:pl-9.5 lg:pr-48 lg:pl-48">
+				<article className="flex flex-col justify-start items-start relative w-full gap-10 p-30 pr-8 pl-8 bg-poss-details-color sm:pr-0 sm:pl-0 lg:pr-[6%] lg:pl-[6%] 2xl:pr-[10%] 2xl:pl-[10%]">
 					<Pentagon width="w-[calc(100vw*0.1)]" height="h-14" />
-					<Triangle width="w-[90%]" height="h-7" background="bg-cube-secondary" />
+					<Triangle width="w-[90%]" height="h-7" background="bg-rect-main" />
 					<Triangle position="bottom" width="w-[90%]" height="h-7" />
 					{info.map((box, idx) => (
 						<PossibilitiesDetail key={`info-box-${box.title}`} content={box} idx={idx} />
 					))}
-				</div>
+				</article>
 			</Section.Body>
 			<Quote text={quote.text} author={quote.author} />
 		</Section>
