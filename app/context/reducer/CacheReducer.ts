@@ -28,15 +28,15 @@ type CacheEntry = {
 	[key: string]: IdleState | LoadingState | ExhaustedState | ErrorState
 }
 
-type CacheCategory = 'videos' | 'music' | 'articles'
+export type CACHE_CATEGORY = 'videos' | 'music' | 'articles'
 
-export type CACHE_STATE = Record<CacheCategory, CacheEntry | undefined>
+export type CACHE_STATE = Record<CACHE_CATEGORY, CacheEntry | undefined>
 
 export type CACHE_ACTION_TYPES =
-	| { payload: { category: CacheCategory; key: string }; type: 'FETCH_START' }
+	| { payload: { category: CACHE_CATEGORY; key: string }; type: 'FETCH_START' }
 	| {
 			payload: {
-				category: CacheCategory
+				category: CACHE_CATEGORY
 				items: YoutubePlaylistResponse['items']
 				key: string
 				nextPageToken: string | null
@@ -45,7 +45,7 @@ export type CACHE_ACTION_TYPES =
 	  }
 	| {
 			payload: {
-				category: CacheCategory
+				category: CACHE_CATEGORY
 				items: YoutubePlaylistResponse['items']
 				key: string
 				nextPageToken: string | null
@@ -53,7 +53,7 @@ export type CACHE_ACTION_TYPES =
 			type: 'INIT_PLAYLIST'
 	  }
 	| {
-			payload: { category: CacheCategory; errorMessage: string; key: string }
+			payload: { category: CACHE_CATEGORY; errorMessage: string; key: string }
 			type: 'FETCH_ERROR'
 	  }
 

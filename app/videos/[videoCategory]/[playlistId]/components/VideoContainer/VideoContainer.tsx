@@ -2,12 +2,10 @@
 
 import { useParams } from 'next/navigation'
 
-import { useEffect } from 'react'
-
-import { useCacheStateContext, useCacheStateDispatchContext } from '@/app/context'
-
 import { SkeletonCard } from '@/components'
+import { useInfiniteCache } from '@/hooks/useInfiniteCache'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
+import { fetchVideoData } from './utils'
 import type { YoutubePlaylistResponse } from '@/types'
 
 import { VideoLink } from './VideoLink'
@@ -19,65 +17,12 @@ type VideoContainerProps = YoutubePlaylistResponse
 export const VideoContainer = ({ items, nextPageToken }: VideoContainerProps) => {
 	const { playlistId } = useParams<{ playlistId: string }>()
 
-	const state = useCacheStateContext()
-	const dispatch = useCacheStateDispatchContext()
-
-	const entry = state.videos?.[playlistId]
-
-	useEffect(() => {
-		dispatch({
-			type: 'INIT_PLAYLIST',
-			payload: {
-				key: playlistId,
-				category: 'videos',
-				items,
-				nextPageToken
-			}
-		})
-	}, [dispatch, items, nextPageToken, playlistId])
-
-	const updateVideos = async () => {
-		if (!entry) {
-			return
-		}
-
-		if (!entry.nextPageToken || entry.status === 'loading') {
-			return
-		}
-
-		dispatch({ type: 'FETCH_START', payload: { key: playlistId, category: 'videos' } })
-
-		try {
-			const data = await fetch(
-				`/api/videos?playlistId=${playlistId}&pageToken=${entry.nextPageToken}`
-			)
-
-			if (!data.ok) {
-				throw new Error('Request failed with status ${data.status}')
-			}
-
-			const response = (await data.json()) as YoutubePlaylistResponse
-
-			dispatch({
-				type: 'FETCH_SUCCESS',
-				payload: {
-					key: playlistId,
-					category: 'videos',
-					items: response.items,
-					nextPageToken: response.nextPageToken
-				}
-			})
-		} catch (err) {
-			dispatch({
-				type: 'FETCH_ERROR',
-				payload: {
-					category: 'videos',
-					errorMessage: err instanceof Error ? err.message : 'Unknown error',
-					key: playlistId
-				}
-			})
-		}
-	}
+	const { entry, updateResource } = useInfiniteCache({
+		category: 'videos',
+		key: playlistId,
+		initialData: { items, nextPageToken },
+		fetchNextPage: fetchVideoData
+	})
 
 	const { ref } = useIntersectionObserver({
 		shouldFreeze:
@@ -85,7 +30,7 @@ export const VideoContainer = ({ items, nextPageToken }: VideoContainerProps) =>
 			entry.status === 'loading' ||
 			entry.status === 'error' ||
 			entry.status === 'exhausted',
-		callback: updateVideos
+		callback: updateResource
 	})
 
 	const refIdx = entry?.items?.length ? entry?.items?.length - 1 : 0
