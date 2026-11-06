@@ -1,43 +1,42 @@
-import type { YoutubePlaylistResponse } from '@/types'
-
-type BaseCacheState = YoutubePlaylistResponse & {
+type BaseCacheState<T> = {
+	items: T[]
 	nextPageToken: string | null
 }
 
-type IdleState = BaseCacheState & {
+type IdleState<T> = BaseCacheState<T> & {
 	error: null
 	status: 'idle'
 }
 
-type LoadingState = BaseCacheState & {
+type LoadingState<T> = BaseCacheState<T> & {
 	error: null
 	status: 'loading'
 }
 
-type ExhaustedState = BaseCacheState & {
+type ExhaustedState<T> = BaseCacheState<T> & {
 	error: null
 	status: 'exhausted'
 }
 
-type ErrorState = BaseCacheState & {
+type ErrorState<T> = BaseCacheState<T> & {
 	error: string
 	status: 'error'
 }
 
-type CacheEntry = {
-	[key: string]: IdleState | LoadingState | ExhaustedState | ErrorState
+type CacheEntry<T> = {
+	[key: string]: IdleState<T> | LoadingState<T> | ExhaustedState<T> | ErrorState<T>
 }
 
 export type CACHE_CATEGORY = 'videos' | 'music' | 'articles'
 
-export type CACHE_STATE = Record<CACHE_CATEGORY, CacheEntry | undefined>
+export type CACHE_STATE<T> = Record<CACHE_CATEGORY, CacheEntry<T> | undefined>
 
-export type CACHE_ACTION_TYPES =
+export type CACHE_ACTION_TYPES<T> =
 	| { payload: { category: CACHE_CATEGORY; key: string }; type: 'FETCH_START' }
 	| {
 			payload: {
 				category: CACHE_CATEGORY
-				items: YoutubePlaylistResponse['items']
+				items: T[]
 				key: string
 				nextPageToken: string | null
 			}
@@ -46,21 +45,21 @@ export type CACHE_ACTION_TYPES =
 	| {
 			payload: {
 				category: CACHE_CATEGORY
-				items: YoutubePlaylistResponse['items']
+				items: T[]
 				key: string
 				nextPageToken: string | null
 			}
-			type: 'INIT_PLAYLIST'
+			type: 'INIT_RESOURCE'
 	  }
 	| {
 			payload: { category: CACHE_CATEGORY; errorMessage: string; key: string }
 			type: 'FETCH_ERROR'
 	  }
 
-export const cacheReducer = (
-	state: CACHE_STATE,
-	action: CACHE_ACTION_TYPES
-): CACHE_STATE => {
+export const cacheReducer = <T>(
+	state: CACHE_STATE<T>,
+	action: CACHE_ACTION_TYPES<T>
+): CACHE_STATE<T> => {
 	switch (action.type) {
 		case 'FETCH_START': {
 			const { key, category } = action.payload
@@ -100,7 +99,7 @@ export const cacheReducer = (
 				}
 			}
 		}
-		case 'INIT_PLAYLIST': {
+		case 'INIT_RESOURCE': {
 			const { key, items, nextPageToken, category } = action.payload
 
 			const cacheCategory = state[category]

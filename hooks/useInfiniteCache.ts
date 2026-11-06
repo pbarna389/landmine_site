@@ -29,7 +29,7 @@ export const useInfiniteCache = ({
 
 	useEffect(() => {
 		dispatch({
-			type: 'INIT_PLAYLIST',
+			type: 'INIT_RESOURCE',
 			payload: {
 				key,
 				category,
