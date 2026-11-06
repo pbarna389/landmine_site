@@ -22,13 +22,14 @@ export const VideoContainer = ({ items, nextPageToken }: VideoContainerProps) =>
 	const state = useCacheStateContext()
 	const dispatch = useCacheStateDispatchContext()
 
-	const entry = state[playlistId]
+	const entry = state.videos?.[playlistId]
 
 	useEffect(() => {
 		dispatch({
 			type: 'INIT_PLAYLIST',
 			payload: {
 				key: playlistId,
+				category: 'videos',
 				items,
 				nextPageToken
 			}
@@ -44,7 +45,7 @@ export const VideoContainer = ({ items, nextPageToken }: VideoContainerProps) =>
 			return
 		}
 
-		dispatch({ type: 'FETCH_START', payload: { key: playlistId } })
+		dispatch({ type: 'FETCH_START', payload: { key: playlistId, category: 'videos' } })
 
 		try {
 			const data = await fetch(
@@ -61,6 +62,7 @@ export const VideoContainer = ({ items, nextPageToken }: VideoContainerProps) =>
 				type: 'FETCH_SUCCESS',
 				payload: {
 					key: playlistId,
+					category: 'videos',
 					items: response.items,
 					nextPageToken: response.nextPageToken
 				}
@@ -69,6 +71,7 @@ export const VideoContainer = ({ items, nextPageToken }: VideoContainerProps) =>
 			dispatch({
 				type: 'FETCH_ERROR',
 				payload: {
+					category: 'videos',
 					errorMessage: err instanceof Error ? err.message : 'Unknown error',
 					key: playlistId
 				}
