@@ -12,7 +12,7 @@ export const VideoLink = ({ item }: VideoLinkProps) => {
 
 	return (
 		<Link
-			className="max-[400px]:h-45 max-[650px]:h-65 h-75 sm:h-62.5 md:h-54 lg:h-50 xl:h-40 relative block"
+			className="max-[400px]:h-50 max-[650px]:h-65 h-75 sm:h-62.5 md:h-54 lg:h-50 xl:h-40 relative block"
 			href={`https://youtube.com/watch?v=${item.resourceId.videoId}`}
 			target="_blank"
 		>

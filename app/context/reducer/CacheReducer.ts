@@ -1,7 +1,18 @@
 type BaseCacheState<T> = {
 	items: T[]
-	nextPageToken: string | null
+	pagination: PaginationState | null
 }
+
+export type PaginationState =
+	| { kind: 'token'; nextPageToken: string | null }
+	| {
+			kind: 'page'
+			pageInfo: {
+				currentPage: number
+				maxPage: number
+				pageSize: number
+			} | null
+	  }
 
 type IdleState<T> = BaseCacheState<T> & {
 	error: null
@@ -29,7 +40,7 @@ type CacheEntry<T> = {
 
 export type CACHE_CATEGORY = 'videos' | 'music' | 'articles'
 
-export type CACHE_STATE<T> = Record<CACHE_CATEGORY, CacheEntry<T> | undefined>
+export type CACHE_STATE<T> = Record<string, CacheEntry<T> | undefined>
 
 export type CACHE_ACTION_TYPES<T> =
 	| { payload: { category: CACHE_CATEGORY; key: string }; type: 'FETCH_START' }
@@ -38,7 +49,7 @@ export type CACHE_ACTION_TYPES<T> =
 				category: CACHE_CATEGORY
 				items: T[]
 				key: string
-				nextPageToken: string | null
+				pagination: PaginationState
 			}
 			type: 'FETCH_SUCCESS'
 	  }
@@ -47,7 +58,7 @@ export type CACHE_ACTION_TYPES<T> =
 				category: CACHE_CATEGORY
 				items: T[]
 				key: string
-				nextPageToken: string | null
+				pagination: PaginationState
 			}
 			type: 'INIT_RESOURCE'
 	  }
@@ -55,6 +66,16 @@ export type CACHE_ACTION_TYPES<T> =
 			payload: { category: CACHE_CATEGORY; errorMessage: string; key: string }
 			type: 'FETCH_ERROR'
 	  }
+
+const hasNextPage = (pagination: PaginationState): boolean => {
+	if (pagination.kind === 'token') {
+		return pagination.nextPageToken !== null
+	}
+
+	const { pageInfo } = pagination
+
+	return pageInfo !== null && pageInfo.currentPage < pageInfo.maxPage
+}
 
 export const cacheReducer = <T>(
 	state: CACHE_STATE<T>,
@@ -76,7 +97,7 @@ export const cacheReducer = <T>(
 						[key]: {
 							status: 'loading',
 							items: [],
-							nextPageToken: null,
+							pagination: null,
 							error: null
 						}
 					}
@@ -100,7 +121,7 @@ export const cacheReducer = <T>(
 			}
 		}
 		case 'INIT_RESOURCE': {
-			const { key, items, nextPageToken, category } = action.payload
+			const { key, items, pagination, category } = action.payload
 
 			const cacheCategory = state[category]
 
@@ -117,18 +138,19 @@ export const cacheReducer = <T>(
 					[key]: {
 						status: 'idle',
 						items,
-						nextPageToken,
+						pagination,
 						error: null
 					}
 				}
 			}
 		}
 		case 'FETCH_SUCCESS': {
-			const { key, category } = action.payload
+			const { key, category, pagination } = action.payload
 
 			const cacheCategory = state[category]
-
 			const cacheEntry = cacheCategory?.[key]
+
+			const canLoadMore = hasNextPage(pagination)
 
 			if (!cacheEntry) {
 				return {
@@ -136,9 +158,9 @@ export const cacheReducer = <T>(
 					[category]: {
 						...cacheCategory,
 						[key]: {
-							status: action.payload.nextPageToken ? 'idle' : 'exhausted',
+							status: canLoadMore ? 'idle' : 'exhausted',
 							items: action.payload.items,
-							nextPageToken: action.payload.nextPageToken,
+							pagination,
 							error: null
 						}
 					}
@@ -146,9 +168,8 @@ export const cacheReducer = <T>(
 			}
 
 			const newList = [...cacheEntry.items, ...action.payload.items]
-			const nextToken = action.payload.nextPageToken
 
-			if (!nextToken) {
+			if (!canLoadMore) {
 				return {
 					...state,
 					[category]: {
@@ -156,7 +177,7 @@ export const cacheReducer = <T>(
 						[key]: {
 							status: 'exhausted',
 							items: newList,
-							nextPageToken: null,
+							pagination: null,
 							error: null
 						}
 					}
@@ -170,7 +191,7 @@ export const cacheReducer = <T>(
 					[key]: {
 						status: 'idle',
 						items: newList,
-						nextPageToken: nextToken,
+						pagination,
 						error: null
 					}
 				}
@@ -191,7 +212,7 @@ export const cacheReducer = <T>(
 						[key]: {
 							status: 'error',
 							items: [],
-							nextPageToken: null,
+							pagination: null,
 							error: errorMessage
 						}
 					}
@@ -205,7 +226,7 @@ export const cacheReducer = <T>(
 					[key]: {
 						status: 'error',
 						items: cacheEntry.items,
-						nextPageToken: cacheEntry.nextPageToken,
+						pagination: cacheEntry.pagination,
 						error: errorMessage
 					}
 				}

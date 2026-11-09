@@ -2,20 +2,25 @@ import { useEffect } from 'react'
 
 import { useCacheStateContext, useCacheStateDispatchContext } from '@/app/context'
 
-import type { YoutubePlayListItem, YoutubePlaylistResponse } from '@/types'
+import type {
+	CACHE_CATEGORY,
+	CACHE_STATE,
+	PaginationState
+} from './../app/context/reducer/CacheReducer'
 
-import type { CACHE_CATEGORY } from './../app/context/reducer/CacheReducer'
-export const useInfiniteCache = ({
+type ResourceEntry<T> = NonNullable<CACHE_STATE<T>[string]>[string]
+
+export const useInfiniteCache = <DataType, IncomingType>({
 	category,
 	initialData,
 	key,
 	fetchNextPage
 }: {
 	category: CACHE_CATEGORY
-	fetchNextPage: (id: string, pageToken: string) => Promise<Response>
+	fetchNextPage: (id: string, pagination: PaginationState) => Promise<Response>
 	initialData: {
-		items: YoutubePlayListItem[]
-		nextPageToken: string | null
+		items: DataType[]
+		pagination: PaginationState
 	}
 	key: string
 }) => {
@@ -23,9 +28,9 @@ export const useInfiniteCache = ({
 
 	const dispatch = useCacheStateDispatchContext()
 
-	const entry = state[category]?.[key]
+	const entry = state[category]?.[key] as ResourceEntry<DataType> | undefined
 
-	const { items, nextPageToken } = initialData
+	const { items, pagination } = initialData
 
 	useEffect(() => {
 		dispatch({
@@ -34,26 +39,29 @@ export const useInfiniteCache = ({
 				key,
 				category,
 				items,
-				nextPageToken
+				pagination
 			}
 		})
-	}, [dispatch, items, nextPageToken, key, category])
+	}, [dispatch, items, pagination, key, category])
 
 	const updateResource = async () => {
 		if (!entry) {
 			return
 		}
 
-		if (!entry.nextPageToken || entry.status === 'loading') {
+		if (!entry.pagination || entry.status === 'loading') {
 			return
 		}
 
 		dispatch({ type: 'FETCH_START', payload: { key, category } })
 
 		try {
-			const data = await fetchNextPage(key, entry.nextPageToken)
+			const data = await fetchNextPage(key, entry.pagination)
 
-			const response = (await data.json()) as YoutubePlaylistResponse
+			const response = (await data.json()) as {
+				items: IncomingType[]
+				nextPageToken?: string | null
+			}
 
 			dispatch({
 				type: 'FETCH_SUCCESS',
@@ -61,7 +69,10 @@ export const useInfiniteCache = ({
 					key,
 					category,
 					items: response.items,
-					nextPageToken: response.nextPageToken
+					pagination: {
+						kind: 'token',
+						nextPageToken: response.nextPageToken ?? null
+					}
 				}
 			})
 		} catch (err) {

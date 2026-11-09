@@ -6,7 +6,7 @@ import { SkeletonCard } from '@/components'
 import { useInfiniteCache } from '@/hooks/useInfiniteCache'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 import { fetchVideoData } from './utils'
-import type { YoutubePlaylistResponse } from '@/types'
+import type { YoutubePlayListItem, YoutubePlaylistResponse } from '@/types'
 
 import { VideoLink } from './VideoLink'
 
@@ -17,10 +17,13 @@ type VideoContainerProps = YoutubePlaylistResponse
 export const VideoContainer = ({ items, nextPageToken }: VideoContainerProps) => {
 	const { playlistId } = useParams<{ playlistId: string }>()
 
-	const { entry, updateResource } = useInfiniteCache({
+	const { entry, updateResource } = useInfiniteCache<
+		YoutubePlayListItem,
+		YoutubePlaylistResponse
+	>({
 		category: 'videos',
 		key: playlistId,
-		initialData: { items, nextPageToken },
+		initialData: { items, pagination: { kind: 'token', nextPageToken } },
 		fetchNextPage: fetchVideoData
 	})
 
