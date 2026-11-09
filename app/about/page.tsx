@@ -1,4 +1,4 @@
-import { Heading, LinksWithIconsWrapper } from '@/components'
+import { Heading, LinksWithIconsWrapper, RecursiveContent } from '@/components'
 import { RotatableImage } from '@/components/RotatableImage/RotatableImage'
 import { NAV_ICONS_BASE } from '@/constants/constants'
 
@@ -15,15 +15,11 @@ export default async function AboutPage() {
 				<h1 className="text-[220%] capitalize mb-12 text-center font-bold basis-3/4 relative xl:text-[290%] 2xl:text-[300%] after:content-[''] after:absolute after:-bottom-5 after:transform after:-translate-x-1/2 after:left-1/2 after:w-17 after:h-1 after:bg-section-heading-highlight xl:text-start xl:after:left-0 xl:after:transform-none xl:after:translate-0">
 					{textContent.title.text}
 				</h1>
-				<section className="flex flex-col gap-5">
-					{textContent.text.map((text, idx) => (
-						<p className="main-text text-justify" key={`profile-text-${idx}`}>
-							{text}
-						</p>
-					))}
+				<section className="flex flex-col gap-5 text-justify">
+					<RecursiveContent data={textContent.text.content} level={0} classKey="mainText" />
 				</section>
 			</article>
-			<section className="flex flex-col justify-between gap-5 animate-profileAnim lg:basis-[44%] xl:basis-[43%]">
+			<section className="flex flex-col gap-5 animate-profileAnim lg:basis-[44%] xl:basis-[43%]">
 				<div className="group relative w-full mt-12 border-2 border-transparent transition-colors duration-400 hover:border-2 hover:border-hero-highlight focus-within:border-2 focus-within:border-hero-highlight focus:border-2 focus:border-hero-highlight mb-5 xl:mb-0">
 					<RotatableImage
 						src={profileInfo.image.src}
