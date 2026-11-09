@@ -1,3 +1,5 @@
+import { hasNextPage } from '@/utils'
+
 type BaseCacheState<T> = {
 	items: T[]
 	pagination: PaginationState | null
@@ -67,16 +69,6 @@ export type CACHE_ACTION_TYPES<T> =
 			type: 'FETCH_ERROR'
 	  }
 
-const hasNextPage = (pagination: PaginationState): boolean => {
-	if (pagination.kind === 'token') {
-		return pagination.nextPageToken !== null
-	}
-
-	const { pageInfo } = pagination
-
-	return pageInfo !== null && pageInfo.currentPage < pageInfo.maxPage
-}
-
 export const cacheReducer = <T>(
 	state: CACHE_STATE<T>,
 	action: CACHE_ACTION_TYPES<T>
@@ -131,12 +123,14 @@ export const cacheReducer = <T>(
 				return state
 			}
 
+			const canContinue = hasNextPage(pagination)
+
 			return {
 				...state,
 				[category]: {
 					...cacheCategory,
 					[key]: {
-						status: 'idle',
+						status: canContinue ? 'idle' : 'exhausted',
 						items,
 						pagination,
 						error: null

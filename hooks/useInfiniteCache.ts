@@ -2,6 +2,8 @@ import { useEffect } from 'react'
 
 import { useCacheStateContext, useCacheStateDispatchContext } from '@/app/context'
 
+import { hasNextPage } from '@/utils'
+
 import type {
 	CACHE_CATEGORY,
 	CACHE_STATE,
@@ -10,7 +12,7 @@ import type {
 
 type ResourceEntry<T> = NonNullable<CACHE_STATE<T>[string]>[string]
 
-export const useInfiniteCache = <DataType, IncomingType>({
+export const useInfiniteCache = <DataType>({
 	category,
 	initialData,
 	key,
@@ -49,17 +51,22 @@ export const useInfiniteCache = <DataType, IncomingType>({
 			return
 		}
 
-		if (!entry.pagination || entry.status === 'loading') {
+		const canContinue = hasNextPage(entry.pagination)
+
+		if (!canContinue || entry.status === 'loading') {
 			return
 		}
 
 		dispatch({ type: 'FETCH_START', payload: { key, category } })
 
 		try {
+			if (!entry.pagination)
+				throw new Error('no pagination provided when the logic expects it')
+
 			const data = await fetchNextPage(key, entry.pagination)
 
 			const response = (await data.json()) as {
-				items: IncomingType[]
+				items: DataType[]
 				nextPageToken?: string | null
 			}
 

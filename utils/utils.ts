@@ -1,3 +1,5 @@
+import type { PaginationState } from '@/app/context/reducer/CacheReducer'
+
 import type { YoutubePlaylistResponse } from '@/types'
 
 //TODO: update the logic to handle dynamic amount of results
@@ -44,4 +46,16 @@ export const mockResponse = async <T>(data: T, timeoutTime = 800): Promise<T> =>
 			resolve(data)
 		}, timeoutTime)
 	})
+}
+
+export const hasNextPage = (pagination: PaginationState | null): boolean => {
+	if (!pagination) return false
+
+	if (pagination.kind === 'token') {
+		return pagination.nextPageToken !== null
+	}
+
+	const { pageInfo } = pagination
+
+	return pageInfo !== null && pageInfo.currentPage < pageInfo.maxPage
 }

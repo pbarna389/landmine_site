@@ -2,6 +2,10 @@
 
 import { useParams } from 'next/navigation'
 
+import { useMemo } from 'react'
+
+import type { PaginationState } from '@/app/context/reducer/CacheReducer'
+
 import { SkeletonCard } from '@/components'
 import { useInfiniteCache } from '@/hooks/useInfiniteCache'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
@@ -17,13 +21,18 @@ type VideoContainerProps = YoutubePlaylistResponse
 export const VideoContainer = ({ items, nextPageToken }: VideoContainerProps) => {
 	const { playlistId } = useParams<{ playlistId: string }>()
 
-	const { entry, updateResource } = useInfiniteCache<
-		YoutubePlayListItem,
-		YoutubePlaylistResponse
-	>({
+	const pagination: PaginationState = useMemo(
+		() => ({
+			kind: 'token',
+			nextPageToken
+		}),
+		[nextPageToken]
+	)
+
+	const { entry, updateResource } = useInfiniteCache<YoutubePlayListItem>({
 		category: 'videos',
 		key: playlistId,
-		initialData: { items, pagination: { kind: 'token', nextPageToken } },
+		initialData: { items, pagination },
 		fetchNextPage: fetchVideoData
 	})
 
