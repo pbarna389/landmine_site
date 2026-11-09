@@ -68,7 +68,7 @@ type YoutubeStatus = {
 	privacyStatus: 'private' | 'public' | 'unlisted'
 }
 
-type YoutubePlayListItem = YoutubeDetails & {
+export type YoutubePlayListItem = YoutubeDetails & {
 	id: string
 	snippet: YoutubePlaylistSnippet
 	status: YoutubeStatus

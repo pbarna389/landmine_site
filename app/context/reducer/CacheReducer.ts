@@ -1,71 +1,97 @@
-import type { YoutubePlaylistResponse } from '@/types'
+import { hasNextPage } from '@/utils'
 
-type BaseCacheState = YoutubePlaylistResponse & {
-	nextPageToken: string | null
+type BaseCacheState<T> = {
+	items: T[]
+	pagination: PaginationState | null
 }
 
-type IdleState = BaseCacheState & {
+export type PaginationState =
+	| { kind: 'token'; nextPageToken: string | null }
+	| {
+			kind: 'page'
+			pageInfo: {
+				currentPage: number
+				maxPage: number
+				pageSize: number
+			} | null
+	  }
+
+type IdleState<T> = BaseCacheState<T> & {
 	error: null
 	status: 'idle'
 }
 
-type LoadingState = BaseCacheState & {
+type LoadingState<T> = BaseCacheState<T> & {
 	error: null
 	status: 'loading'
 }
 
-type ExhaustedState = BaseCacheState & {
+type ExhaustedState<T> = BaseCacheState<T> & {
 	error: null
 	status: 'exhausted'
 }
 
-type ErrorState = BaseCacheState & {
+type ErrorState<T> = BaseCacheState<T> & {
 	error: string
 	status: 'error'
 }
 
-type CacheEntry = IdleState | LoadingState | ExhaustedState | ErrorState
+type CacheEntry<T> = {
+	[key: string]: IdleState<T> | LoadingState<T> | ExhaustedState<T> | ErrorState<T>
+}
 
-export type CACHE_STATE = Record<string, CacheEntry | undefined>
+export type CACHE_CATEGORY = 'videos' | 'music' | 'articles'
 
-export type CACHE_ACTION_TYPES =
-	| { payload: { key: string }; type: 'FETCH_START' }
+export type CACHE_STATE<T> = Record<string, CacheEntry<T> | undefined>
+
+export type CACHE_ACTION_TYPES<T> =
+	| { payload: { category: CACHE_CATEGORY; key: string }; type: 'FETCH_START' }
 	| {
 			payload: {
-				items: YoutubePlaylistResponse['items']
+				category: CACHE_CATEGORY
+				items: T[]
 				key: string
-				nextPageToken: string | null
+				pagination: PaginationState
 			}
 			type: 'FETCH_SUCCESS'
 	  }
 	| {
 			payload: {
-				items: YoutubePlaylistResponse['items']
+				category: CACHE_CATEGORY
+				items: T[]
 				key: string
-				nextPageToken: string | null
+				pagination: PaginationState
 			}
-			type: 'INIT_PLAYLIST'
+			type: 'INIT_RESOURCE'
 	  }
-	| { payload: { errorMessage: string; key: string }; type: 'FETCH_ERROR' }
+	| {
+			payload: { category: CACHE_CATEGORY; errorMessage: string; key: string }
+			type: 'FETCH_ERROR'
+	  }
 
-export const cacheReducer = (
-	state: CACHE_STATE,
-	action: CACHE_ACTION_TYPES
-): CACHE_STATE => {
+export const cacheReducer = <T>(
+	state: CACHE_STATE<T>,
+	action: CACHE_ACTION_TYPES<T>
+): CACHE_STATE<T> => {
 	switch (action.type) {
 		case 'FETCH_START': {
-			const { key } = action.payload
+			const { key, category } = action.payload
 
-			const cacheEntry = state[key]
+			const cacheCategory = state[category]
+
+			const cacheEntry = cacheCategory?.[key]
 
 			if (!cacheEntry) {
 				return {
 					...state,
-					[key]: {
-						status: 'loading',
-						items: [],
-						nextPageToken: null,
-						error: null
+					[category]: {
+						...cacheCategory,
+						[key]: {
+							status: 'loading',
+							items: [],
+							pagination: null,
+							error: null
+						}
 					}
 				}
 			}
@@ -76,96 +102,127 @@ export const cacheReducer = (
 
 			return {
 				...state,
-				[key]: {
-					...cacheEntry,
-					status: 'loading',
-					error: null
+				[category]: {
+					...cacheCategory,
+					[key]: {
+						...cacheEntry,
+						status: 'loading',
+						error: null
+					}
 				}
 			}
 		}
-		case 'INIT_PLAYLIST': {
-			const { key, items, nextPageToken } = action.payload
+		case 'INIT_RESOURCE': {
+			const { key, items, pagination, category } = action.payload
 
-			if (state[key]) {
+			const cacheCategory = state[category]
+
+			const cacheEntry = cacheCategory?.[key]
+
+			if (cacheEntry) {
 				return state
 			}
 
+			const canContinue = hasNextPage(pagination)
+
 			return {
 				...state,
-				[key]: {
-					status: 'idle',
-					items,
-					nextPageToken,
-					error: null
+				[category]: {
+					...cacheCategory,
+					[key]: {
+						status: canContinue ? 'idle' : 'exhausted',
+						items,
+						pagination,
+						error: null
+					}
 				}
 			}
 		}
 		case 'FETCH_SUCCESS': {
-			const { key } = action.payload
+			const { key, category, pagination } = action.payload
 
-			const cacheEntry = state[key]
+			const cacheCategory = state[category]
+			const cacheEntry = cacheCategory?.[key]
+
+			const canLoadMore = hasNextPage(pagination)
 
 			if (!cacheEntry) {
 				return {
 					...state,
-					[key]: {
-						status: action.payload.nextPageToken ? 'idle' : 'exhausted',
-						items: action.payload.items,
-						nextPageToken: action.payload.nextPageToken,
-						error: null
+					[category]: {
+						...cacheCategory,
+						[key]: {
+							status: canLoadMore ? 'idle' : 'exhausted',
+							items: action.payload.items,
+							pagination,
+							error: null
+						}
 					}
 				}
 			}
 
 			const newList = [...cacheEntry.items, ...action.payload.items]
-			const nextToken = action.payload.nextPageToken
 
-			if (!nextToken) {
+			if (!canLoadMore) {
 				return {
 					...state,
+					[category]: {
+						...cacheCategory,
+						[key]: {
+							status: 'exhausted',
+							items: newList,
+							pagination: null,
+							error: null
+						}
+					}
+				}
+			}
+
+			return {
+				...state,
+				[category]: {
+					...cacheCategory,
 					[key]: {
-						status: 'exhausted',
+						status: 'idle',
 						items: newList,
-						nextPageToken: null,
+						pagination,
 						error: null
 					}
 				}
 			}
-
-			return {
-				...state,
-				[key]: {
-					status: 'idle',
-					items: newList,
-					nextPageToken: nextToken,
-					error: null
-				}
-			}
 		}
 		case 'FETCH_ERROR': {
-			const { key, errorMessage } = action.payload
+			const { key, errorMessage, category } = action.payload
 
-			const cacheEntry = state[key]
+			const cacheCategory = state[category]
+
+			const cacheEntry = cacheCategory?.[key]
 
 			if (!cacheEntry) {
 				return {
 					...state,
-					[key]: {
-						status: 'error',
-						items: [],
-						nextPageToken: null,
-						error: errorMessage
+					[category]: {
+						...cacheCategory,
+						[key]: {
+							status: 'error',
+							items: [],
+							pagination: null,
+							error: errorMessage
+						}
 					}
 				}
 			}
 
 			return {
 				...state,
-				[key]: {
-					status: 'error',
-					items: cacheEntry.items,
-					nextPageToken: cacheEntry.nextPageToken,
-					error: errorMessage
+				[category]: {
+					...cacheCategory,
+					[key]: {
+						status: 'error',
+						items: cacheEntry.items,
+						pagination: cacheEntry.pagination,
+						error: errorMessage
+					}
 				}
 			}
 		}

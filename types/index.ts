@@ -14,6 +14,7 @@ export type {
 	ParagraphType,
 	TextType,
 	WidthValuesType,
+	YoutubePlayListItem,
 	YoutubePlaylistResponse
 } from './types'
 export type { ArrayElementType } from './utilities'

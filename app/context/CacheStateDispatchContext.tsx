@@ -1,10 +1,13 @@
 'use client'
 
-import { createContext, type Dispatch } from 'react'
+import type { Dispatch } from 'react'
+import { createContext } from 'react'
 
 import type { CACHE_ACTION_TYPES } from './reducer'
 
-const cacheDispatchState: { dispatch?: Dispatch<CACHE_ACTION_TYPES> } = {
+const cacheDispatchState: {
+	dispatch?: Dispatch<CACHE_ACTION_TYPES<unknown>>
+} = {
 	dispatch: undefined
 }
 
