@@ -14,10 +14,12 @@ const PROFILE_TEXT_CONTENT: DocType = {
 				},
 				{
 					type: 'hardBreak'
-				},
-				{
-					type: 'hardBreak'
-				},
+				}
+			]
+		},
+		{
+			type: 'paragraph',
+			content: [
 				{
 					type: 'text',
 					text:
@@ -25,10 +27,12 @@ const PROFILE_TEXT_CONTENT: DocType = {
 				},
 				{
 					type: 'hardBreak'
-				},
-				{
-					type: 'hardBreak'
-				},
+				}
+			]
+		},
+		{
+			type: 'paragraph',
+			content: [
 				{
 					type: 'text',
 					text:
@@ -36,10 +40,12 @@ const PROFILE_TEXT_CONTENT: DocType = {
 				},
 				{
 					type: 'hardBreak'
-				},
-				{
-					type: 'hardBreak'
-				},
+				}
+			]
+		},
+		{
+			type: 'paragraph',
+			content: [
 				{
 					type: 'text',
 					text: '2002 óta folyamatosan írok '
