@@ -4,7 +4,7 @@ import { youtubePlaylistResponseSchema } from '@/app/schemas'
 import type { PaginationState } from '@/types'
 
 //TODO: update the logic to handle dynamic amount of results
-//TODO: update to handle different access from providers?
+//TODO: update to handle access to different providers?
 //TODO: handle error from BE
 
 export async function getYoutubeData(
