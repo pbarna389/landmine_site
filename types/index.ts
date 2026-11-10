@@ -11,10 +11,9 @@ export type {
 	ListItemType,
 	MarksType,
 	OrderedListType,
+	PaginationState,
 	ParagraphType,
 	TextType,
-	WidthValuesType,
-	YoutubePlayListItem,
-	YoutubePlaylistResponse
+	WidthValuesType
 } from './types'
 export type { ArrayElementType } from './utilities'

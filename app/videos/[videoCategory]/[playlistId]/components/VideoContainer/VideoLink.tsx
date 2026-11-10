@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import type { YoutubePlaylistResponse } from '@/types'
+import type { YoutubePlaylistResponse } from '@/app/schemas'
 
 import defaultImage from '../../../../../../public/6640187.jpg'
 

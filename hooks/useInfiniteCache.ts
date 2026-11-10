@@ -2,13 +2,9 @@ import { useEffect } from 'react'
 
 import { useCacheStateContext, useCacheStateDispatchContext } from '@/app/context'
 
-import { hasNextPage } from '@/utils'
+import type { PaginationState } from '@/types'
 
-import type {
-	CACHE_CATEGORY,
-	CACHE_STATE,
-	PaginationState
-} from './../app/context/reducer/CacheReducer'
+import type { CACHE_CATEGORY, CACHE_STATE } from './../app/context/reducer/CacheReducer'
 
 type ResourceEntry<T> = NonNullable<CACHE_STATE<T>[string]>[string]
 
@@ -19,7 +15,10 @@ export const useInfiniteCache = <DataType>({
 	fetchNextPage
 }: {
 	category: CACHE_CATEGORY
-	fetchNextPage: (id: string, pagination: PaginationState) => Promise<Response>
+	fetchNextPage: (
+		id: string,
+		pagination: PaginationState
+	) => Promise<{ items: DataType[]; pagination: PaginationState }>
 	initialData: {
 		items: DataType[]
 		pagination: PaginationState
@@ -51,9 +50,7 @@ export const useInfiniteCache = <DataType>({
 			return
 		}
 
-		const canContinue = hasNextPage(entry.pagination)
-
-		if (!canContinue || entry.status === 'loading') {
+		if (!entry.pagination || entry.status === 'loading') {
 			return
 		}
 
@@ -65,21 +62,13 @@ export const useInfiniteCache = <DataType>({
 
 			const data = await fetchNextPage(key, entry.pagination)
 
-			const response = (await data.json()) as {
-				items: DataType[]
-				nextPageToken?: string | null
-			}
-
 			dispatch({
 				type: 'FETCH_SUCCESS',
 				payload: {
 					key,
 					category,
-					items: response.items,
-					pagination: {
-						kind: 'token',
-						nextPageToken: response.nextPageToken ?? null
-					}
+					items: data.items,
+					pagination: data.pagination
 				}
 			})
 		} catch (err) {

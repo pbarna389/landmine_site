@@ -1,6 +1,7 @@
-import type { PaginationState } from '@/app/context/reducer/CacheReducer'
+import type { YoutubePlaylistResponse } from '@/app/schemas'
+import { youtubePlaylistResponseSchema } from '@/app/schemas'
 
-import type { YoutubePlaylistResponse } from '@/types'
+import type { PaginationState } from '@/types'
 
 //TODO: update the logic to handle dynamic amount of results
 //TODO: update to handle different access from providers?
@@ -32,11 +33,16 @@ export async function getYoutubeData(
 		throw new Error(`Youtube API error: ${res.status}`)
 	}
 
-	const data = (await res.json()) as YoutubePlaylistResponse
+	const response = youtubePlaylistResponseSchema.safeParse(await res.json())
+
+	console.log(response)
+
+	if (!response.success) throw new Error('Error while parsing the initial youtube data!')
 
 	return {
-		items: data.items.filter((item) => item.status.privacyStatus !== 'private') ?? [],
-		nextPageToken: data.nextPageToken ?? null
+		items:
+			response.data?.items.filter((item) => item.status.privacyStatus !== 'private') ?? [],
+		nextPageToken: response.data?.nextPageToken ?? undefined
 	}
 }
 

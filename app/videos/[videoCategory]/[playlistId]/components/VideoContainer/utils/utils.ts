@@ -1,5 +1,12 @@
-import type { PaginationState } from './../../../../../../context/reducer/CacheReducer'
-export const fetchVideoData = async (id: string, pagination: PaginationState) => {
+import type { YoutubePlayListItem } from '@/app/schemas'
+import { youtubePlaylistResponseSchema } from '@/app/schemas'
+
+import type { PaginationState } from '@/types'
+
+export const fetchVideoData = async (
+	id: string,
+	pagination: PaginationState
+): Promise<{ items: YoutubePlayListItem[]; pagination: PaginationState }> => {
 	const nextPageToken = pagination.kind === 'token' ? pagination.nextPageToken : undefined
 
 	if (!nextPageToken) {
@@ -12,5 +19,23 @@ export const fetchVideoData = async (id: string, pagination: PaginationState) =>
 		throw new Error(`Request failed with status ${data.status}`)
 	}
 
-	return data
+	const response = youtubePlaylistResponseSchema.safeParse(await data.json())
+
+	console.log(response)
+
+	if (!response.success) {
+		throw new Error(`Youtube response parsing failed!`)
+	}
+
+	const newPagination: PaginationState = {
+		kind: 'token',
+		nextPageToken: response.data.nextPageToken ?? null
+	}
+
+	const updatedResponseFormat = {
+		items: response.data.items,
+		pagination: newPagination
+	}
+
+	return updatedResponseFormat
 }

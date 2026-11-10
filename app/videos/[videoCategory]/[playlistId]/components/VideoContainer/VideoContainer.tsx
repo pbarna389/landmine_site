@@ -4,13 +4,13 @@ import { useParams } from 'next/navigation'
 
 import { useMemo } from 'react'
 
-import type { PaginationState } from '@/app/context/reducer/CacheReducer'
+import type { YoutubePlayListItem, YoutubePlaylistResponse } from '@/app/schemas'
 
 import { SkeletonCard } from '@/components'
 import { useInfiniteCache } from '@/hooks/useInfiniteCache'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 import { fetchVideoData } from './utils'
-import type { YoutubePlayListItem, YoutubePlaylistResponse } from '@/types'
+import type { PaginationState } from '@/types'
 
 import { VideoLink } from './VideoLink'
 

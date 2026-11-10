@@ -1,20 +1,10 @@
 import { hasNextPage } from '@/utils'
+import type { PaginationState } from '@/types'
 
 type BaseCacheState<T> = {
 	items: T[]
 	pagination: PaginationState | null
 }
-
-export type PaginationState =
-	| { kind: 'token'; nextPageToken: string | null }
-	| {
-			kind: 'page'
-			pageInfo: {
-				currentPage: number
-				maxPage: number
-				pageSize: number
-			} | null
-	  }
 
 type IdleState<T> = BaseCacheState<T> & {
 	error: null
