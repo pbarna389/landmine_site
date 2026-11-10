@@ -21,8 +21,6 @@ export const fetchVideoData = async (
 
 	const response = youtubePlaylistResponseSchema.safeParse(await data.json())
 
-	console.log(response)
-
 	if (!response.success) {
 		throw new Error(`Youtube response parsing failed!`)
 	}

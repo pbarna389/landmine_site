@@ -35,8 +35,6 @@ export async function getYoutubeData(
 
 	const response = youtubePlaylistResponseSchema.safeParse(await res.json())
 
-	console.log(response)
-
 	if (!response.success) throw new Error('Error while parsing the initial youtube data!')
 
 	return {
@@ -58,7 +56,7 @@ export const hasNextPage = (pagination: PaginationState | null): boolean => {
 	if (!pagination) return false
 
 	if (pagination.kind === 'token') {
-		return pagination.nextPageToken !== null
+		return !!pagination.nextPageToken
 	}
 
 	const { pageInfo } = pagination

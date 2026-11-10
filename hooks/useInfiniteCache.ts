@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 
 import { useCacheStateContext, useCacheStateDispatchContext } from '@/app/context'
 
+import { hasNextPage } from '@/utils'
 import type { PaginationState } from '@/types'
 
 import type { CACHE_CATEGORY, CACHE_STATE } from './../app/context/reducer/CacheReducer'
@@ -50,7 +51,9 @@ export const useInfiniteCache = <DataType>({
 			return
 		}
 
-		if (!entry.pagination || entry.status === 'loading') {
+		const canContinue = hasNextPage(entry.pagination)
+
+		if (!entry.pagination || !canContinue || entry.status === 'loading') {
 			return
 		}
 
