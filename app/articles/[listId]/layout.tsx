@@ -1,7 +1,8 @@
+import { notFound } from 'next/navigation'
+
 import { ArticleCard } from './components'
 
-import { getArticleContent } from '../server'
-import type { ListIdParamType } from '../types'
+import { getArticlePaginatedContent } from '../server'
 
 export default async function ArticlesCategoryLayout({
 	children,
@@ -11,12 +12,16 @@ export default async function ArticlesCategoryLayout({
 }) {
 	const { listId } = await params
 
-	const selectedArticle = await getArticleContent(listId as ListIdParamType)
+	const selectedArticle = await getArticlePaginatedContent(listId, 3)
+
+	if (!selectedArticle.items.length) {
+		notFound()
+	}
 
 	return (
 		<>
 			<section className="grid gap-5 w-full h-full items-stretch grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
-				{selectedArticle.map((article, idx) => (
+				{selectedArticle.items.map((article, idx) => (
 					<ArticleCard
 						key={`article-card-${article.id}`}
 						{...article}
