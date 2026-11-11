@@ -1,5 +1,5 @@
 import type { YoutubePlaylistResponse } from '@/app/schemas'
-import { youtubePlaylistResponseSchema } from '@/app/schemas'
+import { articleResponseSchema, youtubePlaylistResponseSchema } from '@/app/schemas'
 
 import type { PaginationState } from '@/types'
 
@@ -50,6 +50,32 @@ export const mockResponse = async <T>(data: T, timeoutTime = 800): Promise<T> =>
 			resolve(data)
 		}, timeoutTime)
 	})
+}
+
+export async function getArticlesData(
+	listId: string,
+	currentPage: string,
+	pageSize: string
+) {
+	const params = new URLSearchParams({
+		listId,
+		currentPage,
+		pageSize
+	})
+
+	const response = await fetch(`/api/articles?${params.toString()}`)
+
+	if (!response.ok) {
+		throw new Error(`Article API error: ${response.status}`)
+	}
+
+	const parsedData = articleResponseSchema.safeParse(await response.json())
+
+	if (!parsedData.success) {
+		throw new Error(`Article parsing error: ${parsedData.error.message}`)
+	}
+
+	return parsedData.data
 }
 
 export const hasNextPage = (pagination: PaginationState | null): boolean => {

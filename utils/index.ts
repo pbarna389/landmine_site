@@ -1,1 +1,1 @@
-export { getYoutubeData, hasNextPage, mockResponse } from './utils'
+export { getArticlesData, getYoutubeData, hasNextPage, mockResponse } from './utils'

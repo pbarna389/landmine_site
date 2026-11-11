@@ -1,6 +1,7 @@
+import type { ArticleListIdParamType } from '@/app/schemas'
+
 import { getArticlesLayoutContentMock, getArticlesListMock } from './articles.mock'
 import { INVALID_REQUEST_RESULT } from '../constants/constants'
-import type { ListIdParamType } from '../types'
 
 export const getArticleContent = async (id: string) => {
 	const articles = await getArticlesListMock()
@@ -8,7 +9,7 @@ export const getArticleContent = async (id: string) => {
 	return id === 'all'
 		? articles
 		: articles.filter((article) =>
-				article.tags.includes(id as Exclude<ListIdParamType, 'all'>)
+				article.tags.includes(id as Exclude<ArticleListIdParamType, 'all'>)
 			)
 }
 
@@ -23,7 +24,7 @@ export const getArticlePaginatedContent = async (
 		id === 'all'
 			? articles
 			: articles.filter((article) =>
-					article.tags.includes(id as Exclude<ListIdParamType, 'all'>)
+					article.tags.includes(id as Exclude<ArticleListIdParamType, 'all'>)
 				)
 
 	if (!Number.isInteger(pageSize) || pageSize <= 0) return INVALID_REQUEST_RESULT
