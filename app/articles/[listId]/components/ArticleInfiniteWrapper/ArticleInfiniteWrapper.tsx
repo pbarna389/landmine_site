@@ -44,9 +44,7 @@ export const ArticleInfiniteWrapper = ({
 	>({
 		category: 'articles',
 		fetchParams: {
-			id: listId,
-			currentPage: pagination?.currentPage + 1,
-			pageSize: pagination?.pageSize
+			id: listId
 		},
 		initialData: { items, pagination: newPagination },
 		fetchNextPage: fetchArticleData
@@ -63,9 +61,11 @@ export const ArticleInfiniteWrapper = ({
 
 	const refIdx = entry?.items?.length ? entry?.items?.length - 1 : 0
 
+	const displayedItems = entry?.items ?? items
+
 	return (
 		<>
-			{entry?.items.map((article, idx) => (
+			{displayedItems.map((article, idx) => (
 				<div
 					className="relative overflow-hidden transition-transform duration-250 hover:scale-105 animate-imageLoadAnim"
 					key={article.id}

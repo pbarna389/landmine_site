@@ -3,25 +3,25 @@ import { type ArticleCardType, articleResponseSchema } from '@/app/schemas'
 import type { PaginationState } from '@/types'
 
 export type FetchArticleDataParams = {
-	currentPage: number
 	id: string
-	pageSize: number
 }
 
 export const fetchArticleData = async (
-	params: { currentPage: number; id: string; pageSize: number },
+	params: { id: string },
 	pagination: PaginationState
 ): Promise<{ items: ArticleCardType[]; pagination: PaginationState }> => {
-	const nextPageToken = pagination.kind === 'page' ? pagination.pageInfo : undefined
+	const nextPageInfo = pagination.kind === 'page' ? pagination.pageInfo : undefined
 
-	const { currentPage, pageSize, id } = params
+	const { id } = params
 
-	if (!nextPageToken) {
-		throw new Error('No token is provided')
+	if (!nextPageInfo) {
+		throw new Error('Invalid page pagination state')
 	}
 
+	const nextPage = nextPageInfo.currentPage + 1
+
 	const data = await fetch(
-		`/api/articles?listId=${id}&page=${currentPage}&pageSize=${pageSize}`
+		`/api/articles?listId=${id}&page=${nextPage}&pageSize=${nextPageInfo.pageSize}`
 	)
 
 	if (!data.ok) {
@@ -36,7 +36,7 @@ export const fetchArticleData = async (
 
 	const newPagination: PaginationState = {
 		kind: 'page',
-		pageInfo: response.data.pagination ?? null
+		pageInfo: response.data.pagination
 	}
 
 	const updatedResponseFormat = {

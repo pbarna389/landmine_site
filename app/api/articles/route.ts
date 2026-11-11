@@ -27,12 +27,10 @@ export async function GET(request: NextRequest) {
 	const convertedCurrentPage = Number(currentPage)
 
 	if (!Number.isInteger(convertedPageSize)) {
-		console.log('pageSize is in invalid format!!')
 		return badRequest('Invalid page size format!')
 	}
 
 	if (!Number.isInteger(convertedCurrentPage)) {
-		console.log('currentPage is in invalid format!!')
 		return badRequest('Invalid current page format!')
 	}
 
@@ -43,7 +41,6 @@ export async function GET(request: NextRequest) {
 	)
 
 	if (data.pagination === null) {
-		console.log('no pagination in route handler!')
 		return badRequest('Invalid pagination data')
 	}
 

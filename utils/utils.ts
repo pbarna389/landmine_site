@@ -59,7 +59,7 @@ export async function getArticlesData(
 ) {
 	const params = new URLSearchParams({
 		listId,
-		currentPage,
+		page: currentPage,
 		pageSize
 	})
 

@@ -12,7 +12,7 @@ export default async function ArticlesCategoryLayout({
 }) {
 	const { listId } = await params
 
-	const selectedArticle = await getArticlePaginatedContent(listId, 3)
+	const selectedArticle = await getArticlePaginatedContent(listId, 3, 1)
 
 	if (!selectedArticle.items.length) {
 		notFound()
