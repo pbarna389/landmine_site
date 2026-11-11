@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 
-import { ArticleCard } from './components'
+import { ArticleInfiniteWrapper } from './components'
 
 import { getArticlePaginatedContent } from '../server'
 
@@ -21,14 +21,7 @@ export default async function ArticlesCategoryLayout({
 	return (
 		<>
 			<section className="grid gap-5 w-full h-full items-stretch grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
-				{selectedArticle.items.map((article, idx) => (
-					<ArticleCard
-						key={`article-card-${article.id}`}
-						{...article}
-						idx={idx}
-						listId={listId}
-					/>
-				))}
+				<ArticleInfiniteWrapper {...selectedArticle} />
 			</section>
 			{children}
 		</>

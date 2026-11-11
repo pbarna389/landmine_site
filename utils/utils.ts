@@ -63,7 +63,9 @@ export async function getArticlesData(
 		pageSize
 	})
 
-	const response = await fetch(`/api/articles?${params.toString()}`)
+	const response = await fetch(`/api/articles?${params.toString()}`, {
+		cache: 'force-cache'
+	})
 
 	if (!response.ok) {
 		throw new Error(`Article API error: ${response.status}`)

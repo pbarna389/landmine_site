@@ -1,0 +1,1 @@
+export { ArticleInfiniteWrapper } from './ArticleInfiniteWrapper'

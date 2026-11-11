@@ -3,8 +3,12 @@ import { youtubePlaylistResponseSchema } from '@/app/schemas'
 
 import type { PaginationState } from '@/types'
 
+export type FetchVideoDataParams = {
+	id: string
+}
+
 export const fetchVideoData = async (
-	id: string,
+	params: { id: string },
 	pagination: PaginationState
 ): Promise<{ items: YoutubePlayListItem[]; pagination: PaginationState }> => {
 	const nextPageToken = pagination.kind === 'token' ? pagination.nextPageToken : undefined
@@ -13,7 +17,9 @@ export const fetchVideoData = async (
 		throw new Error('No token is provided')
 	}
 
-	const data = await fetch(`/api/videos?playlistId=${id}&pageToken=${nextPageToken}`)
+	const data = await fetch(
+		`/api/videos?playlistId=${params.id}&pageToken=${nextPageToken}`
+	)
 
 	if (!data.ok) {
 		throw new Error(`Request failed with status ${data.status}`)

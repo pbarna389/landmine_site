@@ -9,6 +9,8 @@ import {
 	Ubuntu
 } from 'next/font/google'
 
+import { Suspense } from 'react'
+
 import { CacheContextProvider } from './context'
 import { NavigatorBtn } from '@/components'
 import Breadcrumbs from '@/components/Breadcrumbs/Breadcrumbs'

@@ -3,9 +3,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { Card } from '@/components'
+import type { ArticleCardType } from '@/app/schemas'
 
-import type { ArticleCardType } from '../../../types'
+import { Card } from '@/components'
 
 type ArticleCardProps = ArticleCardType & {
 	idx: number

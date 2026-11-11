@@ -9,28 +9,28 @@ import type { CACHE_CATEGORY, CACHE_STATE } from './../app/context/reducer/Cache
 
 type ResourceEntry<T> = NonNullable<CACHE_STATE<T>[string]>[string]
 
-export const useInfiniteCache = <DataType>({
+export const useInfiniteCache = <DataType, FetchNextPageParams extends { id: string }>({
 	category,
 	initialData,
-	key,
+	fetchParams,
 	fetchNextPage
 }: {
 	category: CACHE_CATEGORY
 	fetchNextPage: (
-		id: string,
+		params: FetchNextPageParams,
 		pagination: PaginationState
 	) => Promise<{ items: DataType[]; pagination: PaginationState }>
+	fetchParams: FetchNextPageParams
 	initialData: {
 		items: DataType[]
 		pagination: PaginationState
 	}
-	key: string
 }) => {
 	const state = useCacheStateContext()
 
 	const dispatch = useCacheStateDispatchContext()
 
-	const entry = state[category]?.[key] as ResourceEntry<DataType> | undefined
+	const entry = state[category]?.[fetchParams.id] as ResourceEntry<DataType> | undefined
 
 	const { items, pagination } = initialData
 
@@ -38,13 +38,13 @@ export const useInfiniteCache = <DataType>({
 		dispatch({
 			type: 'INIT_RESOURCE',
 			payload: {
-				key,
+				key: fetchParams.id,
 				category,
 				items,
 				pagination
 			}
 		})
-	}, [dispatch, items, pagination, key, category])
+	}, [dispatch, items, pagination, fetchParams.id, category])
 
 	const updateResource = async () => {
 		if (!entry) {
@@ -57,18 +57,18 @@ export const useInfiniteCache = <DataType>({
 			return
 		}
 
-		dispatch({ type: 'FETCH_START', payload: { key, category } })
+		dispatch({ type: 'FETCH_START', payload: { key: fetchParams.id, category } })
 
 		try {
 			if (!entry.pagination)
 				throw new Error('no pagination provided when the logic expects it')
 
-			const data = await fetchNextPage(key, entry.pagination)
+			const data = await fetchNextPage(fetchParams, entry.pagination)
 
 			dispatch({
 				type: 'FETCH_SUCCESS',
 				payload: {
-					key,
+					key: fetchParams.id,
 					category,
 					items: data.items,
 					pagination: data.pagination
@@ -79,14 +79,14 @@ export const useInfiniteCache = <DataType>({
 				type: 'FETCH_ERROR',
 				payload: {
 					category,
-					key,
+					key: fetchParams.id,
 					errorMessage: err instanceof Error ? err.message : 'Unknown error'
 				}
 			})
 		}
 	}
 
-	const message = `use infinite cache initialized with category: ${category}, key: ${key}`
+	const message = `use infinite cache initialized with category: ${category}, key: ${fetchParams.id}`
 
 	return { message, entry, updateResource }
 }

@@ -1,5 +1,7 @@
 import { z } from 'zod'
 
+import { paginationSchema } from '../shared/schemas'
+
 export const tagSchema = z.enum(['theory', 'philosophy', 'advices', 'facts', 'music'])
 
 export const articleListIdParamSchema = z.enum([...tagSchema.options, 'all'])
@@ -20,12 +22,6 @@ export const articleCardSchema = z.object({
 	tags: z.array(tagSchema),
 	text: z.string(),
 	title: z.string()
-})
-
-export const paginationSchema = z.object({
-	pageSize: z.number(),
-	currentPage: z.number(),
-	maxPage: z.number()
 })
 
 export const articleCardListSchema = z.array(articleCardSchema)
