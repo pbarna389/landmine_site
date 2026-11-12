@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server'
 import { getArticlePaginatedContent } from '@/app/articles/server'
 import { articleListIdParamSchema } from '@/app/schemas'
 
-import { badRequest } from '@/utils/utils'
+import { badRequest } from '@/utils'
 
 export async function GET(request: NextRequest) {
 	const params = request.nextUrl.searchParams
