@@ -1,5 +1,8 @@
 import { cache } from 'react'
 
+import { paginateItems, validateRequest } from '@/utils'
+import { INVALID_REQUEST_RESULT } from '@/constants/constants'
+
 import { getMusicContentMock, getMusicListContentMock } from './music.mock'
 
 export const getMusicContent = cache(async () => {
@@ -22,6 +25,32 @@ export const getMusicListContent = cache(async (listId: string) => {
 
 	return content
 })
+
+export const getMusicPaginatedContent = cache(
+	async (listId: string, pageSize: number, nextPage = 1) => {
+		const musicContent = await getMusicListContentMock()
+
+		const selectedList = musicContent.find((list) => list.id.toString() === listId)
+
+		if (!selectedList || !Number.isInteger(pageSize) || pageSize <= 0)
+			return INVALID_REQUEST_RESULT
+
+		const maxPage = !selectedList.content.length
+			? 1
+			: Math.ceil(selectedList.content.length / pageSize)
+
+		const isValidRequest = validateRequest(nextPage, pageSize, maxPage)
+
+		if (!isValidRequest) return INVALID_REQUEST_RESULT
+
+		const selectedListSortedContent = [...selectedList.content].sort(
+			(current, next) =>
+				Number(next.id.split('-').at(-1)) - Number(current.id.split('-').at(-1))
+		)
+
+		return paginateItems(selectedListSortedContent, nextPage, pageSize, maxPage)
+	}
+)
 
 export const getAlbumDiary = async (listId: string, diaryId: string) => {
 	const result = await getMusicListContent(listId)

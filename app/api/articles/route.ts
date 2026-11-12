@@ -4,14 +4,13 @@ import { NextResponse } from 'next/server'
 import { getArticlePaginatedContent } from '@/app/articles/server'
 import { articleListIdParamSchema } from '@/app/schemas'
 
-const badRequest = (message: string) =>
-	NextResponse.json({ error: message }, { status: 400 })
+import { badRequest } from '@/utils/utils'
 
 export async function GET(request: NextRequest) {
 	const params = request.nextUrl.searchParams
 
 	const listId = params.get('listId')
-	const currentPage = params.get('page')
+	const currentPage = params.get('currentPage')
 	const pageSize = params.get('pageSize')
 
 	if (!listId || currentPage === null || pageSize === null) {

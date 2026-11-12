@@ -37,3 +37,8 @@ export const NAV_ICONS_BASE: LinkWithIconsType = [
 export const NAV_SOCIALS_DESKTOP: LinkWithIconsType = NAV_ICONS_BASE.filter((icon) =>
 	SOCIAL_COLLECTION.includes(icon.site)
 )
+
+export const INVALID_REQUEST_RESULT = {
+	items: [],
+	pagination: null
+}

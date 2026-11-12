@@ -48,8 +48,3 @@ export const ARTICLE_MAIN_CONTENT = {
 	},
 	filters: ARTICLE_FILTER_CATEGORIES
 }
-
-export const INVALID_REQUEST_RESULT = {
-	items: [],
-	pagination: null
-}
