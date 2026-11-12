@@ -36,17 +36,6 @@ export async function getYoutubeData(
 	const response = youtubePlaylistResponseSchema.safeParse(await res.json())
 
 	if (!response.success) {
-		console.error(
-			'YouTube validation failed:',
-			response.error.issues.map((issue) => ({
-				path: issue.path.join('.'),
-				code: issue.code,
-				message: issue.message
-			}))
-		)
-	}
-
-	if (!response.success) {
 		console.error('YouTube response validation failed:', {
 			playlistId,
 			issues: response.error.issues
