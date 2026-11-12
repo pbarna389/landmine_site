@@ -14,7 +14,7 @@ export default async function MusicListLayout({
 
 	const selectedList = await getMusicPaginatedContent(listId, 3, 1)
 
-	if (!selectedList.items) {
+	if (!selectedList.pagination) {
 		notFound()
 	}
 

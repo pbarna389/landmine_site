@@ -33,5 +33,9 @@ export async function GET(request: NextRequest) {
 		convertedCurrentPage
 	)
 
+	if (data.pagination === null) {
+		return badRequest('Invalid pagination data')
+	}
+
 	return NextResponse.json(data)
 }

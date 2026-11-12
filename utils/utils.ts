@@ -1,5 +1,3 @@
-import { NextResponse } from 'next/server'
-
 import type { YoutubePlaylistResponse } from '@/app/schemas'
 import { articleResponseSchema, youtubePlaylistResponseSchema } from '@/app/schemas'
 import { musicListResponseSchema } from '@/app/schemas/musicSchemas/schemas'
@@ -146,20 +144,3 @@ export const paginateItems = <T>(
 		}
 	}
 }
-
-export const validateRequest = (nextPage: number, pageSize: number, maxPage: number) => {
-	if (
-		!Number.isInteger(pageSize) ||
-		pageSize <= 0 ||
-		!Number.isInteger(nextPage) ||
-		nextPage <= 0 ||
-		nextPage > maxPage
-	) {
-		return false
-	}
-
-	return true
-}
-
-export const badRequest = (message: string) =>
-	NextResponse.json({ error: message }, { status: 400 })

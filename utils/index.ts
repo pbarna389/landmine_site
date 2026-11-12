@@ -1,9 +1,8 @@
+export { badRequest, validateRequest } from './serverUtils'
 export {
-	badRequest,
 	getArticlesData,
 	getYoutubeData,
 	hasNextPage,
 	mockResponse,
-	paginateItems,
-	validateRequest
+	paginateItems
 } from './utils'
