@@ -19,7 +19,7 @@ export async function GET(request: NextRequest) {
 	const parsedListId = articleListIdParamSchema.safeParse(listId)
 
 	if (!parsedListId.success) {
-		return badRequest('Invalid music category')
+		return badRequest('Invalid article category')
 	}
 
 	const convertedPageSize = Number(pageSize)

@@ -1,9 +1,8 @@
 import { cache } from 'react'
 
-import { validateRequest } from '@/app/api/utils/utils'
 import type { ArticleListIdParamType } from '@/app/schemas'
 
-import { paginateItems } from '@/utils'
+import { paginateItems, validateRequest } from '@/utils'
 import { INVALID_REQUEST_RESULT } from '@/constants/constants'
 
 import { getArticlesLayoutContentMock, getArticlesListMock } from './articles.mock'

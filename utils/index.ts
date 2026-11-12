@@ -3,5 +3,6 @@ export {
 	getYoutubeData,
 	hasNextPage,
 	mockResponse,
-	paginateItems
+	paginateItems,
+	validateRequest
 } from './utils'
