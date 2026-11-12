@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server'
 
 import { getMusicPaginatedContent } from '@/app/music/server'
 
-import { badRequest } from '@/utils'
+import { badRequest } from '../utils/utils'
 
 export async function GET(request: NextRequest) {
 	const params = request.nextUrl.searchParams

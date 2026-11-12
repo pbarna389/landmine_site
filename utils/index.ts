@@ -1,4 +1,3 @@
-export { badRequest, validateRequest } from './serverUtils'
 export {
 	getArticlesData,
 	getYoutubeData,

@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server'
 import { getArticlePaginatedContent } from '@/app/articles/server'
 import { articleListIdParamSchema } from '@/app/schemas'
 
-import { badRequest } from '@/utils'
+import { badRequest } from '../utils/utils'
 
 export async function GET(request: NextRequest) {
 	const params = request.nextUrl.searchParams
@@ -19,7 +19,7 @@ export async function GET(request: NextRequest) {
 	const parsedListId = articleListIdParamSchema.safeParse(listId)
 
 	if (!parsedListId.success) {
-		return badRequest('Invalid article category')
+		return badRequest('Invalid music category')
 	}
 
 	const convertedPageSize = Number(pageSize)
