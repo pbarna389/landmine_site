@@ -1,9 +1,10 @@
-import type { PaginationState } from '@/app/context/reducer/CacheReducer'
+import type { YoutubePlaylistResponse } from '@/app/schemas'
+import { articleResponseSchema, youtubePlaylistResponseSchema } from '@/app/schemas'
 
-import type { YoutubePlaylistResponse } from '@/types'
+import type { PaginationState } from '@/types'
 
 //TODO: update the logic to handle dynamic amount of results
-//TODO: update to handle different access from providers?
+//TODO: update to handle access to different providers?
 //TODO: handle error from BE
 
 export async function getYoutubeData(
@@ -32,11 +33,14 @@ export async function getYoutubeData(
 		throw new Error(`Youtube API error: ${res.status}`)
 	}
 
-	const data = (await res.json()) as YoutubePlaylistResponse
+	const response = youtubePlaylistResponseSchema.safeParse(await res.json())
+
+	if (!response.success) throw new Error('Error while parsing the initial youtube data!')
 
 	return {
-		items: data.items.filter((item) => item.status.privacyStatus !== 'private') ?? [],
-		nextPageToken: data.nextPageToken ?? null
+		items:
+			response.data?.items.filter((item) => item.status.privacyStatus !== 'private') ?? [],
+		nextPageToken: response.data?.nextPageToken ?? undefined
 	}
 }
 
@@ -48,11 +52,39 @@ export const mockResponse = async <T>(data: T, timeoutTime = 800): Promise<T> =>
 	})
 }
 
+export async function getArticlesData(
+	listId: string,
+	currentPage: string,
+	pageSize: string
+) {
+	const params = new URLSearchParams({
+		listId,
+		page: currentPage,
+		pageSize
+	})
+
+	const response = await fetch(`/api/articles?${params.toString()}`, {
+		cache: 'force-cache'
+	})
+
+	if (!response.ok) {
+		throw new Error(`Article API error: ${response.status}`)
+	}
+
+	const parsedData = articleResponseSchema.safeParse(await response.json())
+
+	if (!parsedData.success) {
+		throw new Error(`Article parsing error: ${parsedData.error.message}`)
+	}
+
+	return parsedData.data
+}
+
 export const hasNextPage = (pagination: PaginationState | null): boolean => {
 	if (!pagination) return false
 
 	if (pagination.kind === 'token') {
-		return pagination.nextPageToken !== null
+		return !!pagination.nextPageToken
 	}
 
 	const { pageInfo } = pagination

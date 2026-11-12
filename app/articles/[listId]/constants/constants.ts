@@ -1,4 +1,5 @@
-import type { ArticleCardType } from '../../types'
+import type { ArticleCardType } from '@/app/schemas'
+
 import Picture05 from '../assets/alice3.jpg'
 import Picture03 from '../assets/fejes.jpg'
 import Picture04 from '../assets/fules.jpg'
