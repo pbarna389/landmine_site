@@ -36,7 +36,7 @@ export const AlbumInfiniteWrapper = ({ items, pagination }: AlbumInfiniteWrapper
 	)
 
 	if (!pagination) {
-		throw new Error('no pagination in articleInfiniteWrapper!')
+		throw new Error('no pagination in AlbumInfiniteWrapper!')
 	}
 
 	const { entry, updateResource } = useInfiniteCache<MusicAlbumType, FetchMusicDataParams>(
