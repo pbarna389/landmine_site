@@ -21,7 +21,7 @@ export const fetchArticleData = async (
 	const nextPage = nextPageInfo.currentPage + 1
 
 	const data = await fetch(
-		`/api/articles?listId=${id}&page=${nextPage}&pageSize=${nextPageInfo.pageSize}`
+		`/api/articles?listId=${id}&currentPage=${nextPage}&pageSize=${nextPageInfo.pageSize}`
 	)
 
 	if (!data.ok) {

@@ -1,11 +1,14 @@
 import type { YoutubePlaylistResponse } from '@/app/schemas'
 import { articleResponseSchema, youtubePlaylistResponseSchema } from '@/app/schemas'
+import { musicListResponseSchema } from '@/app/schemas/musicSchemas/schemas'
 
 import type { PaginationState } from '@/types'
 
 //TODO: update the logic to handle dynamic amount of results
 //TODO: update to handle access to different providers?
 //TODO: handle error from BE
+
+const forcedCache = 'force-cache'
 
 export async function getYoutubeData(
 	playlistId: string,
@@ -25,7 +28,7 @@ export async function getYoutubeData(
 	const res = await fetch(
 		`https://youtube.googleapis.com/youtube/v3/playlistItems?${searchParams.toString()}`,
 		{
-			cache: 'force-cache'
+			cache: forcedCache
 		}
 	)
 
@@ -34,13 +37,6 @@ export async function getYoutubeData(
 	}
 
 	const response = youtubePlaylistResponseSchema.safeParse(await res.json())
-
-	if (!response.success) {
-		console.error('YouTube response validation failed:', {
-			playlistId,
-			issues: response.error.issues
-		})
-	}
 
 	if (!response.success) throw new Error('Error while parsing the initial youtube data!')
 
@@ -66,12 +62,12 @@ export async function getArticlesData(
 ) {
 	const params = new URLSearchParams({
 		listId,
-		page: currentPage,
+		currentPage,
 		pageSize
 	})
 
 	const response = await fetch(`/api/articles?${params.toString()}`, {
-		cache: 'force-cache'
+		cache: forcedCache
 	})
 
 	if (!response.ok) {
@@ -79,6 +75,34 @@ export async function getArticlesData(
 	}
 
 	const parsedData = articleResponseSchema.safeParse(await response.json())
+
+	if (!parsedData.success) {
+		throw new Error(`Article parsing error: ${parsedData.error.message}`)
+	}
+
+	return parsedData.data
+}
+
+export async function getMusicData(
+	listId: string,
+	currentPage: string,
+	pageSize: string
+) {
+	const params = new URLSearchParams({
+		listId,
+		currentPage,
+		pageSize
+	})
+
+	const response = await fetch(`/api/music?${params.toString()}`, {
+		cache: forcedCache
+	})
+
+	if (!response.ok) {
+		throw new Error(`Music API error: ${response.status}`)
+	}
+
+	const parsedData = musicListResponseSchema.safeParse(await response.json())
 
 	if (!parsedData.success) {
 		throw new Error(`Article parsing error: ${parsedData.error.message}`)
@@ -97,4 +121,40 @@ export const hasNextPage = (pagination: PaginationState | null): boolean => {
 	const { pageInfo } = pagination
 
 	return pageInfo !== null && pageInfo.currentPage < pageInfo.maxPage
+}
+
+export const paginateItems = <T>(
+	selectedData: T[],
+	nextPage: number,
+	pageSize: number,
+	maxPage: number
+) => {
+	const calculatedNextPage = nextPage - 1
+
+	const currentStart = calculatedNextPage * pageSize
+
+	const currentContent = selectedData.slice(currentStart, currentStart + pageSize)
+
+	return {
+		items: currentContent,
+		pagination: {
+			maxPage,
+			pageSize,
+			currentPage: calculatedNextPage + 1
+		}
+	}
+}
+
+export const validateRequest = (nextPage: number, pageSize: number, maxPage: number) => {
+	if (
+		!Number.isInteger(pageSize) ||
+		pageSize <= 0 ||
+		!Number.isInteger(nextPage) ||
+		nextPage <= 0 ||
+		nextPage > maxPage
+	) {
+		return false
+	}
+
+	return true
 }

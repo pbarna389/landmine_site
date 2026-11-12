@@ -1,19 +1,10 @@
 import { z } from 'zod'
 
-import { paginationSchema } from '../shared/schemas'
+import { paginationSchema, staticImageDataSchema } from '../shared/schemas'
 
 export const tagSchema = z.enum(['theory', 'philosophy', 'advices', 'facts', 'music'])
 
 export const articleListIdParamSchema = z.enum([...tagSchema.options, 'all'])
-
-export const staticImageDataSchema = z.object({
-	src: z.string(),
-	height: z.number(),
-	width: z.number(),
-	blurDataURL: z.string().optional(),
-	blurWidth: z.number().optional(),
-	blurHeight: z.number().optional()
-})
 
 export const articleCardSchema = z.object({
 	date: z.string(),
