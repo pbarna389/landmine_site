@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 
-import { AlbumDetails } from './components'
+import { AlbumInfiniteWrapper } from './components'
 
 import { getMusicPaginatedContent } from '../server'
 
@@ -20,9 +20,10 @@ export default async function MusicListLayout({
 
 	return (
 		<section className="text-2xl text-white flex flex-col sm:w-[70vw] md:w-[50vw] lg:max-w-[43vw]">
-			{selectedList.items.map((album, idx) => (
-				<AlbumDetails key={album.id} album={album} idx={idx} />
-			))}
+			<AlbumInfiniteWrapper
+				items={selectedList.items}
+				pagination={selectedList.pagination}
+			/>
 			{children}
 		</section>
 	)
