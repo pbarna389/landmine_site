@@ -33,8 +33,8 @@ export const youtubePlaylistSnippetSchema = z.object({
 	}),
 	thumbnails: youtubeThumbnailsSchema,
 	title: z.string(),
-	videoOwnerChannelId: z.string(),
-	videoOwnerChannelTitle: z.string()
+	videoOwnerChannelId: z.string().optional(),
+	videoOwnerChannelTitle: z.string().optional()
 })
 
 export const youtubePlaylistItemSchema = youtubeDetailsSchema.extend({
