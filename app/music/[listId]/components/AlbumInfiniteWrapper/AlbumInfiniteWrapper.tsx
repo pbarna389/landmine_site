@@ -19,6 +19,8 @@ import type { PaginationState } from '@/types'
 
 import { AlbumDetails } from '../AlbumDetails'
 
+// TODO: Check the other wrappers and decide if it is worth to merge them into a reusable component
+
 type AlbumInfiniteWrapper = {
 	items: MusicAlbumCollectionType
 	pagination: PaginationBase | null
