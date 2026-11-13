@@ -2,8 +2,6 @@ import { Heading, RecursiveContent, SubrouteLink } from '@/components'
 
 import { getMusicContent } from '../../server'
 
-//				<p className="music-description-text">{textContent}</p>
-
 export const MainContent = async ({ children }: React.PropsWithChildren) => {
 	const { musicData, subpageData } = await getMusicContent()
 
