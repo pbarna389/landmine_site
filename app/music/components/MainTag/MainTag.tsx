@@ -11,7 +11,7 @@ export const MainTag = ({ children }: React.PropsWithChildren) => {
 	const subPageChecker = !!Object.keys(params).length
 
 	const adjustedElementHeight = subPageChecker
-		? { height: `${value + 240}px`, translate: `` }
+		? { height: `${value + 240}px` }
 		: { height: 'auto' }
 
 	return (
