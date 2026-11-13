@@ -5,12 +5,13 @@ import { RecursiveContent } from './RecursiveContent'
 type ParagraphContentProps = {
 	level: number
 	paragraph: ParagraphType
-	classKey?: 'default' | 'possibilities' | 'mainText'
+	classKey?: 'default' | 'possibilities' | 'mainText' | 'music'
 }
 
 const paragraphClasses = {
 	default: '',
 	possibilities: 'premise-possibilities-text',
+	music: 'music-description-text',
 	mainText: 'main-text'
 }
 export const ParagraphContent = ({

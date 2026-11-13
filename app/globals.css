@@ -198,7 +198,7 @@ html {
 	}
 
 	.music-description-text {
-		@apply text-[77.7%] lg:text-[81.6%] xl:text-[92.6%] 2xl:text-[93.9%];
+		@apply leading-[140%] text-[77.7%] lg:text-[81.6%] xl:text-[92.6%] 2xl:text-[93.9%];
 	}
 
 	.articles-heading-text {

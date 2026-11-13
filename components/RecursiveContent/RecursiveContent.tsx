@@ -17,7 +17,7 @@ type RecursiveTypeProps = {
 		| ListItemType[]
 		| undefined
 	level: number
-	classKey?: 'possibilities' | 'mainText'
+	classKey?: 'possibilities' | 'mainText' | 'music'
 }
 
 export const RecursiveContent = ({ data, level, classKey }: RecursiveTypeProps) => {

@@ -1,6 +1,8 @@
-import { Heading, SubrouteLink } from '@/components'
+import { Heading, RecursiveContent, SubrouteLink } from '@/components'
 
 import { getMusicContent } from '../../server'
+
+//				<p className="music-description-text">{textContent}</p>
 
 export const MainContent = async ({ children }: React.PropsWithChildren) => {
 	const { musicData, subpageData } = await getMusicContent()
@@ -13,10 +15,10 @@ export const MainContent = async ({ children }: React.PropsWithChildren) => {
 		<>
 			<Heading
 				text={title}
-				className="lg:after:transform lg:after:-translate-x-1/2 lg:after:left-1/2 lg:text-[60px] lg:capitalize font-montserrat"
+				className="font-montserrat lg:after:transform lg:after:-translate-x-1/2 lg:after:left-1/2 normal-case  text-center sm:normal-case text-[40px] sm:text-[42px] md:text-[42px] lg:text-[210%] xl:text-[290%] 2xl:text-[300%]"
 			/>
-			<article className="text-center classes-page-text-base w-[90vw] sm:pl-5 sm:pr-5 sm:w-[85vw] md:w-[45vw]">
-				<p className="music-description-text">{textContent}</p>
+			<article className="text-center font-montserrat classes-page-text-base w-[90vw] sm:w-[85vw] md:w-[45vw] xl:w-[46.5vw] 2xl:w-[36.5vw]">
+				<RecursiveContent data={textContent.content} level={0} classKey="music" />
 			</article>
 			<nav className="flex flex-col lg:flex-row wrap gap-6">
 				{sortedLinks.map((link) => (

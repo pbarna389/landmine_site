@@ -1,7 +1,7 @@
 import { Skeleton } from '@/components'
 import { SKELETON_CLASSES } from './constants/constants'
 
-export default function Loading() {
+export default function MusicLoading() {
 	const { parentSkeleton, childrenSkeleton } = SKELETON_CLASSES
 
 	return (

@@ -17,5 +17,5 @@ export const getMusicContentMock = async () => {
 export const getMusicListContentMock = async () => {
 	const data = MUSIC_CATEGORY_CONTENT.subPages
 
-	return mockResponse(data)
+	return mockResponse(data, 5000)
 }

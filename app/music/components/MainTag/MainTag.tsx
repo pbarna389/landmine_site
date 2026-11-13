@@ -11,12 +11,12 @@ export const MainTag = ({ children }: React.PropsWithChildren) => {
 	const subPageChecker = !!Object.keys(params).length
 
 	const adjustedElementHeight = subPageChecker
-		? { height: `${value + 300}px` }
+		? { height: `${value + 240}px`, translate: `` }
 		: { height: 'auto' }
 
 	return (
 		<main
-			className={`wrapper-base min-h-screen justify-center relative font-raleway *:text-white`}
+			className={`wrapper-base min-h-screen justify-center transition-[height] duration-500 relative font-raleway bg-black *:text-white`}
 			style={adjustedElementHeight}
 		>
 			{children}
