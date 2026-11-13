@@ -1,5 +1,5 @@
 /* eslint-disable sonarjs/no-duplicate-string */
-import type { ArrayElementType } from '@/types'
+import type { ArrayElementType, DocType } from '@/types'
 
 import EarlyImage01 from '../public/2003bor.jpg'
 import EarlyImage02 from '../public/2004bor.jpg'
@@ -23,19 +23,57 @@ import NewEraImage06 from '../public/bori24.jpg'
 export const SKELETON_CLASSES = {
 	parentSkeleton: 'flex flex-col gap-16 sm:w-[70vw] md:w-[50vw] lg:max-w-[43vw]',
 	childrenSkeleton:
-		'flex gap-7 p-8 pl-1 pr-1 flex-col w-full h-72 sm:p-8 sm:pl-5 sm:pr-5 lg:flex-row bg-white/50 animate-skeletonAnim'
+		'flex gap-7 p-8 pl-1 pr-1 flex-col w-full h-[25vw] sm:p-8 sm:pl-5 sm:pr-5 lg:flex-row bg-white/50 animate-skeletonAnim'
 }
 
 const SUBPAGE_EARLY = { id: 1, title: 'early years' }
 const SUBPAGE_MIDDLE = { id: 2, title: 'middle ages' }
 const SUBPAGE_NEW = { id: 3, title: 'the new era' }
 
+const MUSIC_CATEGORY_TEXTCONTENT: DocType = {
+	type: 'doc',
+	content: [
+		{
+			type: 'paragraph',
+			content: [
+				{
+					type: 'text',
+					text:
+						'2002 óta írogatok instrumentális, ill. újabban énekes (100% AI-mentes) zenéket is, melyek albumos elrendezésben meghallgathatók ezen a lapon.'
+				},
+				{
+					type: 'hardBreak'
+				},
+				{
+					type: 'text',
+					text:
+						'Minden "lemez" egy-egy kísérlet, így stílusilag különbözőek - habár egy egységesség, egy sajátos megközelítés mégis végigvonul rajtuk...'
+				},
+				{
+					type: 'hardBreak'
+				},
+				{
+					type: 'text',
+					text:
+						'Született már jazzes, metálos, prog. rockos, vagy meditatívabb album is, sokféle hangszereléssel, indíttatással, érzésvilággal.'
+				},
+				{
+					type: 'hardBreak'
+				},
+				{
+					type: 'text',
+					text: 'Jó mazsolázást ;-)'
+				}
+			]
+		}
+	]
+}
+
 export const SUBPAGE_INFO = [SUBPAGE_EARLY, SUBPAGE_MIDDLE, SUBPAGE_NEW]
 
 export const MUSIC_CATEGORY_CONTENT = {
 	title: 'Albumok - zenék',
-	textContent:
-		'2002 óta írogatok instrumentális, ill. újabban énekes zenéket is, melyek albumos elrendezésben meghallgathatók ezen a lapon.\nMinden "lemez" egy-egy kísérlet, így stílusilag különbözőek - habár egy egységesség, egy sajátos megközelítés mégis végigvonul rajtuk.\nSzületett már jazzes, metálos, prog. rockos, vagy meditatívabb album is, sokféle hangszereléssel, indíttatással, érzésvilággal.\nJó mazsolázást ;-)',
+	textContent: MUSIC_CATEGORY_TEXTCONTENT,
 	subPages: [
 		{
 			...SUBPAGE_EARLY,

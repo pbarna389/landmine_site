@@ -4,13 +4,13 @@ import { useParams } from 'next/navigation'
 
 import { useMemo } from 'react'
 
+import MusicLoading from '@/app/music/loading'
 import type { PaginationBase } from '@/app/schemas'
 import type {
 	MusicAlbumCollectionType,
 	MusicAlbumType
 } from '@/app/schemas/musicSchemas/schemas'
 
-import { SkeletonCard } from '@/components'
 import { useInfiniteCache } from '@/hooks/useInfiniteCache'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 import type { FetchMusicDataParams } from './utils/utils'
@@ -77,12 +77,7 @@ export const AlbumInfiniteWrapper = ({ items, pagination }: AlbumInfiniteWrapper
 					<AlbumDetails key={album.id} album={album} idx={idx} />
 				</div>
 			))}
-			{entry?.status === 'loading' && (
-				<SkeletonCard
-					amount={3}
-					className="max-[400px]:h-45 max-[650px]:h-65 h-75 sm:h-62.5 md:h-54 lg:h-50 xl:h-40 rounded-2xl bg-white/50 animate-skeletonAnim"
-				/>
-			)}
+			<div>{entry?.status === 'loading' && <MusicLoading />}</div>
 		</>
 	)
 }

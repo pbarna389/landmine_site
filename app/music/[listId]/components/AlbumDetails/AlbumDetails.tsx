@@ -31,7 +31,7 @@ export const AlbumDetails = ({ album, idx }: AlbumDetailsProps) => {
 					{album.format}, {album.releaseDate}
 				</p>
 				<p className="text-[18px] font-normal text-music-link">{album.style}</p>
-				<div className="flex justify-center items-center lg:justify-start lg:items-start gap-2.5">
+				<div className="flex justify-center items-center lg:justify-start lg:items-center gap-2.5">
 					<Link
 						href={link.href ? link.href : ''}
 						target="_blank"
