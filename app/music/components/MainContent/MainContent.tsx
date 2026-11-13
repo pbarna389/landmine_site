@@ -15,9 +15,9 @@ export const MainContent = async ({ children }: React.PropsWithChildren) => {
 		<>
 			<Heading
 				text={title}
-				className="font-montserrat lg:after:transform lg:after:-translate-x-1/2 lg:after:left-1/2 normal-case  text-center sm:normal-case text-[40px] sm:text-[42px] md:text-[42px] lg:text-[210%] xl:text-[290%] 2xl:text-[300%]"
+				className="font-montserrat normal-case text-center text-[40px] sm:normal-case sm:text-[42px] md:text-[42px] lg:text-[210%] lg:after:transform lg:after:-translate-x-1/2 lg:after:left-1/2 xl:text-[290%] 2xl:text-[300%]"
 			/>
-			<article className="text-center font-montserrat classes-page-text-base w-[90vw] sm:w-[85vw] md:w-[45vw] xl:w-[46.5vw] 2xl:w-[36.5vw]">
+			<article className="text-center font-montserrat w-full md:w-fit classes-page-text-base">
 				<RecursiveContent data={textContent.content} level={0} classKey="music" />
 			</article>
 			<nav className="flex flex-col lg:flex-row wrap gap-6">
