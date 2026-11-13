@@ -28,9 +28,11 @@ export const SubrouteLink = ({
 		return id === listId
 	}, [id, listId])
 
+	console.log(shouldUpdate, id, listId)
+
 	return (
 		<Link
-			className={`relative whitespace-normal sm:whitespace-nowrap tracking-[2px] font-montserrat uppercase text-music-link font-bold cursor-pointer transition-colors hover:text-section-heading-highlight sm:text-[17px] md:text-[16px]  ${shouldUpdate ? updateClassNames : ''} ${className}`}
+			className={`relative whitespace-normal sm:whitespace-nowrap tracking-[2px] font-montserrat uppercase  font-bold cursor-pointer transition-colors sm:text-[17px] md:text-[16px] ${className} ${shouldUpdate ? updateClassNames : ''}`}
 			href={`/${route}/${id}`}
 			replace
 		>
