@@ -1,16 +1,49 @@
+import type { DocType } from '@/types'
+
 import Image2 from '../Assets/elmik.png'
 import Image1 from '../Assets/g1pk.jpg'
 import Image3 from '../Assets/hszb4.jpg'
+
+const VIDEOS_TEXTCONTENT: DocType = {
+	type: 'doc',
+	content: [
+		{
+			type: 'paragraph',
+			content: [
+				{
+					type: 'text',
+					text:
+						'Az alábbi lapon többféle témakörben találhatsz videós anyagokat, a zeneelmélettől kezdve a hasznos gitáros és zenei okosságokon keresztül a különféle játékokig.'
+				},
+				{
+					type: 'hardBreak'
+				},
+				{
+					type: 'text',
+					text:
+						'A videókkal közérthető nyelven próbálok átadni rengeteg hasznos tippet és érdekességet, amikkel önállóan fejlesztheted zenei készségeidet.'
+				},
+				{
+					type: 'hardBreak'
+				},
+				{
+					type: 'hardBreak'
+				},
+				{
+					type: 'text',
+					text: 'A témák folyamatosan bővülnek. Jó böngészést!'
+				}
+			]
+		}
+	]
+}
 
 export const VIDEOS_CONTENT = {
 	title: {
 		text: 'Gitáros és zenei videók',
 		subtext: 'Zenei anyagok (nem csak) gitárosoknak!'
 	},
-	textContent: {
-		text:
-			'Az alábbi lapon többféle témakörben találhatsz videós anyagokat, a zeneelmélettől kezdve a hasznos gitáros és zenei okosságokon keresztül a különféle játékokig. \nA videókkal közérthető nyelven próbálok átadni rengeteg hasznos tippet és érdekességet, amikkel önállóan fejlesztheted zenei készségeidet.\nA témák folyamatosan bővülnek. Jó böngészést!'
-	},
+	textContent: VIDEOS_TEXTCONTENT,
 	subPages: [
 		{
 			id: 1,

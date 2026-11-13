@@ -1,7 +1,8 @@
-import { Heading } from '@/components'
+import { Heading, RecursiveContent } from '@/components'
+import type { DocType } from '@/types'
 
 type HeaderProps = {
-	textContent: { text: string }
+	textContent: DocType
 	title: { subtext: string; text: string }
 }
 
@@ -14,7 +15,8 @@ export const VideoHeader = ({ title, textContent }: HeaderProps) => {
 					className="text-[310%] sm:text-[310%] md:text-[310%] lg:text-[310%] text-white capitalize lg:text-black"
 				/>
 				<h2 className="videos-sub-heading-text text-white lg:text-black">{title.subtext}</h2>
-				<p className="videos-text text-white lg:text-black">{textContent.text}</p>
+				<RecursiveContent data={textContent.content} level={0} classKey="videos" />
+				<p className="videos-text text-white lg:text-black" />
 			</div>
 		</div>
 	)
