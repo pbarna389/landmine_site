@@ -23,7 +23,7 @@ export const MainContent = async ({ children }: React.PropsWithChildren) => {
 			<nav className="flex flex-col md:flex-row wrap lg:w-fit gap-10 xl:gap-6">
 				{sortedLinks.map((link) => (
 					<SubrouteLink
-						className='p-2.5 sm:p-2.5 md:p-2.5 m:0 ml-[1%] mr-[1%] transition-all border-solid font-bold text-black hover:text-black text-center bg-section-heading-highlight hover:bg-music-link-highlight xl:hover:bg-transparent rounded-sm xl:hover:text-section-heading-highlight xl:bg-transparent xl:text-music-link xl:font-normal xl:p-0 xl:after:content-[""] xl:after:absolute xl:after:w-full xl:after:-bottom-0.5 xl:after:left-0 xl:after:h-px xl:after:transition-transform xl:after:origin-left xl:after:scale-x-0 xl:hover:after:scale-x-100 xl:after:bg-section-heading-highlight'
+						className='p-2.5 sm:p-2.5 md:p-2.5 m:0 ml-[1%] mr-[1%] w-full sm:w-fit transition-all border-solid font-bold text-black hover:text-black text-center bg-section-heading-highlight hover:bg-music-link-highlight xl:hover:bg-transparent rounded-sm xl:hover:text-section-heading-highlight xl:bg-transparent xl:text-music-link xl:font-normal xl:p-0 xl:after:content-[""] xl:after:absolute xl:after:w-full xl:after:-bottom-0.5 xl:after:left-0 xl:after:h-px xl:after:transition-transform xl:after:origin-left xl:after:scale-x-0 xl:hover:after:scale-x-100 xl:after:bg-section-heading-highlight'
 						key={`subroute-link-${link.id}`}
 						updateClassNames="brightness-115 xl:bg-transparent xl:after:scale-x-100 xl:after:bg-section-heading-highlight"
 						id={link.id.toString()}
