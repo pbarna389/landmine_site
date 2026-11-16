@@ -18,6 +18,8 @@ import { VideoLink } from './VideoLink'
 type VideoContainerProps = YoutubePlaylistResponse
 
 // TODO: handle error state
+// TODO: Rename the component to VideoInfiniteWrapper
+// TODO: Check the other wrappers and decide if it is worth to merge them into a reusable component
 
 export const VideoContainer = ({ items, nextPageToken }: VideoContainerProps) => {
 	const { playlistId } = useParams<{ playlistId: string }>()

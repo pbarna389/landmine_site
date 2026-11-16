@@ -191,7 +191,7 @@ html {
 	}
 
 	.videos-text {
-		@apply text-[86%] font-[550] sm:text-[90%] lg:text-[100%] 2xl:text-[95%];
+		@apply font-[450] sm:text-[90%] lg:text-[100%] 2xl:text-[95%];
 	}
 
 	.videos-category-main-text {
