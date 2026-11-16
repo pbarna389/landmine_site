@@ -12,7 +12,7 @@ const paragraphClasses = {
 	default: '',
 	possibilities: 'premise-possibilities-text',
 	music: 'music-description-text',
-	videos: 'videos-text text-white lg:text-black',
+	videos: 'font-montserrat videos-text text-white lg:text-black',
 	mainText: 'main-text'
 }
 export const ParagraphContent = ({
