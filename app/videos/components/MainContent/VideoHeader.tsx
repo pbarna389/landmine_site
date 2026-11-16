@@ -14,11 +14,10 @@ export const VideoHeader = ({ title, textContent }: HeaderProps) => {
 					text={title.text}
 					className="text-[310%] mt-0 sm:text-[310%] md:text-[310%] lg:text-[310%] text-white normal-case lg:text-black"
 				/>
-				<h2 className="videos-sub-heading-text font- text-white lg:text-black mt-9 mb-4.5">
+				<h2 className="videos-sub-heading-text text-white lg:text-black mt-9 mb-4.5">
 					{title.subtext}
 				</h2>
 				<RecursiveContent data={textContent.content} level={0} classKey="videos" />
-				<p className="videos-text text-white lg:text-black" />
 			</div>
 		</div>
 	)
