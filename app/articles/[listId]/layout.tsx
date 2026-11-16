@@ -20,7 +20,7 @@ export default async function ArticlesCategoryLayout({
 
 	return (
 		<>
-			<section className="grid gap-5 w-full h-full items-stretch grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+			<section className="grid gap-5 w-full h-full items-stretch grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
 				<ArticleInfiniteWrapper {...selectedArticle} />
 			</section>
 			{children}

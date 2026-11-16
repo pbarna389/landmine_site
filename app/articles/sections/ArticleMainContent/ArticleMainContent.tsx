@@ -13,13 +13,13 @@ export const ArticleMainContent = async () => {
 		<>
 			<Heading
 				text={title}
-				className="text-center lg:after:transform text-[200%] sm:text-[220%] md:text-[226%] lg:text-[226%] xl:text-[315%] lg:after:-translate-x-1/2 lg:after:left-1/2  lg:capitalize font-montserrat"
+				className="text-center capitalize lg:after:transform text-[200%] sm:text-[220%] md:text-[226%] lg:text-[226%] xl:text-[315%] lg:after:-translate-x-1/2 lg:after:left-1/2 font-montserrat"
 			/>
 			<article className="whitespace-pre-line text-[20px] 2xl:text-[19px] w-[90vw] text-center sm:pl-5 sm:pr-5 sm:w-[70vw] xl:w-[35vw] *:mb-7.5">
 				<h2 className="premise-possibilities-text">{text}</h2>
 				<h3 className="font-bold premise-possibilities-text">{subText}</h3>
 			</article>
-			<nav className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 lg:flex-row wrap gap-6 *:text-black">
+			<nav className="grid grid-cols-1 w-full sm:grid-cols-2 sm:w-fit lg:grid-cols-3 lg:flex-row xl:grid-cols-4 wrap gap-6 *:text-black">
 				{filters.map((link) => (
 					<SubrouteLink
 						key={`subroute-link-${link.id}`}
