@@ -19,7 +19,7 @@ export const IntroSection = ({ data }: IntroSectionProps) => {
 				<RotatableImage
 					alt={image.alt}
 					src={image.src}
-					className="lg:w-full lg:group-hover:rotate-0 lg:group-focus:rotate-0 xl:group-hover:-rotate-8 xl:group-focus:-rotate-8'"
+					className="lg:w-full lg:group-hover:rotate-0 lg:group-focus:rotate-0 xl:group-hover:-rotate-8 xl:group-focus:-rotate-8"
 				/>
 				<p className="absolute text-nowrap text-[95%] left-1/2 transform -translate-x-1/2 z-0 opacity-100 cursor-default select-none xl:transition-opacity xl:duration-600 xl:translate-x-0 xl:group-hover:opacity-100 xl:group-focus:opacity-100 text-sm xl:opacity-0 xl:-bottom-2 xl:left-auto xl:right-0">
 					<span className="text-green-700 text-[87%] font-bold">✓</span>
