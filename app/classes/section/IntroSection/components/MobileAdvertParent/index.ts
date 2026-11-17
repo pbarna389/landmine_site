@@ -1,1 +1,0 @@
-export { MobileAdvertParent } from './MobileAdvertParent'
