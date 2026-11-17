@@ -17,7 +17,14 @@ type RecursiveTypeProps = {
 		| ListItemType[]
 		| undefined
 	level: number
-	classKey?: 'possibilities' | 'mainText' | 'music' | 'videos' | 'premiseCard'
+	classKey?:
+		| 'possibilities'
+		| 'mainText'
+		| 'music'
+		| 'videos'
+		| 'premiseCard'
+		| 'priceCardMainText'
+		| 'priceCardSubText'
 }
 
 export const RecursiveContent = ({ data, level, classKey }: RecursiveTypeProps) => {
@@ -56,6 +63,7 @@ export const RecursiveContent = ({ data, level, classKey }: RecursiveTypeProps) 
 					key={`recusrive-bulletList-${level + 1}-${idx}`}
 					list={subData.content}
 					level={level + 1}
+					classKey={classKey}
 				/>
 			)
 		}
