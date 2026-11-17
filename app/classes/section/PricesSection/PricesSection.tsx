@@ -7,21 +7,19 @@ type PricesSectionProps = {
 	data: typeof PRICES_CONTENT
 }
 
-// TODO: add this to prices className: lg:w-[85%] xl:w-[95%] 2xl:w-[85%]
-
 export const PricesSection = ({ data }: PricesSectionProps) => {
 	const { id, header, content } = data
 
 	return (
 		<Section id={id} className="shadow-2xl lg:shadow-none">
-			<Section.Header id={id}>
+			<Section.Header id={id} shouldBeEmpty={true}>
 				<div className="flex flex-col min-h-25 gap-4 items-center justify-center mb-17">
 					<h2 className="possibilities-heading-text font-bold capitalize">{header.title}</h2>
 				</div>
 			</Section.Header>
 			<Section.Body
 				id={id}
-				className="flex flex-col items-center justify-center gap-11 w-full h-full *:text-black lg:flex-row lg:row lg:items-baseline"
+				className="flex flex-col items-center justify-center gap-11 w-full h-full *:text-black lg:flex-row lg:row lg:items-baseline lg:w-[85%] xl:w-[95%] 2xl:w-[85%]"
 			>
 				{content.map((card, idx) => (
 					<PricesCard key={`prices-card-${card.title.text}`} card={card} idx={idx} />
