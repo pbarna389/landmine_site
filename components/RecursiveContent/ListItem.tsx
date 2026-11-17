@@ -3,6 +3,8 @@ import type { ListItemType } from '@/types'
 
 import { RecursiveContent } from './RecursiveContent'
 
+// NOTE: IF NEEDED, PASS CLASSKEY TO THE RECURSIVE CONTENT
+
 type ListItemProps = {
 	items: ListItemType['content']
 	level: number
