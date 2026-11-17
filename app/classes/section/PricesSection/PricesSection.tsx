@@ -7,8 +7,6 @@ type PricesSectionProps = {
 	data: typeof PRICES_CONTENT
 }
 
-// TODO: add this to prices className:
-
 export const PricesSection = ({ data }: PricesSectionProps) => {
 	const { id, header, content } = data
 
