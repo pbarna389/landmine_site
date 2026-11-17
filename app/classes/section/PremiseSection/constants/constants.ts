@@ -75,7 +75,7 @@ const PREMISE_TEXT_CONTENT: PremiseContentType[] = [
 						},
 						{
 							type: 'text',
-							text: 'órákon!'
+							text: ' órákon!'
 						},
 						{
 							type: 'hardBreak'
