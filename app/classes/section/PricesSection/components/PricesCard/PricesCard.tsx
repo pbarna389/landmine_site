@@ -4,6 +4,8 @@ import { Card, RecursiveContent } from '@/components'
 
 import type { PRICES_CONTENT } from '../../constants/constants'
 
+// TODO: handle the mobile usage of the dropdown elements!
+
 type PricesCardProps = {
 	card: (typeof PRICES_CONTENT)['content'][0]
 	idx: number
