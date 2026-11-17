@@ -32,7 +32,7 @@ export const DesktopNavbarExpander = ({ link }: DesktopNavbarExpanderProps) => {
 	return (
 		<>
 			<Link
-				href={`${link.href}#${createdHash}`}
+				href={`${link.href}${createdHash ? `#${createdHash}` : ''}`}
 				onPointerEnter={() => handlePointerEnter(link.text, 0, 0, link.href)}
 				onFocus={() => handlePointerEnter(link.text, 0, 0, link.href)}
 				onClick={handleOutsideClick}
