@@ -1,10 +1,8 @@
 import Image from 'next/image'
 
-import { Card } from '@/components'
+import { Card, RecursiveContent } from '@/components'
 
-import { PremiseCardBody } from './PremiseCardBody'
 import type { PREMISE_CONTENT } from '../../constants/constants'
-
 type PremiseCardProps = {
 	card: (typeof PREMISE_CONTENT)['content'][0]
 }
@@ -18,7 +16,12 @@ export const PremiseCard = ({ card }: PremiseCardProps) => {
 					src={card.image.src}
 					alt={card.image.alt}
 				/>
-				<PremiseCardBody {...card} />
+				<h3 className="classes-heading-text uppercase text-wrap xl:text-nowrap select-none cursor-default">
+					{card.title.text}
+					<span className="ml-1">{card.title.emoticon}</span>
+				</h3>
+				<hr className="w-full border border-black/20" />
+				<RecursiveContent data={card.textContent.content} level={0} classKey="premiseCard" />
 			</Card.Body>
 		</Card>
 	)
