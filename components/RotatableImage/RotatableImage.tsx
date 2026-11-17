@@ -8,8 +8,6 @@ type RotatableImage = {
 	rotateLeft?: boolean
 }
 
-//  lg:group-hover:rotate-0 lg:group-focus:rotate-0 xl:group-hover:-rotate-8 xl:group-focus:-rotate-8
-
 export const RotatableImage = ({
 	src,
 	alt,
