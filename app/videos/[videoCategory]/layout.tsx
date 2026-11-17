@@ -25,7 +25,10 @@ export default async function VideoCategoryLayout({
 	} = data
 
 	return (
-		<section className="flex flex-col items-center justify-center p-16 sm:p-24 md:p-32 pl-2.5 pr-2.5 sm:pl-15 sm:pr-15 md:pl-20 md:pr-20 text-white bg-video-advert w-full *:text-white *:text-center *:font-montserrat">
+		<section
+			id="videos"
+			className="flex flex-col items-center justify-center p-16 sm:p-24 md:p-32 pl-2.5 pr-2.5 sm:pl-15 sm:pr-15 md:pl-20 md:pr-20 text-white bg-video-advert w-full *:text-white *:text-center *:font-montserrat"
+		>
 			<div className="w-full text-center p-5 pt-0 space-y-5">
 				<h2 className="font-bold text-xl capitalize lg:text-[56px]">{text}</h2>
 				<h3 className="font-light videos-category-main-text whitespace-pre-line">

@@ -14,12 +14,14 @@ import { useSubNavbarHandlers, useSubNavbarState } from '../../context'
 type MobileLinkExpanderProps = {
 	idx: number
 	link: NavItem
+	passDownHash?: string | null
 	recursionLayer?: number
 }
 
 export const MobileLinkExpander = ({
 	link,
 	idx,
+	passDownHash,
 	recursionLayer = 0
 }: MobileLinkExpanderProps) => {
 	const { handlePointerEnter, handleOutsideClick } = useSubNavbarHandlers()
@@ -36,9 +38,18 @@ export const MobileLinkExpander = ({
 	const portalTarget =
 		typeof document !== 'undefined' ? document.querySelector('.portal-target') : null
 
+	const newHash =
+		link.href === '/articles' || link.href === '/music' ? link.href.slice(1) : null
+
+	const selectedHash = passDownHash ? passDownHash : newHash
+
 	return (
 		<li className="relative bg-header-mobile-bg border border-header-mobile-border w-full flex items-center justify-center">
-			<MobileLink link={updatedContent} callback={handleOutsideClick} />
+			<MobileLink
+				link={updatedContent}
+				callback={handleOutsideClick}
+				passDownHash={selectedHash}
+			/>
 			<button
 				type="button"
 				aria-label={`Almenü megnyitása: ${link.text}`}
@@ -51,7 +62,11 @@ export const MobileLinkExpander = ({
 				thisRouteCurrentlySelected &&
 				portalTarget &&
 				createPortal(
-					<MobileRecursiveContent recursionLayer={recursionLayer} subChild={link.content} />,
+					<MobileRecursiveContent
+						recursionLayer={recursionLayer}
+						subChild={link.content}
+						passDownHash={selectedHash}
+					/>,
 					portalTarget
 				)}
 		</li>

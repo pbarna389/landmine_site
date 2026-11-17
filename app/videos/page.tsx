@@ -15,7 +15,10 @@ export default function VideosPage() {
 					<MainContent />
 				</Suspense>
 			</VideoMainSection>
-			<section className="flex flex-col gap-5 p-16 justify-center items-center bg-video-advert w-full *:text-white *:text-center *:font-montserrat">
+			<section
+				id="videos"
+				className="flex flex-col gap-5 p-16 justify-center items-center bg-video-advert w-full *:text-white *:text-center *:font-montserrat"
+			>
 				<Suspense fallback={<LoadingAnimation />}>
 					<VideoAdvertSection />
 				</Suspense>

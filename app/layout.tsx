@@ -75,7 +75,7 @@ export default function RootLayout({
 	children: React.ReactNode
 }>) {
 	return (
-		<html lang="en" data-scroll-behavior="smooth">
+		<html lang="en">
 			<body
 				className={`${montserrat.variable} ${raleway.variable} ${cuprum.variable} ${nunito.variable} ${openSans.variable} ${rubik.variable} ${ubuntu.variable} antialiased`}
 				style={{ overflow: 'auto' }}

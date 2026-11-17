@@ -12,10 +12,15 @@ import { useSubNavbarState } from '../../context'
 
 type MobileNavbarProps = {
 	content?: NavItem[]
+	passDownHash?: string | null
 	recursionLayer?: number
 }
 
-export const MobileNavbarContent = ({ content, recursionLayer }: MobileNavbarProps) => {
+export const MobileNavbarContent = ({
+	content,
+	recursionLayer,
+	passDownHash
+}: MobileNavbarProps) => {
 	const {
 		state: { isSidebarOpen, selectedRoute }
 	} = useSubNavbarState()
@@ -30,7 +35,11 @@ export const MobileNavbarContent = ({ content, recursionLayer }: MobileNavbarPro
 		>
 			<ul className="flex flex-col w-full justify-center items-center">
 				{selectedRoute && <MobileBackLink />}
-				<MobileRoutes content={content} recursionLayer={recursionLayer} />
+				<MobileRoutes
+					content={content}
+					recursionLayer={recursionLayer}
+					passDownHash={passDownHash}
+				/>
 			</ul>
 			<Image
 				src={Logo1}

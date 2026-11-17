@@ -8,13 +8,15 @@ import { useSubNavbarHandlers, useSubNavbarState } from '../../context'
 type DesktopRecursiveContentProps = {
 	recursionLayer: number
 	subChild: NavItem | NavItem[] | undefined
+	createdHash?: string | null
 }
 
 // TODO: Finish the design of the blocks
 
 export const DesktopRecursiveContent = ({
 	subChild,
-	recursionLayer
+	recursionLayer,
+	createdHash
 }: DesktopRecursiveContentProps) => {
 	const {
 		state: { selectedRoute }
@@ -32,7 +34,7 @@ export const DesktopRecursiveContent = ({
 		return (
 			<>
 				<Link
-					href={`${parent.routeHref}${subChild.href}`}
+					href={`${parent.routeHref}${subChild.href}${createdHash ? `#${createdHash}` : ''}`}
 					className="flex gap-2 flex-col"
 					aria-label={`navigációs al-link, szint: ${recursionLayer}, cél: ${subChild.text}`}
 					onPointerEnter={() =>
@@ -47,6 +49,7 @@ export const DesktopRecursiveContent = ({
 				{subChild.content && (
 					<DesktopRecursiveContent
 						recursionLayer={recursionLayer + 1}
+						createdHash={createdHash}
 						subChild={subChild.content}
 					/>
 				)}
@@ -62,7 +65,7 @@ export const DesktopRecursiveContent = ({
 				{subChild.map((child, idx) => {
 					return (
 						<Link
-							href={`${parent.routeHref}${child.href}`}
+							href={`${parent.routeHref}${child.href}${createdHash ? `#${createdHash}` : ''}`}
 							aria-label={`navigációs al-link, szint: ${recursionLayer}, cél: ${child.text}`}
 							key={`navbar-recursive-array-child-${child.text}`}
 							onPointerEnter={() =>
@@ -79,6 +82,7 @@ export const DesktopRecursiveContent = ({
 			{subChild[selectedElement].content && (
 				<DesktopRecursiveContent
 					recursionLayer={recursionLayer + 1}
+					createdHash={createdHash}
 					subChild={subChild[selectedElement].content}
 				/>
 			)}

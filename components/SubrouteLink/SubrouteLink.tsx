@@ -13,6 +13,7 @@ type SubrouteLinkProps = {
 	text: string
 	updateClassNames: string
 	className?: string
+	hash?: string
 }
 
 export const SubrouteLink = ({
@@ -20,6 +21,7 @@ export const SubrouteLink = ({
 	route,
 	text,
 	className = '',
+	hash,
 	updateClassNames
 }: SubrouteLinkProps) => {
 	const { listId } = useParams<{ listId: string }>()
@@ -31,8 +33,8 @@ export const SubrouteLink = ({
 	return (
 		<Link
 			className={`relative whitespace-normal sm:whitespace-nowrap tracking-[2px] font-montserrat uppercase  font-bold cursor-pointer transition-colors sm:text-[17px] md:text-[16px] ${className} ${shouldUpdate ? updateClassNames : ''}`}
-			href={`/${route}/${id}`}
-			replace
+			href={`/${route}/${id}${hash ? `#${hash}` : ''}`}
+			scroll
 		>
 			&quot;{text}&quot;
 		</Link>

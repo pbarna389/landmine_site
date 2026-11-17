@@ -8,10 +8,15 @@ import { useSubNavbarHandlers, useSubNavbarState } from '../../context'
 
 type MobileRoutesProps = {
 	content?: NavItem[]
+	passDownHash?: string | null
 	recursionLayer?: number
 }
 
-export const MobileRoutes = ({ content, recursionLayer }: MobileRoutesProps) => {
+export const MobileRoutes = ({
+	content,
+	recursionLayer,
+	passDownHash
+}: MobileRoutesProps) => {
 	const { handleOutsideClick } = useSubNavbarHandlers()
 	const { state } = useSubNavbarState()
 
@@ -32,7 +37,11 @@ export const MobileRoutes = ({ content, recursionLayer }: MobileRoutesProps) => 
 					className="basic route link w-full flex bg-header-mobile-bg border border-header-mobile-border"
 					key={`mobile-navbar-link-${updatedLink.text}`}
 				>
-					<MobileLink link={updatedLink} callback={handleOutsideClick} />
+					<MobileLink
+						link={updatedLink}
+						callback={handleOutsideClick}
+						passDownHash={passDownHash}
+					/>
 				</li>
 			)
 		}
@@ -43,6 +52,7 @@ export const MobileRoutes = ({ content, recursionLayer }: MobileRoutesProps) => 
 				idx={idx}
 				link={link}
 				recursionLayer={recursionLayer}
+				passDownHash={passDownHash}
 			/>
 		)
 	})

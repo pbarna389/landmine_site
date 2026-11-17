@@ -9,11 +9,13 @@ import { useSubNavbarHandlers, useSubNavbarState } from '../../context'
 type MobileRecursiveContentProps = {
 	recursionLayer: number
 	subChild: NavItem | NavItem[] | undefined
+	passDownHash?: string | null
 }
 
 export const MobileRecursiveContent = ({
 	subChild,
-	recursionLayer
+	recursionLayer,
+	passDownHash
 }: MobileRecursiveContentProps) => {
 	const {
 		state: { selectedRoute }
@@ -31,7 +33,7 @@ export const MobileRecursiveContent = ({
 		return (
 			<>
 				<Link
-					href={`${parent.routeHref}${subChild.href}`}
+					href={`${parent.routeHref}${subChild.href}${passDownHash ? `#${passDownHash}` : ''}`}
 					className="flex gap-2 flex-col"
 					aria-label={`navigációs al-link, szint: ${recursionLayer}, cél: ${subChild.text}`}
 					onClick={handleOutsideClick}
@@ -42,6 +44,7 @@ export const MobileRecursiveContent = ({
 				{subChild.content && (
 					<MobileRecursiveContent
 						recursionLayer={recursionLayer + 1}
+						passDownHash={passDownHash}
 						subChild={subChild.content}
 					/>
 				)}
@@ -53,11 +56,16 @@ export const MobileRecursiveContent = ({
 
 	return (
 		<>
-			<MobileNavbarContent recursionLayer={recursionLayer + 1} content={subChild} />
+			<MobileNavbarContent
+				recursionLayer={recursionLayer + 1}
+				content={subChild}
+				passDownHash={passDownHash}
+			/>
 
 			{subChild[selectedElement]?.content && (
 				<MobileRecursiveContent
 					recursionLayer={recursionLayer + 1}
+					passDownHash={passDownHash}
 					subChild={subChild[selectedElement].content}
 				/>
 			)}
