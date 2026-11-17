@@ -11,7 +11,7 @@ export const PricesSection = ({ data }: PricesSectionProps) => {
 	const { id, header, content } = data
 
 	return (
-		<Section id={id} className="shadow-2xl lg:shadow-none">
+		<Section id={id} className="pb-28 shadow-2xl lg:shadow-none">
 			<Section.Header id={id} shouldBeEmpty={true}>
 				<div className="flex flex-col min-h-25 gap-4 items-center justify-center mb-17">
 					<h2 className="possibilities-heading-text font-bold capitalize">{header.title}</h2>
