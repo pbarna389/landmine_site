@@ -96,7 +96,7 @@ const PRICES_TEXT_CONTENT: {
 						},
 						{
 							type: 'text',
-							text: ' könnyen és gyorsan megközelíthető, barátságos helyen.'
+							text: ' található, könnyen és gyorsan megközelíthető, barátságos helyen.'
 						}
 					]
 				},

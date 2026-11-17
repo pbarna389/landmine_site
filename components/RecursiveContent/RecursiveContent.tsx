@@ -84,6 +84,7 @@ export const RecursiveContent = ({ data, level, classKey }: RecursiveTypeProps) 
 					key={`recursive-listItem-${level + 1}-${idx}`}
 					level={level + 1}
 					items={subData.content}
+					classKey={classKey}
 				/>
 			)
 		}
