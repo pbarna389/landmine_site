@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation'
 
 export default function ArticlesPage() {
-	redirect(`/articles/all`)
+	redirect(`/articles/all#articles`)
 }

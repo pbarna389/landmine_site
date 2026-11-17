@@ -23,7 +23,8 @@ export const ArticleMainContent = async () => {
 				{filters.map((link) => (
 					<SubrouteLink
 						key={`subroute-link-${link.id}`}
-						id={link.linkName.toString()}
+						id={`${link.linkName.toString()}`}
+						hash="articles"
 						route="articles"
 						text={link.text}
 						updateClassNames="bg-amber-500 outline-2"

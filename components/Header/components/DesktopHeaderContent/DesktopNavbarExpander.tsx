@@ -26,10 +26,13 @@ export const DesktopNavbarExpander = ({ link }: DesktopNavbarExpanderProps) => {
 
 	const thisRouteCurrentlySelected = state.selectedRoute?.[0].routeName === link.text
 
+	const createdHash =
+		link.href === '/articles' || link.href === '/music' ? link.href.slice(1) : null
+
 	return (
 		<>
 			<Link
-				href={link.href}
+				href={`${link.href}${createdHash ? `#${createdHash}` : ''}`}
 				onPointerEnter={() => handlePointerEnter(link.text, 0, 0, link.href)}
 				onFocus={() => handlePointerEnter(link.text, 0, 0, link.href)}
 				onClick={handleOutsideClick}
@@ -42,7 +45,11 @@ export const DesktopNavbarExpander = ({ link }: DesktopNavbarExpanderProps) => {
 			{state.isOpen && thisRouteCurrentlySelected && (
 				<>
 					<div className="bg-black/50 absolute z-2 top-[3.22rem] left-0 w-full flex flex-col p-2 gap-5 items-center justify-center text-white before:absolute before:w-screen before:-top-4 before:h-5 before:left-0 ">
-						<DesktopRecursiveContent recursionLayer={1} subChild={link.content} />
+						<DesktopRecursiveContent
+							recursionLayer={1}
+							subChild={link.content}
+							createdHash={createdHash}
+						/>
 					</div>
 				</>
 			)}

@@ -5,6 +5,8 @@ import { useEffect, useRef, useState } from 'react'
 import { useBreakpointChecker } from './useBreakpointChecker'
 import { useDisableScrolling } from './useDisableScrolling'
 
+// TODO: Handle the back-navigation scrolling by adding the #
+
 const timeoutTime = 400
 
 export function useModal({ shouldTravelBack = false }: { shouldTravelBack?: boolean }) {
@@ -12,7 +14,9 @@ export function useModal({ shouldTravelBack = false }: { shouldTravelBack?: bool
 	const pathName = usePathname()
 
 	const currentPath = pathName.split('/').slice(1)
+
 	currentPath.pop()
+
 	const prevPath = currentPath.join('/')
 
 	const [isOpen, setIsOpen] = useState<boolean>(false)
