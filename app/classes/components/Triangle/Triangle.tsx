@@ -18,7 +18,7 @@ export const Triangle = ({
 }: TriangleProps) => {
 	return (
 		<div
-			className={`absolute transform top-0 right-0 ${position === 'top' ? 'clip-top-triangle -translate-y-7' : 'clip-bottom-triangle'} ${background} ${width} ${height} ${className}`}
+			className={`absolute transform top-0 right-0 ${position === 'top' ? 'clip-top-triangle -translate-y-7 lg:-translate-y-12.75' : 'clip-bottom-triangle'} ${background} ${width} ${height} ${className}`}
 		/>
 	)
 }

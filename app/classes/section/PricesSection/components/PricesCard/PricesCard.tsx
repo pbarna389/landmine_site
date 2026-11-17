@@ -1,9 +1,10 @@
 import Image from 'next/image'
 
-import { Card } from '@/components'
+import { Card, RecursiveContent } from '@/components'
 
-import { PricesCardBody } from './PricesCardBody'
 import type { PRICES_CONTENT } from '../../constants/constants'
+
+// TODO: handle the mobile usage of the dropdown elements!
 
 type PricesCardProps = {
 	card: (typeof PRICES_CONTENT)['content'][0]
@@ -12,7 +13,7 @@ type PricesCardProps = {
 
 export const PricesCard = ({ card, idx }: PricesCardProps) => {
 	return (
-		<Card className="gap-5 rounded-none pt-0 pb-0 pr-0 pl-0 w-full lg:min-h-120 group">
+		<Card className="gap-5 rounded-none pt-0 pb-0 pr-0 pl-0 w-full lg:min-h-150 group">
 			<Card.Header className="classes-heading-text" idx={idx}>
 				{card.title.text}
 			</Card.Header>
@@ -22,7 +23,27 @@ export const PricesCard = ({ card, idx }: PricesCardProps) => {
 					src={card.image.src}
 					alt={card.image.alt}
 				/>
-				<PricesCardBody {...card} />
+				<div className="p-5 text-[19px]">
+					<RecursiveContent
+						data={card.textContent.content}
+						level={0}
+						classKey="priceCardMainText"
+					/>
+					{card.subText && (
+						<>
+							<h5 className="capitalize font-bold text-[15px] select-none">
+								{card.subText.title} {'>>'}
+							</h5>
+							<div className="transition-all scale-y-0 origin-top max-h-0 duration-750 group-hover:scale-y-100 group-hover:max-h-100 group-active:scale-y-100 group-active:max-h-100 group-focus:scale-y-100 group-focus:max-h-100">
+								<RecursiveContent
+									data={card.subText.content.content}
+									level={0}
+									classKey="priceCardSubText"
+								/>
+							</div>
+						</>
+					)}
+				</div>
 			</Card.Body>
 		</Card>
 	)

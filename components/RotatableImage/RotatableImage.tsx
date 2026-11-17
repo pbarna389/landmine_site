@@ -16,7 +16,7 @@ export const RotatableImage = ({
 }: RotatableImage) => {
 	return (
 		<Image
-			className={`object-cover transition-transform duration-750 ${rotateLeft ? 'group-hover:-rotate-8 group-focus:-rotate-8' : 'group-hover:rotate-8 group-focus:rotate-8'} ${className}`}
+			className={`object-cover transition-transform duration-750 ${rotateLeft ? 'xl:group-hover:-rotate-8 xl:group-focus:-rotate-8' : 'xl:group-hover:rotate-8 xl:group-focus:rotate-8'} ${className}`}
 			src={src}
 			alt={alt}
 		/>
