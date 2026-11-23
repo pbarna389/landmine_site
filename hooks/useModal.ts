@@ -6,6 +6,7 @@ import { useBreakpointChecker } from './useBreakpointChecker'
 import { useDisableScrolling } from './useDisableScrolling'
 
 // TODO: Handle the back-navigation scrolling by adding the #
+// TODO: Find a solution for firefox to handle the closing animations
 
 const timeoutTime = 400
 
@@ -36,11 +37,11 @@ export function useModal({ shouldTravelBack = false }: { shouldTravelBack?: bool
 	const onCloseComplete = () => {
 		if (ref.current?.open || !ref.current) return
 
-		setIsOpen(false)
 		if (timeoutRef.current) clearTimeout(timeoutRef.current)
 
 		if (shouldTravelBack) {
 			timeoutRef.current = setTimeout(() => {
+				setIsOpen(false)
 				router.replace(`/${prevPath}`)
 			}, timeoutTime)
 		}
