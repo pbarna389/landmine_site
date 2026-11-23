@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 
-import { Copyright, CreationDetails } from './components'
+import { Copyright, CreationDetails, ModalHeader } from './components'
 import { RecursiveContent } from '@/components'
 
 import { getBlockPostContent } from './server'
@@ -20,9 +20,12 @@ export default async function ArticleBlogPostPage({
 
 	return (
 		<>
-			<CreationDetails date={blogPostData.date} />
-			<Copyright />
-			<RecursiveContent data={blogPostData.content.content} level={0} />
+			<ModalHeader title={blogPostData.title} text={blogPostData.text} />
+			<article className="flex flex-col min-h-0 gap-5 p-7.5 overflow-y-auto">
+				<CreationDetails date={blogPostData.date} />
+				<Copyright />
+				<RecursiveContent data={blogPostData.content.content} level={0} />
+			</article>
 		</>
 	)
 }

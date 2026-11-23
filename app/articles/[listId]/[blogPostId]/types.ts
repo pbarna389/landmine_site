@@ -5,4 +5,6 @@ export type BlogPostModalType = {
 	date: `${number}-${number}-${number}`
 	id: number
 	tags: string[]
+	text: string
+	title: string
 }

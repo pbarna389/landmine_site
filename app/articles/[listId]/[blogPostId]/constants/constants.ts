@@ -26,6 +26,9 @@ export const BLOGPOST_MODAL_CONTENT: BlogPostModalType[] = [
 	{
 		id: 1,
 		date: '2020-09-20',
+		title: 'Improvizációs lehetőségek',
+		text:
+			'Összegezzük az akkord-skála kapcsolatokat, nézünk hangnemváltásokat, akkordszólókat, improvizációs struktúrákat, tippeket...',
 		tags: ['theory'],
 		content: {
 			type: 'doc',
@@ -976,6 +979,9 @@ export const BLOGPOST_MODAL_CONTENT: BlogPostModalType[] = [
 		id: 2,
 		date: '2025-09-15',
 		tags: ['advices'],
+		title: 'Gyakorlási terv',
+		text:
+			'Egy jó gyakorlási terv nagy segítség lehet: fenntartja a folyamatos fejlődést és lendületet, biztosítja, hogy ne maradjanak el bizonyos területek.\nMinta-tervek a cikkben,\nráadás videóval...',
 		content: {
 			type: 'doc',
 			content: [
@@ -1310,6 +1316,9 @@ export const BLOGPOST_MODAL_CONTENT: BlogPostModalType[] = [
 	},
 	{
 		id: 3,
+		title: 'Zenék leszedése hallásból',
+		text:
+			'Néhány hasznos és gyakorlati tipp dallamok, szólók, akkordmenetek és riffek lefüleléséhez - amely a hallásfejlesztés egyik fontos és ajánlott eleme. \n Cikk videókkal..',
 		date: '2025-01-29',
 		tags: ['advices', 'facts'],
 		content: {
@@ -1670,6 +1679,9 @@ export const BLOGPOST_MODAL_CONTENT: BlogPostModalType[] = [
 	},
 	{
 		id: 4,
+		title: 'Szóló-leszedés',
+		text:
+			'A lehető legjobb hallásfejlesztő gyakorlat - ami nem csak a témák tanulásában hasznos, hanem sokféle zenei készségeket is fejleszt.\n Hasznos tippek a cikkben \n ráadás videóval...',
 		date: '2026-04-06',
 		tags: ['advices', 'facts'],
 		content: {
@@ -2118,6 +2130,9 @@ export const BLOGPOST_MODAL_CONTENT: BlogPostModalType[] = [
 	},
 	{
 		id: 5,
+		title: 'The Devil Put Dinosaurs Here - ajánló',
+		text:
+			'A seattle-i grunge/hard rock zenekar második fejezetéből... Progresszív témák, gazdag hagzásvilág, sajátos hangulatok - néhány benyomás a fent említett lemezről.',
 		date: '2018-04-03',
 		tags: ['music'],
 		content: {
@@ -2395,6 +2410,9 @@ export const BLOGPOST_MODAL_CONTENT: BlogPostModalType[] = [
 		id: 6,
 		date: '2017-11-13',
 		tags: ['philosophy'],
+		title: 'Zene és Önismeret',
+		text:
+			'Hogyan segíthet a zenélés az önismeretben? Miért olyan hatásos eszköz a művészet? Ebben a vázlatos írásban szó esik egy olyan útról, ami önmagunk mélyebb rétegei felé hatol...',
 		content: {
 			type: 'doc',
 			content: [
