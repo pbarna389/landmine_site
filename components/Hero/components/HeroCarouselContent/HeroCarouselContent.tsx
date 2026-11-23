@@ -4,9 +4,12 @@ import Image from 'next/image'
 import { HeroCarouselList } from './HeroCarouselList'
 import { HeroCarouselMainText } from './HeroCarouselMainText'
 import { HeroCarouselTextParent } from './HeroCarouselTextParent'
+import { HeroLinks } from './HeroLinks'
+import type { HERO_DATA_TYPE } from '../../constants/constants'
 
 type HeroCarouselContentProps = {
 	img: StaticImageData
+	links: HERO_DATA_TYPE['links']
 	mainText: string[]
 	subText: string[]
 	idx?: number
@@ -20,6 +23,7 @@ export const HeroCarouselContent = ({
 	img,
 	mainText,
 	subText,
+	links,
 	setLoaded
 }: HeroCarouselContentProps) => {
 	const validIdx = idx ?? 'invalid index of element'
@@ -44,6 +48,7 @@ export const HeroCarouselContent = ({
 			<HeroCarouselTextParent loadState={validLoadState} position="middle">
 				<HeroCarouselList subText={subText} />
 			</HeroCarouselTextParent>
+			<HeroLinks position="end" links={links} loadState={validLoadState} />
 		</div>
 	)
 }
