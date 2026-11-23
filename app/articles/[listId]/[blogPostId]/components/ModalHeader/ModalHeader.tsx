@@ -21,9 +21,9 @@ export const ModalHeader = ({ title, text }: ModalHeaderProps) => {
 				<h1 className="w-full text-[42px] sm:text-[46px] md:text-[50px] xl:text-[58px] lg:w-[75%] animate-blogPostMainHeaderAnim font-bold whitespace-pre-line">
 					{title}
 				</h1>
-				<h5 className="text-[18px] font-bold lg:font-normal max-w-125 lg:max-w-[75%] lg:text-[22px] lg:w-full animate-blogPostSecondHeaderAnim whitespace-pre-line">
+				<p className="text-[18px] font-bold lg:font-normal max-w-125 lg:max-w-[75%] lg:text-[22px] lg:w-full animate-blogPostSecondHeaderAnim whitespace-pre-line">
 					{text}
-				</h5>
+				</p>
 			</div>
 		</div>
 	)

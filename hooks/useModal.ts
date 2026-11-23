@@ -39,9 +39,10 @@ export function useModal({ shouldTravelBack = false }: { shouldTravelBack?: bool
 
 		if (timeoutRef.current) clearTimeout(timeoutRef.current)
 
+		setIsOpen(false)
+
 		if (shouldTravelBack) {
 			timeoutRef.current = setTimeout(() => {
-				setIsOpen(false)
 				router.replace(`/${prevPath}`)
 			}, timeoutTime)
 		}
@@ -51,8 +52,8 @@ export function useModal({ shouldTravelBack = false }: { shouldTravelBack?: bool
 		if (!ref.current) return
 
 		if (!isOpen) {
-			ref.current.showModal()
 			setIsOpen(true)
+			ref.current.showModal()
 		} else {
 			ref.current.close()
 		}
