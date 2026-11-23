@@ -15,6 +15,7 @@ export const HeroLinks = ({ links, position, loadState }: HeroLinksProps) => {
 
 	return (
 		<div
+			inert={!loadState}
 			className={`flex flex-wrap w-9/10 sm:w-[60%] gap-5 absolute z-5 text-center font-montserrat font-bold transition-all ${elementPos.duration} transform -translate-1/2 sm:leading-13 md:translate-0 md:text-left ${loadState ? elementPos.end : elementPos.start}`}
 		>
 			{links.map((link, idx) => (

@@ -57,12 +57,12 @@ export const HERO_DATA = [
 		],
 		links: [
 			{
-				id: 'hero-scene-1-button-1',
+				id: 'hero-scene-3-button-1',
 				text: 'jelentkezés',
 				href: '#message'
 			},
 			{
-				id: 'hero-scene-1-button-2',
+				id: 'hero-scene-3-button-2',
 				text: 'gitáros okosságok',
 				href: '/videos'
 			}
