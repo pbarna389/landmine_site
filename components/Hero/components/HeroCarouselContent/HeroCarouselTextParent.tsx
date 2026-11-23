@@ -14,7 +14,7 @@ export const HeroCarouselTextParent = ({
 
 	return (
 		<div
-			className={`absolute z-5 space-y-10 text-[12vw] text-center font-montserrat font-bold leading-13 transition-all ${elementPos.duration} transform -translate-1/2 sm:text-5xl md:translate-0 md:text-left ${loadState ? elementPos.end : elementPos.start}`}
+			className={`absolute z-5 text-[clamp(39px,15vw,65px)] leading-[clamp(39px,15vw,65px)] w-full text-center font-montserrat font-bold transition-all ${elementPos.duration} transform -translate-1/2 sm:leading-13 sm:text-[56px] md:w-fit md:text-[60px] 2xl:text-[68px] md:translate-0 md:text-left ${loadState ? elementPos.end : elementPos.start}`}
 		>
 			{children}
 		</div>

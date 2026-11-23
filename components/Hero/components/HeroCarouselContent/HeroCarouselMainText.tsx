@@ -6,7 +6,7 @@ type CarouselMainText = {
 
 export const HeroCarouselMainText = ({ mainText }: CarouselMainText) => {
 	return (
-		<div>
+		<div className="flex flex-col sm:gap-2 md:gap-5 2xl:gap-8">
 			{mainText.map((text, idx) => (
 				<h2
 					key={`car-main-text-${idx}`}
