@@ -7,8 +7,8 @@ export const POSITION_VARIANTS = {
 	},
 	middle: {
 		start:
-			'opacity-0 top-[55%] left-1/2 md:top-[38%] md:left-1/2 2xl:top-[45%] 2xl:left-1/2',
-		end: 'opacity-100 top-[40%] left-1/2 md:top-[38%] md:left-13/200 2xl:top-[45%] 2xl:left-3/25',
+			'opacity-0 top-[55%] left-1/2 md:top-[38%] md:left-1/2 2xl:top-[50%] 2xl:left-1/2',
+		end: 'opacity-100 top-[40%] left-1/2 md:top-[38%] md:left-13/200 2xl:top-[50%] 2xl:left-3/25',
 		duration: 'duration-1300'
 	},
 	end: {
