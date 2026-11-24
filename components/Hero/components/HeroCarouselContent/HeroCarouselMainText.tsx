@@ -11,6 +11,7 @@ export const HeroCarouselMainText = ({ mainText }: CarouselMainText) => {
 				<h2
 					key={`car-main-text-${idx}`}
 					className={`${idx === 0 ? TEXT_VARIANTS.main : TEXT_VARIANTS.other} `}
+					style={{ color: '#FFF' }}
 				>
 					{text}
 				</h2>

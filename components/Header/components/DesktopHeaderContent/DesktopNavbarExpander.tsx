@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 import { Icons } from '@/components'
+import { NAVIGATION_HEADING_ID_REFERENCE } from '@/constants/constants'
 
 import { DesktopRecursiveContent } from './DesktopRecursiveContent'
 import type { NavItem } from '../../constants/constants'
@@ -27,7 +28,9 @@ export const DesktopNavbarExpander = ({ link }: DesktopNavbarExpanderProps) => {
 	const thisRouteCurrentlySelected = state.selectedRoute?.[0].routeName === link.text
 
 	const createdHash =
-		link.href === '/articles' || link.href === '/music' ? link.href.slice(1) : null
+		link.href === '/articles' || link.href === '/music' || link.href === '/videos'
+			? NAVIGATION_HEADING_ID_REFERENCE
+			: null
 
 	return (
 		<>

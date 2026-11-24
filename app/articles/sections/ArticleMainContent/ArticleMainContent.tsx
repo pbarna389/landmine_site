@@ -1,4 +1,5 @@
 import { Heading, SubrouteLink } from '@/components'
+import { NAVIGATION_NAVBAR_ID_REFERENCE } from '@/constants/constants'
 
 import { getArticlesLayoutContent } from '../../server'
 
@@ -19,12 +20,15 @@ export const ArticleMainContent = async () => {
 				<h2 className="premise-possibilities-text">{text}</h2>
 				<h3 className="font-bold premise-possibilities-text">{subText}</h3>
 			</article>
-			<nav className="grid grid-cols-1 w-full sm:grid-cols-2 sm:w-fit lg:grid-cols-3 lg:flex-row xl:grid-cols-4 wrap gap-6 *:text-black">
+			<nav
+				id={NAVIGATION_NAVBAR_ID_REFERENCE}
+				className="grid grid-cols-1 w-full scroll-mt-15 sm:grid-cols-2 sm:w-fit lg:grid-cols-3 lg:flex-row xl:grid-cols-4 wrap gap-6 *:text-black"
+			>
 				{filters.map((link) => (
 					<SubrouteLink
 						key={`subroute-link-${link.id}`}
 						id={`${link.linkName.toString()}`}
-						hash="articles"
+						hash={NAVIGATION_NAVBAR_ID_REFERENCE}
 						route="articles"
 						text={link.text}
 						updateClassNames="bg-amber-500 outline-2"

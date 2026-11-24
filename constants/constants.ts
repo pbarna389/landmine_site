@@ -42,3 +42,6 @@ export const INVALID_REQUEST_RESULT = {
 	items: [],
 	pagination: null
 }
+
+export const NAVIGATION_HEADING_ID_REFERENCE = 'heading'
+export const NAVIGATION_NAVBAR_ID_REFERENCE = 'navbar'
