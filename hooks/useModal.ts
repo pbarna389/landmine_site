@@ -16,9 +16,12 @@ export function useModal({ shouldTravelBack = false }: { shouldTravelBack?: bool
 
 	const currentPath = pathName.split('/').slice(1)
 
-	currentPath.pop()
+	const lastElement = currentPath.pop()
 
 	const prevPath = currentPath.join('/')
+
+	console.log(prevPath)
+	console.log(lastElement)
 
 	const [isOpen, setIsOpen] = useState<boolean>(false)
 	const isMobile = useBreakpointChecker()
@@ -43,7 +46,7 @@ export function useModal({ shouldTravelBack = false }: { shouldTravelBack?: bool
 
 		if (shouldTravelBack) {
 			timeoutRef.current = setTimeout(() => {
-				router.replace(`/${prevPath}`)
+				router.replace(`/${prevPath}#${lastElement}`)
 			}, timeoutTime)
 		}
 	}

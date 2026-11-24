@@ -14,7 +14,8 @@ export const AlbumDetails = ({ album, idx }: AlbumDetailsProps) => {
 
 	return (
 		<div
-			className={`flex gap-7 p-8 pl-1 pr-1 flex-col w-full group sm:p-8 sm:pl-5 sm:pr-5 lg:flex-row ${idx === 0 ? 'pt-0 border-t-0' : 'border-t-2 border-gray-300'}`}
+			id={album.id}
+			className={`flex scroll-mt-15 gap-7 p-8 pl-1 pr-1 flex-col w-full group sm:p-8 sm:pl-5 sm:pr-5 lg:flex-row ${idx === 0 ? 'pt-0 border-t-0' : 'border-t-2 border-gray-300'}`}
 		>
 			<div className="relative w-full basis-[47.662%] h-full">
 				<div className="w-full h-full rounded-sm overflow-hidden transition-[border] duration-75 border-2 border-gray-400">

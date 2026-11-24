@@ -31,7 +31,11 @@ export const ArticleCard = ({
 	idx
 }: ArticleCardProps) => {
 	return (
-		<Link className="cursor-pointer" href={`/articles/${listId}/${id}`}>
+		<Link
+			id={String(id)}
+			className="cursor-pointer scroll-mt-15"
+			href={`/articles/${listId}/${id}`}
+		>
 			<Card className="items-start gap-2.5 max-w-full w-full h-80 sm:h-95 2xl:h-110 rounded-xl border border-black p-0 pt-0 pr-0 pl-0 pb-2 overflow-hidden group sm:min-w-1/4 lg:w-full lg:min-h-full *:font-montserrat">
 				<Card.Header
 					idx={idx}
