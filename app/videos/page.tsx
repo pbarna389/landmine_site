@@ -6,7 +6,6 @@ import { LoadingAnimation } from '@/components'
 import { VideoAdvertSection, VideoMainSection } from './sections'
 
 // TODO: Move the Video Main section and the advert section to the layout - both belongs there
-// TODO: Update the navigation to handle scrolls - look at music & articles, already implemented there
 
 export default function VideosPage() {
 	return (

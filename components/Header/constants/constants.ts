@@ -7,6 +7,14 @@ export type NavItem = {
 	content?: NavItem[]
 }
 
+export const ENABLED_NAVIGATION_POINTS = [
+	'/articles',
+	'/music',
+	'/videos',
+	'/about',
+	'/home'
+]
+
 export const NAV_ELEMENTS: NavItem[] = [
 	{ text: 'főoldal', href: '/home' },
 	{ text: 'adatlap', href: '/about' },

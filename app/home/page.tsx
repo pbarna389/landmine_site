@@ -1,7 +1,12 @@
+import { NAVIGATION_HEADING_ID_REFERENCE } from '@/constants/constants'
+
 export default function HomePage() {
 	return (
-		<main className="wrapper-base min-h-screen justify-center bg-black">
-			<h1 className="text-2xl text-white">Homepage</h1>
+		<main
+			id={NAVIGATION_HEADING_ID_REFERENCE}
+			className="wrapper-base scroll-mt-15 min-h-screen justify-center bg-black"
+		>
+			<h1 className="text-2xl  text-white">Homepage</h1>
 		</main>
 	)
 }

@@ -5,7 +5,6 @@ import { useEffect, useRef, useState } from 'react'
 import { useBreakpointChecker } from './useBreakpointChecker'
 import { useDisableScrolling } from './useDisableScrolling'
 
-// TODO: Handle the back-navigation scrolling by adding the #
 // TODO: Find a solution for firefox to handle the closing animations
 
 const timeoutTime = 400
@@ -19,9 +18,6 @@ export function useModal({ shouldTravelBack = false }: { shouldTravelBack?: bool
 	const lastElement = currentPath.pop()
 
 	const prevPath = currentPath.join('/')
-
-	console.log(prevPath)
-	console.log(lastElement)
 
 	const [isOpen, setIsOpen] = useState<boolean>(false)
 	const isMobile = useBreakpointChecker()
