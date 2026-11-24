@@ -44,7 +44,7 @@
 }
 * {
 	scroll-behavior: smooth;
-	color: '#FFF';
+	color: white;
 }
 
 @keyframes profileAnim {
