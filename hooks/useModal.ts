@@ -2,6 +2,8 @@ import { usePathname, useRouter } from 'next/navigation'
 
 import { useEffect, useRef, useState } from 'react'
 
+import { NAVIGATION_NAVBAR_ID_REFERENCE } from '@/constants/constants'
+
 import { useBreakpointChecker } from './useBreakpointChecker'
 import { useDisableScrolling } from './useDisableScrolling'
 
@@ -41,8 +43,13 @@ export function useModal({ shouldTravelBack = false }: { shouldTravelBack?: bool
 		setIsOpen(false)
 
 		if (shouldTravelBack) {
+			const hash =
+				lastElement && document.getElementById(lastElement)
+					? lastElement
+					: NAVIGATION_NAVBAR_ID_REFERENCE
+
 			timeoutRef.current = setTimeout(() => {
-				router.replace(`/${prevPath}#${lastElement}`)
+				router.replace(`/${prevPath}#${hash}`)
 			}, timeoutTime)
 		}
 	}
