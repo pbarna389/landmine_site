@@ -17,7 +17,7 @@ export const ModalHeader = ({ title, text }: ModalHeaderProps) => {
 				sizes="100vw"
 				className="object-cover object-top-left"
 			/>
-			<div className="absolute h-full bg-black/50 shadow-xl flex flex-col items-center justify-center lg:items-start lg:justify-start gap-7.5 lg:bg-transparent lg:h-fit lg:gap-2.5 transform -translate-1/2 top-1/2 left-1/2 w-full lg:w-1/2 lg:left-[77%] xl:w-4/6 xl:left-[75%] *:text-white *:cursor-default *:select-none *:text-center *:lg:text-left">
+			<div className="absolute h-full bg-black/50 flex flex-col items-center justify-center lg:items-start lg:justify-start gap-7.5 lg:bg-transparent lg:h-fit lg:gap-2.5 transform -translate-1/2 top-1/2 left-1/2 w-full lg:w-1/2 lg:left-[77%] xl:w-4/6 xl:left-[75%] *:text-white *:cursor-default *:select-none *:text-center *:lg:text-left">
 				<h1 className="w-full text-[42px] sm:text-[46px] md:text-[50px] xl:text-[58px] lg:w-[75%] animate-blogPostMainHeaderAnim font-bold whitespace-pre-line">
 					{title}
 				</h1>

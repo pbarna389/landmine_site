@@ -12,7 +12,7 @@ import { CarouselWrapper } from '../CarouselWrapper'
 
 export default function Hero() {
 	return (
-		<div className="w-full h-full">
+		<div className="w-full h-full bg-black">
 			<CarouselWrapper
 				carouselData={HERO_DATA}
 				components={{

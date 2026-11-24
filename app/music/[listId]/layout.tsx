@@ -19,10 +19,7 @@ export default async function MusicListLayout({
 	}
 
 	return (
-		<section
-			id="music"
-			className="text-2xl scroll-mt-15 text-white flex flex-col sm:w-[70vw] md:w-[50vw] lg:max-w-[43vw]"
-		>
+		<section className="text-2xl text-white flex flex-col sm:w-[70vw] md:w-[50vw] lg:max-w-[43vw]">
 			<AlbumInfiniteWrapper
 				items={selectedList.items}
 				pagination={selectedList.pagination}

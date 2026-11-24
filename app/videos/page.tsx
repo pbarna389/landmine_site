@@ -6,7 +6,6 @@ import { LoadingAnimation } from '@/components'
 import { VideoAdvertSection, VideoMainSection } from './sections'
 
 // TODO: Move the Video Main section and the advert section to the layout - both belongs there
-// TODO: Update the navigation to handle scrolls - look at music & articles, already implemented there
 
 export default function VideosPage() {
 	return (
@@ -16,10 +15,7 @@ export default function VideosPage() {
 					<MainContent />
 				</Suspense>
 			</VideoMainSection>
-			<section
-				id="videos"
-				className="flex flex-col gap-5 p-16 justify-center items-center bg-video-advert w-full *:text-white *:text-center *:font-montserrat"
-			>
+			<section className="flex flex-col gap-5 p-16 justify-center items-center bg-video-advert w-full *:text-white *:text-center *:font-montserrat">
 				<Suspense fallback={<LoadingAnimation />}>
 					<VideoAdvertSection />
 				</Suspense>

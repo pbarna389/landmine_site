@@ -128,7 +128,7 @@ export const PROFILE_CONTENT = {
 			text: PROFILE_TEXT_CONTENT
 		},
 		profileInfo: {
-			title: { text: 'számokban' },
+			title: { text: 'Számokban' },
 			image: {
 				src: Image1,
 				alt: 'Gyenes Attila, gitártanár'

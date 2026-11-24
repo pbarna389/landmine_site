@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { Card, Heading } from '@/components'
+import { NAVIGATION_HEADING_ID_REFERENCE } from '@/constants/constants'
 
 import type { VideoSubPageType } from '../../constants/constants'
 
@@ -13,7 +14,10 @@ export const VideoCategoryCard = ({ card, idx }: VideoCategoryCardProps) => {
 			key={`video-card-${card.id}`}
 			className="pt-0 pr-0 pl-0 pb-0 min-w-9/10 scale-95 opacity-90 rounded-lg overflow-hidden hover:opacity-100 hover:scale-100 focus-within:opacity-100 focus-within:scale-100 sm:min-w-3/10 lg:w-3/10 lg:min-h-fit"
 		>
-			<Link href={card.href} className="cursor-pointer">
+			<Link
+				href={`${card.href}#${NAVIGATION_HEADING_ID_REFERENCE}`}
+				className="cursor-pointer"
+			>
 				<Card.Header idx={idx} className="pt-0 pb-0">
 					<Image
 						className="w-full cursor-pointer"
