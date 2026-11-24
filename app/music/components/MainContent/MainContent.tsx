@@ -1,5 +1,8 @@
 import { Heading, RecursiveContent, SubrouteLink } from '@/components'
-import { NAVIGATION_NAVBAR_ID_REFERENCE } from '@/constants/constants'
+import {
+	NAVIGATION_HEADING_ID_REFERENCE,
+	NAVIGATION_NAVBAR_ID_REFERENCE
+} from '@/constants/constants'
 
 import { getMusicContent } from '../../server'
 
@@ -12,10 +15,12 @@ export const MainContent = async ({ children }: React.PropsWithChildren) => {
 
 	return (
 		<>
-			<Heading
-				text={title}
-				className="font-montserrat normal-case text-center text-[40px] sm:normal-case sm:text-[42px] md:text-[42px] lg:text-[210%] lg:after:transform lg:after:-translate-x-1/2 lg:after:left-1/2 xl:text-[290%] 2xl:text-[300%]"
-			/>
+			<div className="scroll-mt-15" id={NAVIGATION_HEADING_ID_REFERENCE}>
+				<Heading
+					text={title}
+					className="font-montserrat normal-case text-center text-[40px] sm:normal-case sm:text-[42px] md:text-[42px] lg:text-[210%] lg:after:transform lg:after:-translate-x-1/2 lg:after:left-1/2 xl:text-[290%] 2xl:text-[300%]"
+				/>
+			</div>
 			<article className="text-center font-montserrat w-full md:w-fit classes-page-text-base">
 				<RecursiveContent data={textContent.content} level={0} classKey="music" />
 			</article>
