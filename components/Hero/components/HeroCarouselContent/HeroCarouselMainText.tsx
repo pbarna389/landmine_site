@@ -10,7 +10,7 @@ export const HeroCarouselMainText = ({ mainText }: CarouselMainText) => {
 			{mainText.map((text, idx) => (
 				<h2
 					key={`car-main-text-${idx}`}
-					className={`${idx === 0 ? TEXT_VARIANTS.main : TEXT_VARIANTS.other} `}
+					className={`${idx === 0 ? TEXT_VARIANTS.main : TEXT_VARIANTS.other}`}
 				>
 					{text}
 				</h2>

@@ -19,6 +19,6 @@ export const POSITION_VARIANTS = {
 }
 
 export const TEXT_VARIANTS = {
-	main: 'font-white',
+	main: 'text-white',
 	other: 'text-hero-highlight'
 }
