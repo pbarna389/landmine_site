@@ -1,4 +1,5 @@
 export type {
+	ActionStateType,
 	BulletListType,
 	DocType,
 	HardBreakType,
