@@ -4,14 +4,25 @@ import {
 	NAVIGATION_NAVBAR_ID_REFERENCE
 } from '@/constants/constants'
 
-import { getArticlesLayoutContent } from '../../server'
+type ArticleMainContentProps = {
+	filters: {
+		id: string
+		linkName: string
+		text: string
+	}[]
+	textContent: {
+		subText: string
+		text: string
+	}
+	title: string
+}
 
-export const ArticleMainContent = async () => {
-	const {
-		title,
-		filters,
-		textContent: { text, subText }
-	} = await getArticlesLayoutContent()
+export const ArticleMainContent = async ({
+	filters,
+	textContent,
+	title
+}: ArticleMainContentProps) => {
+	const { text, subText } = textContent
 
 	return (
 		<>
