@@ -1,27 +1,19 @@
+import { redirect } from 'next/navigation'
+
 import { Heading, SubrouteLink } from '@/components'
 import {
 	NAVIGATION_HEADING_ID_REFERENCE,
 	NAVIGATION_NAVBAR_ID_REFERENCE
 } from '@/constants/constants'
 
-type ArticleMainContentProps = {
-	filters: {
-		id: string
-		linkName: string
-		text: string
-	}[]
-	textContent: {
-		subText: string
-		text: string
-	}
-	title: string
-}
+import { getArticlesLayoutContent } from '../../server'
+export const ArticleMainContent = async () => {
+	const { title, filters, textContent, enabled } = await getArticlesLayoutContent()
 
-export const ArticleMainContent = ({
-	filters,
-	textContent,
-	title
-}: ArticleMainContentProps) => {
+	if (!enabled) {
+		redirect('/home#heading')
+	}
+
 	const { text, subText } = textContent
 
 	return (

@@ -1,22 +1,20 @@
+import { redirect } from 'next/navigation'
+
 import { Heading, RecursiveContent, SubrouteLink } from '@/components'
 import {
 	NAVIGATION_HEADING_ID_REFERENCE,
 	NAVIGATION_NAVBAR_ID_REFERENCE
 } from '@/constants/constants'
-import type { DocType } from '@/types'
 
-type MusicContentProps = React.PropsWithChildren & {
-	musicData: {
-		textContent: DocType
-		title: string
+import { getMusicContent } from '../../server'
+
+export const MainContent = async ({ children }: React.PropsWithChildren) => {
+	const { musicData, subpageData, enabled } = await getMusicContent()
+
+	if (!enabled) {
+		redirect('/home#heading')
 	}
-	subpageData: {
-		id: number
-		title: string
-	}[]
-}
 
-export const MainContent = ({ children, musicData, subpageData }: MusicContentProps) => {
 	const { title, textContent } = musicData
 
 	const sortedLinks = [...subpageData].sort((a, b) => b.id - a.id)

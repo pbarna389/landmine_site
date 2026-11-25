@@ -19,6 +19,7 @@ export const RotatableImage = ({
 			className={`object-cover transition-transform duration-750 ${rotateLeft ? 'xl:group-hover:-rotate-8 xl:group-focus:-rotate-8' : 'xl:group-hover:rotate-8 xl:group-focus:rotate-8'} ${className}`}
 			src={src}
 			alt={alt}
+			loading="eager"
 		/>
 	)
 }
