@@ -1,3 +1,4 @@
+import { FEATURE_AVAILABILITY } from '@/constants/constants'
 import type { DocType } from '@/types'
 
 import Image1 from '../Assets/tomm.jpg'
@@ -120,6 +121,7 @@ const PROFILE_TEXT_CONTENT: DocType = {
 }
 
 export const PROFILE_CONTENT = {
+	enabled: FEATURE_AVAILABILITY.about,
 	profileContent: {
 		textContent: {
 			title: {

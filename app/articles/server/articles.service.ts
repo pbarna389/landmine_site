@@ -42,8 +42,8 @@ export const getArticlePaginatedContent = cache(
 	}
 )
 
-export const getArticlesLayoutContent = async () => {
+export const getArticlesLayoutContent = cache(async () => {
 	const result = await getArticlesLayoutContentMock()
 
 	return result
-}
+})

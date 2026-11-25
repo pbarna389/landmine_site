@@ -1,3 +1,5 @@
+import { redirect } from 'next/navigation'
+
 import { Heading, LinksWithIconsWrapper, RecursiveContent } from '@/components'
 import { RotatableImage } from '@/components/RotatableImage/RotatableImage'
 import { NAV_ICONS_BASE, NAVIGATION_HEADING_ID_REFERENCE } from '@/constants/constants'
@@ -5,9 +7,14 @@ import { NAV_ICONS_BASE, NAVIGATION_HEADING_ID_REFERENCE } from '@/constants/con
 import { getAboutContent } from './server'
 
 // TODO: Change the structure to support navigating
+// TODO: Also move the redirection to the layout layer under the restructure
 
 export default async function AboutPage() {
 	const profileContent = await getAboutContent()
+
+	if (!profileContent.enabled) {
+		redirect('/home#heading')
+	}
 
 	const { textContent, profileInfo } = profileContent
 

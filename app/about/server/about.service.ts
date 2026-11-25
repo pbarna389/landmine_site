@@ -4,8 +4,9 @@ export const getAboutContent = async () => {
 	const result = await getAboutMock()
 
 	const {
-		profileContent: { textContent, profileInfo }
+		profileContent: { textContent, profileInfo },
+		enabled
 	} = result
 
-	return { textContent, profileInfo }
+	return { enabled, textContent, profileInfo }
 }

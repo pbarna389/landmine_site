@@ -1,10 +1,29 @@
+import type { StaticImageData } from 'next/image'
+
+import type { DocType } from '@/types'
+
 import { VideoCategoryCard } from './VideoCategoryCard'
 import { VideoHeader } from './VideoHeader'
-import { getVideosContent } from '../../server'
 
-export const MainContent = async () => {
-	const { title, textContent, subPages } = await getVideosContent()
+type MainContentProps = {
+	subPages: {
+		href: string
+		id: number
+		image: {
+			alt: string
+			src: StaticImageData
+		}
+		text: string
+		title: string
+	}[]
+	textContent: DocType
+	title: {
+		subtext: string
+		text: string
+	}
+}
 
+export const MainContent = async ({ title, textContent, subPages }: MainContentProps) => {
 	return (
 		<>
 			<VideoHeader title={title} textContent={textContent} />
