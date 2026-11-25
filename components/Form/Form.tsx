@@ -14,7 +14,6 @@ import { InputFactory } from './InputFactory'
 
 //TODO: update the status update presentation
 //TODO: implement rate limiting
-//TODO: reset approach should be re-conceptualized when status presentation is available
 
 type FormProps<T extends FieldValues, State extends ActionStateType> = {
 	action: (previousState: Awaited<State>, data: T) => Promise<State>
