@@ -17,7 +17,7 @@ type ArticleMainContentProps = {
 	title: string
 }
 
-export const ArticleMainContent = async ({
+export const ArticleMainContent = ({
 	filters,
 	textContent,
 	title
