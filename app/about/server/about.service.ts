@@ -1,8 +1,6 @@
-import { cache } from 'react'
-
 import { getAboutMock } from './about.mock'
 
-export const getAboutContent = cache(async () => {
+export const getAboutContent = async () => {
 	const result = await getAboutMock()
 
 	const {
@@ -11,4 +9,4 @@ export const getAboutContent = cache(async () => {
 	} = result
 
 	return { enabled, textContent, profileInfo }
-})
+}
