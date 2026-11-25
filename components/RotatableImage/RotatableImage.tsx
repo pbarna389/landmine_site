@@ -8,6 +8,8 @@ type RotatableImage = {
 	rotateLeft?: boolean
 }
 
+// TODO: Evaluate eager loading per consumers - delayed to the performance audit
+
 export const RotatableImage = ({
 	src,
 	alt,
