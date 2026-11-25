@@ -3,12 +3,20 @@ import {
 	NAVIGATION_HEADING_ID_REFERENCE,
 	NAVIGATION_NAVBAR_ID_REFERENCE
 } from '@/constants/constants'
+import type { DocType } from '@/types'
 
-import { getMusicContent } from '../../server'
+type MusicContentProps = React.PropsWithChildren & {
+	musicData: {
+		textContent: DocType
+		title: string
+	}
+	subpageData: {
+		id: number
+		title: string
+	}[]
+}
 
-export const MainContent = async ({ children }: React.PropsWithChildren) => {
-	const { musicData, subpageData } = await getMusicContent()
-
+export const MainContent = ({ children, musicData, subpageData }: MusicContentProps) => {
 	const { title, textContent } = musicData
 
 	const sortedLinks = [...subpageData].sort((a, b) => b.id - a.id)

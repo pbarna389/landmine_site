@@ -45,3 +45,13 @@ export const INVALID_REQUEST_RESULT = {
 
 export const NAVIGATION_HEADING_ID_REFERENCE = 'heading'
 export const NAVIGATION_NAVBAR_ID_REFERENCE = 'navbar'
+
+export const FEATURE_AVAILABILITY = {
+	home: true,
+	about: true,
+	classes: true,
+	examples: false,
+	videos: true,
+	music: true,
+	articles: true
+} as const

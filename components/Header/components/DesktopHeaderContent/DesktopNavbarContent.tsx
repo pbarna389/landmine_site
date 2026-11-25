@@ -8,9 +8,11 @@ import { useSubNavbarRef } from '../../context'
 export const DesktopNavbarContent = () => {
 	const { ref } = useSubNavbarRef()
 
+	const enabledElements = NAV_ELEMENTS.filter((element) => element.enabled === true)
+
 	return (
 		<div ref={ref} className="flex gap-5.25 items-center justify-center text-black">
-			{NAV_ELEMENTS.map((link) =>
+			{enabledElements.map((link) =>
 				!link.content ? (
 					<DesktopLink key={`navbar-desktop-link-${link.text}`} link={link} />
 				) : (

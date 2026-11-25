@@ -5,7 +5,7 @@ import { mockResponse } from '@/utils'
 import { EXAMPLES_CONTENT, EXAMPLES_MAIN_CONTENT } from '../constants/constants'
 
 export const getExamplesMainContentMock = cache(async () => {
-	const result = mockResponse(EXAMPLES_MAIN_CONTENT, 2500)
+	const result = mockResponse(EXAMPLES_MAIN_CONTENT, 0)
 
 	return result
 })

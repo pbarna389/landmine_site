@@ -1,3 +1,5 @@
+import { FEATURE_AVAILABILITY } from '@/constants/constants'
+
 export const SKELETON_CLASSES = {
 	parentSkeleton: 'grid gap-5 w-full h-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
 	childrenSkeleton:
@@ -38,6 +40,7 @@ const ARTICLE_FILTER_CATEGORIES = [
 ]
 
 export const ARTICLE_MAIN_CONTENT = {
+	enabled: FEATURE_AVAILABILITY.articles,
 	title: 'cikkek / zeneblog',
 	textContent: {
 		text:

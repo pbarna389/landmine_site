@@ -1,10 +1,11 @@
-import { NAV_ICONS_BASE } from '@/constants/constants'
+import { FEATURE_AVAILABILITY, NAV_ICONS_BASE } from '@/constants/constants'
 import type { LinkWithIconsType } from '@/types'
 
 export type NavItem = {
 	href: string
 	text: string
 	content?: NavItem[]
+	enabled?: boolean
 }
 
 export const ENABLED_NAVIGATION_POINTS = [
@@ -16,10 +17,11 @@ export const ENABLED_NAVIGATION_POINTS = [
 ]
 
 export const NAV_ELEMENTS: NavItem[] = [
-	{ text: 'főoldal', href: '/home' },
-	{ text: 'adatlap', href: '/about' },
+	{ text: 'főoldal', href: '/home', enabled: FEATURE_AVAILABILITY.home },
+	{ text: 'adatlap', href: '/about', enabled: FEATURE_AVAILABILITY.about },
 	{
 		text: 'gitároktatás',
+		enabled: FEATURE_AVAILABILITY.classes,
 		href: '/classes',
 		content: [
 			{
@@ -43,6 +45,7 @@ export const NAV_ELEMENTS: NavItem[] = [
 	{
 		text: 'Leckék',
 		href: '/examples',
+		enabled: FEATURE_AVAILABILITY.examples,
 		content: [
 			{
 				text: 'Rock/Metal',
@@ -153,6 +156,7 @@ export const NAV_ELEMENTS: NavItem[] = [
 	{
 		text: 'videók',
 		href: '/videos',
+		enabled: FEATURE_AVAILABILITY.videos,
 		content: [
 			{
 				href: '/vlog',
@@ -211,6 +215,7 @@ export const NAV_ELEMENTS: NavItem[] = [
 	{
 		text: 'zenék',
 		href: '/music',
+		enabled: FEATURE_AVAILABILITY.music,
 		content: [
 			{
 				text: 'The New Era',
@@ -229,6 +234,7 @@ export const NAV_ELEMENTS: NavItem[] = [
 	{
 		text: 'cikkek',
 		href: '/articles',
+		enabled: FEATURE_AVAILABILITY.articles,
 		content: [
 			{
 				text: 'Összes cikk',

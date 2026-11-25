@@ -20,7 +20,9 @@ export const MobileRoutes = ({
 	const { handleOutsideClick } = useSubNavbarHandlers()
 	const { state } = useSubNavbarState()
 
-	const routes = content ? content : NAV_ELEMENTS
+	const enabledElements = NAV_ELEMENTS.filter((element) => element.enabled === true)
+
+	const routes = content ? content : enabledElements
 
 	return routes.map((link, idx) => {
 		if (!link.content) {

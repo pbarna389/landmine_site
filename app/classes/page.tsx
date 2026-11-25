@@ -1,3 +1,5 @@
+import { redirect } from 'next/navigation'
+
 import {
 	IntroSection,
 	PossibilitiesSection,
@@ -7,7 +9,11 @@ import {
 import { getClassesContent } from './server'
 
 export default async function ClassesPage() {
-	const { intro, premise, possibilities, prices } = await getClassesContent()
+	const { intro, premise, possibilities, prices, enabled } = await getClassesContent()
+
+	if (!enabled) {
+		redirect('/home#heading')
+	}
 
 	return (
 		<>

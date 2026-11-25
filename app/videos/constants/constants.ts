@@ -1,10 +1,11 @@
+import { FEATURE_AVAILABILITY } from '@/constants/constants'
 import type { DocType } from '@/types'
 
 import Image2 from '../Assets/elmik.png'
 import Image1 from '../Assets/g1pk.jpg'
 import Image3 from '../Assets/hszb4.jpg'
 
-const VIDEOS_TEXTCONTENT: DocType = {
+const VIDEOS_TEXT_CONTENT: DocType = {
 	type: 'doc',
 	content: [
 		{
@@ -39,11 +40,12 @@ const VIDEOS_TEXTCONTENT: DocType = {
 }
 
 export const VIDEOS_CONTENT = {
+	enabled: FEATURE_AVAILABILITY.videos,
 	title: {
 		text: 'Gitáros és zenei videók',
 		subtext: 'Zenei anyagok (nem csak) gitárosoknak!'
 	},
-	textContent: VIDEOS_TEXTCONTENT,
+	textContent: VIDEOS_TEXT_CONTENT,
 	subPages: [
 		{
 			id: 1,

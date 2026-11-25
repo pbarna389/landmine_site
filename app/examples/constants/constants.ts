@@ -1,3 +1,4 @@
+import { FEATURE_AVAILABILITY } from '@/constants/constants'
 import type { DocType } from '@/types'
 
 import PICTURE_01 from '../assets/along.jpg'
@@ -356,6 +357,7 @@ export const EXAMPLES_CONTENT: {
 }
 
 export const EXAMPLES_MAIN_CONTENT: {
+	enabled: boolean
 	filters: {
 		id: string
 		link: string
@@ -366,6 +368,7 @@ export const EXAMPLES_MAIN_CONTENT: {
 	title: string
 } = {
 	title: 'Gitároktatás - videók',
+	enabled: FEATURE_AVAILABILITY.examples,
 	link: {
 		text: 'info és jelentkezés',
 		href: '/classes'

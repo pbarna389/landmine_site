@@ -1,4 +1,5 @@
 /* eslint-disable sonarjs/no-duplicate-string */
+import { FEATURE_AVAILABILITY } from '@/constants/constants'
 import type { ArrayElementType, DocType } from '@/types'
 
 import EarlyImage01 from '../public/2003bor.jpg'
@@ -30,7 +31,7 @@ const SUBPAGE_EARLY = { id: 1, title: 'early years' }
 const SUBPAGE_MIDDLE = { id: 2, title: 'middle ages' }
 const SUBPAGE_NEW = { id: 3, title: 'the new era' }
 
-const MUSIC_CATEGORY_TEXTCONTENT: DocType = {
+const MUSIC_CATEGORY_TEXT_CONTENT: DocType = {
 	type: 'doc',
 	content: [
 		{
@@ -73,7 +74,8 @@ export const SUBPAGE_INFO = [SUBPAGE_EARLY, SUBPAGE_MIDDLE, SUBPAGE_NEW]
 
 export const MUSIC_CATEGORY_CONTENT = {
 	title: 'Albumok - zenék',
-	textContent: MUSIC_CATEGORY_TEXTCONTENT,
+	enabled: FEATURE_AVAILABILITY.music,
+	textContent: MUSIC_CATEGORY_TEXT_CONTENT,
 	subPages: [
 		{
 			...SUBPAGE_EARLY,

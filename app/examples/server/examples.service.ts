@@ -3,11 +3,11 @@ import { cache } from 'react'
 import { getExamplesContentMock, getExamplesMainContentMock } from './examples.mock'
 import type { ExampleKeys } from '../constants/constants'
 
-export const getExamplesMainContent = async () => {
+export const getExamplesMainContent = cache(async () => {
 	const data = await getExamplesMainContentMock()
 
 	return data
-}
+})
 
 export const getExampleMainFallback = async () => {
 	const data = await getExamplesContentMock()

@@ -1,4 +1,5 @@
 import { mockResponse } from '@/utils'
+import { FEATURE_AVAILABILITY } from '@/constants/constants'
 
 import { POSSIBILITIES_CONTENT } from './../section/PossibilitiesSection/constants/constants'
 import { INTRO_SECTION_CONTENT } from '../section/IntroSection/constants/constants'
@@ -7,6 +8,7 @@ import { PRICES_CONTENT } from '../section/PricesSection/constants/constants'
 
 export const getClassesContentMock = async () => {
 	const response = {
+		enabled: FEATURE_AVAILABILITY.classes,
 		intro: INTRO_SECTION_CONTENT,
 		possibilities: POSSIBILITIES_CONTENT,
 		premise: PREMISE_CONTENT,

@@ -4,6 +4,7 @@ import { MUSIC_CATEGORY_CONTENT, SUBPAGE_INFO } from '../constants/constants'
 
 export const getMusicContentMock = async () => {
 	const data = {
+		enabled: MUSIC_CATEGORY_CONTENT.enabled,
 		musicData: {
 			title: MUSIC_CATEGORY_CONTENT.title,
 			textContent: MUSIC_CATEGORY_CONTENT.textContent
