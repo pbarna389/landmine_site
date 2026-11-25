@@ -8,34 +8,32 @@ import { zodResolver } from '@hookform/resolvers/zod'
 
 import type { ZodType } from 'zod'
 
-import type { InputKeysType } from '@/types'
+import type { ActionStateType, InputKeysType } from '@/types'
 
 import { InputFactory } from './InputFactory'
-import type { ActionStateType } from '../Contact/types'
 
 //TODO: update the status update presentation
 //TODO: implement rate limiting
-//TODO: generalize ActionStateType
 //TODO: reset approach should be re-conceptualized when status presentation is available
 
-type FormProps<T extends FieldValues> = {
-	action: (previousState: ActionStateType, data: T) => Promise<ActionStateType>
+type FormProps<T extends FieldValues, State extends ActionStateType> = {
+	action: (previousState: Awaited<State>, data: T) => Promise<State>
 	defaultValues: DefaultValues<T>
+	initialState: Awaited<State>
 	inputs: { label: string; name: Path<T>; placeholder: string; type: InputKeysType }[]
 	messageTexts: { error: string; submit: string; success: string }
 	schema: ZodType<T, T>
 }
 
-export const Form = <T extends FieldValues>({
+export const Form = <T extends FieldValues, State extends ActionStateType>({
 	defaultValues,
 	inputs,
 	schema,
+	initialState,
 	messageTexts,
 	action
-}: FormProps<T>) => {
-	const [state, submitAction, isPending] = useActionState<ActionStateType, T>(action, {
-		status: 'idle'
-	})
+}: FormProps<T, State>) => {
+	const [state, submitAction, isPending] = useActionState<State, T>(action, initialState)
 
 	const { register, handleSubmit, getFieldState, formState, reset } = useForm<T>({
 		mode: 'all',

@@ -5,10 +5,13 @@ import {
 	CONTACT_FORM_INPUTS,
 	CONTACT_FORM_TEXT_CONTENT
 } from './constants/constants'
+import type { ActionStateType } from '@/types'
 
 import { emailAction } from './actions/actions'
 import { CONTACT_FORM_SCHEMA } from './schema/schema'
 import { Form } from '../Form'
+
+const initialState: ActionStateType = { status: 'idle' }
 
 export default function Contact() {
 	return (
@@ -23,6 +26,7 @@ export default function Contact() {
 				schema={CONTACT_FORM_SCHEMA}
 				messageTexts={CONTACT_FORM_TEXT_CONTENT}
 				action={emailAction}
+				initialState={initialState}
 			/>
 		</section>
 	)

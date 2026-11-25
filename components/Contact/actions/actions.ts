@@ -1,9 +1,10 @@
 /* eslint-disable no-console */
 'use server'
 
+import type { ActionStateType } from '@/types'
+
 import { emailService } from './service/email.service'
 import { CONTACT_FORM_SCHEMA, type ContactFormDataType } from '../schema/schema'
-import type { ActionStateType } from '../types'
 
 export async function emailAction<T extends ContactFormDataType>(
 	_previousState: ActionStateType,
