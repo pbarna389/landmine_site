@@ -1,6 +1,6 @@
 'use client'
 
-import { startTransition, useActionState } from 'react'
+import { startTransition, useActionState, useEffect } from 'react'
 
 import type { DefaultValues, FieldValues, Path } from 'react-hook-form'
 import { useForm } from 'react-hook-form'
@@ -41,10 +41,14 @@ export const Form = <T extends FieldValues, State extends ActionStateType>({
 		resolver: zodResolver(schema)
 	})
 
+	useEffect(() => {
+		if (state.status === 'success') {
+			reset()
+		}
+	}, [state, reset])
+
 	const onSubmit = handleSubmit((data) => {
 		startTransition(() => submitAction(data))
-
-		reset()
 	})
 
 	return (
