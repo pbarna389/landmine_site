@@ -1,5 +1,7 @@
 import { NAVIGATION_HEADING_ID_REFERENCE } from '@/constants/constants'
 
+// Gallery is just a placeholder here
+
 export default function HomePage() {
 	return (
 		<main

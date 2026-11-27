@@ -1,0 +1,1 @@
+export { GalleryText } from './GalleryText'

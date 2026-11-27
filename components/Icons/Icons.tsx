@@ -29,7 +29,7 @@ const IconVariants: { [key in IconNames]: JSX.Element } = {
 	home: <FaHome key={'icon-fa-home'} color="#000" size={25} />,
 	chevronLeft: <FaChevronLeft key={'icon-fa-chevronLeft'} size={25} />,
 	chevronDown: <FaChevronDown key={'icon-fa-chevronDown'} size={15} />,
-	chevronRight: <FaChevronRight key={'icon-fa-chevronRight'} color="#000" size={15} />
+	chevronRight: <FaChevronRight key={'icon-fa-chevronRight'} color="#000" size={25} />
 }
 
 export const Icons = ({ iconVars }: IconProps) => {
