@@ -1,6 +1,6 @@
 'use client'
 
-// TODO: finish the logic
+// TODO: update the visual representation
 
 import type { StaticImageData } from 'next/image'
 import Image from 'next/image'
