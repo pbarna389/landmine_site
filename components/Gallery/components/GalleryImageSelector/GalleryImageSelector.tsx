@@ -22,6 +22,7 @@ export const GalleryImageSelector = ({
 			{images.map((image, idx) => (
 				<button
 					aria-label={`Galéria kép kiválasztása: ${image.alt}`}
+					aria-pressed={selectedIdx === idx}
 					className={`w-30 h-20 relative transition-all cursor-pointer duration-300 border-4 rounded-sm hover:scale-110 hover:brightness-110 ${selectedIdx === idx ? 'border-amber-400 scale-105' : 'border-transparent'}`}
 					key={`gallery-image-selector-image-${image.alt}`}
 					onClick={() => selectExactIdx(idx)}

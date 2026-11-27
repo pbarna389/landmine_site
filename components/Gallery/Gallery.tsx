@@ -28,30 +28,10 @@ export const Gallery = ({ images, changeTime = 500 }: GalleryProps) => {
 	const isMobile = useBreakpointChecker(820)
 
 	useEffect(() => {
-		const currentRef = timeoutRef.current
-
 		return () => {
-			if (currentRef) clearTimeout(currentRef)
+			if (timeoutRef.current) clearTimeout(timeoutRef.current)
 		}
-	}, [timeoutRef])
-
-	const handleIdxUpdate = (type: 'forward' | 'backward') => {
-		if (timeoutRef.current) clearTimeout(timeoutRef.current)
-
-		const newIdx =
-			type === 'forward'
-				? (nextIdx + 1) % images.length
-				: (nextIdx - 1 + images.length) % images.length
-
-		setNextIdx(newIdx)
-
-		setIsTransitioning(true)
-
-		timeoutRef.current = setTimeout(() => {
-			setSelectedIdx(newIdx)
-			setIsTransitioning(false)
-		}, changeTime)
-	}
+	}, [])
 
 	const selectExactIdx = (idx: number) => {
 		if (timeoutRef.current) {
@@ -62,9 +42,18 @@ export const Gallery = ({ images, changeTime = 500 }: GalleryProps) => {
 		setIsTransitioning(true)
 
 		timeoutRef.current = setTimeout(() => {
-			setSelectedIdx(nextIdx)
+			setSelectedIdx(idx)
 			setIsTransitioning(false)
 		}, changeTime)
+	}
+
+	const handleIdxUpdate = (type: 'forward' | 'backward') => {
+		const newIdx =
+			type === 'forward'
+				? (nextIdx + 1) % images.length
+				: (nextIdx - 1 + images.length) % images.length
+
+		selectExactIdx(newIdx)
 	}
 
 	if (!images.length) {
@@ -76,7 +65,8 @@ export const Gallery = ({ images, changeTime = 500 }: GalleryProps) => {
 			<GalleryButton setSelectedIdx={handleIdxUpdate} type="forward" />
 			<GalleryButton setSelectedIdx={handleIdxUpdate} type="backward" />
 			<div
-				className={`relative w-[50vw] h-[50vh] transition duration-500 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}
+				className={`relative w-[50vw] h-[50vh] transition ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}
+				style={{ transitionDuration: `${changeTime}ms` }}
 			>
 				<Image
 					className="select-none"
